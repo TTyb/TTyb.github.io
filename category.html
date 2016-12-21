@@ -3,25 +3,32 @@ layout: default
 ---
 
 
-<!--<div class="container">-->
-    <!--<h1>分类列表</h1>-->
-    <!--<table class="table table-striped">-->
-        <!--<thead>-->
-        <!--<tr>-->
-            <!--<th>#</th>-->
-            <!--<th>标题</th>-->
-            <!--<th>创建时间</th>-->
-            <!--<th class="dropdown">-->
-                <!--<a data-toggle="dropdown" class="dropdown-toggle" href="#">分类<strong class="caret"></strong></a>-->
-                <!--<ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">-->
-                <!--</ul>-->
-            <!--</th>-->
-        <!--</tr>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--<tr>-->
-            <!--<th>百哥么么哒</th>-->
-        <!--</tr>-->
-        <!--</tbody>-->
-    <!--</table>-->
-<!--</div>-->
+<div class="container">
+    <h1>分类列表</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>标题</th>
+            <th>创建时间</th>
+            <th class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">分类<strong class="caret"></strong></a>
+                <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                    {% for tag in site.tags %}
+                    <li>{{ tag | first }}</li>
+                    {% endfor %}
+                    <!--{% for category in site.categories %}-->
+                    <!--<li>{{ category.title }}</li>-->
+                    <!--{% endfor %}-->
+                </ul>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>百哥么么哒</th>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

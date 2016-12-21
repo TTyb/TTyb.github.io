@@ -6,3 +6,4 @@ markdown: kramdown
 kramdown:
   input: GFM
 exclude: [README.md]
+gems: [jekyll-paginate]
