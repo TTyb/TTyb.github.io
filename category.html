@@ -14,7 +14,7 @@ layout: default
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">分类<strong class="caret"></strong></a>
                 <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
                     {% for category in site.categories %}
-                    <li><a>{{ category | first }}</a></li>
+                    <li><a href="{{ post.url }}">{{ post.title }}{{ category | first }}({{ category | last | size }})</a></li>
                     {% endfor %}
                 </ul>
             </th>
@@ -24,12 +24,23 @@ layout: default
         {% for post in site.posts %}
         <tr>
             <th>百哥么么哒</th>
-            <th>{{ post.title }}</th>
+            <th><a href="{{ post.url }}">{{ post.title }}</a></th>
             <th>{{ post.date | date: " %Y-%m-%d" }}</th>
+            <th><a href="{{ post.categories }}">{{ post.categories }}</a></th>
             {% endfor %}
-            <th></th>
         </tr>
         </tbody>
     </table>
 
 </div>
+<!--{% for category in site.categories %}-->
+  <!--<li><a name="{{ category | first }}">{{ category | first }}</a>-->
+    <!--<ul>-->
+    <!--{% for posts in category %}-->
+      <!--{% for post in posts %}-->
+        <!--<li><a href="{{ post.url }}">{{ post.title }}</a></li>-->
+      <!--{% endfor %}-->
+    <!--{% endfor %}-->
+    <!--</ul>-->
+  <!--</li>-->
+<!--{% endfor %}-->
