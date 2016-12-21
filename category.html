@@ -2,7 +2,6 @@
 layout: default
 ---
 
-
 <div class="container">
     <h1>分类列表</h1>
     <table class="table table-striped">
@@ -14,19 +13,21 @@ layout: default
             <th class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">分类<strong class="caret"></strong></a>
                 <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
-                    {% for tag in site.tags %}
-                    <li>{{ tag | first }}</li>
+                    {% for category in site.categories %}
+                    <li><a>{{ category | first }}</a></li>
                     {% endfor %}
-                    <!--{% for category in site.categories %}-->
-                    <!--<li>{{ category.title }}</li>-->
-                    <!--{% endfor %}-->
                 </ul>
             </th>
         </tr>
         </thead>
         <tbody>
+        {% for post in site.posts %}
         <tr>
             <th>百哥么么哒</th>
+            <th>{{ post.title }}</th>
+            <th>{{ post.date | date: " %Y-%m-%d" }}</th>
+            {% endfor %}
+            <th></th>
         </tr>
         </tbody>
     </table>
