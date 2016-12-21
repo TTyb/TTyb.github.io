@@ -1286,7 +1286,7 @@
 		-ms-flex-direction: column;
 		flex-direction: column;
 		padding: 8em 0 6em 0;
-		background-image: url("../../images/banner.jpg");
+		background-image: url("../../static/jpg/banner.jpg");
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
@@ -1527,7 +1527,7 @@
 
 		#footer:before {
 			content: '';
-			display: inline-block;
+			/*display: inline-block;*/
 			width: 6em;
 			height: 2px;
 			background-color: #666666;

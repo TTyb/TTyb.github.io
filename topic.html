@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<!-- 遍历分页后的文章 -->
+<div class="container">
+    <div class="page-header">
+        {% for post in site.posts %}
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <h6 class="text-muted">文章发表于{{ post.date | date: " %Y-%m-%d" }}</h6>
+        <p class="content">
+            {% if post.desc %}
+            {{ post.desc }}
+            {% else %}
+            {{ post.content | slice: 0,50 }}
+            {% endif %}
+        </p>
+        {% endfor %}
+    </div>
+</div>
+
