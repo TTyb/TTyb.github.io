@@ -9,11 +9,11 @@ layout: default
         {% for post in site.posts %}
         <hr>
         <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
-            {% for category in post.categories %}
+        {% for category in post.categories %}
         <small>
             分类：{{ category }}
         </small>
-            {% endfor %}
+        {% endfor %}
         <h6 class="text-muted">作者:{{ post.author }}&nbsp;&nbsp;文章发表于{{ post.date | date: " %Y-%m-%d" }}</h6>
         <p class="content text-overflow">
             {% if post.desc %}
@@ -35,5 +35,5 @@ layout: default
         overflow: hidden;
         text-overflow: ellipsis;
     }
-</style>
 
+</style>

@@ -22,25 +22,16 @@ layout: default
         </thead>
         <tbody>
         {% for post in site.posts %}
+        {% for category in post.categories %}
         <tr>
             <th>百哥么么哒</th>
             <th><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></th>
             <th>{{ post.date | date: " %Y-%m-%d" }}</th>
-            <th><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ post.categories }}</a></th>
+            <th><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</a></th>
+            {% endfor %}
             {% endfor %}
         </tr>
         </tbody>
     </table>
 
 </div>
-<!--{% for category in site.categories %}-->
-  <!--<li><a name="{{ category | first }}">{{ category | first }}</a>-->
-    <!--<ul>-->
-    <!--{% for posts in category %}-->
-      <!--{% for post in posts %}-->
-        <!--<li><a href="{{ post.url }}">{{ post.title }}</a></li>-->
-      <!--{% endfor %}-->
-    <!--{% endfor %}-->
-    <!--</ul>-->
-  <!--</li>-->
-<!--{% endfor %}-->
