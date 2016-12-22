@@ -8,7 +8,7 @@ layout: default
     <div class="page-header">
         {% for post in site.posts %}
         <hr>
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
         <h6 class="text-muted">文章发表于{{ post.date | date: " %Y-%m-%d" }}</h6>
         <p class="content text-overflow">
             {% if post.desc %}

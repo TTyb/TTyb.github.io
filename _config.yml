@@ -1,4 +1,5 @@
-baseurl: ""
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://ttyb.github.io" # the base hostname & protocol for your site
 paginate: 5
 paginate_path: "page:num"
 # Build settings
@@ -6,4 +7,4 @@ markdown: kramdown
 kramdown:
   input: GFM
 exclude: [README.md]
-gems: [jekyll-paginate]
+#gems: [jekyll-paginate]

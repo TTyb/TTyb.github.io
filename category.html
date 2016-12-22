@@ -14,7 +14,7 @@ layout: default
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">分类<strong class="caret"></strong></a>
                 <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
                     {% for category in site.categories %}
-                    <li><a href="{{ post.url }}">{{ post.title }}{{ category | first }}({{ category | last | size }})</a></li>
+                    <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}{{ category | first }}({{ category | last | size }})</a></li>
                     {% endfor %}
                 </ul>
             </th>
