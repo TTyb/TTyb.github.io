@@ -1,33 +1,19 @@
 ---
 layout: default
 ---
-<div class="row-fluid container-fluid" style="margin-top: 20px">
-    <div class="span10 offset1 post" itemscope itemtype="http://schema.org/BlogPosting">
 
-        <header class="post-header">
-            <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-
-            <p class="post-meta">
-                <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}
-                </time>
-                {% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span
-                    itemprop="name">{{ page.author }}</span></span>{% endif %}
-                 {% for tag in page.tags %}
-                  • <span>{{ tag }}</span>
-                 {% endfor %}
-            </p>
-        </header>
-        <script type="text/javascript" src="{{ "/static/js/toc.js" | prepend: site.baseurl }}"></script>
-        <script type="text/javascript">
-        $(document).ready(function() {
-            $('#toc').toc({ noBackToTopLinks: true,listType: 'ul',showEffect: 'slideDown',classes: { list: 'nav nav-list',
-                           item: ''
-                         }})
-        });
-        </script>
-        <div id="toc" class="tocc"></div>
-        <div class="post-content" itemprop="articleBody">
+<div class="container">
+    <div class="page-header">
+        <hr>
+        <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ page.title }}</a></h3>
+        {% for category in site.categories %}
+        <small>
+            {{ category | first }}
+        </small>
+        {% endfor %}
+        <h6 class="text-muted">作者：{{ page.author }} 文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
+        <p class="content text-overflow">
             {{ content }}
-        </div>
+        </p>
     </div>
 </div>
