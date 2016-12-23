@@ -10,9 +10,18 @@ layout: default
             分类：{{ page.categories[0] }}
         </small>
         <h6 class="text-muted">作者:{{ page.author }}&nbsp;&nbsp;文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
-        <br />
+        <br/>
         <p class="content text-overflow">
             {{ content }}
         </p>
     </div>
 </div>
+
+<script type="text/javascript">
+(function(){
+var appid = 'cysLgGrKf';
+var conf = 'prod_b858d0a6a42f8ecc4a523fbef9926b37';
+var width = window.innerWidth || document.documentElement.clientWidth;
+if (width < 960) {
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })();
+</script>
