@@ -8,7 +8,7 @@ layout: default
         <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ page.title }}</a></h3>
         {% for category in site.categories %}
         <small>
-            {{ category | first }}
+            {{ category }}
         </small>
         {% endfor %}
         <h6 class="text-muted">作者：{{ page.author }} 文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
