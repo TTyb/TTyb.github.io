@@ -5,13 +5,13 @@ layout: default
 <div class="container">
     <div class="page-header">
         <hr>
-        <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ page.title }}</a></h3>
+        <h3><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></h3>
         {% for category in site.categories %}
         <small>
-            {{ category }}
+            分类：{{ category }}
         </small>
         {% endfor %}
-        <h6 class="text-muted">作者：{{ page.author }} 文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
+        <h6 class="text-muted">作者:{{ page.author }} 文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
         <br />
         <p class="content text-overflow">
             {{ content }}
