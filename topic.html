@@ -4,8 +4,8 @@ layout: default
 
 <div class="container">
     <div class="page-header">
-        <hr>
         {% for post in site.posts %}
+        <hr>
         <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
         {% for category in post.categories %}
         <small>
@@ -20,6 +20,7 @@ layout: default
             {{ post.excerpt | strip_html }}
             {% endif %}
         </p>
+
         {% endfor %}
     </div>
 </div>
