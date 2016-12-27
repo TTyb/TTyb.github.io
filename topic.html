@@ -10,7 +10,7 @@ layout: default
         <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
         {% for category in post.categories %}
         <small>
-            分类：{{ category }}
+            分类：<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</a>
         </small>
         {% endfor %}
         <h6 class="text-muted">作者:{{ post.author }}&nbsp;&nbsp;文章发表于{{ post.date | date: " %Y-%m-%d" }}</h6>
