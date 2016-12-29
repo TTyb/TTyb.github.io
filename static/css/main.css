@@ -127,7 +127,7 @@
 		-ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		text-decoration: none;
-		border-bottom: dotted 1px;
+		border-bottom: none;
 	}
 
 		a:hover {
