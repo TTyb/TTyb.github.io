@@ -31,7 +31,7 @@
     background:url({{"/static/jpg/top.png" | prepend: site.baseurl}})no-repeat center center;
     position: fixed;
     bottom: 10px;
-    right: 30px;
+    right: 1.4%;
     z-index: 99;
 }
 </style>
@@ -40,7 +40,7 @@
 
         $(function () {
             $(window).scroll(function () {
-                if ($(window).scrollTop() > 1000) {
+                if ($(window).scrollTop() > 800) {
                     $('#top').css('display','block');
                     }
             else {
