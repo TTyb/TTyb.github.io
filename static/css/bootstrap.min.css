@@ -294,7 +294,8 @@ a {
 }
 
 a:hover, a:focus {
-    color: #2a6496;
+    /*超链接字体的颜色，原来是color:#2a6496;*/
+    color: #EF6480 !important;
     text-decoration: underline
 }
 
