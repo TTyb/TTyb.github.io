@@ -289,6 +289,11 @@ button, input, select[multiple], textarea {
 }
 
 a {
+    /*缓慢变色是自己加的*/
+    -moz-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+    -webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+    -ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
     color: #428bca;
     text-decoration: none
 }
