@@ -1,15 +1,25 @@
 <div id="top">
-<a class="btn-to-top" title="返回顶部" target="_self" href="#"></a>
+    <a class="btn-to-top" title="返回顶部" target="_self" href="#"></a>
 </div>
 <div class="container">
-    <div id="footer" class="text-muted" style="font-size: 1.2em;font-family: KaiTi;">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
         <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
-        不用多久<br/>
-        我就会升职加薪<br/>
-        当上总经理<br/>
-        出任CEO<br/>
-        迎娶白富美<br/>
-        走上人生巅峰
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
     </div>
 </div>
 <footer id="footer">
@@ -24,29 +34,106 @@
 </footer>
 
 <style>
-    .btn-to-top{
-    width: 60px;
-    height: 130px;
-    display: block;
-    background:url({{"/static/jpg/top.png" | prepend: site.baseurl}})no-repeat center center;
-    position: fixed;
-    bottom: 10px;
-    right: 1.4%;
-    z-index: 99;
-}
+    .btn-to-top {
+        width: 60px;
+        height: 130px;
+        display: block;
+        background: url({{ "/static/jpg/top.png" | prepend: site.baseurl}}) no-repeat center center;
+        position: fixed;
+        bottom: 10px;
+        right: 1.4%;
+        z-index: 99;
+    }
+
+    /* 特殊字体TTyb */
+    @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Lato Black'), local('Lato-Black'), url(http://fonts.gstatic.com/s/lato/v11/R4a6fty3waPci7C44H8AjvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* latin */
+    @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 900;
+        src: local('Lato Black'), local('Lato-Black'), url(http://fonts.gstatic.com/s/lato/v11/tI4j516nok_GrVf4dhunkg.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    }
+
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+
+    div.foo {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .letter {
+        display: inline-block;
+        font-weight: 900;
+        font-size: 8em;
+        margin: 0.2em;
+        position: relative;
+        color: #00B4F1;
+        transform-style: preserve-3d;
+        perspective: 400;
+        z-index: 1;
+    }
+
+    .letter:before, .letter:after {
+        position: absolute;
+        content: attr(data-letter);
+        transform-origin: top left;
+        top: 0;
+        left: 0;
+    }
+
+    .letter, .letter:before, .letter:after {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .letter:before {
+        color: #fff;
+        text-shadow: -1px 0px 1px rgba(255, 255, 255, .8),
+        1px 0px 1px rgba(0, 0, 0, .8);
+        z-index: 3;
+        transform: rotateX(0deg) rotateY(-15deg) rotateZ(0deg);
+    }
+
+    .letter:after {
+        color: rgba(0, 0, 0, .11);
+        z-index: 2;
+        transform: scale(1.08, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 1deg);
+    }
+
+    .letter:hover:before {
+        color: #fafafa;
+        transform: rotateX(0deg) rotateY(-40deg) rotateZ(0deg);
+    }
+
+    .letter:hover:after {
+        transform: scale(1.08, 1) rotateX(0deg) rotateY(40deg) rotateZ(0deg) skew(0deg, 22deg);
+    }
+
 </style>
 
 <script type="text/javascript">
 
-        $(function () {
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > 800) {
-                    $('#top').css('display','block');
-                    }
+    $(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 800) {
+                $('#top').css('display', 'block');
+            }
             else {
-                $('#top').css('display','none');
+                $('#top').css('display', 'none');
             }
         });
     });
 
 </script>
+
