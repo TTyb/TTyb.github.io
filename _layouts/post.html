@@ -9,7 +9,7 @@ layout: default
         <small>
             分类：{{ page.categories[0] }}
         </small>
-        <h6 class="text-muted">作者:<a href="https://ttyb.github.io">{{ page.author }}</a>&nbsp;&nbsp;文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
+        <h6 class="text-muted">作者:{{ page.author }}&nbsp;&nbsp;文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
         <br/>
         <p class="content text-overflow">
             {{ content }}

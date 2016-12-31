@@ -13,7 +13,7 @@ layout: default
             分类：<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</a>
         </small>
         {% endfor %}
-        <h6 class="text-muted">作者:<a href="https://ttyb.github.io">{{ post.author }}</a>&nbsp;&nbsp;文章发表于{{ post.date | date: " %Y-%m-%d" }}</h6>
+        <h6 class="text-muted">作者:{{ post.author }}&nbsp;&nbsp;文章发表于{{ post.date | date: " %Y-%m-%d" }}</h6>
         <p class="content text-overflow">
             {% if post.desc %}
             {{ post.desc }}
