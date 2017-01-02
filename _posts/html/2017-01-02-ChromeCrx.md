@@ -9,12 +9,19 @@ desc: "学习了一些chrome插件的基本用法"
 
 ### 文件夹目录为：
 
+```
 -- images
+
 ---- icon38.png
+
 -- js
+
 ---- jquery.min.js
+
 ---- test.js
+
 manifest.json
+```
 
 `images` 是存放插件图标的
 
