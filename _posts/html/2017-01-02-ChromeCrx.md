@@ -2,7 +2,7 @@
 layout: post
 categories: [html]
 title: ChromeCrx
-date: 2016-01-02
+date: 2017-01-02
 author: TTyb
 desc: "学习了一些chrome插件的基本用法"
 ---
