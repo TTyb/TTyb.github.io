@@ -6496,7 +6496,7 @@ ul.icons li:last-child {
     font-style: normal;
     font-weight: 900;
     /*, url(http://fonts.gstatic.com/s/lato/v11/R4a6fty3waPci7C44H8AjvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2')*/
-    src: local('Lato Black'), local('Lato-Black');
+    src: local('Lato Black'), local('Lato-Black'), url('../fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2');
     unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 
@@ -6506,7 +6506,7 @@ ul.icons li:last-child {
     font-style: normal;
     font-weight: 900;
     /*, url(http://fonts.gstatic.com/s/lato/v11/tI4j516nok_GrVf4dhunkg.woff2) format('woff2')*/
-    src: local('Lato Black'), local('Lato-Black');
+    src: local('Lato Black'), local('Lato-Black'), url('../fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
