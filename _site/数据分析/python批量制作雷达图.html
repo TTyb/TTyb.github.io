@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>python批量制作雷达图</a></h3>
+        <small>
+            分类：数据分析
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2016-07-25</h6>
+        <br/>
+        <p class="content text-overflow">
+            <p>老板要画雷达图，但是数据好多组怎么办？不能一个一个点excel去画吧，那么可以利用python进行批量制作，得到样式如下：
+<img src="http://images2015.cnblogs.com/blog/996148/201607/996148-20160725112739184-317504601.png" alt="" /></p>
+
+<p>首先制作一个演示的excel，评分为excel随机数生成：
+<code class="highlighter-rouge">=INT((RAND()+4)*10)/10</code></p>
+
+<p>加入标签等得到的excel样式如下(部分，共计32行)：
+<img src="http://images2015.cnblogs.com/blog/996148/201607/996148-20160725111723638-1616976074.png" alt="" /></p>
+
+<p>那么接下来就是打开python写码了，本文是基于python3.4进行编写:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>wb = load_workbook(filename=r'C:\Users\Administrator\Desktop\数据指标.xlsx')  ##读取路径
+    ws = wb.get_sheet_by_name("Sheet1")  ##读取名字为Sheet1的sheet表
+
+    info_id = []
+    info_first = []
+
+    for row_A in range(2, 32):  ## 遍历第2行到32行
+        id = ws.cell(row=row_A, column=1).value  ## 遍历第2行到32行，第1列
+        info_id.append(id)
+    for col in range(2, 9):  ##读取第1到9列
+        first = ws.cell(row=1, column=col).value
+        info_first.append(first)  ##得到1到8列的标签
+
+    info_data = []
+    for row_num_BtoU in range(2, len(info_id) + 2):  ## 遍历第2行到32行
+        row_empty = []  ##建立一个空数组作为临时储存地，每次换行就被清空
+        for i in range(2, 9):  ## 遍历第2行到32行，第2到9列
+            data_excel = ws.cell(row=row_num_BtoU, column=i).value
+            if data_excel == None:
+                pass
+            else:
+                row_empty.append(data_excel)  ##将单元格信息储存进去
+        info_data.append(row_empty)
+</code></pre>
+</div>
+
+<blockquote>
+  <p>分步讲解：</p>
+</blockquote>
+
+<p>读取excel表格：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>wb = load_workbook(filename=r'C:\Users\Administrator\Desktop\数据指标.xlsx')  ##读取路径
+ws = wb.get_sheet_by_name("Sheet1")  ##读取名字为Sheet1的sheet表
+</code></pre>
+</div>
+
+<p>需要用到库：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import xlsxwriter
+from openpyxl import load_workbook
+</code></pre>
+</div>
+
+<p>在命令指示符下输入：
+<code class="highlighter-rouge">pip install xlsxwriter</code></p>
+
+<p>等待安装即可，后面的库也是如此：
+<img src="http://images2015.cnblogs.com/blog/996148/201607/996148-20160725112249684-842821694.png" alt="" /></p>
+
+<p>将第一列ID储存，以及第一行的标签，标签下面的数值分别储存在：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>info_id = []
+info_first = []
+info_data = []
+</code></pre>
+</div>
+
+<p>读取数据后接下来需要设置写入的格式：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>workbook = xlsxwriter.Workbook('C:\\Users\\Administrator\\Desktop\\result.xlsx')
+    worksheet = workbook.add_worksheet()  # 创建一个工作表对象
+    #字体格式
+    font = workbook.add_format(
+        {'border': 1, 'align': 'center', 'font_size': 11, 'font_name': '微软雅黑'})  ##字体居中，11号，微软雅黑,给一般的信息用的
+    #写下第一行第一列的标签
+    worksheet.write(0, 0, '商品货号', font)
+    ##设置图片的那一列宽度
+    worksheet.set_column(0, len(info_first) + 1, 11)  # 设定第len(info_first) + 1列的宽度为11
+</code></pre>
+</div>
+
+<p>将标签数据等写入新的excel表格中：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#新建一个excel保存结果
+workbook = xlsxwriter.Workbook('C:\\Users\\Administrator\\Desktop\\result.xlsx')
+worksheet = workbook.add_worksheet()  # 创建一个工作表对象
+#字体格式
+font = workbook.add_format(
+    {'border': 1, 'align': 'center', 'font_size': 11, 'font_name': '微软雅黑'})  ##字体居中，11号，微软雅黑,给一般的信息用的
+#写下第一行第一列的标签
+worksheet.write(0, 0, '商品货号', font)
+##设置图片的那一列宽度
+worksheet.set_column(0, len(info_first) + 1, 11)  # 设定第len(info_first) + 1列的宽度为11
+
+##写入标签
+for k in range(0,7):
+    worksheet.write(0, k + 1, info_first[k], font)
+#写入最后一列标签
+worksheet.write(0, len(info_first) + 1, '雷达图', font)
+</code></pre>
+</div>
+
+<p>制作雷达图：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#设置雷达各个顶点的名称
+labels = np.array(info_first)
+#数据个数
+data_len = len(info_first)
+for i in range(0,len(info_id)):
+    data = np.array(info_data[i])
+    
+    angles = np.linspace(0, 2*np.pi, data_len, endpoint=False)
+    data = np.concatenate((data, [data[0]])) # 闭合
+    angles = np.concatenate((angles, [angles[0]])) # 闭合
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(111, polar=True)# polar参数！！
+    ax.plot(angles, data, 'bo-', linewidth=2)# 画线
+    ax.fill(angles, data, facecolor='r', alpha=0.25)# 填充
+    ax.set_thetagrids(angles * 180/np.pi, labels, fontproperties="SimHei")
+    ax.set_title("商品货号：" + str(info_id[i]), va='bottom', fontproperties="SimHei")
+    ax.set_rlim(3.8,5)# 设置雷达图的范围
+    ax.grid(True)
+    plt.savefig("C:\\Users\\Administrator\\Desktop\\result\\商品货号：" + str(info_id[i]) + ".png", dpi=120)                         
+</code></pre>
+</div>
+
+<p>图片太大怎么办？用库改变大小即可：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import Image
+##更改图片大小
+infile = “C:\\Users\\Administrator\\Desktop\\result\\商品货号：" + str(info_id[i]) + ".png“
+outfile = ”C:\\Users\\Administrator\\Desktop\\result1\\商品货号：" + str(info_id[i]) + ".png”
+im = Image.open(infile)
+(x, y) = im.size
+x_s = 80    ## 设置长
+y_s = 100　 ## 设置宽
+out = im.resize((x_s, y_s), Image.ANTIALIAS)
+out.save(outfile,'png',quality = 95)
+</code></pre>
+</div>
+
+<p>将大图片和小图片放在了result和result1两个不同的文件夹，需要再前边创建这两个文件夹：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if os.path.exists(r'C:\\Users\\Administrator\\Desktop\\result'):  # 建立一个文件夹在桌面，文件夹为result
+    print('result文件夹已经在桌面存在，继续运行程序……')
+else:
+    print('result文件夹不在桌面，新建文件夹result')
+    os.mkdir(r'C:\\Users\\Administrator\\Desktop\\result')
+    print('文件夹建立成功，继续运行程序')
+
+if os.path.exists(r'C:\\Users\\Administrator\\Desktop\\result1'):  # 建立一个文件夹在C盘，文件夹为result1
+    print('result1文件夹已经在桌面存在，继续运行程序……')
+else:
+    print('result1文件夹不在桌面，新建文件夹result1')
+    os.mkdir(r'C:\\Users\\Administrator\\Desktop\\result1')
+    print('文件夹建立成功，继续运行程序')
+</code></pre>
+</div>
+
+<p>最后插入图片到excel中：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>worksheet.insert_image(i + 1, len(info_first) + 1, 'C:\\Users\\Administrator\\Desktop\\result1\\' + "商品货号：" + str(info_id[i]) + '.png')  ##写入图片
+time.sleep(1)##防止写入太快电脑死机
+plt.close() #   一定要关掉图片，不然python打开图片20个后会崩溃
+workbook.close()#最后关闭excel
+</code></pre>
+</div>
+
+<p>得到的效果如下：
+<img src="http://images2015.cnblogs.com/blog/996148/201607/996148-20160725144419341-284951461.jpg" alt="" /></p>
+
+<p>附上完整代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import numpy as np
+import matplotlib.pyplot as plt
+import xlsxwriter
+from openpyxl import load_workbook
+import os
+import time
+from PIL import Image
+
+if __name__ == '__main__':
+
+    if os.path.exists(r'C:\\Users\\Administrator\\Desktop\\result'):  # 建立一个文件夹在桌面，文件夹为result
+        print('result文件夹已经在桌面存在，继续运行程序……')
+    else:
+        print('result文件夹不在桌面，新建文件夹result')
+        os.mkdir(r'C:\\Users\\Administrator\\Desktop\\result')
+        print('文件夹建立成功，继续运行程序')
+
+    if os.path.exists(r'C:\\Users\\Administrator\\Desktop\\result1'):  # 建立一个文件夹在C盘，文件夹为result1
+        print('result1文件夹已经在桌面存在，继续运行程序……')
+    else:
+        print('result1文件夹不在桌面，新建文件夹result1')
+        os.mkdir(r'C:\\Users\\Administrator\\Desktop\\result1')
+        print('文件夹建立成功，继续运行程序')
+
+    wb = load_workbook(filename=r'C:\Users\Administrator\Desktop\数据指标.xlsx')  ##读取路径
+    ws = wb.get_sheet_by_name("Sheet1")  ##读取名字为Sheet1的sheet表
+
+    info_id = []
+    info_first = []
+
+    for row_A in range(2, 32):  ## 遍历第2行到32行
+        id = ws.cell(row=row_A, column=1).value  ## 遍历第2行到32行，第1列
+        info_id.append(id)
+    for col in range(2, 9):  ##读取第1到9列
+        first = ws.cell(row=1, column=col).value
+        info_first.append(first)  ##得到1到8列的标签
+    print(info_id)
+    print(info_first)
+
+    info_data = []
+    for row_num_BtoU in range(2, len(info_id) + 2):  ## 遍历第2行到32行
+        row_empty = []  ##建立一个空数组作为临时储存地，每次换行就被清空
+        for i in range(2, 9):  ## 遍历第2行到32行，第2到9列
+            data_excel = ws.cell(row=row_num_BtoU, column=i).value
+            if data_excel == None:
+                pass
+            else:
+                row_empty.append(data_excel)  ##将单元格信息储存进去
+        info_data.append(row_empty)
+    print(info_data)
+    print(len(info_data))
+
+    # 设置雷达各个顶点的名称
+    labels = np.array(info_first)
+    # 数据个数
+    data_len = len(info_first)
+    # 新建一个excel保存结果
+    workbook = xlsxwriter.Workbook('C:\\Users\\Administrator\\Desktop\\result.xlsx')
+    worksheet = workbook.add_worksheet()  # 创建一个工作表对象
+    # 字体格式
+    font = workbook.add_format(
+        {'border': 1, 'align': 'center', 'font_size': 11, 'font_name': '微软雅黑'})  ##字体居中，11号，微软雅黑,给一般的信息用的
+    # 写下第一行第一列的标签
+    worksheet.write(0, 0, '商品货号', font)
+    ##设置图片的那一列宽度
+    worksheet.set_column(0, len(info_first) + 1, 11)  # 设定第len(info_first) + 1列的宽度为11
+
+    ##写入标签
+    for k in range(0, 7):
+        worksheet.write(0, k + 1, info_first[k], font)
+    # 写入最后一列标签
+    worksheet.write(0, len(info_first) + 1, '雷达图', font)
+
+    # 将其他参数写入excel中
+    for j in range(0, len(info_id)):
+        worksheet.write(j + 1, 0, info_id[j], font)  # 写入商品货号
+        worksheet.set_row(j, 76)  ##设置行宽
+        for x in range(0, len(info_first)):
+            worksheet.write(j + 1, x + 1, info_data[j][x], font)  # 写入商品的其他参数
+
+    for i in range(0, len(info_id)):
+        data = np.array(info_data[i])
+
+        angles = np.linspace(0, 2 * np.pi, data_len, endpoint=False)
+        data = np.concatenate((data, [data[0]]))  # 闭合
+        angles = np.concatenate((angles, [angles[0]]))  # 闭合
+
+        fig = plt.figure()
+        ax = fig.add_subplot(111, polar=True)  # polar参数！！
+        ax.plot(angles, data, 'bo-', linewidth=2)  # 画线
+        ax.fill(angles, data, facecolor='r', alpha=0.25)  # 填充
+        ax.set_thetagrids(angles * 180 / np.pi, labels, fontproperties="SimHei")
+        ax.set_title("商品货号：" + str(info_id[i]), va='bottom', fontproperties="SimHei")
+        ax.set_rlim(3.8, 5)  # 设置雷达图的范围
+        ax.grid(True)
+        plt.savefig("C:\\Users\\Administrator\\Desktop\\result\\商品货号：" + str(info_id[i]) + ".png", dpi=120)
+        # plt.show()在python中显示
+
+        ##更改图片大小
+        infile = "C:\\Users\\Administrator\\Desktop\\result\\商品货号：" + str(info_id[i]) + ".png"
+        outfile = "C:\\Users\\Administrator\\Desktop\\result1\\商品货号：" + str(info_id[i]) + ".png"
+        im = Image.open(infile)
+        (x, y) = im.size
+        x_s = 80  ## 设置长
+        y_s = 100  ## 设置宽
+        out = im.resize((x_s, y_s), Image.ANTIALIAS)
+        out.save(outfile, 'png', quality=95)
+
+        worksheet.insert_image(i + 1, len(info_first) + 1,
+                               'C:\\Users\\Administrator\\Desktop\\result1\\' + "商品货号：" + str(
+                                   info_id[i]) + '.png')  ##写入图片
+        time.sleep(1)  ##防止写入太快电脑死机
+        plt.close()  # 一定要关掉图片，不然python打开图片20个后会崩溃
+
+    workbook.close()  # 最后关闭excel
+
+</code></pre>
+</div>
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/python%E6%89%B9%E9%87%8F%E5%88%B6%E4%BD%9C%E9%9B%B7%E8%BE%BE%E5%9B%BE.html"
+     data-title="python批量制作雷达图" data-url="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/python%E6%89%B9%E9%87%8F%E5%88%B6%E4%BD%9C%E9%9B%B7%E8%BE%BE%E5%9B%BE.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>

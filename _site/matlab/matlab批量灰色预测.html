@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>matlab批量灰色预测</a></h3>
+        <small>
+            分类：matlab
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2016-08-15</h6>
+        <br/>
+        <p class="content text-overflow">
+            <p>没事玩了一下matlab</p>
+
+<p>发现现在网上的代码都是一组数据预测</p>
+
+<p>所以我就写个批量数据的预测</p>
+
+<p>顺便学习下matlab</p>
+
+<p>———————————-我是快乐的分割线————————————</p>
+
+<p>灰色预测的主要思想是：</p>
+
+<p>1、给定一组数据</p>
+
+<p>2、进行累加，即</p>
+
+<p>X(1)1=x(0)1</p>
+
+<p>X(1)2=x(0)1+x(0)2</p>
+
+<p>X(1)3=x(0)1+x(0)2+x(0)3</p>
+
+<p>…</p>
+
+<p>3、最终目的是为了构造预测方程：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160815173954859-416758837.png" alt="" /></p>
+
+<p>其中：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160815174012015-579748840.png" alt="" /></p>
+
+<p>而为了求得上式，需要：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160815174031203-744637404.png" alt="" /></p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160815174038437-2135589712.png" alt="" /></p>
+
+<p>好的，就是这样子灰色预测就写完了，下面就是各种循环各种写了</p>
+
+<p>———————————-我是快乐的分割线————————————</p>
+
+<p>为了批量对多组数据进行预测</p>
+
+<p>所以加入了一个打开excel：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>%读取excel的数据，data = xlsread(filename, sheet, range)
+data=xlsread('D:\MATLAB\GM.xlsx', 1, 'A1:E2');
+</code></pre>
+</div>
+
+<p>然后写个大大的for循环：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>m=ndims(data);%维度
+for i = 1:m
+...
+end
+</code></pre>
+</div>
+
+<p>省略号里面就是一组数据的预测程序了</p>
+
+<p>灰色预测的思想很简单</p>
+
+<p>我就不分段解释了</p>
+
+<p>全部代码如下</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>function GM(t)
+clc; %清屏,以使计算结果独立显示
+format long g; %设置计算精度
+ 
+%读取excel的数据，data = xlsread(filename, sheet, range)
+data=xlsread('D:\MATLAB\GM.xlsx', 1, 'A1:E2');
+ 
+%fprintf(data(1,:));
+%x=data(1,:)
+%n=length(data)%长度
+%加了;分号表示不将结果显示出来
+ 
+m=ndims(data);%维度
+ 
+t=input('你要预测多少期？');
+for i = 1:m
+    z=0;
+    x=data(i,:);
+    %下面的全部内容都在这个循环里面进行
+    %注意下面的那个end
+    %每一行的长度
+    n=length(data);
+    for j = 1:n
+        z = z + x(j);
+        be(j,:)=z;
+    end
+    %matlab的变量定义好乱，可以随便定义，都是局部变量
+    %本文这里除了i之外其他都算局部变量吧
+     
+    %计算数据矩阵B的第一列和第二列数据
+    for j = 1:n-1
+        %第一列
+        c(j,:)=-0.5*(be(j,:)+be(j+1,:));
+        %第二列
+        e(j,:)=1;
+        %代入矩阵B中
+        B(j,1)=c(j,:);
+        B(j,2)=e(j,:);
+    end
+     
+    %对原始数列平行移位
+    for j=2:n
+        y(j-1,:)=x(1,j);
+    end
+     
+    %计算参数α、μ矩阵
+    alpha=inv(B.'*B)*B.'*y;
+     
+    %计算数据估计值的累加数列
+    for k = 0:n-1+t
+        ago(k+1,:)=(be(1)-alpha(2,:)/alpha(1,:))*exp(-alpha(1,:)*(k))+alpha(2,:)/alpha(1,:);
+    end
+ 
+     
+    %估计值的累加数列的还原,并计算出下一预测值
+    for j=1:n-1+t
+        var(j+1,:)=ago(j+1,:)-ago(j,:);
+    end
+     
+    %给出预测结果
+    result(i,:)=var(n+t,1);
+    %计算残差
+    for j=2:n
+        error(j,:)=var(j,:)-x(1,j);
+    end
+    %调用统计工具箱的标准差函数计算后验差的比值c
+    S1=std(x)
+    S2=std(error)
+    c=S2/S1
+end
+disp('预测结果为：')
+disp(result(:,1))
+</code></pre>
+</div>
+
+<p>花了一个下午复习了一下matlab</p>
+
+<p>发现编写m文件不是很难</p>
+
+<p>但是matlab的语言逻辑有点乱</p>
+
+<p>要不是我的逻辑有点乱</p>
+
+<p>—————————————orz———————————–</p>
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/matlab/matlab%E6%89%B9%E9%87%8F%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B.html"
+     data-title="matlab批量灰色预测" data-url="http://localhost:4000/matlab/matlab%E6%89%B9%E9%87%8F%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>

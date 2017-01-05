@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>apriori推荐算法</a></h3>
+        <small>
+            分类：数据分析
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2016-12-28</h6>
+        <br/>
+        <p class="content text-overflow">
+            <p>推荐算法大致分为：</p>
+
+<blockquote>
+  <ol>
+    <li>基于物品和用户本身</li>
+    <li>基于关联规则</li>
+    <li>基于模型的推荐</li>
+  </ol>
+</blockquote>
+
+<h3 id="基于物品和用户本身">基于物品和用户本身</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>基于物品和用户本身的，这种推荐引擎将每个用户和每个物品都当作独立的实体，预测每个用户对于每个物品的喜好程度，这些信息往往是用一个二维矩阵描述的。由于用户感兴趣的物品远远小于总物品的数目，这样的模型导致大量的数据空置，即我们得到的二维矩阵往往是一个很大的稀疏矩阵。同时为了减小计算量，我们可以对物品和用户进行聚类， 然后记录和计算一类用户对一类物品的喜好程度，但这样的模型又会在推荐的准确性上有损失。
+</code></pre>
+</div>
+
+<h3 id="基于关联规则">基于关联规则</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>基于关联规则的推荐（Rule-based Recommendation）：关联规则的挖掘已经是数据挖掘中的一个经典的问题，主要是挖掘一些数据的依赖关系，典型的场景就是“购物篮问题”，通过关联规则的挖掘，我们可以找到哪些物品经常被同时购买，或者用户购买了一些物品后通常会购买哪些其他的物品，当我们挖掘出这些关联规则之后，我们可以基于这些规则给用户进行推荐。
+</code></pre>
+</div>
+
+<h3 id="基于模型的推荐">基于模型的推荐</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>基于模型的推荐（Model-based Recommendation）：这是一个典型的机器学习的问题，可以将已有的用户喜好信息作为训练样本，训练出一个预测用户喜好的模型，这样以后用户在进入系统，可以基于此模型计算推荐。这种方法的问题在于如何将用户实时或者近期的喜好信息反馈给训练好的模型，从而提高推荐的准确度。
+</code></pre>
+</div>
+
+<p>其实在现在的推荐系统中，很少有只使用了一个推荐策略的推荐引擎，一般都是在不同的场景下使用不同的推荐策略从而达到最好的推荐效果，例如 Amazon 的推荐，它将基于用户本身历史购买数据的推荐，和基于用户当前浏览的物品的推荐，以及基于大众喜好的当下比较流行的物品都在不同的区域推荐给用户，让用户可以从全方位的推荐中找到自己真正感兴趣的物品。<a href="http://www.ibm.com/developerworks/cn/web/1103_zhaoct_recommstudy1/index.html">探索推荐引擎内部的秘密，第 1 部分: 推荐引擎初探</a></p>
+
+<p><strong>Apriori算法</strong> 是一种最有影响力的 <strong>挖掘布尔关联规则</strong> 的频繁项集的算法，这个算法是属于上面第二条<code class="highlighter-rouge">基于关联规则</code>推荐的算法，本文着重讲解该算法的计算。</p>
+
+<hr />
+
+<p>按照网上最简单的例子来进行分析：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201612/996148-20161228103914961-1295466111.png" alt="" /></p>
+
+<blockquote>
+  <p>支持度support=P(AB)，指的是事件A和事件B同时发生的概率。
+置信度confidence=P(B|A)=P(AB)/P(A),指的是发生事件A的基础上发生事件B的概率。</p>
+</blockquote>
+
+<p>大致步骤为：</p>
+
+<p><code class="highlighter-rouge">扫描</code>-&gt;<code class="highlighter-rouge">计数</code>-&gt;<code class="highlighter-rouge">剪枝</code>-&gt;<code class="highlighter-rouge">频繁集</code>-&gt;<code class="highlighter-rouge">强规则</code></p>
+
+<h3 id="扫描">扫描</h3>
+
+<p>扫描候选项集，并将所有的种类汇总，上图可知有种类<code class="highlighter-rouge">["A","B","C","D","E"]</code></p>
+
+<h3 id="计数">计数</h3>
+
+<p>计数即统计种类的个数，上图可知：<code class="highlighter-rouge"><span class="p">{</span><span class="err">'A':</span><span class="w"> </span><span class="err">2,</span><span class="w"> </span><span class="err">'C':</span><span class="w"> </span><span class="err">3,</span><span class="w"> </span><span class="err">'D':</span><span class="w"> </span><span class="err">1,</span><span class="w"> </span><span class="err">'E':</span><span class="w"> </span><span class="err">3,</span><span class="w"> </span><span class="err">'B':</span><span class="w"> </span><span class="err">3</span><span class="p">}</span></code></p>
+
+<h3 id="剪枝">剪枝</h3>
+
+<p>剪枝就是把不满足支持度的部分给去掉，支持度自己设定，上图第一次剪枝去掉了D，那么数据库中的所有D也要被去掉，即下次计算不被包含</p>
+
+<h3 id="频繁集">频繁集</h3>
+
+<p>第一次剪枝后就得到了第一个频繁集L1，L1还能继续压缩，所以继续重复前面的几个步骤，直到无法再压缩</p>
+
+<p>前面这些步骤用python写了代码如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># !/usr/bin/python3.4
+# -*- coding: utf-8 -*-
+
+
+# 获取所有元素种类
+def getkinds(array):
+    arr = []
+    for item in array:
+        for value in item:
+            if value in arr:
+                pass
+            else:
+                if value != "+":
+                    arr.append(value)
+    return arr
+
+
+# 候选集长度
+def getcount(array, support):
+    # 第一次扫描
+    # C1
+    dict = {}
+    for item in array:
+        for key in item:
+            if key in dict.keys():
+                dict[key] += 1
+            else:
+                dict[key] = 1
+    # 第一次剪枝
+    newdict = judge_spport(dict, support)
+
+    # 第二次扫描
+    # 构造项集C2
+    # 两两组合
+    arr = []
+    kinds = getkinds(newdict.keys())
+    for m in range(0, len(kinds)):
+        for n in range(m + 1, len(kinds)):
+            arr.append(kinds[m] + "+" + kinds[n])
+    # 计数
+    dict = {}
+    for item in array:
+        for values in arr:
+            value = values.split("+")
+            if value[0] in item and value[1] in item:
+                if values in dict:
+                    dict[values] += 1
+                else:
+                    dict[values] = 1
+    # print(dict)
+    # {'B+A': 1, 'A+E': 1, 'C+E': 2, 'B+E': 3, 'C+B': 2, 'C+A': 2}
+
+    # 第二次剪枝
+    newdict = judge_spport(dict, support)
+    # print(newdict)
+    # {'C+E': 2, 'B+E': 3, 'C+B': 2, 'C+A': 2}
+
+    # 第三次扫描
+    # 构造项集C2
+    # 两两组合
+    arr = []
+    kinds = getkinds(newdict.keys())
+    for m in range(0, len(kinds)):
+        for n in range(m + 1, len(kinds)):
+            for k in range(n + 1, len(kinds)):
+                arr.append(kinds[m] + "+" + kinds[n] + "+" + kinds[k])
+
+    # 计数
+    dict = {}
+    for item in array:
+        for values in arr:
+            value = values.split("+")
+            if value[0] in item and value[1] in item and value[2] in item:
+                if values in dict:
+                    dict[values] += 1
+                else:
+                    dict[values] = 1
+    # print(dict)
+    # {'E+B+A': 1, 'E+C+A': 1, 'E+B+C': 2, 'B+C+A': 1}
+
+    # 第三次剪枝
+    newdict = judge_spport(dict, support)
+    # {'B+E+C': 2}
+    return newdict
+
+
+# 剪枝
+# 删除不符合支持度的key
+def judge_spport(dict, support):
+    dic = dict.copy()
+    for key in dict.keys():
+        if dict[key] &lt; support:
+            del dic[key]
+    return dic
+
+
+if __name__ == '__main__':
+    support = 2
+    info = [["A", "C", "D"], ["B", "C", "E"], ["A", "B", "C", "E"], ["B", "E"]]
+    dict = getcount(info, support)
+    print(dict)
+
+</code></pre>
+</div>
+
+<p>打印结果为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">'C+B+E':</span><span class="w"> </span><span class="err">2</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="强规则计算">强规则计算</h3>
+
+<p>上文可知频繁集{C,B,E}的非空真子集有{B，C}，{B，E}，{C，E}，{B}，{C}和{E}，对应置信度如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>B&amp;&amp;C-&gt;E            confidence=2/2=100%
+B&amp;&amp;E-&gt;C            confidence=2/3=66%
+C&amp;&amp;E-&gt;B            confidence=2/2=100%
+B -&gt;C&amp;&amp;E           confidence=2/3=66%
+C -&gt;B&amp;&amp;E           confidence=2/3=66%
+E -&gt;B&amp;&amp;C           confidence=2/3=66%
+</code></pre>
+</div>
+
+<p>对于规则” If B and E then C”，同时购买B和E的人中，有66.67%会购买C。</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>即置信度confidence=P(B</td>
+      <td>A)=P(AB)/P(A)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>计算强规则的代码为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 计算强规则
+def getconfidence(dict,array):
+    # 一一组合
+    kinds = getkinds(dict.keys())
+    arr = kinds
+    newdict = {}
+    for i in range(0,len(arr)):
+        denominator1 = 0
+        numerator1 = 0
+        denominator2 = 0
+        numerator2 = 0
+        for item in array:
+            if arr[i] in item:
+                denominator1 += 1
+                temp = getkinds(dict.keys())
+                temp.remove(arr[i])
+                if temp[0] in item and temp[1] in item:
+                    numerator1 += 1
+        key1 = arr[i] + "-&gt;" + temp[0] + "+" + temp[1]
+
+        for item in array:
+            temp = getkinds(dict.keys())
+            temp.remove(arr[i])
+            if temp[0] in item and temp[1] in item:
+                numerator2 += 1
+                if arr[i] in item:
+                    denominator2 += 1
+        key2 = temp[0] + "+" + temp[1] + "-&gt;" + arr[i]
+        if denominator1 == 0:
+            newdict[key1] = str(numerator1) + "denominator1"
+        else:
+            newdict[key1] = str(numerator1) + "/" + str(denominator1)
+        if numerator2 == 0:
+            newdict[key2] = str(denominator2) + "numerator2"
+        else:
+            newdict[key2] = str(denominator2) + "/" + str(numerator2)
+
+    return newdict
+</code></pre>
+</div>
+
+<p>打印结果为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="err">'B-&gt;E+C':</span><span class="w"> </span><span class="err">'2/3',</span><span class="w"> </span><span class="err">'B+C-&gt;E':</span><span class="w"> </span><span class="err">'2/2',</span><span class="w"> </span><span class="err">'E+C-&gt;B':</span><span class="w"> </span><span class="err">'2/2',</span><span class="w"> </span><span class="err">'E-&gt;B+C':</span><span class="w"> </span><span class="err">'2/3',</span><span class="w"> </span><span class="err">'C-&gt;B+E':</span><span class="w"> </span><span class="err">'2/3',</span><span class="w"> </span><span class="err">'B+E-&gt;C':</span><span class="w"> </span><span class="err">'2/3'</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="结果解说">结果解说</h3>
+
+<p>可以知道购买B和C的人很可能买E，买了E和C的人很可能买B，而其他的概率可能要小一些，例如购买了B的人，很可能买E和C。</p>
+
+<p><a href="https://github.com/TTyb/apriori">源码</a></p>
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/apriori%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95.html"
+     data-title="apriori推荐算法" data-url="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/apriori%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>

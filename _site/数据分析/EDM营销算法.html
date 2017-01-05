@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>python批量制作雷达图</a></h3>
+        <small>
+            分类：数据分析
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2016-07-25</h6>
+        <br/>
+        <p class="content text-overflow">
+            <p>EDM营销：全称Email Direct Marketing，即电子邮件营销。企业可以通过使用EDM软件向目标客户发送EDM邮件，建立同目标顾客的沟通渠道，向其直接传达相关信息，用来促进销售。EDM软件有多种用途，可以发送电子广告、产品信息、销售信息、市场调查、市场推广活动信息等。</p>
+
+<p>身为一名会修电脑的数据分析师，总是要想着怎样把公司电脑搞坏，顺便给公司创造点价值</p>
+
+<p>刚好python有个</p>
+
+<p><code class="highlighter-rouge">import smtplib</code></p>
+
+<p>因此，就用python3.4来写这个代码</p>
+
+<p>首先一个最简单的邮件发送的代码是这样子的，定义一个函数：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 协议服务器地址、发件方邮箱前缀、发件方邮箱密码、收件方邮箱、信件标题、内容
+def send_email(SMTP_host, from_account, from_passwd, to_account, subject, content):
+def send_email(协议服务器, 发件人邮箱, 发件人邮箱密码, 收件人邮箱, 邮件标题, 邮件内容):
+</code></pre>
+</div>
+
+<p>解析服务器地址，每个邮箱的服务器地址都不一样，一定要根据发件方的邮箱类型来选择服务器地址例如：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 协议服务器地址
+# smtp.163.com
+# smtp.21cn.com
+# smtp.sina.com.cn
+# smtp.sohu.com
+# smtp.126.com
+# smtp.qq.com
+</code></pre>
+</div>
+
+<p>服务器的的端口也不一样，一般都是端口25，只有qq的是465或者587</p>
+
+<p>加载服务器：</p>
+
+<p><code class="highlighter-rouge">email_client = smtplib.SMTP(SMTP_host,25)</code></p>
+
+<p>账号密码登录：</p>
+
+<p><code class="highlighter-rouge">email_client.login(from_account, from_passwd)</code></p>
+
+<p>将邮件的文本信息搞进来，换点编码，中间的’plain’是文本，中间可以是html，那么你的内容content就要写成网页形式 <code class="highlighter-rouge">&lt;b&gt;...&lt;/b&gt;</code> ：</p>
+
+<p><code class="highlighter-rouge">msg = MIMEText(content, 'plain', 'utf-8')</code></p>
+
+<p>邮件寄出去不是还有谁谁谁寄的么，就是下面的这个，标题、发件人、收件人，收发邮件人名的格式啊，搞进去：</p>
+
+<p><code class="highlighter-rouge">from_title = from_account + "&lt;" + from_account + "@" + from_postfix + "&gt;"</code></p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160813191559375-1358342115.jpg" alt="" /></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>msg['Subject'] = Header(subject, 'utf-8')
+msg['From'] = from_account
+msg['To'] = to_account
+</code></pre>
+</div>
+
+<p>寄出去：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>email_client.sendmail(from_account, to_account, msg.as_string())
+email_client.quit()
+</code></pre>
+</div>
+
+<p>记得关闭邮件</p>
+
+<p>这样子一个很简单的邮件发送系统就出来了</p>
+
+<p>看看主函数：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if __name__ == "__main__":
+    send_email("smtp.163.com","xxxxx@163.com","password","xxxxx@126.com","test","hellow")
+</code></pre>
+</div>
+
+<p>完整的简单发邮件代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+
+
+def send_email(SMTP_host, from_account, from_passwd, to_account, subject, content):
+    email_client = smtplib.SMTP(SMTP_host)
+    email_client.login(from_account, from_passwd)
+    # create msg
+    msg = MIMEText(content, 'plain', 'utf-8')
+    msg['Subject'] = Header(subject, 'utf-8')  # subject
+    msg['From'] = from_account
+    msg['To'] = to_account
+    email_client.sendmail(from_account, to_account, msg.as_string())
+
+    email_client.quit()
+
+if __name__ == "__main__":
+    send_email("smtp.163.com","xxxxx@163.com","password","xxxxx@126.com","test","hellow")
+</code></pre>
+</div>
+
+<p>————————————–我是快乐的分割线————————————–</p>
+
+<p>上面的那个发邮件的是很简单很简单的，没有批量，没有详细解说，我是不会满意这样的东西，那么，看我神一样的代码</p>
+
+<p>首先，你们要注意到，qq邮箱发邮件有一个很重要的BUG</p>
+
+<p>如果没有解决那么QQ邮箱无法登陆</p>
+
+<p>为什么一定需要QQ邮箱呢？</p>
+
+<p>因为！</p>
+
+<p>用这个服务器QQ只接受来自QQ的邮件，163以及其他的他都不接受！！！</p>
+
+<p>所以一定要用QQ邮箱</p>
+
+<p>打开QQ邮箱–设置–账户</p>
+
+<p>一定要开启下面那两个服务，因为开启这两个服务才能使用QQ邮箱发</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160813192822734-747835102.jpg" alt="" /></p>
+
+<p>要发短信的，发完点击我已发送，QQ会给一个16位的字母给你</p>
+
+<p>注意注意注意注意注意注意注意注意注意注意，这个才是QQ邮箱发邮件的密码密码密码密码密码密码密码密码密码密码密码密码密码密码密码密码密码密码密码</p>
+
+<p>好，得到这个密码后，我再将其他163的邮箱放进来</p>
+
+<p>因为单个邮箱每天上限200个，发200肯定被封，你不希望自己的邮箱被封吧</p>
+
+<p>所以要多个邮箱发</p>
+
+<p>而且是发给多个用户，那么新建两个excel表格，打开读取里面的账号密码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>from openpyxl import load_workbook
+
+try:
+    # 读取发件人邮箱
+    wb = load_workbook(filename=r'../fromemail.xlsx')  ##读取路径
+    ws = wb.get_sheet_by_name("Sheet1")  ##读取名字为Sheet1的sheet表
+
+    # 建立邮箱账号密码数组
+    fromemail_qqaccount = []
+    fromemail_qqpasswd = []
+    fromemail_othaccount = []
+    fromemail_othpasswd = []
+
+    for row_A in range(2, 100):  ## 遍历第2行到100行
+        qqacc = ws.cell(row=row_A, column=1).value  ## 遍历第2行到100行，第1列
+        qqpas = ws.cell(row=row_A, column=2).value  ## 遍历第2行到100行，第2列
+        othac = ws.cell(row=row_A, column=3).value  ## 遍历第2行到100行，第3列
+        othpa = ws.cell(row=row_A, column=4).value  ## 遍历第2行到100行，第4列
+        if qqacc:
+            fromemail_qqaccount.append(qqacc)
+            fromemail_qqpasswd.append(qqpas)
+        if othac:
+            fromemail_othaccount.append(othac)
+            fromemail_othpasswd.append(othpa)
+
+        # 判断是否有qq邮箱，如果没有则退出程序
+        if len(fromemail_qqaccount) == 0:
+            input('没有qq邮箱或者qq邮箱写入的格式不对，请插入或改正...')
+            exit()
+
+    # 读取收件人邮箱
+    wb = load_workbook(filename=r'../toemail.xlsx')  ##读取路径
+    ws = wb.get_sheet_by_name("Sheet1")  ##读取名字为Sheet1的sheet表
+
+    # 建立收件人邮箱账号数组
+    toemail_account = []
+    for row_B in range(2, 10000):  ## 遍历第2行到10000行
+        emaacc = ws.cell(row=row_B, column=1).value  ## 遍历第2行到10000行，第1列
+        if emaacc:
+            toemail_account.append(emaacc)
+except:
+    input('写入excel的格式不对，请查证...')
+    exit()
+</code></pre>
+</div>
+
+<p>我的excel格式是这样子的：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160813193417687-1166588221.jpg" alt="" /></p>
+
+<p>这里就不解释啦，读取excel我以前的博文就有详细解释</p>
+
+<p>那么内容content我也写进了txt记事本里面：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160813193613953-1544840309.jpg" alt="" /></p>
+
+<p>第一行是标题，后面是内容代码如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>try:
+    file = open('../content.txt', 'r')
+    data = file.read().split('\n')
+    subject = '标题'
+    content = '正文'
+    if data[0] != '':
+        for j in range(0, len(data)):
+            if j == 0:
+                # 邮件标题
+                subject = data[0]
+            elif j &gt; 0:
+                if j == 1:
+                    # 邮件正文
+                    content = data[1]
+                if j &gt; 1:
+                    content = str(content) + '\n' + data[j]
+    else:
+        pass
+    file.close()
+except:
+    input('写入txt的格式不对，请改正...')
+    exit()
+</code></pre>
+</div>
+
+<p>如果标题和内容是空的，那么我就自己给一个标题和内容：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>subject = '标题'
+content = '正文'
+</code></pre>
+</div>
+
+<p>因为涉及到换行写入，所以有：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>content = str(content) + '\n' + data[j]
+</code></pre>
+</div>
+
+<p>好滴，这些东西统统加进去，感觉这个EDM系统做得不错了</p>
+
+<p>但是但是，呵呵哒，突然发现登录的时候直接写邮箱会出现错误，也就是这样子：，但是还有，我要发图片怎么办</p>
+
+<p>我把图片存到pic文件夹</p>
+
+<p>发图片只能是用html来写，也就是我前文写到的html格式</p>
+
+<p>那么函数要写成：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 登录之前不变...
+email_client.login(from_account, from_passwd)
+msg = MIMEMultipart('related')
+fp = open('../pic/图片.jpg', 'rb')
+    msgImage = MIMEImage(fp.read())
+    msgImage.add_header('Content-ID', 'weekly')
+    msg.attach(msgImage)
+    fp.close()
+msg.attach(MIMEText("&lt;b&gt;" + content + "&lt;/b&gt;" + "&lt;br&gt;&lt;img src=\"cid:weekly\"&gt;", 'html', 'utf-8'))
+</code></pre>
+</div>
+
+<p>嗯，这样子就可以发图片了：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160813194825078-1810135820.jpg" alt="" /></p>
+
+<p>好滴，但是前面有提到qq邮箱只能用qq邮箱来发</p>
+
+<p>那么我写了一个想法</p>
+
+<p>当邮箱是qq邮箱的时候只能用qq邮箱，出错了退出程序</p>
+
+<p>当邮箱不是qq邮箱的时候用其他邮箱来发，出错了再用QQ邮箱来发，再出错就退出程序</p>
+
+<p>那么就准备了一大堆邮箱，循环发，首先判断是不是qq邮箱：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if 'qq' in toemail_account[i]:
+    print('用了qq邮箱...')
+    # 定义协议地址
+    SMTP_host = 'smtp.qq.com'
+
+    # 取得@前面的东西
+    from_account = re.compile(r'(.*)@(.*)').search(fromemail_qqaccount[int(count_1) - 1]).group(1)
+    # 取得@后面的东西，等同于下面的语句
+    # from_postfix = re.compile(r'(.*)@(.*)').search(fromemail_qqaccount[i]).group(1)
+    from_postfix = 'qq.com'
+
+    # 密码
+    from_passwd = fromemail_qqpasswd[int(count_1) - 1]
+    # print('读取第count_1 - 1个qq的账号和密码')
+
+    # 收件人地址
+    to_account = toemail_account[i]
+
+    # print('用第count_1 - 1个qq的账号和密码发送邮件')
+    send_email(SMTP_host, from_account, from_passwd, to_account, subject, content)
+</code></pre>
+</div>
+
+<p>这是很简单的判断读取excel的邮箱的东西啦，不多说</p>
+
+<p>要说的是我要循环利用发件人的邮箱，那么就要有个判断，当循环到头的时候要重新循环，所以就有了那个count_1，最主要的是在这里：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>if count_1 % int(len(fromemail_qqaccount)) == 0:
+    # 循环够了，要初始化count_1
+    count_1 = 1
+else:
+    count_1 = count_1 + 1
+</code></pre>
+</div>
+
+<p>整除即可</p>
+
+<p>如果收件人不是qq邮箱，那么来：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>else:
+# 收件人地址
+to_account = toemail_account[i]
+# 取得地址协议
+if '163' in toemail_account[i]:
+    SMTP_host = 'smtp.163.com'
+elif 'sina' in toemail_account[i]:
+    SMTP_host = 'smtp.sina.com.cn'
+elif '126' in toemail_account[i]:
+    SMTP_host = 'smtp.126.com'
+elif 'sohu' in toemail_account[i]:
+    SMTP_host = 'smtp.sohu.com'
+
+# 取得@前面的东西
+from_account = re.compile(r'(.*)@(.*)').search(fromemail_othaccount[int(count_2) - 1]).group(1)
+# 取得@后面的东西，等同于下面的语句
+from_postfix = from_postfix = re.compile(r'(.*)@(.*)').search(fromemail_othaccount[int(count_2) - 1]).group(2)
+# 密码
+from_passwd = fromemail_othpasswd[int(count_2) - 1]
+# print('读取第count_2 - 1个邮箱的账号和密码')
+
+# print('用第count_2 - 1个邮箱的账号和密码发送邮件')
+send_email(SMTP_host, from_account,  from_passwd, to_account, subject, content)
+if count_2 % int(len(fromemail_othaccount)) == 0:
+    # 循环够了，要初始化count_2
+    count_2 = 1
+else:
+    count_2 = count_2 + 1
+</code></pre>
+</div>
+
+<p>这样子这个程序挺像样子了</p>
+
+<p>但是！</p>
+
+<p>我是数据分析师</p>
+
+<p>我很追求完美</p>
+
+<p>万一中间程序断了怎么办，我怎么知道哪些人发了邮件哪些人没发？</p>
+
+<p>呵呵哒，创建一个finish.txt，每发一个保存一个：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 记录下已经发送的邮件
+save_finish = '../finish.txt'
+read_finish = open(save_finish, 'r').read()
+txt_finish = str(read_finish)
+
+# 以写入的方式打开txt，在上面记录的内容后面继续添加新内容
+file_finish = open(save_finish, 'w')
+txt_finish = str(txt_finish) + '\n' + str(to_account)
+file_finish.write(txt_finish)
+file_finish.close()
+</code></pre>
+</div>
+
+<p>最后成功运行：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160813200126968-326423440.jpg" alt="" /></p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160813200222343-1290195667.jpg" alt="" /></p>
+
+<p>————————–我是快乐的分割线—————————</p>
+
+<p>EDM营销，满满的利润来了</p>
+
+<p>最后为什么没有贴出完整代码，因为商业机密啊</p>
+
+<p>我是收了钱的啊</p>
+
+<p>思路都给了</p>
+
+<p>还不满足啊</p>
+
+<p>要不你可以去买收钱的啊</p>
+
+<p>https://help.aliyun.com/document_detail/29421.html</p>
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/EDM%E8%90%A5%E9%94%80%E7%AE%97%E6%B3%95.html"
+     data-title="python批量制作雷达图" data-url="http://localhost:4000/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/EDM%E8%90%A5%E9%94%80%E7%AE%97%E6%B3%95.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>
