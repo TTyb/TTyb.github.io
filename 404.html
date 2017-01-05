@@ -1,74 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="shortcut icon" href="static/jpg/myjpg.jpg"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-    <!-- Stylesheets -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet"/>
-    <title>错误 - 百哥么么哒|个人网站</title>
-    <link rel="stylesheet" href="static/css/main.css"/>
-    <script type="text/javascript" src="static/js/jquery.min.js"></script>
-
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .pic {
-            width: 120px;
-            height: 180px;
-            margin: 150px auto 0;
-            position: relative;
-            /*transform 旋转元素*/
-            transform-style: preserve-3d;
-            transform: perspective(800px) rotateX(-10deg) rotateY(0deg);
-        }
-
-        body {
-            /*background-color: #66677c;*/
-            overflow: hidden;
-        }
-
-        .pic img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px #fff;
-            /*倒影的设置*/
-            -webkit-box-reflect: below 10px -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .5) 100%);
-        }
-
-        .pic p {
-            width: 1200px;
-            height: 1200px;
-            background: -webkit-radial-gradient(center center, 600px 600px, rgba(255, 255, 255, .5), rgba(0, 0, 0, 0));
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-top: -600px;
-            margin-left: -600px;
-            border-radius: 600px;
-            transform: rotateX(90deg);
-        }
-    </style>
-</head>
-
-<body>
+---
+layout: 404s
+---
 
 <div class="pic">
-    <img src="static/jpg/404.jpg"/>
-    <img src="static/jpg/404.jpg"/>
-    <img src="static/jpg/404.jpg"/>
-    <img src="static/jpg/404.jpg"/>
-    <img src="static/jpg/404.jpg"/>
-    <img src="static/jpg/404.jpg"/>
-    <img src="static/jpg/404.jpg"/>
-    <img src="static/jpg/404.jpg"/>
-    <img src="static/jpg/404.jpg"/>
-    <img src="static/jpg/404.jpg"/>
+
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
 </div>
 
 
@@ -152,6 +97,3 @@
     });
 </script>
 
-
-</body>
-</html>
