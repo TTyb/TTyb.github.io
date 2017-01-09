@@ -1,8 +1,17 @@
 ---
 layout: clouds
 ---
+<div class="top-banner clearfix">
+    <div class="fl">
+        <a href="/">&lt;&lt;返回首页</a>
+    </div>
+    <div class="fr">
+        <a href="/cloud">继续前进&gt;&gt;</a>
+    </div>
+</div>
+
 <script type="text/javascript" src="{{ "/static/js/three.min.js" | prepend: site.baseurl }}"></script>
-<script type="text/javascript" src="{{ "/static/js/Detector.js" | prepend: site.baseurl }}"></script>
+<script type="text/javascript" src = "{{ "/static /js/Detector.js" | prepend: site.baseurl }}" ></script>
 
 <script id="vs" type="x-shader/x-vertex">
 
@@ -14,6 +23,7 @@ layout: clouds
 				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 
 			}
+
 
 
 </script>
@@ -38,6 +48,7 @@ layout: clouds
 				gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
 
 			}
+
 
 
 </script>
