@@ -1,0 +1,144 @@
+---
+layout: post
+categories: [wechat]
+title: helloworld
+date: 2017-01-10
+author: TTyb
+desc: "微信小程序在2017-01-09正式上线，本着跟上时代潮流的精神，写一份教程来看看"
+---
+
+[微信小程序](https://mp.weixin.qq.com/) 在2017-01-09正式上线，本着跟上时代潮流的精神，写一份教程来看看
+
+微信IDE下载地址为：
+
+[微信IDE](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)
+
+在windows下直接 `双击` exe安装即可，安装完成后的界面如下：
+
+![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170110141456056-342202008.png)
+
+得到这个界面直接用微信扫二维码就可以登陆了，新建项目方法如下：
+
+### 添加项目
+
+直接点击下图的添加项目：
+
+![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170110141706697-1386531211.png)
+
+### 新建项目
+
+![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170110141826510-2011355918.png)
+
+**AppID** 是需要申请才能有的，而且一般是以公司级别的才能申请吧，看了官方文档是需要这些东西：
+
+![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170110142013666-1270134048.png)
+
+有能力的企业可以去这里按照官方文档申请：
+
+[AppID](https://mp.weixin.qq.com/debug/wxadoc/introduction/)
+
+类似我等 `闲杂的小程序员` 就选择 `无 AppID`
+
+**项目名称** 随意填写，你开心就好
+
+**项目目录** 是一个 `文件夹` ，文件夹包含的文件在下面讲解：
+
+![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170110142524978-1679836237.png)
+
+### 项目目录
+
+**项目目录** 必须包含结构如下：
+
+```
+-- pages
+  -- index
+    -- index.js
+    -- index.wxml
+    -- index.wxss
+-- app.js
+-- app.json
+```
+
+其中 `app.js` 里面的代码为：
+
+```
+App({
+  onLaunch: function () {
+    console.log('App Launch')
+  },
+  onShow: function () {
+    console.log('App Show')
+  },
+  onHide: function () {
+    console.log('App Hide')
+  }
+})
+```
+
+`app.json` 里面的代码为：
+
+```
+{
+    "pages":[
+        "pages/index/index"
+    ],
+      "window":{
+        "navigationBarBackgroundColor": "#BBDEF8",
+        "navigationBarTitleText": "TTyb",
+        "navigationBarTextStyle":"white"
+        }
+}
+```
+
+`pages` 里面放的相当于一个显示网页，`wxml` 相当于前端的 `html` 文件，`wxss` 相当于前端的 `css` 文件，`js` 文件就是 `js` 文件，为了打印出 *hello world* ，示例如下：
+
+`index.js`:
+
+```
+var flag = true;
+Page({
+  data:{
+    // text:"这是一个页面"
+    color: "window"
+  },
+  onLoad:function(options){
+    // 页面初始化 options为页面跳转所带来的参数
+  },
+  onReady:function(){
+    // 页面渲染完成
+  },
+  onShow:function(){
+    // 页面显示
+  },
+  onHide:function(){
+    // 页面隐藏
+  },
+  onUnload:function(){
+    // 页面关闭
+  }
+})
+```
+
+`index.wxml`:
+
+```
+<view>
+    <text class="{{color}}">Hello World</text>
+</view>
+```
+
+`index.wxss`:
+
+```
+.window{
+    color: #E6CAFF;
+}
+```
+
+得到结果如下：
+
+![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170110143907572-474673645.png)
+
+源码在我的github里面：
+
+[TTyb](https://github.com/TTyb/wechat_helloworld)
