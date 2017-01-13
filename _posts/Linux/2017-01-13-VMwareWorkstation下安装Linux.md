@@ -1,21 +1,21 @@
 ---
 layout: post
 categories: [Linux]
-title: VMwareWorkstationÏÂ°²×°Linux
+title: VMwareWorkstationä¸‹å®‰è£…Linux
 date: 2017-01-13
 author: TTyb
-desc: "ĞéÄâ»úVMwareWorkstationÏÂ°²×°LinuxÏµÍ³centOS"
+desc: "è™šæ‹ŸæœºVMwareWorkstationä¸‹å®‰è£…Linuxç³»ç»ŸcentOS"
 ---
 
-### ÏÂÔØVMware Workstation
+### ä¸‹è½½VMware Workstation
 
 ```
 thunder://QUFodHRwczovL2Rvd25sb2FkMy52bXdhcmUuY29tL3NvZnR3YXJlL3drc3QvZmlsZS9WTXdhcmUtd29ya3N0YXRpb24tZnVsbC0xMi41LjEtNDU0MjA2NS5leGVaWg==
 ```
 
-### VMware WorkstationµÄ°²×°ÃÜ³×
+### VMware Workstationçš„å®‰è£…å¯†åŒ™
 
-°²×°Íê³Éºóµã»÷ `Ğí¿ÉÖ¤` :
+å®‰è£…å®Œæˆåç‚¹å‡» `è®¸å¯è¯` :
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115136431-33090420.png)
 
@@ -28,54 +28,54 @@ ZG1WH-ATY96-H80QP-X7PEX-Y30V4
 AA3E0-0VDE1-0893Z-KGZ59-QGAVF
 ```
 
-### centOS7.2ÏÂÔØ
+### centOS7.2ä¸‹è½½
 
-¾µÏñÏÂÔØµØÖ·Îª£º
+é•œåƒä¸‹è½½åœ°å€ä¸ºï¼š
 
 ```
 http://www.centoscn.com/CentosSoft/iso/
 ```
 
-### °²×°Linux
+### å®‰è£…Linux
 
-´´½¨ĞÂµÄĞéÄâ»ú£¬Ñ¡Ôñ `µäĞÍ` ¾ÍºÃ£º
+åˆ›å»ºæ–°çš„è™šæ‹Ÿæœºï¼Œé€‰æ‹© `å…¸å‹` å°±å¥½ï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115605166-787245971.png)
 
-´ò¿ª¾µÏñ£º
+æ‰“å¼€é•œåƒï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115736041-2100624258.png)
 
-Ä¬ÈÏ½¨Á¢Ò»¸ö×ÓÕË»§£¬ÇĞ¼Ç×ÓÕË»§µÄÃÜÂëºÍrootµÄÃÜÂëÊÇÒ»ÑùµÄ£º
+é»˜è®¤å»ºç«‹ä¸€ä¸ªå­è´¦æˆ·ï¼Œåˆ‡è®°å­è´¦æˆ·çš„å¯†ç å’Œrootçš„å¯†ç æ˜¯ä¸€æ ·çš„ï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115832791-511901560.png)
 
-°²×°Î»ÖÃ£º
+å®‰è£…ä½ç½®ï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115908119-682208506.png)
 
-°²×°´óĞ¡Ä¬ÈÏ¾ÍĞĞ£º
+å®‰è£…å¤§å°é»˜è®¤å°±è¡Œï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113120012603-467813798.png)
 
-Åä¼şÄ¬ÈÏ£º
+é…ä»¶é»˜è®¤ï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113120034697-1201498792.png)
 
-µã»÷¿ªÆôĞéÄâ»ú£º
+ç‚¹å‡»å¼€å¯è™šæ‹Ÿæœºï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113120145369-1358725234.png)
 
-µÈ´ı°²×°Íê³É£º
+ç­‰å¾…å®‰è£…å®Œæˆï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113120220119-1367107254.png)
 
-°²×°Íê³Éºó½øÈë¸ü¸ÄÏµÍ³ÓïÑÔ£º
+å®‰è£…å®Œæˆåè¿›å…¥æ›´æ”¹ç³»ç»Ÿè¯­è¨€ï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113134152994-395627175.png)
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113134413088-1321814237.png)
 
-ÖØÆôºó¾Í¿ÉÒÔÁË£º
+é‡å¯åå°±å¯ä»¥äº†ï¼š
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113134439306-2069274517.png)
