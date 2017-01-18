@@ -2949,8 +2949,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
     position: absolute;
     top: -7px;
     left: 9px;
-	overflow-y: auto;
-	max-height: 300px;
 }
 
 .dropdown-menu:after {
@@ -2962,8 +2960,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
     position: absolute;
     top: -6px;
     left: 10px;
-	overflow-y: auto;
-	max-height: 300px;
 }
 
 .dropdown-menu {
@@ -2985,8 +2981,6 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     background-clip: padding-box;
-	max-height: 300px;
-	overflow-y: auto;
 }
 
 .dropdown-menu.pull-right {
