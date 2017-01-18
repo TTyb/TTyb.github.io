@@ -72,4 +72,6 @@ pip3的执行文件：/usr/local/bin/pip3.4
 source /etc/profile
 ```
 
+结果：
+
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170118150603750-802075189.png)
