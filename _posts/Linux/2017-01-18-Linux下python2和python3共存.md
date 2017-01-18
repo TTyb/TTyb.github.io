@@ -7,11 +7,10 @@ author: TTyb
 desc: "在Linux下安装python3且不影响系统的python2"
 ---
 
-# python下载地址：
+python下载地址：
 
-```
-https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tar.xz
-```
+`https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tar.xz`
+
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170118111842734-1275144249.png)
 
@@ -37,15 +36,15 @@ cd Python-3.4.4
 
 ```
 ./configure --prefix=/usr/local
+
 make
+
 make altinstall
 ```
 
 如果出现pip3未安装的情况：
 
-```
-Ignoring ensurepip failure: pip 7.1.2 requires SSL/TLS
-```
+`Ignoring ensurepip failure: pip 7.1.2 requires SSL/TLS`
 
 记得写入以下命令：
 
@@ -53,8 +52,13 @@ Ignoring ensurepip failure: pip 7.1.2 requires SSL/TLS
 yum install openssl-devel
 ```
 
-python应用程序目录：/usr/local/bin/python3.4
-pip3的执行文件：/usr/local/bin/pip3.4 
+python应用程序目录：
+
+`/usr/local/bin/python3.4`
+
+pip3的执行文件：
+
+`/usr/local/bin/pip3.4 `
 
 ![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170118145915796-428983248.png)
 
