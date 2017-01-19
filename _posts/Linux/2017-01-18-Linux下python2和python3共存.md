@@ -42,6 +42,18 @@ make
 make altinstall
 ```
 
+如果出错：
+
+```
+checking for --enable-universalsdk... no
+```
+
+需要安装下面命令：
+
+```
+yum install gcc
+```
+
 如果出现pip3未安装的情况：
 
 `Ignoring ensurepip failure: pip 7.1.2 requires SSL/TLS`
@@ -50,6 +62,12 @@ make altinstall
 
 ```
 yum install openssl-devel
+```
+
+然后再：
+
+```
+make altinstall
 ```
 
 python应用程序目录：
