@@ -67,7 +67,7 @@
 				contentHolderUnit.className = "contentHolderUnit";
 				contentHolderUnit.setAttribute("ref", i);
 				contentHolderUnit.setAttribute("id", 'contentHolderUnit' + (i));
-				var unitItem = '<a href="'+this.data[item].url+'" target="_blank" class="elementLink">';
+				var unitItem = '<a href="'+this.data[item].url+'" class="elementLink">';
 				unitItem += '</a>';
 				unitItem += '<img src="'+this.data[item].img+'" alt="'+this.data[item].title+'"/>';
 				unitItem += '<span class="elementOverlay"></span>';
