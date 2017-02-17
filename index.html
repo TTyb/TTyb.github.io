@@ -1,20 +1,35 @@
 ---
 layout: default
 ---
-<!--<head>-->
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
 <link rel="stylesheet" href="static/css/main.css"/>
-<!--</head>-->
 
-<!-- Header -->
-<header id="header" class="alt">
-    <div class="inner">
-        <h1>TTyb</h1>
-        <p>A data mining engineer who can repair computers</p>
-    </div>
-</header>
-
-<!-- Wrapper -->
+<body>
+	<br /><br />
+	<div class="htmleaf-container">
+		<div class="htmleaf-content">
+			<div id="posterTvGrid" style="margin:40px auto 0 auto;"></div>
+		</div>
+	</div>
+	
+	<script>window.jQuery || document.write('<script src="static/js/jquery.min.js"><\/script>')</script>
+	<script type="text/javascript" src="static/js/posterTvGrid.js"></script>
+	<script type="text/javascript">
+	var posterTvGrid = new posterTvGrid('posterTvGrid',{className: "posterTvGrid"},[
+			{"img":"static\/jpg\/1.jpg","title":"Lorem ipsum dolor sit amet","url":"http:\/\/www.htmleaf.com\/"},
+			{"img":"static\/jpg\/2.jpg","title":"Lorem ipsum dolor sit amet","url":"http:\/\/www.htmleaf.com\/"},
+			{"img":"static\/jpg\/3.jpg","title":"Lorem ipsum dolor sit amet","url":"http:\/\/www.htmleaf.com\/"},
+			{"img":"static\/jpg\/4.jpg","title":"Lorem ipsum dolor sit amet","url":"http:\/\/www.htmleaf.com\/"},
+			{"img":"static\/jpg\/5.jpg","title":"Lorem ipsum dolor sit amet","url":"http:\/\/www.htmleaf.com\/"},
+			{"img":"static\/jpg\/6.jpg","title":"Lorem ipsum dolor sit amet","url":"http:\/\/www.htmleaf.com\/"},
+			{"img":"static\/jpg\/7.jpg","title":"Lorem ipsum dolor sit amet","url":"http:\/\/www.htmleaf.com\/"},
+			{"img":"static\/jpg\/8.jpg","title":"Lorem ipsum dolor sit amet","url":"http:\/\/www.htmleaf.com\/"},
+			{"img":"static\/jpg\/9.jpg","title":"Lorem ipsum dolor sit amet","url":"http:\/\/www.htmleaf.com\/"}
+		]
+	);
+	</script>
+	
+	<!-- Wrapper -->
 <div id="wrapper">
 
     <!-- Banner -->
@@ -99,3 +114,5 @@ layout: default
 <script src="static/js/skel.min.js"></script>
 <script src="static/js/util.js"></script>
 <script src="static/js/main.js"></script>
+
+</body>
