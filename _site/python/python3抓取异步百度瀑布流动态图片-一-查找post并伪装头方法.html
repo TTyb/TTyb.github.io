@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>python3抓取异步百度瀑布流动态图片（一）查找post并伪装头方法</a></h3>
+        <small>
+            分类：python
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2016-08-28</h6>
+        <br/>
+        <p class="content text-overflow">
+            <h3 id="打开流程">打开流程：</h3>
+
+<blockquote>
+  <p>用火狐打开百度图片–&gt;打开firebug–&gt;输入GIF图–&gt;搜索–&gt;点击网络–&gt;全部</p>
+</blockquote>
+
+<h3 id="观察页面">观察页面：</h3>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828133137348-1063839688.png" alt="" /></p>
+
+<p>首先要观察的对象是“域”，图片的json一般是放在主要的“域”里面的，任何网站的主要的“域”就是自身，即百度图片的网址image.baidu.com，根据这个“域”我们再去查找URL。</p>
+
+<h3 id="查找方式">查找方式：</h3>
+
+<p>点开“+”号，开打json，观察里面的json的图片网址：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828133629103-1773609002.png" alt="" /></p>
+
+<p>随便点开一个“data”得到一个图片网址：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828133723716-243836684.png" alt="" /></p>
+
+<p>在浏览器新的窗口里面打开这张图片看看是不是出现在百度图片里面的图片，图片打开时这个样子：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828133837503-1507196412.png" alt="" /></p>
+
+<p>返回百度图片里面去查找：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828133937913-1877616097.png" alt="" /></p>
+
+<p>发现也在百度图片里面，那么这个url就是我们要找到的json了，返回去点击复制网址和参数下面的东西出来：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828134416370-945334025.png" alt="" /></p>
+
+<p>在txt里面观察：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828134639865-1832769055.png" alt="" /></p>
+
+<p>继续观察url，url包含了一大堆的参数，每一个&amp;都固定了一个参数：</p>
+
+<p><code class="highlighter-rouge">http://image.baidu.com/search/index?tn=baiduimage&amp;ipn=r&amp;ct=201326592&amp;cl=2&amp;lm=-1&amp;st=-1&amp;fm=index&amp;fr=&amp;sf=1&amp;fmq=&amp;pv=&amp;ic=0&amp;nc=1&amp;z=&amp;se=1&amp;showtab=0&amp;fb=0&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;ie=utf-8&amp;word=gif&amp;oq=gif&amp;rsp=-1</code></p>
+
+<p>从头到尾看，tn、ipn、ct…</p>
+
+<p>这些在参数里面都有显示，那么我们构造的网址就是：</p>
+
+<p><code class="highlighter-rouge">http://image.baidu.com/search/index?tn...&amp;ipn...&amp;ct...&amp;.....&amp;.....</code></p>
+
+<p>再去观察百度哪里是用get方式的，所以我们的python也应该用get方式：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828135040194-1334134279.png" alt="" /></p>
+
+<p>有些网址使用post的，那种方式在以后再去说</p>
+
+<p>—————————————我是快乐的分割线—————————————–</p>
+
+<p>url搞定，那么需要破解它的瀑布流。</p>
+
+<p>浏览器往下拉，给百度图片加载下一个部分的url出来，下面这个是第二部分的url：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828135246250-2021878949.png" alt="" /></p>
+
+<p>按照上面的方法观察json里面的data，得到的图片：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828135414506-1552402189.png" alt="" /></p>
+
+<p>百度图片原文里面观察：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828135515526-2041240265.png" alt="" /></p>
+
+<p>也是找到了这张图片，那么老规矩复制url和参数出来观察：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://image.baidu.com/search/index?tn=baiduimage&amp;ipn=r&amp;ct=201326592&amp;cl=2&amp;lm=-1&amp;st=-1&amp;fm=index&amp;fr=&amp;sf=1&amp;fmq=&amp;pv=&amp;ic=0&amp;nc=1&amp;z=&amp;se=1&amp;showtab=0&amp;fb=0&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;ie=utf-8&amp;word=gif&amp;oq=gif&amp;rsp=-1
+http://image.baidu.com/search/acjson?tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;queryWord=gif&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=0&amp;word=gif&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;pn=90&amp;rn=30&amp;gsm=5a&amp;1472362006630=1472361986418
+</code></pre>
+</div>
+
+<p>URL不相同？？？</p>
+
+<p>继续往下翻！！！</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://image.baidu.com/search/index?tn=baiduimage&amp;ipn=r&amp;ct=201326592&amp;cl=2&amp;lm=-1&amp;st=-1&amp;fm=index&amp;fr=&amp;sf=1&amp;fmq=&amp;pv=&amp;ic=0&amp;nc=1&amp;z=&amp;se=1&amp;showtab=0&amp;fb=0&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;ie=utf-8&amp;word=gif&amp;oq=gif&amp;rsp=-1
+http://image.baidu.com/search/acjson?tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;queryWord=gif&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=0&amp;word=gif&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;pn=90&amp;rn=30&amp;gsm=5a&amp;1472362006630=1472361986418
+http://image.baidu.com/search/acjson?tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;queryWord=gif&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=0&amp;word=gif&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;pn=150&amp;rn=30&amp;gsm=96&amp;1472363883056=
+</code></pre>
+</div>
+
+<p>后面两个网址有规律了，观察之…</p>
+
+<p>看到没，pn！！！！！</p>
+
+<p>一个pn是90一个是150，呵呵哒终于找到了，那么就要找到这个页数的规律。</p>
+
+<p>刷新浏览器，直接翻到第11页：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828140232588-1882515943.png" alt="" /></p>
+
+<p>然后把加载出来的那个特定的url全部复制到txt里面观察，下面我放了部分出来：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://image.baidu.com/search/acjson?tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;queryWord=gif&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=0&amp;word=gif&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;pn=30&amp;rn=30&amp;gsm=1e&amp;1472364207674=
+http://image.baidu.com/search/acjson?tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;queryWord=gif&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=0&amp;word=gif&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;pn=90&amp;rn=30&amp;gsm=5a&amp;1472364212829=
+http://image.baidu.com/search/acjson?tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;queryWord=gif&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=0&amp;word=gif&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;pn=150&amp;rn=30&amp;gsm=96&amp;1472364217002=
+http://image.baidu.com/search/acjson?tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;queryWord=gif&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=0&amp;word=gif&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;pn=210&amp;rn=30&amp;gsm=d2&amp;1472364220585=
+http://image.baidu.com/search/acjson?tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;queryWord=gif&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=0&amp;word=gif&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;pn=270&amp;rn=30&amp;gsm=10e&amp;1472364223842=
+</code></pre>
+</div>
+
+<p>看到这里还要我多说明么:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>pn=30
+pn=90
+pn=150
+pn=210
+pn=270
+</code></pre>
+</div>
+
+<p>搞定了url，到时候写个for i in range(…)，太强大，到这里构造的post就完成了</p>
+
+<p>———————————————-我是快乐的分割线————————————————–</p>
+
+<p>伪装头部是很重要的，要防止被反爬虫、反反盗链等等，那么头部就是：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828141224161-1346248421.png" alt="" /></p>
+
+<p>referer是反反盗链，ua是反爬虫，host是主链，这三个最重要，笔者曾经偷懒只写了ua，被反反盗链害死，得到的图片为：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160828141619303-1293285666.png" alt="" /></p>
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/python/python3%E6%8A%93%E5%8F%96%E5%BC%82%E6%AD%A5%E7%99%BE%E5%BA%A6%E7%80%91%E5%B8%83%E6%B5%81%E5%8A%A8%E6%80%81%E5%9B%BE%E7%89%87-%E4%B8%80-%E6%9F%A5%E6%89%BEpost%E5%B9%B6%E4%BC%AA%E8%A3%85%E5%A4%B4%E6%96%B9%E6%B3%95.html"
+     data-title="python3抓取异步百度瀑布流动态图片（一）查找post并伪装头方法" data-url="http://localhost:4000/python/python3%E6%8A%93%E5%8F%96%E5%BC%82%E6%AD%A5%E7%99%BE%E5%BA%A6%E7%80%91%E5%B8%83%E6%B5%81%E5%8A%A8%E6%80%81%E5%9B%BE%E7%89%87-%E4%B8%80-%E6%9F%A5%E6%89%BEpost%E5%B9%B6%E4%BC%AA%E8%A3%85%E5%A4%B4%E6%96%B9%E6%B3%95.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop" title="返回顶部" target="_self" href="#"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/cloud" class="icon fa-cloud"><span class="label">云世界</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>

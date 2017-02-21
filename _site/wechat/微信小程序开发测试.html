@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>微信小程序开发测试</a></h3>
+        <small>
+            分类：wechat
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2017-01-10</h6>
+        <br/>
+        <p class="content text-overflow">
+            <p><a href="https://mp.weixin.qq.com/">微信小程序</a> 在2017-01-09正式上线，本着跟上时代潮流的精神，写一份教程来看看</p>
+
+<p>微信IDE下载地址为：</p>
+
+<p><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html">微信IDE</a></p>
+
+<p>在windows下直接 <code class="highlighter-rouge">双击</code> exe安装即可，安装完成后的界面如下：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170110141456056-342202008.png" alt="" /></p>
+
+<p>得到这个界面直接用微信扫二维码就可以登陆了，新建项目方法如下：</p>
+
+<h3 id="添加项目">添加项目</h3>
+
+<p>直接点击下图的添加项目：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170110141706697-1386531211.png" alt="" /></p>
+
+<h3 id="新建项目">新建项目</h3>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170110141826510-2011355918.png" alt="" /></p>
+
+<p><strong>AppID</strong> 是需要申请才能有的，而且一般是以公司级别的才能申请吧，看了官方文档是需要这些东西：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170110142013666-1270134048.png" alt="" /></p>
+
+<p>有能力的企业可以去这里按照官方文档申请：</p>
+
+<p><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/">AppID</a></p>
+
+<p>类似我等 <code class="highlighter-rouge">闲杂的小程序员</code> 就选择 <code class="highlighter-rouge">无 AppID</code></p>
+
+<p><strong>项目名称</strong> 随意填写，你开心就好</p>
+
+<p><strong>项目目录</strong> 是一个 <code class="highlighter-rouge">文件夹</code> ，文件夹包含的文件在下面讲解：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170110142524978-1679836237.png" alt="" /></p>
+
+<h3 id="项目目录">项目目录</h3>
+
+<p><strong>项目目录</strong> 必须包含结构如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>-- pages
+  -- index
+    -- index.js
+    -- index.wxml
+    -- index.wxss
+-- app.js
+-- app.json
+</code></pre>
+</div>
+
+<p>其中 <code class="highlighter-rouge">app.js</code> 里面的代码为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>App({
+  onLaunch: function () {
+    console.log('App Launch')
+  },
+  onShow: function () {
+    console.log('App Show')
+  },
+  onHide: function () {
+    console.log('App Hide')
+  }
+})
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">app.json</code> 里面的代码为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"pages"</span><span class="p">:[</span><span class="w">
+        </span><span class="s2">"pages/index/index"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"window"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"navigationBarBackgroundColor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#BBDEF8"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"navigationBarTitleText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TTyb"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"navigationBarTextStyle"</span><span class="p">:</span><span class="s2">"white"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><code class="highlighter-rouge">pages</code> 里面放的相当于一个显示网页，<code class="highlighter-rouge">wxml</code> 相当于前端的 <code class="highlighter-rouge">html</code> 文件，<code class="highlighter-rouge">wxss</code> 相当于前端的 <code class="highlighter-rouge">css</code> 文件，<code class="highlighter-rouge">js</code> 文件就是 <code class="highlighter-rouge">js</code> 文件，为了打印出 <em>hello world</em> ，示例如下：</p>
+
+<p><code class="highlighter-rouge">index.js</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>var flag = true;
+Page({
+  data:{
+    // text:"这是一个页面"
+    color: "window"
+  },
+  onLoad:function(options){
+    // 页面初始化 options为页面跳转所带来的参数
+  },
+  onReady:function(){
+    // 页面渲染完成
+  },
+  onShow:function(){
+    // 页面显示
+  },
+  onHide:function(){
+    // 页面隐藏
+  },
+  onUnload:function(){
+    // 页面关闭
+  }
+})
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">index.wxml</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;view&gt;
+    &lt;text class=""&gt;Hello World&lt;/text&gt;
+&lt;/view&gt;
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">index.wxss</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.window{
+    color: #E6CAFF;
+}
+</code></pre>
+</div>
+
+<p>得到结果如下：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170110143907572-474673645.png" alt="" /></p>
+
+<p>源码在我的github里面：</p>
+
+<p><a href="https://github.com/TTyb/wechat_helloworld">TTyb</a></p>
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/wechat/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%B5%8B%E8%AF%95.html"
+     data-title="微信小程序开发测试" data-url="http://localhost:4000/wechat/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%B5%8B%E8%AF%95.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop" title="返回顶部" target="_self" href="#"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/cloud" class="icon fa-cloud"><span class="label">云世界</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>

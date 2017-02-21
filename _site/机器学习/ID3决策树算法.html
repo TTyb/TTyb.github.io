@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>ID3决策树算法</a></h3>
+        <small>
+            分类：机器学习
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2017-01-13</h6>
+        <br/>
+        <p class="content text-overflow">
+            <h3 id="id3决策树算法思想">ID3决策树算法思想</h3>
+
+<p><code class="highlighter-rouge">决策树</code> (Decision Tree）是在已知各种情况发生概率的基础上，通过构成 <code class="highlighter-rouge">决策树</code> 来求取净现值的期望值大于等于零的概率，评价项目风险，判断其可行性的决策分析方法，是直观运用概率分析的一种图解法。由于这种决策分支画成图形很像一棵树的枝干，故称 <code class="highlighter-rouge">决策树</code> 。在机器学习中，<code class="highlighter-rouge">决策树</code> 是一个预测模型，他代表的是对象属性与对象值之间的一种映射关系。Entropy = 系统的凌乱程度，使用算法ID3, C4.5和C5.0生成树算法使用熵。这一度量是基于信息学理论中熵的概念，本文着重讲ID3算法。</p>
+
+<p>假设存在如下一组信息：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">天气</th>
+      <th style="text-align: center">气温</th>
+      <th style="text-align: center">湿度</th>
+      <th style="text-align: center">风</th>
+      <th style="text-align: center">外出</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">晴朗</td>
+      <td style="text-align: center">高温</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">晴朗</td>
+      <td style="text-align: center">高温</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">有风</td>
+      <td style="text-align: center">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">多云</td>
+      <td style="text-align: center">高温</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">下雨</td>
+      <td style="text-align: center">温暖</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">下雨</td>
+      <td style="text-align: center">寒冷</td>
+      <td style="text-align: center">正常</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">下雨</td>
+      <td style="text-align: center">寒冷</td>
+      <td style="text-align: center">正常</td>
+      <td style="text-align: center">有风</td>
+      <td style="text-align: center">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">多云</td>
+      <td style="text-align: center">寒冷</td>
+      <td style="text-align: center">正常</td>
+      <td style="text-align: center">有风</td>
+      <td style="text-align: center">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">晴朗</td>
+      <td style="text-align: center">温暖</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">no</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">晴朗</td>
+      <td style="text-align: center">寒冷</td>
+      <td style="text-align: center">正常</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">下雨</td>
+      <td style="text-align: center">温暖</td>
+      <td style="text-align: center">正常</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">晴朗</td>
+      <td style="text-align: center">温暖</td>
+      <td style="text-align: center">正常</td>
+      <td style="text-align: center">有风</td>
+      <td style="text-align: center">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">多云</td>
+      <td style="text-align: center">温暖</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">有风</td>
+      <td style="text-align: center">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">多云</td>
+      <td style="text-align: center">高温</td>
+      <td style="text-align: center">正常</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">yes</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">下雨</td>
+      <td style="text-align: center">温暖</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">有风</td>
+      <td style="text-align: center">no</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="假如时间发生发概率为p1p2pn那么可以定义信息熵为">假如时间发生发概率为(p1,p2,…,pn)，那么可以定义信息熵为：</h5>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170112171023869-1166619120.png" alt="" /></p>
+
+<h5 id="例如外出的概率是914不外出的概率是514那么-外出的信息熵entropy-为">例如外出的概率是9/14，不外出的概率是5/14，那么 <strong>外出的信息熵entropy</strong> 为：</h5>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170112171234010-1036277616.png" alt="" /></p>
+
+<h5 id="将上面的表格整理一下如下">将上面的表格整理一下如下：</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">天气</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+      <th style="text-align: center">气温</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+      <th style="text-align: center">湿度</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+      <th style="text-align: center">风</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+      <th style="text-align: center">外出</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">晴朗</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">高温</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">外出</td>
+      <td style="text-align: center">9</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">多云</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">温暖</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">正常</td>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">有风</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">下雨</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">寒冷</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="highlighter-rouge">各个天气情况</code> 的信息熵计算为：</p>
+
+<ul>
+  <li>
+    <p>天气为晴朗时，2/5的概率外出，3/5的概率不外出，信息熵为0.971</p>
+  </li>
+  <li>
+    <p>天气为多云时，信息熵为0</p>
+  </li>
+  <li>
+    <p>天气为下雨时，3/5的概率外出，2/5的概率不外出，信息熵为0.971</p>
+  </li>
+</ul>
+
+<p>而天气是 <code class="highlighter-rouge">晴朗</code> 的概率为5/14，天气是 <code class="highlighter-rouge">多云</code> 的概率为4/14，天气是 <code class="highlighter-rouge">下雨</code> 的概率为5/14，所以 <code class="highlighter-rouge">天气</code> 的信息熵为：</p>
+
+<p><code class="highlighter-rouge">5/14 × 0.971 + 4/14 × 0 + 5/14 × 0.971 = 0.693</code></p>
+
+<p>天气的 <strong>信息增益gain</strong> 为：</p>
+
+<p><code class="highlighter-rouge">0.940-0.693=0.247</code></p>
+
+<p>同理 <code class="highlighter-rouge">温度gain</code> 为0.029， <code class="highlighter-rouge">湿度gain</code> 为0.152，<code class="highlighter-rouge">风gain</code> 为0.048</p>
+
+<h5 id="天气的信息熵下降得最快所以决策树的根节点为-天气-子节点为-晴朗-多云-下雨-">天气的信息熵下降得最快，所以决策树的根节点为 <em>天气</em> ，子节点为 <em>晴朗</em> 、<em>多云</em> 、<em>下雨</em> ：</h5>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170113090933650-542716300.png" alt="" /></p>
+
+<p>根据第一个表格得知，天气 <strong>晴朗</strong> 的日子有5天，这5天对应各种不一样的 <strong>气温</strong> 、 <strong>湿度</strong> 、 <strong>风</strong> 、 <strong>外出</strong> ，如下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>晴朗 {'湿度': ['高', '高', '高', '正常', '正常'], '风': ['无风', '有风', '无风', '无风', '有风'], '气温': ['高温', '高温', '温暖', '寒冷', '温暖']}
+下雨 {'湿度': ['高', '正常', '正常', '正常', '高'], '风': ['无风', '无风', '有风', '无风', '有风'], '气温': ['温暖', '寒冷', '寒冷', '温暖', '温暖']}
+多云 {'湿度': ['高', '正常', '高', '正常'], '风': ['无风', '有风', '有风', '无风'], '气温': ['高温', '寒冷', '温暖', '高温']}
+
+多云 ['yes', 'yes', 'yes', 'yes']
+晴朗 ['no', 'no', 'no', 'yes', 'yes']
+下雨 ['yes', 'yes', 'no', 'yes', 'no']
+</code></pre>
+</div>
+
+<p>在前面计算，由于 <code class="highlighter-rouge">多云</code> 的信息熵为0，所以多云的时候是一定会外出的，即 <code class="highlighter-rouge">多云=yes</code> ：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>晴朗 {'湿度': ['高', '高', '高', '正常', '正常'], '风': ['无风', '有风', '无风', '无风', '有风'], '气温': ['高温', '高温', '温暖', '寒冷', '温暖']}
+下雨 {'湿度': ['高', '正常', '正常', '正常', '高'], '风': ['无风', '无风', '有风', '无风', '有风'], '气温': ['温暖', '寒冷', '寒冷', '温暖', '温暖']}
+多云 'yes'
+
+多云 'yes'
+晴朗 ['no', 'no', 'no', 'yes', 'yes']
+下雨 ['yes', 'yes', 'no', 'yes', 'no']
+</code></pre>
+</div>
+
+<p>此时需要再次计算：</p>
+
+<blockquote>
+  <ol>
+    <li>晴朗条件下，湿度、风、气温那个的信息增益下降最快，选取下降最快的为晴朗的下一个节点</li>
+    <li>下雨条件下，湿度、风、气温那个的信息增益下降最快，选取下降最快的为下雨的下一个节点</li>
+    <li>再次判断哪一个信息熵变成了0，变成了0则可以终止这一条树</li>
+  </ol>
+</blockquote>
+
+<p>经过代码计算， <code class="highlighter-rouge">晴朗</code> 的下一个节点为 <code class="highlighter-rouge">湿度</code> ， <code class="highlighter-rouge">下雨</code> 的下一个节点为 <code class="highlighter-rouge">风</code> ，以此继续递归下去.</p>
+
+<hr />
+
+<h3 id="python代码为">python代码为</h3>
+
+<p>整理的原始数据为：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>condition = {'风': ['无风', '有风', '无风', '无风', '无风', '有风', '有风', '无风', '无风', '无风', '有风', '有风', '无风', '有风'],
+                 '湿度': ['高', '高', '高', '高', '正常', '正常', '正常', '高', '正常', '正常', '正常', '高', '正常', '高'],
+                 '天气': ['晴朗', '晴朗', '多云', '下雨', '下雨', '下雨', '多云', '晴朗', '晴朗', '下雨', '晴朗', '多云', '多云', '下雨'],
+                 '气温': ['高温', '高温', '高温', '温暖', '寒冷', '寒冷', '寒冷', '温暖', '寒冷', '温暖', '温暖', '温暖', '高温', '温暖']}
+result = {'外出': ['no', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no']}
+</code></pre>
+</div>
+
+<p>计算各种情况出现的概率：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 计算出现的概率
+def CalcProbability(array):
+    dict = {}
+    count = Counter(array)
+    for item in count:
+        dict[item] = count[item] / len(array)
+    return dict
+</code></pre>
+</div>
+
+<p>计算信息熵：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 计算信息熵
+def CalcEntropy(array):
+    entropy = 0
+    for i in range(0, len(array)):
+        entropy = entropy + (-array[i] * math.log2(array[i]))
+    return entropy
+</code></pre>
+</div>
+
+<p>将原数据变为这样的样式：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">天气</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+      <th style="text-align: center">气温</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+      <th style="text-align: center">湿度</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+      <th style="text-align: center">风</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+      <th style="text-align: center">外出</th>
+      <th style="text-align: center">yes</th>
+      <th style="text-align: center">no</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">晴朗</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">高温</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">高</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">无风</td>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">外出</td>
+      <td style="text-align: center">9</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">多云</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">温暖</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">正常</td>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">有风</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">下雨</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">寒冷</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 重新整理数据
+def Statistics(condition, result):
+    # 获得各种结果出现的概率
+    for k in result:
+        resultProbability = CalcProbability(result[k])
+    # {'no': 0.35714285714285715, 'yes': 0.6428571428571429}
+    # 获得结果的信息熵
+    resultarr = []
+    for key in resultProbability:
+        resultarr.append(resultProbability[key])
+    resultEntropy = CalcEntropy(resultarr)
+    # print(resultEntropy)
+    # 0.9402859586706311
+
+
+    # 统计各个条件下的外出结果
+    dict = {}
+    for key in condition.keys():
+        tempdict = {}
+        for i in range(0, len(condition[key])):
+            if condition[key][i] in tempdict:
+                for k in result:
+                    tempdict[condition[key][i]].append(result[k][i])
+            else:
+                arr = []
+                for k in result:
+                    arr.append(result[k][i])
+                tempdict[condition[key][i]] = arr
+        dict[key] = tempdict
+        # print(dict)
+        # {'风': {'有风': ['no', 'no', 'yes', 'yes', 'yes', 'no'], '无风': ['no', 'yes', 'yes', 'yes', 'no', 'yes', 'yes', 'yes']}, '湿度': {'正常': ['yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes'], '高': ['no', 'no', 'yes', 'yes', 'no', 'yes', 'no']}, '天气': {'晴朗': ['no', 'no', 'no', 'yes', 'yes'], '下雨': ['yes', 'yes', 'no', 'yes', 'no'], '多云': ['yes', 'yes', 'yes', 'yes']}, '气温': {'温暖': ['yes', 'no', 'yes', 'yes', 'yes', 'no'], '寒冷': ['yes', 'no', 'yes', 'yes'], '高温': ['no', 'no', 'yes', 'yes']}}
+    # 计算不同外出情况下的信息熵
+    newdict = {}
+    for keys in dict:
+        tempdict = {}
+        for key in dict[keys]:
+            temp = CalcProbability(dict[keys][key])
+            temparr = []
+            for value in temp:
+                temparr.append(temp[value])
+                tempdict[key] = CalcEntropy(temparr)
+            newdict[keys] = tempdict
+    # print(newdict)
+    # {'风': {'无风': 0.8112781244591328, '有风': 1.0}, '天气': {'多云': 0.0, '晴朗': 0.9709505944546686, '下雨': 0.9709505944546686}, '湿度': {'高': 0.9852281360342516, '正常': 0.5916727785823275}, '气温': {'温暖': 0.9182958340544896, '寒冷': 0.8112781244591328, '高温': 1.0}}
+
+
+    # 不同条件出现的概率
+    conditiondict = {}
+    for item in condition:
+        conditiondict[item] = CalcProbability(condition[item])
+    # print(conditiondict)
+    # {'气温': {'高温': 0.2857142857142857, '温暖': 0.42857142857142855, '寒冷': 0.2857142857142857}, '风': {'有风': 0.42857142857142855, '无风': 0.5714285714285714}, '湿度': {'高': 0.5, '正常': 0.5}, '天气': {'晴朗': 0.35714285714285715, '下雨': 0.35714285714285715, '多云': 0.2857142857142857}}
+
+    return resultEntropy, newdict, conditiondict
+</code></pre>
+</div>
+
+<p>计算信息增益：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 计算信息增益
+def CalcGain(resultEntropy, conditionEntropy, conditionProbability):
+    conditionGain = {}
+    for keys in conditionEntropy:
+        number = 0
+        for key in conditionEntropy[keys]:
+            number = number + conditionEntropy[keys][key] * conditionProbability[keys][key]
+        conditionGain[keys] = resultEntropy - number
+    # reverse=True值按照从大到小排序
+    conditionGain = sorted(conditionGain.items(), key=lambda d: d[1], reverse=True)
+
+    return conditionGain
+</code></pre>
+</div>
+
+<p>最终递归：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 递归计算咯
+def recursion(condition, result):
+    resultEntropy, conditionEntropy, conditionProbability = Statistics(condition, result)
+    # print(resultEntropy)
+    # print(conditionEntropy)
+    # print(conditionProbability)
+    conditionGain = CalcGain(resultEntropy, conditionEntropy, conditionProbability)
+    # print(conditionGain)
+
+    # 哦按段是否为零
+    key = conditionGain[0][0]
+    value = ""
+    for values in conditionEntropy[key]:
+        if conditionEntropy[key][values] == 0:
+            value = values
+
+    kinds = []
+    for item in condition[key]:
+        if item in kinds:
+            pass
+        else:
+            kinds.append(item)
+    # ['晴朗', '多云', '下雨']
+
+    # 删除天气这个key
+    arrcondition = condition[key]
+    condition.pop(key)
+    # print("sssssssss",key)
+    newcondition = {}
+    newresult = {}
+    for item in kinds:
+        dict = {}
+        resultarr = []
+        for i in range(0, len(arrcondition)):
+            if arrcondition[i] == item:
+                for keys in condition:
+                    if keys in dict:
+                        dict[keys].append(condition[keys][i])
+                    else:
+                        temparr = []
+                        temparr.append(condition[keys][i])
+                        dict[keys] = temparr
+                for key in result:
+                    resultarr.append(result[key][i])
+                    newresult[item] = resultarr
+            newcondition[item] = dict
+
+    # print(newcondition)
+    # {'多云': {'气温': ['高温', '寒冷', '温暖', '高温'], '风': ['无风', '有风', '有风', '无风'], '湿度': ['高', '正常', '高', '正常']}, '晴朗': {'气温': ['高温', '高温', '温暖', '寒冷', '温暖'], '风': ['无风', '有风', '无风', '无风', '有风'], '湿度': ['高', '高', '高', '正常', '正常']}, '下雨': {'气温': ['温暖', '寒冷', '寒冷', '温暖', '温暖'], '风': ['无风', '无风', '有风', '无风', '有风'], '湿度': ['高', '正常', '正常', '正常', '高']}}
+    # print(newresult)
+    # {'多云': ['yes', 'yes', 'yes', 'yes'], '晴朗': ['no', 'no', 'no', 'yes', 'yes'], '下雨': ['yes', 'yes', 'no', 'yes', 'no']}
+
+    if value in newcondition:
+        newcondition[value] = "yes"
+    # 得到的新condition为dict：
+    # '多云': 'yes'
+    # 下雨 {'风': ['无风', '无风', '有风', '无风', '有风'], '湿度': ['高', '正常', '正常', '正常', '高'], '气温': ['温暖', '寒冷', '寒冷', '温暖', '温暖']}
+    # 晴朗 {'风': ['无风', '有风', '无风', '无风', '有风'], '湿度': ['高', '高', '高', '正常', '正常'], '气温': ['高温', '高温', '温暖', '寒冷', '温暖']}
+
+    # 得到的新result为newresult：
+    # 多云 ['yes', 'yes', 'yes', 'yes']
+    # 晴朗 ['no', 'no', 'no', 'yes', 'yes']
+    # 下雨 ['yes', 'yes', 'no', 'yes', 'no']
+
+    print(newcondition)
+    tempresult = {}
+    for key in newcondition:
+        if key == value:
+            pass
+        else:
+            tempresult[key] = newresult[key]
+            recursion(newcondition[key], tempresult)
+</code></pre>
+</div>
+
+<p>源码在我的github上面：</p>
+
+<p><a href="https://github.com/TTyb/ID3">TTyb</a></p>
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ID3%E5%86%B3%E7%AD%96%E6%A0%91%E7%AE%97%E6%B3%95.html"
+     data-title="ID3决策树算法" data-url="http://localhost:4000/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/ID3%E5%86%B3%E7%AD%96%E6%A0%91%E7%AE%97%E6%B3%95.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop" title="返回顶部" target="_self" href="#"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/cloud" class="icon fa-cloud"><span class="label">云世界</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>

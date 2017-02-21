@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>python多线程趣味详解</a></h3>
+        <small>
+            分类：python
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2016-09-06</h6>
+        <br/>
+        <p class="content text-overflow">
+            <p>python3的多线程很多人无法理解是怎么运行的，因此本文从程序猿的日常生活出发，写了一个由浅入深的多线程教程，这样子大家就不会觉得陌生了，多线程真的很简单很简单！</p>
+
+<p>不要讲多线程局限于库或者框架，自己造轮子才是最大的快乐。</p>
+
+<p>—————————————–以下是正文——————————————–</p>
+
+<p>假设我是一个程序猿，我想听歌，但是我又要打码，所以有：</p>
+
+<p>我听完歌就去打码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#!/usr/bin/python3.4
+# -*- coding: utf-8 -*-
+
+import time
+
+def matter1(music):
+    print("我想听这些歌")
+
+    for i in range(0,len(music)):
+        print("第" + str(i + 1) + "首歌是：" + str(music[i]))
+        # 当前时间为
+        print(time.strftime('%Y%H%M%S', time.localtime()))
+        # 假设每一首歌曲的时间是2秒
+        time.sleep(2)
+        print("切换下一首歌...")
+
+def matter2(number):
+    print("我在打码")
+
+    j = 0
+    while j &lt;= number:
+        print("我准备写入第" + str(j + 1) +"行代码")
+        j = j + 1
+        # 当前时间为
+        print(time.strftime('%Y%H%M%S', time.localtime()))
+        # 假设每写一行代码的时间为1秒
+        time.sleep(1)
+        print("写下一行代码...")
+
+if __name__ == '__main__':
+
+    start = time.time()
+
+    # 设定我要听的歌为
+    music = ["music1","music2","music3"]
+    # 开始听歌
+    matter1(music)
+    # 设定我要打码的行数
+    number = 5
+    # 开始打码
+    matter2(number)
+
+    end = time.time()
+    print("完成的时间为：" + str(end - start))
+</code></pre>
+</div>
+
+<p>记录来的完成时间为：</p>
+
+<p><code class="highlighter-rouge">完成的时间为：12.007483959197998</code></p>
+
+<p>时间上完全符合，但是身为一个程序猿，可以一边打码一边听歌，那么设计一个多线程，让他们同时进行：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#!/usr/bin/python3.4
+# -*- coding: utf-8 -*-
+
+import time
+import threading
+
+def matter1(music):
+    print("我想听这些歌")
+
+    for i in range(0,len(music)):
+        print("第" + str(i + 1) + "首歌是：" + str(music[i]))
+        # 当前时间为
+        print(time.strftime('%Y%H%M%S', time.localtime()))
+        # 假设每一首歌曲的时间是2秒
+        time.sleep(2)
+        print("切换下一首歌...")
+
+def matter2(number):
+    print("我在打码")
+
+    j = 0
+    while j &lt;= number:
+        print("我准备写入第" + str(j + 1) +"行代码")
+        j = j + 1
+        # 当前时间为
+        print(time.strftime('%Y%H%M%S', time.localtime()))
+        # 假设每写一行代码的时间为1秒
+        time.sleep(1)
+        print("写下一行代码...")
+
+if __name__ == '__main__':
+    # 设定我要听的歌为
+    music = ["music1","music2","music3"]
+
+    # 设定我要打码的行数
+    number = 5
+    # 建立一个新数组
+    threads = []
+    # 将听歌放入数组里面
+    thing1 = threading.Thread(target=matter1, args=(music,))
+    threads.append(thing1)
+    # 将打码放入数组里面
+    thing2 = threading.Thread(target=matter2, args=(number,))
+    threads.append(thing2)
+
+    # 开始时间
+    start = time.time()
+    # 写个for让两件事情都进行
+    for thing in threads:
+        # setDaemon为主线程启动了线程matter1和matter2
+        # 启动也就是相当于执行了这个for循环
+        thing.setDaemon(True)
+        thing.start()
+
+    # 结束时间
+    end = time.time()
+    print("完成的时间为：" + str(end - start))
+</code></pre>
+</div>
+
+<p>但是直接就结束了？</p>
+
+<p><code class="highlighter-rouge">完成的时间为：0.0010008811950683594</code></p>
+
+<p>原来是setDaemon，主线程启动两个子线程后做事后，主线程就不管子线程是否运行完毕，直接往下运行，直接运行到
+<code class="highlighter-rouge">print("完成的时间为：" + str(end - start))</code></p>
+
+<p>然后程序就结束了，因此，为了防止子线程还没结束主线程就结束的意外情况，在程序里面加个join：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#!/usr/bin/python3.4
+# -*- coding: utf-8 -*-
+
+import time
+import threading
+
+def matter1(music):
+    print("我想听这些歌")
+
+    for i in range(0,len(music)):
+        print("第" + str(i + 1) + "首歌是：" + str(music[i]))
+        # 当前时间为
+        print(time.strftime('%Y%H%M%S', time.localtime()))
+        # 假设每一首歌曲的时间是2秒
+        time.sleep(2)
+        print("切换下一首歌...")
+
+def matter2(number):
+    print("我在打码")
+
+    j = 0
+    while j &lt;= number:
+        print("我准备写入第" + str(j + 1) +"行代码")
+        j = j + 1
+        # 当前时间为
+        print(time.strftime('%Y%H%M%S', time.localtime()))
+        # 假设每写一行代码的时间为1秒
+        time.sleep(1)
+        print("写下一行代码...")
+
+if __name__ == '__main__':
+    # 设定我要听的歌为
+    music = ["music1","music2","music3"]
+
+    # 设定我要打码的行数
+    number = 5
+    # 建立一个新数组
+    threads = []
+    # 将听歌放入数组里面
+    thing1 = threading.Thread(target=matter1, args=(music,))
+    threads.append(thing1)
+    # 将打码放入数组里面
+    thing2 = threading.Thread(target=matter2, args=(number,))
+    threads.append(thing2)
+
+    # 开始时间
+    start = time.time()
+    # 写个for让两件事情都进行
+    for thing in threads:
+        # setDaemon为主线程启动了线程matter1和matter2
+        # 启动也就是相当于执行了这个for循环
+        thing.setDaemon(True)
+        thing.start()
+
+    # 子线程没结束前主线程会被卡在这里
+    thing.join()
+    # 结束时间
+    end = time.time()
+    print("完成的时间为：" + str(end - start))
+</code></pre>
+</div>
+
+<p>最后运行的时间就是打码的时间：</p>
+
+<p><code class="highlighter-rouge">完成的时间为：6.003339052200317</code></p>
+
+<p>这就真正做到了一边听歌一边打码的双手互博的状态，本文后面的那0.003333秒就别纠结了，系统运行程序花个0.0033333秒不过分吧</p>
+
+<p>偷懒打码打4行：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>number = 4
+完成的时间为：5.008083820343018
+</code></pre>
+</div>
+
+<p>——————————我是快乐的分割线——————————</p>
+
+<p>网上的多线程都是写成“类”的形式，这里写成函数不符合“大众”标准，那么就改成类的形式：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#!/usr/bin/python3.4
+# -*- coding: utf-8 -*-
+
+import time
+import threading
+
+class MyThread(threading.Thread):
+    def __init__(self, func, args, name=''):
+        threading.Thread.__init__(self)
+        self.name = name
+        self.func = func
+        self.args = args
+        #self.counter = counter
+
+    def run(self):
+        # 某某线程要开始了
+        print(self.name + "开始了##################")
+
+        if self.name == "听歌线程":
+            matter1(music)
+        elif self.name == "打码线程":
+            matter2(number)
+        print(self.name + "结束了##################")
+
+def matter1(music):
+    for i in range(0,len(music)):
+        print("第" + str(i + 1) + "首歌是：" + str(music[i]))
+        # 假设每一首歌曲的时间是2秒
+        time.sleep(2)
+        print("切换下一首歌...")
+
+def matter2(number):
+    j = 0
+    while j &lt;= number:
+        print("我准备写入第" + str(j + 1) +"行代码")
+        j = j + 1
+        # 假设每写一行代码的时间为1秒
+        time.sleep(1)
+        print("写下一行代码...")
+
+
+if __name__ == '__main__':
+    # 设定我要听的歌为
+    music = ["music1","music2","music3"]
+
+    # 设定我要打码的行数
+    number = 4
+
+    # 开始时间
+    start = time.time()
+
+    thing1 = MyThread(matter1, music,"听歌线程")
+    thing2 = MyThread(matter2, number, "打码线程")
+    thing1.start()
+    thing2.start()
+    thing1.join()
+    thing2.join()
+
+    # 结束时间
+    end = time.time()
+    print("完成的时间为：" + str(end - start))
+</code></pre>
+</div>
+
+<p>运行结果也是6秒：</p>
+
+<p><code class="highlighter-rouge">完成的时间为：6.001942157745361</code></p>
+
+<p>———————-我是快乐的分割线————————-</p>
+
+<p>程序猿在跑代码的时候是很无聊的，无聊的时候就会想到去吃零食，那么我就加入一个函数：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#!/usr/bin/python3.4
+# -*- coding: utf-8 -*-
+
+import time
+import threading
+
+class MyThread(threading.Thread):
+    def __init__(self, func, args, name=''):
+        threading.Thread.__init__(self)
+        self.name = name
+        self.func = func
+        self.args = args
+        #self.counter = counter
+
+    def run(self):
+        # 某某线程要开始了
+        print(self.name + "开始了##################")
+
+        if self.name == "听歌线程":
+            matter1(music)
+        elif self.name == "打码线程":
+            matter2(number)
+        elif self.name == "零食线程":
+            matter3(snacks)
+        print(self.name + "结束了##################")
+
+def matter1(music):
+    for i in range(0,len(music)):
+        print("第" + str(i + 1) + "首歌是：" + str(music[i]))
+        # 假设每一首歌曲的时间是2秒
+        time.sleep(2)
+        print("切换下一首歌...")
+
+def matter2(number):
+    j = 0
+    while j &lt;= number:
+        print("我准备写入第" + str(j + 1) +"行代码")
+        j = j + 1
+        # 假设每写一行代码的时间为1秒
+        time.sleep(1)
+        print("写下一行代码...")
+
+def matter3(snacks):
+    for k in range(0,len(snacks)):
+        print("我正在听着歌吃" + str(snacks[k]) + "零食")
+        #每吃一袋零食间隔5秒
+        time.sleep(5)
+        print("吃完了一包零食")
+
+if __name__ == '__main__':
+    # 设定我要听的歌为
+    music = ["music1","music2","music3"]
+
+    # 设定我要打码的行数
+    number = 4
+
+    # 设定我想吃的零食
+    snacks = ["咪咪","辣条"]
+
+    # 开始时间
+    start = time.time()
+
+    thing1 = MyThread(matter1, music,"听歌线程")
+    thing2 = MyThread(matter2, number, "打码线程")
+    thing3 = MyThread(matter3, snacks, "零食线程")
+    thing1.start()
+    thing2.start()
+    thing3.start()
+    thing1.join()
+    thing2.join()
+    thing3.join()
+
+    # 结束时间
+    end = time.time()
+    print("完成的时间为：" + str(end - start))
+</code></pre>
+</div>
+
+<p>程序运行的时间是：</p>
+
+<p><code class="highlighter-rouge">完成的时间为：10.000968933105469</code></p>
+
+<p>感觉还是吃零食比较耗时间。但是但是，程序猿只有两个手，那么吃零食和打码是不能同时进行了，那么这里加个线程锁：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#!/usr/bin/python3.4
+# -*- coding: utf-8 -*-
+
+import time
+import threading
+
+# 打开线程锁
+lock = threading.Lock()
+
+class MyThread(threading.Thread):
+    def __init__(self, func, args, name=''):
+        threading.Thread.__init__(self)
+        self.name = name
+        self.func = func
+        self.args = args
+        #self.counter = counter
+
+    def run(self):
+        # 某某线程要开始了
+        print(self.name + "开始了##################")
+
+        if self.name == "听歌线程":
+            matter1(music)
+        elif self.name == "打码线程":
+            matter2(number)
+        elif self.name == "零食线程":
+            matter3(snacks)
+        print(self.name + "结束了##################")
+
+def matter1(music):
+    for i in range(0,len(music)):
+        print("第" + str(i + 1) + "首歌是：" + str(music[i]))
+        # 假设每一首歌曲的时间是2秒
+        time.sleep(2)
+        print("切换下一首歌...")
+
+def matter2(number):
+    lock.acquire()
+    j = 0
+    while j &lt;= number:
+        print("我准备写入第" + str(j + 1) +"行代码")
+        j = j + 1
+        # 假设每写一行代码的时间为1秒
+        time.sleep(1)
+        print("写下一行代码...")
+    lock.release()
+
+def matter3(snacks):
+    lock.acquire()
+    for k in range(0,len(snacks)):
+        print("我正在听着歌吃" + str(snacks[k]) + "零食")
+        #每吃一袋零食间隔5秒
+        time.sleep(5)
+        print("吃完了一包零食")
+    lock.release()
+
+if __name__ == '__main__':
+    # 设定我要听的歌为
+    music = ["music1","music2","music3"]
+
+    # 设定我要打码的行数
+    number = 4
+
+    # 设定我想吃的零食
+    snacks = ["咪咪","辣条"]
+
+    # 开始时间
+    start = time.time()
+
+    thing1 = MyThread(matter1, music,"听歌线程")
+    thing2 = MyThread(matter2, number, "打码线程")
+    thing3 = MyThread(matter3, snacks, "零食线程")
+    thing1.start()
+    thing2.start()
+    thing3.start()
+    thing1.join()
+    thing2.join()
+    thing3.join()
+
+    # 结束时间
+    end = time.time()
+    print("完成的时间为：" + str(end - start))
+</code></pre>
+</div>
+
+<p>运行时间为：</p>
+
+<p><code class="highlighter-rouge">完成的时间为：15.001857995986938</code></p>
+
+<p>这里解释一下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>只是听歌和打码花的时间是5s多；
+听歌、打码、吃零食同时进行是10s多；
+</code></pre>
+</div>
+
+<p>加了线程锁后，打码和吃零食不能同时进行，那么就变成：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>听歌和打码花的时间是5s多；
+单独吃零食是10s多，加起来就是15秒；
+</code></pre>
+</div>
+
+<p>为了验证吃零食的时候还是听着歌的，所以将听歌的时间间隔改成10s，得到的运行时间为：</p>
+
+<p><code class="highlighter-rouge">完成的时间为：30.000711917877197</code></p>
+
+<p>运行结果贴出来看一下：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>听歌线程开始了##################
+第1首歌是：music1
+打码线程开始了##################
+我准备写入第1行代码
+零食线程开始了##################
+写下一行代码...
+我准备写入第2行代码
+写下一行代码...
+我准备写入第3行代码
+写下一行代码...
+我准备写入第4行代码
+写下一行代码...
+我准备写入第5行代码
+写下一行代码...
+打码线程结束了##################
+我正在听着歌吃咪咪零食
+切换下一首歌...
+第2首歌是：music2
+吃完了一包零食
+我正在听着歌吃辣条零食
+吃完了一包零食
+零食线程结束了##################
+切换下一首歌...
+第3首歌是：music3
+切换下一首歌...
+听歌线程结束了##################
+</code></pre>
+</div>
+
+<p>perfect！</p>
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/python/python%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B6%A3%E5%91%B3%E8%AF%A6%E8%A7%A3.html"
+     data-title="python多线程趣味详解" data-url="http://localhost:4000/python/python%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B6%A3%E5%91%B3%E8%AF%A6%E8%A7%A3.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop" title="返回顶部" target="_self" href="#"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/cloud" class="icon fa-cloud"><span class="label">云世界</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>hadoop分布式搭建</a></h3>
+        <small>
+            分类：hadoop
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2017-01-17</h6>
+        <br/>
+        <p class="content text-overflow">
+            <h1 id="1新建三台机器分别为">1、新建三台机器，分别为：</h1>
+
+<p>hadoop分布式搭建至少需要三台机器：</p>
+
+<blockquote>
+  <ol>
+    <li>master</li>
+    <li>extension1</li>
+    <li>extension2</li>
+  </ol>
+</blockquote>
+
+<p>本文利用在VMware Workstation下安装Linux centOS，安装教程请看：</p>
+
+<p><a href="http://www.cnblogs.com/TTyb/p/6282231.html">VMware Workstation下安装Linux</a></p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170116174749146-1166913776.png" alt="" /></p>
+
+<h1 id="2编辑ip">2、编辑ip</h1>
+
+<p>用ifconfig查看本机ip:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[root@master ~]# ifconfig
+eno16777736: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+        inet 192.168.204.128  netmask 255.255.255.0  broadcast 192.168.204.255
+        inet6 fe80::20c:29ff:fe43:53ea  prefixlen 64  scopeid 0x20&lt;link&gt;
+        ether 00:0c:29:43:53:ea  txqueuelen 1000  (Ethernet)
+        RX packets 86219  bytes 123262936 (117.5 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 22010  bytes 1501252 (1.4 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+        loop  txqueuelen 0  (Local Loopback)
+        RX packets 188  bytes 33400 (32.6 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 188  bytes 33400 (32.6 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
+        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+        ether 00:00:00:00:00:00  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">extension1</code> 和 <code class="highlighter-rouge">extension2</code> 同样如此，可以得到三台机器的ip分别为：</p>
+
+<blockquote>
+  <p>master:192.168.204.128
+extension1:192.168.204.129
+extension2:192.168.204.130</p>
+</blockquote>
+
+<p>切换到/etc/hosts修改配置，隔一行在后面加上：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>192.168.204.128   master
+192.168.204.129   extension1
+192.168.204.130   extension2
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170116181941036-1488639175.png" alt="" /></p>
+
+<h1 id="3创建ssh密匙">3、创建SSH密匙</h1>
+
+<p>创建密匙命令：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[master@master root]$ ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa
+</code></pre>
+</div>
+
+<p>得到样式如下：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170116181219161-1869218221.png" alt="" /></p>
+
+<p><code class="highlighter-rouge">extension1</code> 和 <code class="highlighter-rouge">extension2</code> 同样操作</p>
+
+<p>切换到密匙文件夹：/home/master/.ssh/</p>
+
+<h1 id="4复制密匙成新文件">4、复制密匙成新文件</h1>
+
+<p>输入命令：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[master@master .ssh]$ cat id_dsa.pub &gt;&gt; authorized_keys
+</code></pre>
+</div>
+
+<p>会在当前生成新的文件：</p>
+
+<p><code class="highlighter-rouge">authorized_keys</code></p>
+
+<p><code class="highlighter-rouge">extension1</code> 和 <code class="highlighter-rouge">extension2</code> 同样操作</p>
+
+<h1 id="5测试密匙">5、测试密匙</h1>
+
+<p>测试密匙能否使用：</p>
+
+<blockquote>
+  <ol>
+    <li>ssh localhost</li>
+    <li>yes</li>
+    <li>输入密码</li>
+    <li>exit</li>
+  </ol>
+</blockquote>
+
+<p><code class="highlighter-rouge">extension1</code> 和 <code class="highlighter-rouge">extension2</code> 同样操作</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170116181351052-723142221.png" alt="" /></p>
+
+<h1 id="6extension复制master密匙">6、extension复制master密匙</h1>
+
+<p>extension复制master密匙达到免密码登陆，在三台机器里面都输入下面命令：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[extension1@extension1 .ssh]$ scp master@master:~/.ssh/id_dsa.pub ./master_dsa.pub
+cat master_dsa.pub &gt;&gt; authorized_keys
+chmod 600 authorized_keys
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">extension1</code> 和 <code class="highlighter-rouge">extension2</code> 同样操作</p>
+
+<h1 id="7实现免密匙登陆">7、实现免密匙登陆</h1>
+
+<p>master能对master、extension1、extension2免密匙登陆:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ssh master@master
+ssh extension1@extension1
+ssh extension2@extension2
+
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">extension1</code> 和 <code class="highlighter-rouge">extension2</code> 同样操作</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170118100443062-2045642448.png" alt="" /></p>
+
+<h1 id="8下载解压安装包">8、下载解压安装包</h1>
+
+<p>查看电脑位数： <code class="highlighter-rouge">getconf LONG_BIT</code></p>
+
+<p>java地址（jdk1.7.0_09x64.tar.gz）：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://pan.baidu.com/s/1hs2uX1q
+</code></pre>
+</div>
+
+<p>hadoop地址（hadoop-0.20.2.tar.gz）：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://vdisk.weibo.com/s/zNZl3
+</code></pre>
+</div>
+
+<p>新建文件夹：</p>
+
+<blockquote>
+  <ol>
+    <li>切换到 root</li>
+    <li>新建文件夹： mkdir /usr/program</li>
+    <li>放入安装包</li>
+    <li>解压</li>
+  </ol>
+</blockquote>
+
+<p>解压命令：
+tar -zxvf hadoop-0.20.2.tar.gz
+tar xvf jdk1.7.0_09x64.tar.gz</p>
+
+<p><code class="highlighter-rouge">extension1</code> 和 <code class="highlighter-rouge">extension2</code> 同样操作</p>
+
+<h1 id="9java环境配置">9、java环境配置</h1>
+
+<p>打开 <code class="highlighter-rouge">/etc/profile</code> 配置文件，在最末尾加入：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># set java environment
+   exportJAVA_HOME=/usr/program/jdk1.7.0_09x64
+   exportJRE_HOME=/usr/program/jdk1.7.0_09x64/jre
+   export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+   export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+   export PATH=/usr/program/jdk1.7.0_09x64/bin
+</code></pre>
+</div>
+
+<p>保存退出后，跟新配置文件，让配置文件生效：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>source /etc/profile
+</code></pre>
+</div>
+
+<p>查看环境是否配置成功：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>java -version
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">extension1</code> 和 <code class="highlighter-rouge">extension2</code> 同样操作</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170118102356296-956035753.png" alt="" /></p>
+
+<h1 id="10hadoop环境配置">10、hadoop环境配置</h1>
+
+<p>创建一个文件夹：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>mkdir /usr/program/hadoop-0.20.2/hadooptmp
+</code></pre>
+</div>
+
+<p>进入文件夹：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/usr/program/hadoop-0.20.2/conf/
+</code></pre>
+</div>
+
+<h3 id="hadoop-envsh">hadoop-env.sh:</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>export JAVA_HOME=/usr/program/jdk1.7.0_09x64
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170118102533750-1298130510.png" alt="" /></p>
+
+<h3 id="core-sitexml">core-site.xml:</h3>
+
+<p>打开文件：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>vim core-site.xml 
+</code></pre>
+</div>
+
+<p>里面的代码改成：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="cp">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</span>
+
+<span class="c">&lt;!-- Put site-specific property overrides in this file. --&gt;</span>
+
+<span class="nt">&lt;configuration&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>fs.default.name<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;value&gt;</span>hdfs://master:9000/<span class="nt">&lt;/value&gt;</span>
+   <span class="nt">&lt;/property&gt;</span>
+   <span class="nt">&lt;property&gt;</span>
+     <span class="nt">&lt;name&gt;</span>hadoop.tmp.dir<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;value&gt;</span>/usr/program/hadoop-0.20.2/hadooptmp<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117094828114-1810759850.png" alt="" /></p>
+
+<h3 id="hdfs-sitexml">hdfs-site.xml:</h3>
+
+<p>打开文件：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>vim hdfs-site.xml
+</code></pre>
+</div>
+
+<p>写入以下代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="cp">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</span>
+
+<span class="c">&lt;!-- Put site-specific property overrides in this file. --&gt;</span>
+
+<span class="nt">&lt;configuration&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>dfs.replication<span class="nt">&lt;/name&gt;</span>
+     <span class="nt">&lt;value&gt;</span>2<span class="nt">&lt;/value&gt;</span>
+ <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+<span class="nt">&lt;name&gt;</span>dfs.permissions<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;value&gt;</span>false<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117095259458-206745951.png" alt="" /></p>
+
+<h3 id="mapred-sitexml">mapred-site.xml:</h3>
+
+<p>打开文件：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>vim mapred-site.xml
+</code></pre>
+</div>
+
+<p>写入以下代码：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="cp">&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;</span>
+
+<span class="c">&lt;!-- Put site-specific property overrides in this file. --&gt;</span>
+
+<span class="nt">&lt;configuration&gt;</span>
+<span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;name&gt;</span>mapred.job.tracker<span class="nt">&lt;/name&gt;</span>
+     <span class="nt">&lt;value&gt;</span>master:9001<span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117095922614-1825893696.png" alt="" /></p>
+
+<p><code class="highlighter-rouge">extension1</code> 和 <code class="highlighter-rouge">extension2</code> 同样操作</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117101408052-1758860193.png" alt="" /></p>
+
+<h1 id="11环境配置">11、环境配置</h1>
+
+<p>打开文件：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>/etc/profile
+</code></pre>
+</div>
+
+<p>在最后面加入：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#set hadoop
+   export HADOOP_HOME=/usr/program/hadoop-0.20.2
+   export PATH=$HADOOP_HOME/bin:$PATH
+</code></pre>
+</div>
+
+<p>使配置文件生效：</p>
+
+<p><code class="highlighter-rouge">source  /etc/profile</code></p>
+
+<h1 id="12启动hadoop">12、启动hadoop</h1>
+
+<p>进入文件夹：</p>
+
+<p><code class="highlighter-rouge">/usr/program/hadoop-0.20.2/bin</code></p>
+
+<p>格式化namenode：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>hadoop namenode -format
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117102804552-1805278533.png" alt="" /></p>
+
+<p>打开hadoop：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>start-all.sh
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117154610677-1022849135.png" alt="" /></p>
+
+<p>输入 <code class="highlighter-rouge">jps</code> ：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170118110647109-1382373737.png" alt="" /></p>
+
+<p>但是，如果输入口输入 <code class="highlighter-rouge">jps</code> 出现：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>bash: jps: 未找到命令...
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117154704380-877789391.png" alt="" /></p>
+
+<h3 id="方法一">方法一：</h3>
+
+<p>查看java目录：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>which java
+</code></pre>
+</div>
+
+<p>删除这个指引：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rm /bin/java
+</code></pre>
+</div>
+
+<p>建立新的指引：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ln -s /usr/program/jdk1.7.0_25/bin/java /bin/java
+</code></pre>
+</div>
+
+<h3 id="方法二">方法二：</h3>
+
+<p>经过排查发现是：</p>
+
+<p><code class="highlighter-rouge">jps</code> 命令是在java解压包中的 <code class="highlighter-rouge">/bin/</code> 文件夹里面，是一个可执行文件，但是可以用另一个方法来看是否完成启动：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>stop-all.sh
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117161253224-1325894499.png" alt="" /></p>
+
+<p>但是用另一个方法查看也行，浏览器输入：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>192.168.204.128:50030
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117155040677-102328105.png" alt="" /></p>
+
+<p>浏览器输入：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>192.168.204.128:50070
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170117155149114-1516346893.png" alt="" /></p>
+
+<p>该完成的时候还是会完成的，切记java下载的版本下载为：</p>
+
+<blockquote>
+  <ol>
+    <li>jdk1.8.0_101</li>
+    <li>jdk1.7.0_09</li>
+    <li>jdk1.6.0_13</li>
+    <li>jdk1.7.0_21</li>
+  </ol>
+</blockquote>
+
+<p>oracle地址：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk8-downloads-2133151-zhs.html
+</code></pre>
+</div>
+
+<h1 id="检查安装的java包">检查安装的JAVA包：</h1>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>rpm -qa | grep jdk
+</code></pre>
+</div>
+
+<p>卸载相应的包：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>yum -y remove java-1.8.0-openjdk-headless.x86_64
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201701/996148-20170118101613125-2112895832.png" alt="" /></p>
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/hadoop/hadoop%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA.html"
+     data-title="hadoop分布式搭建" data-url="http://localhost:4000/hadoop/hadoop%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%AD%E5%BB%BA.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop" title="返回顶部" target="_self" href="#"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/cloud" class="icon fa-cloud"><span class="label">云世界</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>

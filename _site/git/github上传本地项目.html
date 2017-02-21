@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="shortcut icon" href="/static/jpg/myjpg.jpg"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Stylesheets -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet"/>
+	<link href="/static/css/styles.css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.js"></script>
+    <script type="text/javascript" src="/static/js/prefixfree.min.js"></script>
+    <title>百哥么么哒|个人网站</title>
+
+</head>
+
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand brand" href="/">TTyb|个人网站</a>
+        <div style="font-size: 6px;font-family: serif;text-decoration: none;">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="/">首页</a></li>
+                <li><a class="navbar-brand" href="/topic">文章</a></li>
+                <li><a class="navbar-brand" href="/category">分类</a></li>
+                <li><a class="navbar-brand" href="/log/log">日志</a></li>
+                <li><a class="navbar-brand" href="/guestbook">留言</a></li>
+            </ul>
+        </div>
+
+        <div class="pull-right">
+            <div style="font-size: 4px;font-family: serif;">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/contact" class="navbar-brand">联系方式</a>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle navbar-brand" href="#">友情链接<strong
+                                class="caret"></strong></a>
+                        <ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
+                            <li><a href="http://www.cnblogs.com/TTyb">TTyb博客园</a></li>
+                            <li><a href="http://www.cnblogs.com/nima">一只尼玛博客园</a></li>
+                            <li><a href="https://github.com/TTyb">TTybGithub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+        <div class="container">
+    <div class="page-header">
+        <hr>
+        <h3>github上传本地项目</a></h3>
+        <small>
+            分类：git
+        </small>
+        <h6 class="text-muted">作者:TTyb&nbsp;&nbsp;文章发表于 2016-08-16</h6>
+        <br/>
+        <p class="content text-overflow">
+            <h3 id="github上传本地项目分为两个部分">github上传本地项目，分为两个部分：</h3>
+
+<blockquote>
+  <ol>
+    <li>如果建立了ssh key的，直接看第二部分的上传部分就行了</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li>如果没有建立ssh key的，就从头开始看吧</li>
+  </ol>
+</blockquote>
+
+<p>——————————————————我是快乐的分割线——————————————————</p>
+
+<h2 id="第一部分建立钥匙">第一部分建立钥匙</h2>
+
+<h3 id="在本地创建ssh-key">在本地创建ssh key：</h3>
+
+<p><code class="highlighter-rouge">$ ssh-keygen -t rsa -C "your_email@youremail.com"</code></p>
+
+<p>输入后会让你输入密码，一般这个不要输入了，回车跳过</p>
+
+<h3 id="直接点回车说明会在默认文件id_rsa上生成ssh-key">直接点回车，说明会在默认文件id_rsa上生成ssh key：</h3>
+
+<p>然后系统要求输入密码，直接按回车表示不设密码</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816104059687-602661524.png" alt="" /></p>
+
+<p>重复密码时也是直接回车，之后提示你shh key已经生成成功。</p>
+
+<p>得到下图：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816104200296-1219529385.png" alt="" /></p>
+
+<h3 id="然后我们进入提示的地址下查看ssh-key文件地址就是第一步写着保存地址">然后我们进入提示的地址下查看ssh key文件，地址就是第一步写着保存地址：</h3>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816104325125-1329984215.png" alt="" /></p>
+
+<p>打开id_rsa.pub，复制里面的key。里面的key是一对看不懂的字符数字组合，不用管它，直接复制。</p>
+
+<h3 id="回到github网站进入account-settings左边选择ssh-keysadd-ssh-key">回到github网站，进入Account Settings，左边选择SSH Keys，Add SSH Key：</h3>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816104404703-277709478.png" alt="" /></p>
+
+<h3 id="title随便填粘贴key复制-add即可">title随便填，粘贴key，复制-add即可：</h3>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816104441000-804226083.png" alt="" /></p>
+
+<h2 id="第二部分上传项目">第二部分上传项目</h2>
+
+<h3 id="进入你要上传文件的目录下右键git-bash-here">进入你要上传文件的目录下，右键git bash here</h3>
+
+<p>验证是否连上了github，后面会让你输入密码</p>
+
+<p>验证是否成功，在git bash下输入</p>
+
+<p><code class="highlighter-rouge">$ ssh -T git@github.com</code></p>
+
+<p>回车就会看到：You’ve successfully authenticated, but GitHub does not provide shell access 。这就表示已成功连上github：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816104638218-795026872.png" alt="" /></p>
+
+<h3 id="接下来我们要做的就是把本地仓库传到github上去在此之前还需要设置username和email因为github每次commit都会记录他们">接下来我们要做的就是把本地仓库传到github上去，在此之前还需要设置username和email，因为github每次commit都会记录他们：</h3>
+
+<p><code class="highlighter-rouge">$ git config --global user.name "your name"</code></p>
+
+<p><code class="highlighter-rouge">$ git config --global user.email "your_email@youremail.com"</code></p>
+
+<p>分别输入上述命令行 回车， 我的界面显示如下</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816104714875-268481021.png" alt="" /></p>
+
+<h3 id="按照官网的做法">按照官网的做法：</h3>
+
+<p>下面是你在网上的github里面新建仓库的时候网站给你的做法：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816105038171-1777620505.png" alt="" /></p>
+
+<p>下面的内容都是按照他给的做法来做的</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>echo "# EDM" &gt;&gt; README.md
+git init                    ##增加一个.git文件夹
+git add README.md          ##上传你的文件，文件名为README.md，我用的是git add --all，也就是上传当前文件夹的全部
+git commit -m "first commit"       ##我用的是git commit -m "TTyb"
+</code></pre>
+</div>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816104844078-1299483518.png" alt="" /></p>
+
+<h3 id="这里继续">这里继续</h3>
+
+<p><code class="highlighter-rouge">git remote add origin git@github.com:TTyb/EDM.git</code></p>
+
+<p><code class="highlighter-rouge">git push -u origin master</code></p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816104929125-631735513.png" alt="" /></p>
+
+<p>成功：</p>
+
+<p><img src="http://images2015.cnblogs.com/blog/996148/201608/996148-20160816105118531-1819085224.png" alt="" /></p>
+
+
+        </p>
+    </div>
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="http://localhost:4000/git/github%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE.html"
+     data-title="github上传本地项目" data-url="http://localhost:4000/git/github%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"ttyb"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</div>
+
+
+    
+<a class="gototop" title="返回顶部" target="_self" href="#"></a>
+<div class="container">
+    <div id="footer" class="text-muted">
+        <div style="font-family: 'Lato', sans-serif;">
+            <div class="foo">
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="T">T</span>
+                <span class="letter" data-letter="y">y</span>
+                <span class="letter" data-letter="b">b</span>
+            </div>
+        </div>
+        <h3 style="font-size: 1.2em;font-family: KaiTi;">无聊就想打码 打码使我快乐</h3>
+        <div style="font-size: 1.2em;font-family: KaiTi;">
+            不用多久<br/>
+            我就会升职加薪<br/>
+            当上总经理<br/>
+            出任CEO<br/>
+            迎娶白富美<br/>
+            走上人生巅峰
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="/contact" class="icon fa-qq"><span class="label">QQ</span></a></li>
+        <li><a href="https://github.com/TTyb" class="icon fa-github"><span class="label">Github</span></a></li>
+        <li><a href="/" class="icon fa-home"><span class="label">首页</span></a></li>
+        <li><a href="http://www.cnblogs.com/TTyb/" class="icon fa-heart"><span class="label">博客园</span></a></li>
+        <li><a href="/cloud" class="icon fa-cloud"><span class="label">云世界</span></a></li>
+        <li><a href="/404" class="icon fa-map-signs"><span class="label">404</span></a></li>
+    </ul>
+    <p class="copyright">Copyright &copy; TTyb All rights reserved.</p>
+</footer>
+
+<script type="text/javascript" src="/static/js/jquery.gototop.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+            // $(".gototop").gototop();
+            $(".gototop").gototop({
+                position : 0,
+                duration : 1250,
+                visibleAt : 300,
+                classname : "isvisible"
+            });
+        });
+</script>
+
+
+</body>
+</html>
