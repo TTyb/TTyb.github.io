@@ -1,19 +1,19 @@
 ---
 layout: post
-categories: [»úÆ÷Ñ§Ï°]
-title: ÓÃsklearn·â×°µÄkmeans¿â
+categories: [æœºå™¨å­¦ä¹ ]
+title: ç”¨sklearnå°è£…çš„kmeansåº“
 date: 2017-02-26
 author: TTyb
-desc: "ÓÉÓÚĞèÒªº£Á¿µÄ½øĞĞ¾ÛÀà£¬ËùÒÔ½« `k-means` Ëã·¨×ÔÎÒ·â×°³ÉÒ»¸ö·½±ãÀûÓÃµÄ¿â"
+desc: "ç”±äºéœ€è¦æµ·é‡çš„è¿›è¡Œèšç±»ï¼Œæ‰€ä»¥å°† `k-means` ç®—æ³•è‡ªæˆ‘å°è£…æˆä¸€ä¸ªæ–¹ä¾¿åˆ©ç”¨çš„åº“"
 ---
 
-ÓÉÓÚĞèÒªº£Á¿µÄ½øĞĞ¾ÛÀà£¬ËùÒÔ½« `k-means` Ëã·¨×ÔÎÒ·â×°³ÉÒ»¸ö·½±ãÀûÓÃµÄ¿â£¬¿ÉÒÔÖ±½Óµ÷ÓÃµÃµ½×îÓÅµÄ `kÖµ` ºÍ `ÖĞĞÄµã`£º
+ç”±äºéœ€è¦æµ·é‡çš„è¿›è¡Œèšç±»ï¼Œæ‰€ä»¥å°† `k-means` ç®—æ³•è‡ªæˆ‘å°è£…æˆä¸€ä¸ªæ–¹ä¾¿åˆ©ç”¨çš„åº“ï¼Œå¯ä»¥ç›´æ¥è°ƒç”¨å¾—åˆ°æœ€ä¼˜çš„ `kå€¼` å’Œ `ä¸­å¿ƒç‚¹`ï¼š
 
 ```
 #!/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 
-# k-meansËã·¨
+# k-meansç®—æ³•
 
 import numpy as np
 from sklearn.cluster import KMeans
@@ -21,37 +21,37 @@ from sklearn import metrics
 
 
 def calckmean(array, karr):
-    # arrayÊÇÒ»¸ö¶şÎ¬Êı×é
+    # arrayæ˜¯ä¸€ä¸ªäºŒç»´æ•°ç»„
     # X = [[1, 2, 3, 4], [5, 6, 7, 8], [3, 4, 5, 6]]
 
-    # kÊÇ´ıÑ¡È¡KÖµµÄÊı×é
+    # kæ˜¯å¾…é€‰å–Kå€¼çš„æ•°ç»„
     # karr = [2, 3, 4, 5, 8,...]
 
-    # ½«Ô­Ê¼Êı¾İÓÉÊı×é±ä³É¾ØÕó
+    # å°†åŸå§‹æ•°æ®ç”±æ•°ç»„å˜æˆçŸ©é˜µ
 
     x = np.array(array)
 
-    # ÓÃÀ´´¢´æÂÖÀªÏµÊıµÄÊı×é
+    # ç”¨æ¥å‚¨å­˜è½®å»“ç³»æ•°çš„æ•°ç»„
     score = []
-    # ÓÃÀ´´¢´æÖĞĞÄ×ø±êµãµÄÊı×é
+    # ç”¨æ¥å‚¨å­˜ä¸­å¿ƒåæ ‡ç‚¹çš„æ•°ç»„
     point = []
 
     for k in karr:
         kmeans_model = KMeans(n_clusters=k).fit(x)
-        # title = 'K = %s, ÂÖÀªÏµÊı = %.03f' % (k, metrics.silhouette_score(X, kmeans_model.labels))
+        # title = 'K = %s, è½®å»“ç³»æ•° = %.03f' % (k, metrics.silhouette_score(X, kmeans_model.labels))
         # print(title)
 
-        # »ñÈ¡ÖĞĞÄµãµÄ×ø±ê
+        # è·å–ä¸­å¿ƒç‚¹çš„åæ ‡
         counter_point = kmeans_model.cluster_centers_
-        # print("k=" + str(k) + "Ê±µÄÖĞĞÄµãÎª" + "\n" + str(counter_point))
+        # print("k=" + str(k) + "æ—¶çš„ä¸­å¿ƒç‚¹ä¸º" + "\n" + str(counter_point))
 
-        # ¼ÇÂ¼·ÖÊı
+        # è®°å½•åˆ†æ•°
         # print(metrics.silhouette_score(x, kmeans_model.labels_))
         score.append("%.03f" % (metrics.silhouette_score(x, kmeans_model.labels_)))
-        # ¼ÇÂ¼ÖĞĞÄ×ø±ê
+        # è®°å½•ä¸­å¿ƒåæ ‡
         point.append(counter_point)
 
-    # ·µ»ØÂÖÀªÏµÊı×î´óµÄkÖµºÍ×ø±ê
+    # è¿”å›è½®å»“ç³»æ•°æœ€å¤§çš„kå€¼å’Œåæ ‡
     maxscore = max(score)
 
     for i in range(0, len(score)):
@@ -60,11 +60,11 @@ def calckmean(array, karr):
 
 ```
 
-µ÷ÓÃµÄÊ±ºòÖ±½Ó¿ÉÒÔ£º
+è°ƒç”¨çš„æ—¶å€™ç›´æ¥å¯ä»¥ï¼š
 
 `from kmeans import *`
 
-²âÊÔÊı¾İ£º
+æµ‹è¯•æ•°æ®ï¼š
 
 ```
 #!/usr/bin/python3.4
@@ -82,12 +82,12 @@ karr = [2, 3, 4, 5, 8]
 # print(list(zip(x1, x2)))
 
 k, point = calckmean(a, karr)
-print("×îºÃµÄ¿ÉÒÔ·Ö³É" + str(k) + "¸ö´Ø£¬ÖĞĞÄµãÎª" + "\n" + str(point))
+print("æœ€å¥½çš„å¯ä»¥åˆ†æˆ" + str(k) + "ä¸ªç°‡ï¼Œä¸­å¿ƒç‚¹ä¸º" + "\n" + str(point))
 
 ```
 
 ![](http://images2015.cnblogs.com/blog/996148/201702/996148-20170226101819554-1837598147.png)
 
-Ô´ÎÄ¼ş¿ÉÒÔÔÚÎÒµÄgithubÏÂÔØ£º
+æºæ–‡ä»¶å¯ä»¥åœ¨æˆ‘çš„githubä¸‹è½½ï¼š
 
 [TTyb](https://github.com/TTyb/kmeans)
