@@ -52,7 +52,7 @@ def calckmean(array, karr):
         point.append(counter_point)
 
     # 返回轮廓系数最大的k值和坐标
-    maxscore = max(score)
+    maxscore = max(score, default=0)
 
     for i in range(0, len(score)):
         if maxscore == score[i]:
