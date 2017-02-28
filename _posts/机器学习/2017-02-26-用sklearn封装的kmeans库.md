@@ -35,6 +35,8 @@ def calckmean(array, karr):
     score = []
     # 用来储存中心坐标点的数组
     point = []
+    # 用来储存各个簇的坐标
+    coordinates = []
 
     for k in karr:
         kmeans_model = KMeans(n_clusters=k).fit(x)
@@ -46,17 +48,35 @@ def calckmean(array, karr):
         # print("k=" + str(k) + "时的中心点为" + "\n" + str(counter_point))
 
         # 记录分数
-        # print(metrics.silhouette_score(x, kmeans_model.labels_))
+        # print(metrics.silhouette_score(x, kmeans_model.labels_,metric='euclidean'))
         score.append("%.03f" % (metrics.silhouette_score(x, kmeans_model.labels_)))
         # 记录中心坐标
         point.append(counter_point)
 
-    # 返回轮廓系数最大的k值和坐标
+        # 将坐标属于哪个簇的标签储存到数组
+        # k = 3 : [0 0 0 0 1 1 1 1 1 2 2 2 2 2]
+        # k = 4 : [1 1 1 1 0 0 0 0 0 3 2 2 3 2]
+        coordinates.append(kmeans_model.labels_)
+
+    # 返回轮廓系数最大的k值\中心坐标\分簇坐标
     maxscore = max(score, default=0)
 
     for i in range(0, len(score)):
         if maxscore == score[i]:
-            return karr[i], point[i]
+            # 储存分簇坐标的数组
+            coordinate = []
+            for j in range(0, len(point[i])):
+                temp = []
+                for item in zip(coordinates[i], array):
+                    if item[0] == j:
+                        temp.append(item[1])
+                coordinate.append(temp)
+                # 得到的样式为k=3，每个簇点的坐标群
+                # coordinate = [[[7, 1], [8, 2], [9, 1], [7, 1], [9, 3]],
+                #               [[5, 8], [6, 6], [5, 7], [5, 6], [6, 7]],
+                #               [[1, 1], [2, 3], [3, 2], [1, 2]]]
+
+            return karr[i], point[i], coordinate
 
 ```
 
