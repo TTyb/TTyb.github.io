@@ -19,10 +19,11 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn import metrics
 
-
+# sklearn官方文档
+# http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html#sklearn.cluster.KMeans
 def calckmean(array, karr):
     # array是一个二维数组
-    # X = [[1, 2, 3, 4], [5, 6, 7, 8], [3, 4, 5, 6]]
+    # X = X = [[1, 1], [2, 3], [3, 2], [1, 2], [5, 8], [6, 6], [5, 7], [5, 6], [6, 7], [7, 1], [8, 2], [9, 1], [7, 1], [9, 3]]
 
     # k是待选取K值的数组
     # karr = [2, 3, 4, 5, 8,...]
@@ -37,9 +38,14 @@ def calckmean(array, karr):
     point = []
     # 用来储存各个簇的坐标
     coordinates = []
+    # 用来储存各个簇点的与中心的距离
+    distances = []
 
     for k in karr:
-        kmeans_model = KMeans(n_clusters=k).fit(x)
+        # n_clusters为聚类的个数
+        # max_iter为迭代的次数，这里设置最大迭代次数为300
+        # n_init=10使用不同质心种子运行k-means算法的次数
+        kmeans_model = KMeans(n_clusters=k, max_iter=300,n_init=10).fit(x)
         # title = 'K = %s, 轮廓系数 = %.03f' % (k, metrics.silhouette_score(X, kmeans_model.labels))
         # print(title)
 
@@ -54,9 +60,12 @@ def calckmean(array, karr):
         point.append(counter_point)
 
         # 将坐标属于哪个簇的标签储存到数组
-        # k = 3 : [0 0 0 0 1 1 1 1 1 2 2 2 2 2]
+        # k = 3 : [0 0 0 0 2 2 2 2 2 1 1 1 1 1]
         # k = 4 : [1 1 1 1 0 0 0 0 0 3 2 2 3 2]
         coordinates.append(kmeans_model.labels_)
+
+        # 每个点和中心点的距离
+        distances.append(KMeans(n_clusters=k, max_iter=300).fit_transform(x))
 
     # 返回轮廓系数最大的k值\中心坐标\分簇坐标
     maxscore = max(score, default=0)
@@ -65,18 +74,36 @@ def calckmean(array, karr):
         if maxscore == score[i]:
             # 储存分簇坐标的数组
             coordinate = []
+            # 储存簇点与中心点的距离数组
+            distance = []
             for j in range(0, len(point[i])):
-                temp = []
+                # 这里是得到分簇坐标
+                tempcoor = []
                 for item in zip(coordinates[i], array):
                     if item[0] == j:
-                        temp.append(item[1])
-                coordinate.append(temp)
+                        tempcoor.append(item[1])
+                coordinate.append(tempcoor)
                 # 得到的样式为k=3，每个簇点的坐标群
-                # coordinate = [[[7, 1], [8, 2], [9, 1], [7, 1], [9, 3]],
-                #               [[5, 8], [6, 6], [5, 7], [5, 6], [6, 7]],
-                #               [[1, 1], [2, 3], [3, 2], [1, 2]]]
+                # [[[7, 1], [8, 2], [9, 1], [7, 1], [9, 3]],
+                # [[5, 8], [6, 6], [5, 7], [5, 6], [6, 7]],
+                # [[1, 1], [2, 3], [3, 2], [1, 2]]]
 
-            return karr[i], point[i], coordinate
+                # 这里是得到分簇与中心点的距离
+                tempdis = []
+                for item in zip(coordinates[i], distances[i]):
+                    if item[0] == j:
+                        tempdis.append(min(item[1]))
+                distance.append(tempdis)
+                # 得到k=3的各个簇点对中心的距离
+                # [[1.1661903789690597, 0.39999999999999575, 1.166190378969066, 1.1661903789690597, 1.7204650534085277],
+                # [1.2649110640673495, 0.9999999999999858, 0.4472135954999452, 0.8944271909999063, 0.6324555320336579],
+                # [1.25, 1.0307764064044151, 1.25, 0.75]]
+
+            # 得到k=3的中心点
+            # [[8.0, 1.6],
+            # [5.4, 6.8],
+            # [1.75, 2.0]]
+            return karr[i], point[i], coordinate, distance
 
 ```
 
@@ -101,8 +128,10 @@ karr = [2, 3, 4, 5, 8]
 # print(np.array(a))
 # print(list(zip(x1, x2)))
 
-k, point = calckmean(a, karr)
-print("最好的可以分成" + str(k) + "个簇，中心点为" + "\n" + str(point))
+K, point, coordinate, distance = calckmean(X, tests)
+print("------------------------")
+print("k=" + str(K) + "时的中心点为" + "\n" + str(point) + "\n" + "各个簇点为" + "\n" + str(coordinate))
+print(distance)
 
 ```
 
