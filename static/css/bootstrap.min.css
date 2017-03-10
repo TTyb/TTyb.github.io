@@ -6467,7 +6467,7 @@ ul.icons li:last-child {
 #footer:before {
     content: '';
     /*这是一条横线，不要*/
-    display: inline-block;
+    /*display: inline-block;*/
     width: 6em;
     height: 2px;
     background-color: #666666;
