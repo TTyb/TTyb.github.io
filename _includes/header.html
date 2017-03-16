@@ -14,9 +14,9 @@
         <div class="pull-right">
             <div style="font-size: 4px;font-family: serif;">
                 <ul class="nav navbar-nav">
-					<li>
-						<a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏</a>
-					</li>
+                    <li>
+                        <a href="javascript:void(0)" onclick="dashangToggle()" style="font-size: 18px;">打赏</a>
+                    </li>
                     <li>
                         <a href="/contact" class="navbar-brand">联系方式</a>
                     </li>
@@ -37,30 +37,31 @@
 </div>
 
 <div class="content">
-<div class="hide_box"></div>
-<div class="shang_box">
-	<a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img src="static/jpg/close.jpg" alt="取消" /></a>
-	<div class="shang_tit">
-		<p>感谢您的支持，我会继续努力的!</p>
-	</div>
-	<div class="shang_payimg">
-		<img src="img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
-	</div>
-		<div class="pay_explain">扫码打赏，你说多少就多少</div>
-	<div class="shang_payselect">
-		<div class="pay_item checked" data-id="alipay">
-			<span class="radiobox"></span>
-			<span class="pay_logo"><img src="static/jpgalipay.jpg" alt="支付宝" /></span>
-		</div>
-		<div class="pay_item" data-id="weipay">
-			<span class="radiobox"></span>
-			<span class="pay_logo"><img src="static/jpgwechat.jpg" alt="微信" /></span>
-		</div>
-	</div>
-	<div class="shang_info">
-		<p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
-	</div>
-</div>
+
+    <div class="shang_box">
+        <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭"><img
+                src="static/jpg/close.jpg" alt="取消"/></a>
+        <div class="shang_tit">
+            <p>感谢您的支持，我会继续努力的!</p>
+        </div>
+        <div class="shang_payimg">
+            <img src="static/jpg/alipayimg.jpg" alt="扫码支持" title="扫一扫"/>
+        </div>
+        <div class="pay_explain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;扫码打赏一下，你说多少就多少<br /></div>
+        <div class="shang_payselect">
+            <div class="pay_item checked" data-id="alipay">
+                <span class="radiobox"></span>
+                <span class="pay_logo"><img src="static/jpg/alipay.jpg" alt="支付宝"/></span>
+            </div>
+            <div class="pay_item" data-id="weipay">
+                <span class="radiobox"></span>
+                <span class="pay_logo"><img src="static/jpg/wechat.jpg" alt="微信"/></span>
+            </div>
+        </div>
+        <div class="shang_info">
+            <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -72,8 +73,10 @@ $(function(){
 		$("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
 	});
 });
+
 function dashangToggle(){
 	$(".hide_box").fadeToggle();
 	$(".shang_box").fadeToggle();
 }
+
 </script>
