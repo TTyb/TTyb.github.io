@@ -48,6 +48,11 @@ if __name__ == '__main__':
     filename = os.path.abspath(__file__)
 
     # logoption
+    # LOG_CONS：如果将信息发送给守护进程时发生错误，直接将相关信息输入到相关信息输出到终端。 
+    # LOG_NDELAY：立即打开与系统日志的连接（通常情况下，只有在产生第一条日志信息的情况下才会打开与日志系统的连接） 
+    # LOG_NOWAIT：在记录日志信息时，不等待可能的子进程的创建 
+    # LOG_ODELAY：类似于LOG_NDELAY参数，与系统日志的连接只有在syslog函数调用时才会创建 
+    # LOG_PID：每条日志信息中都包括进程号
     # LOG_PID, LOG_CONS, LOG_NDELAY, LOG_NOWAIT, LOG_PERROR
     pid = syslog.LOG_PID
 
