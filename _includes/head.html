@@ -21,13 +21,13 @@
 	.dashang{font-family: serif;display:block;line-height:25px;padding:10px;text-align:center;text-decoration:none;border-radius:10px;font-size:16px;transition: all 0.3s;}
 	.shang_close{float:right;display:inline-block;}
 	.shang_logo{display:block;text-align:center;margin:20px auto;}
-	.shang_tit{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url('static/jpg/cy-reward-title-bg.jpg');font-family: 'serif';margin-top: 7px;margin-right:2px;}
+	.shang_tit{width: 100%;height: 75px;text-align: center;line-height: 66px;color: #a3a3a3;font-size: 16px;background: url("{{ '/static/jpg/cy-reward-title-bg.jpg' | prepend: site.baseurl }}");font-family: 'serif';margin-top: 7px;margin-right:2px;}
 	.shang_tit p{color:#a3a3a3;text-align:center;font-size:16px;}
 	.shang_payimg{width:140px;padding:10px;margin:0 auto;border-radius:3px;height:140px;text-align:center;}
 	.shang_payimg img{text-align:center;width:140px;height:140px;}
 	.pay_explain{text-align:center;margin:10px auto;font-size:12px;color:#545454;}
-	.radiobox{width: 16px;height: 16px;background: url('static/jpg/radio2.jpg');display: block;float: left;margin-top: 5px;margin-right: 14px;}
-	.checked .radiobox{background:url('static/jpg/radio1.jpg');}
+	.radiobox{width: 16px;height: 16px;background: url("{{ '/static/jpg/radio2.jpg' | prepend: site.baseurl }}");display: block;float: left;margin-top: 5px;margin-right: 14px;}
+	.checked .radiobox{background:url("{{ '/static/jpg/radio1.jpg' | prepend: site.baseurl }}");}
 	.shang_payselect{text-align:center;margin:0 auto;margin-top:40px;cursor:pointer;height:60px;width:280px;}
 	.shang_payselect .pay_item{display:inline-block;margin-right:10px;float:left;}
 	.shang_info{clear:both;}
