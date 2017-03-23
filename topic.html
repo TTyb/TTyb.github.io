@@ -21,8 +21,11 @@ layout: default
             {{ post.excerpt | strip_html }}
             {% endif %}
         </p>
-
+		
+		<h3><a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></h3>
+		<p></p>
         {% endfor %}
+		
     </div>
 </div>
 
