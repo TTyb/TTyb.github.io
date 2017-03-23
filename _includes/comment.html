@@ -17,3 +17,6 @@ var duoshuoQuery = {short_name:"ttyb"};
 </script>
 <!-- 多说公共JS代码 end -->
 
+$(document).on('click', '#ds-thread textarea[name=message]', function(){
+    $('#ds-sync-checkbox').prop('checked', false);
+});
