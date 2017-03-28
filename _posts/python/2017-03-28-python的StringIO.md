@@ -1,13 +1,13 @@
 ---
 layout: post
 categories: [python]
-title: pythonµÄStringIO
+title: pythonçš„StringIO
 date: 2017-03-22
 author: TTyb
-desc: "pythonµÄStringIO"
+desc: "pythonçš„StringIO"
 ---
 
-ÓÐÊ±ºòÐèÒª½« `information` ±£´æÔÚ±¾µØ£¬¿ÉÒÔÕâÑùÐ´£º
+æœ‰æ—¶å€™éœ€è¦å°† `information` ä¿å­˜åœ¨æœ¬åœ°ï¼Œå¯ä»¥è¿™æ ·å†™ï¼š
 
 ```
 file = open("filename","w")
@@ -15,7 +15,7 @@ file.close()
 file.close()
 ```
 
-µ«ÊÇÓÐÊ±ºò²»ÏëÐ´µ½±¾µØ£¬Ö»ÊÇÒª´æÔÚµçÄÔÄÚ´æ¾ÍºÃ£¬ÕâÑù¾Í¿ÉÒÔÓÃ `StringIO` ½øÐÐ±£´æ£º
+ä½†æ˜¯æœ‰æ—¶å€™ä¸æƒ³å†™åˆ°æœ¬åœ°ï¼Œåªæ˜¯è¦å­˜åœ¨ç”µè„‘å†…å­˜å°±å¥½ï¼Œè¿™æ ·å°±å¯ä»¥ç”¨ `StringIO` è¿›è¡Œä¿å­˜ï¼š
 
 ```
 
@@ -27,6 +27,6 @@ getmessages = s.read()
 s.close()
 ```
 
-`StringIO` ¿ÉÒÔÓÐ°´ÐÐ¶ÁÈ¡ `readlines` £¬°´ÐÐÐ´Èë `writelines` ,Ò»°ã²Ù×÷ÎÄ¼þÐ´ÈëµÄ·½·¨¶¼»áÓÐ£¬¾ßÌåÇë¿´£º
+`StringIO` å¯ä»¥æœ‰æŒ‰è¡Œè¯»å– `readlines` ï¼ŒæŒ‰è¡Œå†™å…¥ `writelines` ,ä¸€èˆ¬æ“ä½œæ–‡ä»¶å†™å…¥çš„æ–¹æ³•éƒ½ä¼šæœ‰ï¼Œå…·ä½“è¯·çœ‹ï¼š
 
 >https://docs.python.org/2/library/stringio.html
