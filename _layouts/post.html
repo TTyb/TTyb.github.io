@@ -28,7 +28,7 @@ layout: default
         <p>感谢您的支持，我会继续努力的!</p>
     </div>
     <div class="shang_payimg">
-        <img src="{{ "/static/jpg/alipayimg.jpg" | prepend: site.baseurl }}"alt="扫码支持" title="扫一扫"/>
+        <img src="{{ "/static/jpg/alipayimg.jpg" | prepend: site.baseurl }}"alt="扫码支持" onclick="dashangToggle() title="扫一扫"/>
     </div>
     <div class="pay_explain">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;扫码打赏一下，你说多少就多少<br /></div>
     <div class="shang_payselect">
@@ -52,7 +52,7 @@ $(function(){
 	$(".pay_item").click(function(){
 		$(this).addClass('checked').siblings('.pay_item').removeClass('checked');
 		var dataid=$(this).attr('data-id');
-		$(".shang_payimg img").attr("src",'{{ "/static/jpg/weipay"+dataid+"img.jpg" | prepend: site.baseurl }}');
+		$(".shang_payimg img").attr("src",'{{ "/static/jpg/"+dataid+"img.jpg" | prepend: site.baseurl }}');
 		$("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
 	});
 });
