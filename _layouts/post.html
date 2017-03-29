@@ -16,7 +16,7 @@ layout: default
         </p>
     </div>
 	<p>
-		<a href="javascript:void(0)" onclick="dashangToggle()" class="dashang">打赏作者</a>
+		<a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏作者</a>
 	</p>
     {% include comment.html %}
 </div>
@@ -52,7 +52,7 @@ $(function(){
 	$(".pay_item").click(function(){
 		$(this).addClass('checked').siblings('.pay_item').removeClass('checked');
 		var dataid=$(this).attr('data-id');
-		$(".shang_payimg img").attr("src",'{{ "/static/jpg/"+dataid+"img.jpg" | prepend: site.baseurl }}');
+		$(".shang_payimg img").attr("src","{{ /static/jpg/"+dataid+"img.jpg | prepend: site.baseurl }}");
 		$("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
 	});
 });
