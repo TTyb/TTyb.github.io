@@ -64,7 +64,7 @@ layout: default
       var word_list = new Array();
         word_list =  [{% for category in site.categories %}
         {
-            text: "{{ category | first }}",weight: {{ category | last | size }}, link: {href: "/showCategory.html?cat={{ category | first }}", target: "_blank"}
+            text: "{{ category | first }}",weight: {{ category | last | size }}, link: {href: "/showCategory.html?cat={{ category | first }}"}
         }{% if category != site.categories.last %},{% endif %}
         {% endfor %}]
 
