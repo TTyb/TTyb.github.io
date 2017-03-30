@@ -3651,8 +3651,8 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 }
 
 .nav .caret {
-    border-top-color: #428bca;
-    border-bottom-color: #428bca
+    border-top-color: #777777;
+    border-bottom-color: #777777
 }
 
 .nav a:hover .caret {
