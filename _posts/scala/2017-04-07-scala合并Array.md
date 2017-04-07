@@ -2,7 +2,7 @@
 layout: post
 categories: [scala]
 title: scala合并Array
-date: 2017-04-05
+date: 2017-04-07
 author: TTyb
 desc: "scala合并Array"
 ---
