@@ -13,10 +13,10 @@ layout: default
             分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</span></a>
         </small>
         {% endfor %}
-        <h6 class="text-muted">作者:{{ post.author }}&nbsp;&nbsp;<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span></h6>
+        <h6 class="text-muted">作者：{{ post.author }}&nbsp;&nbsp;文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span></h6>
         <p class="content text-overflow">
             {% if post.desc %}
-            <span class="abs">{{ post.desc }}</span>
+            {{ post.desc }}
             {% else %}
             {{ post.excerpt | strip_html }}
             {% endif %}
@@ -47,12 +47,6 @@ layout: default
 	
 	.timet {
     background: url({{ "/static/jpg/time.png" | prepend: site.baseurl }}) no-repeat left center;
-	padding-left: 10px;
-	margin: 0 10px 0 0;
-	}
-	
-	.abs {
-    background: url({{ "/static/jpg/abs.png" | prepend: site.baseurl }}) no-repeat left center;
 	padding-left: 20px;
 	margin: 0 10px 0 0;
 	}
