@@ -1,0 +1,34 @@
+<div class="col-md-3" style="background:#f4f4f4;">
+
+        <h3>类别</h3>
+        <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;" />
+        <table style="margin:1px 0 1px 0;">
+        <tbody>
+        {% for category in site.categories %}
+            <tr><th><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ post.title }}{{ category | first }}({{ category | last | size }})</a></tr></th>
+        {% endfor %}
+        </tbody>
+        </table>
+
+        <h3>标签云</h3>
+        <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;" />
+        <link rel="stylesheet" type="text/css" href="{{ "/static/css/jqcloud.css" | prepend: site.baseurl }}" />
+        <script type="text/javascript" src="{{ "/static/js/jqcloud-1.0.4.min.js" | prepend: site.baseurl }}"></script>
+
+        <div class="row-fluid">
+            <div class="span12" id="clound" style="height:350px"></div>
+        </div>
+
+         <script type="text/javascript">
+          var word_list = new Array();
+            word_list =  [{% for category in site.categories %}
+            {
+                text: "{{ category | first }}",weight: {{ category | last | size }}, link: {href: "/showCategory.html?cat={{ category | first }}"}
+            }{% if category != site.categories.last %},{% endif %}
+            {% endfor %}]
+
+          $(function() {
+            $("#clound").jQCloud(word_list);
+          });
+        </script>
+</div>

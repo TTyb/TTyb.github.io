@@ -3,30 +3,35 @@ layout: default
 ---
 
 <div class="container">
-    <h1>文章列表</h1>
-    <div class="page-header">
-        {% for post in site.posts %}
-        <hr>
-        <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
-        {% for category in post.categories %}
-        <small>
-            分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</span></a>
-        </small>
-        {% endfor %}
-        <h6 class="text-muted">作者：{{ post.author }}&nbsp;&nbsp;文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span></h6>
-        <p class="content text-overflow">
-            {% if post.desc %}
-            {{ post.desc }}
-            {% else %}
-            {{ post.excerpt | strip_html }}
-            {% endif %}
-        </p>
-		
-		<h5><a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></h5>
-		<p></p>
-        {% endfor %}
-		
+    <div class="col-md-9">
+        <h1>文章列表</h1>
+        <div class="page-header">
+            {% for post in site.posts %}
+            <hr>
+            <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+            {% for category in post.categories %}
+            <small>
+                分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</span></a>
+            </small>
+            {% endfor %}
+            <h6 class="text-muted">作者：{{ post.author }}&nbsp;&nbsp;文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span>
+            </h6>
+            <p class="content text-overflow">
+                {% if post.desc %}
+                {{ post.desc }}
+                {% else %}
+                {{ post.excerpt | strip_html }}
+                {% endif %}
+            </p>
+
+            <h5><a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></h5>
+            <p></p>
+            {% endfor %}
+        </div>
     </div>
+
+    {% include rightmenu.html %}
+
 </div>
 
 <style>
@@ -50,6 +55,8 @@ layout: default
 	padding-left: 20px;
 	margin: 0 10px 0 0;
 	}
+
+
 </style>
 
 
