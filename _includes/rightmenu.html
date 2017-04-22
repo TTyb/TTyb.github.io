@@ -1,34 +1,144 @@
 <div class="col-md-3" style="background:#f4f4f4;">
+	
+	<h3 style="font-family: KaiTi;">公告</h3>
+    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
+	<div id="myTime">
+		<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" id="honehoneclock" align="center">
 
-        <h3>类别</h3>
-        <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;" />
-        <table style="margin:1px 0 1px 0;">
-        <tbody>
+			<embed wmode="transparent" src="http://www.liuyuyao.com/flash2261.swf" bgcolor="#ffffff" name="honehoneclock" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+		</object>
+	</div>
+
+    <h3 style="font-family: KaiTi;">标签云</h3>
+    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
+
+    <div>
         {% for category in site.categories %}
-            <tr><th><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ post.title }}{{ category | first }}({{ category | last | size }})</a></tr></th>
+        <a class="tags" href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{post.title}}{{ category | first }}({{ category | last | size }})</a>
         {% endfor %}
-        </tbody>
-        </table>
+    </div>
 
-        <h3>标签云</h3>
-        <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;" />
-        <link rel="stylesheet" type="text/css" href="{{ "/static/css/jqcloud.css" | prepend: site.baseurl }}" />
-        <script type="text/javascript" src="{{ "/static/js/jqcloud-1.0.4.min.js" | prepend: site.baseurl }}"></script>
-
-        <div class="row-fluid">
-            <div class="span12" id="clound" style="height:350px"></div>
-        </div>
-
-         <script type="text/javascript">
-          var word_list = new Array();
-            word_list =  [{% for category in site.categories %}
-            {
-                text: "{{ category | first }}",weight: {{ category | last | size }}, link: {href: "/showCategory.html?cat={{ category | first }}"}
-            }{% if category != site.categories.last %},{% endif %}
-            {% endfor %}]
-
-          $(function() {
-            $("#clound").jQCloud(word_list);
-          });
-        </script>
 </div>
+
+
+<style>
+
+.tags {
+	float:left;
+	margin:0 0 7px 20px;
+	position:relative;
+
+	font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:0.75em;
+	font-weight:bold;
+	text-decoration:none;
+
+	color:#996633;
+	text-shadow:0px 1px 0px rgba(255,255,255,.4);
+
+	padding:0em 0.2em 0.3em 0.9em;
+
+	border-top:1px solid #d99d38;
+	border-right:1px solid #d99d38;
+	border-bottom:1px solid #d99d38;
+
+	-webkit-border-radius:0 0.25em 0.25em 0;
+	-moz-border-radius:0 0.25em 0.25em 0;
+	border-radius:0 0.25em 0.25em 0;
+
+	background-image: -webkit-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -moz-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -o-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -ms-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#feda71', EndColorStr='#feba47');
+
+	-webkit-box-shadow:
+		inset 0 1px 0 #faeaba,
+		0 1px 1px rgba(0,0,0,.1);
+	-moz-box-shadow:
+		inset 0 1px 0 #faeaba,
+		0 1px 1px rgba(0,0,0,.1);
+	box-shadow:
+		inset 0 1px 0 #faeaba,
+		0 1px 1px rgba(0,0,0,.1);
+}
+
+.tags:before {
+	content:'';
+
+	width:1.30em;
+	height:1.358em;
+
+	background-image: -webkit-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -moz-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -o-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: -ms-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	background-image: linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#feda71', EndColorStr='#feba47');
+	
+	position:absolute;
+	left:-0.6em;
+	top:.18em;
+
+	-webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	-o-transform:rotate(45deg);
+	transform:rotate(45deg);
+
+	border-left:1px solid #d99d38;
+	border-bottom:1px solid #d99d38;
+
+	-webkit-border-radius:0 0 0 0.25em;
+	-moz-border-radius:0 0 0 0.25em;
+	border-radius:0 0 0 0.25em;
+
+	z-index:1;
+}
+
+.tags:after {
+	content:'';
+
+	width:0.5em;
+	height:0.5em;
+
+	background:#fff;
+
+	-webkit-border-radius:4.167em;
+	-moz-border-radius:4.167em;
+	border-radius:4.167em;
+
+	border:1px solid #d99d38;
+
+	-webkit-box-shadow:0 1px 0 #faeaba;
+	-moz-box-shadow:0 1px 0 #faeaba;
+	box-shadow:0 1px 0 #faeaba;
+
+	position:absolute;
+	top:0.667em;
+	left:-0.083em;
+	z-index:2;
+}
+
+.tags:hover {
+	background-image: -webkit-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -moz-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -o-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -ms-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#fee18d', EndColorStr='#fec86c');
+
+	border-color:#e1b160;
+}
+
+.tags:hover:before {
+	background-image: -webkit-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -moz-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -o-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: -ms-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	background-image: linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#fee18d', EndColorStr='#fec86c');
+
+	border-color:#e1b160;
+}
+</style>
