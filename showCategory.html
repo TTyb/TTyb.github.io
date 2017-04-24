@@ -28,12 +28,9 @@ layout: default
 <script>
     (function () {
         var dataStr = '{ {% for cat in site.categories %}{% if cat[0] != site.categories.first[0] %},{% endif %}"{{ cat[0] }}":[{% for post in cat[1] %}{% if post != cat[1].first %},{% endif %}{% for category in post.categories %}{"desc":"{{post.desc}}","category":"{{ category }}","author":"{{post.author}}","url":"{{post.url | prepend: site.baseurl}}", "title":"{{post.title}}", "date":"{{post.date | date:"%Y-%m-%d"}}"}{% endfor %}{% endfor %}]{% endfor %} }';
-        //console.log(dataStr)
         data = JSON.parse(dataStr);
         curTag = $.query.get("cat");
-        //alert(curTag);
         archieves = data[curTag];
-//alert(archieves);
         var k = '';
         for (i in archieves) {
             var aaa = "<div>";
