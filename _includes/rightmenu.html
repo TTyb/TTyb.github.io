@@ -10,7 +10,7 @@
     <div style="text-align: center;">
         <p style="align:center;font-family:KaiTi;">百哥么么哒</p>
 		<ul class="list-inline">
-			<li><a class="contactme" title="联系" href="/">首页</a></li>
+			<li><a onclick="dashangToggle()" class="contactme" title="打赏" href="javascript:void(0)">打赏</a></li>
 			<li><a class="contactme" title="联系" href="/contact">联系</a></li>
 			<li><a class="contactme" title="留言" href="/guestbook">留言</a></li>
 		</ul>
@@ -166,3 +166,5 @@
 	border-color:#e1b160;
 }
 </style>
+
+{% include dashang.html %}
