@@ -1,5 +1,5 @@
-<div class="container">
-<div class="col-md-3" style="background:#f4f4f4;">
+
+<div class="col-xs-5 col-sm-5 col-md-3" style="background:#f4f4f4;">
 	
 	<h3 style="font-family: KaiTi;">公告</h3>
     <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
@@ -9,26 +9,31 @@
 
     <div style="text-align: center;">
         <p style="align:center;font-family:KaiTi;">百哥么么哒</p>
-        <a class="contactme" title="联系" href="/contact">联系</a>
-        <a class="contactme" title="留言" href="/guestbook">留言</a>
+		<ul class="list-inline">
+			<li><a class="contactme" title="联系" href="/">首页</a></li>
+			<li><a class="contactme" title="联系" href="/contact">联系</a></li>
+			<li><a class="contactme" title="留言" href="/guestbook">留言</a></li>
+		</ul>
     </div>
+	
+	<div style="clear:both;">
+		<h3 style="font-family: KaiTi;">博客标签</h3>
+		<hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
 
-    <h3 style="font-family: KaiTi;">博客标签</h3>
-    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
-
-    <div>
-        {% for category in site.categories %}
-        <a class="tags" href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{post.title}}{{ category | first }}({{ category | last | size }})</a>
-        {% endfor %}
-    </div>
-
+		<div>
+			{% for category in site.categories %}
+			<a class="tags" href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{post.title}}{{ category | first }}({{ category | last | size }})</a>
+			{% endfor %}
+		</div>
+	</div>
+	
     <div style="clear:both;">
     <h3 style="font-family: KaiTi;">博客档案</h3>
     <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
     </div>
 
 </div>
-</div>
+
 <style>
 .contactme{
     background-color: #00a8e6;
@@ -38,7 +43,8 @@
     font-family: "serif";
     line-height: 25px;
     text-align: center;
-    width: 25%
+	padding-left: 20px;
+	padding-right: 20px;
     }
 
 .tags {
