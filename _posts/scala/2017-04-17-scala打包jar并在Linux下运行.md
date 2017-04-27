@@ -23,10 +23,6 @@ desc: "scala打包jar并在Linux下运行"
 
 ![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170417175927243-212182658.png)
 
-切记这里还有一个位置是存放打包完成后的 `jar` 存放位置 `Output Directory` ：
-
-![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170417190747399-1810695351.png)
-
 新建一个文件夹用于存放 `.MP` 文件，而且新建的文件夹一定要在 `src` 目录下！
 
 > ![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170417180424696-878136188.png)
@@ -37,7 +33,11 @@ desc: "scala打包jar并在Linux下运行"
 
 更改 `jar` 包的名字，然后 `Apply`：
 
-![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170417185113790-1736070932.png)
+![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170427143303006-312290811.png)
+
+切记这里还有一个位置是存放打包完成后的 `jar` 存放位置 `Output Directory` ：
+
+![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170417190747399-1810695351.png)
 
 可以看到出现了新的文件夹和文件：
 
@@ -68,3 +68,9 @@ bash spark-submit --class MF字段 你的jar名字.jar
 其中 `MF字段` 为你的 `MF` 文件中的 `Main-Class` :
 
 ![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170417190458790-523139930.png)
+
+如果出现错误：
+
+![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170418105700227-405385447.png)
+
+请自行添加 `bash` 的环境变量
