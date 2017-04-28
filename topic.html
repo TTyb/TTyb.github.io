@@ -14,7 +14,7 @@ layout: default
                 分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</span></a>
             </small>
             {% endfor %}
-            <h6 class="text-muted">作者：{{ post.author }}&nbsp;&nbsp;文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span>
+            <h6 class="text-muted"><span style="padding-right:5px">作者：{{ post.author }}</span>文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span>
             </h6>
             <p class="content text-overflow">
                 {% if post.desc %}
