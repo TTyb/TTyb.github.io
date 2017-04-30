@@ -1,0 +1,12 @@
+/*»’¿˙*/
+#CalendarTab{width:100%}
+#cal {width: 100%; border: 0;font-size: 11px;text-align:center;font-family: KaiTi;margin-bottom:10px}
+#cal #top { height: 28px; line-height: 31px;background: #e7eef8; color: #003784;}
+#cal #top select { font-size: 12px;}
+#cal #top input { padding: 0;}
+#cal ul#wk {margin: 0;padding: 0;height: 25px;width:97%}
+#cal ul#wk li {float: left; width: 14%;line-height: 35px;list-style: none;}  
+#cal ul#wk li b {font-weight: normal; color: #c60b02;}
+#cal #cm { clear: left; border-top: 1px solid #ddd; position: relative;}
+#cal #cm .cell {position: absolute;line-height:12px;width:13%}
+#cal #cm .cell .so {font: bold 12px KaiTi;}
