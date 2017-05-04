@@ -35,6 +35,21 @@
     <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
     </div>
 	{% include date.html %}
+	
+	<div style="clear:both;">
+    <h3 style="font-family: KaiTi;">博客热点</h3>
+    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
+    </div>
+	<div class="row">
+		<div id="hot-news-wrap"></div>
+		<script>var yunModuleEnv = true;</script>
+		<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+		<script>
+		  var yunTieProductKey = "b531760e8d084342909cb548cf1a9acb";  
+		  var yunHotNewsWrap = "hot-news-wrap";   //放置的DOM节点ID 或 样式类
+		  Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vZXh0ZW5kL2hvdF9uZXdzX3NjcmlwdC5odG1s", true);
+		</script>
+	</div>
 </div>
 
 <style>
