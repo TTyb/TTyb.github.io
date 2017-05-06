@@ -24,7 +24,7 @@ layout: default
 			{% for post in site.posts %}
 			{% for category in post.categories %}
 			<tr>
-				<th><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></th>
+				<th><span class="topicc"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></span></th>
 				<th>{{ post.date | date: " %Y-%m-%d" }}</th>
 				<th><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</a></th>
 				{% endfor %}
@@ -36,3 +36,12 @@ layout: default
 
     {% include rightmenu.html %}
 </div>
+
+<style>
+	
+.topicc {
+    background: url({{ "/static/jpg/wenzhang.gif" | prepend: site.baseurl }}) no-repeat left center;
+	padding-left: 20px;
+	margin: 0 10px 0 0;
+	}
+</style>

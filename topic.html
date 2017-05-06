@@ -24,7 +24,7 @@ layout: default
                 {% endif %}
             </p>
 
-            <h5><a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></h5>
+            <h5><span class="topicc"><a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></span></h5>
             <p></p>
             {% endfor %}
         </div>
@@ -55,7 +55,11 @@ layout: default
 	padding-left: 20px;
 	margin: 0 10px 0 0;
 	}
-
+.topicc {
+    background: url({{ "/static/jpg/wenzhang.gif" | prepend: site.baseurl }}) no-repeat left center;
+	padding-left: 20px;
+	margin: 0 10px 0 0;
+	}
 
 </style>
 

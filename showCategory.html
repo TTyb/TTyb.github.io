@@ -39,10 +39,10 @@ layout: default
         for (i in archieves) {
             var aaa = "<div>";
             aaa += "<hr><h3><a href = '" + archieves[i]['url'] + "' > " + archieves[i]['title'] + "</a></h3>";
-            aaa += "<small>分类：" + archieves[i]['category'] + "</small>";
-            aaa += "<h6 class='text-muted'>作者:" + archieves[i]['author'] + "&nbsp;&nbsp;文章发表于" + archieves[i]['date'];
-            aaa += "</h6><div>";
-            aaa += "<p class='content text-overflow'>" + archieves[i]['desc'] + "</p><h5><a href='{{ post.url | prepend: site.baseurl }}'>阅读全文 »</a></h5><p></p></div></div>";
+            aaa += "<small>分类：<span class='tag'>" + archieves[i]['category'] + "</span></small>";
+            aaa += "<h6 class='text-muted'>作者：" + archieves[i]['author'] + "&nbsp;&nbsp;文章发表于：<span class='timet'>" + archieves[i]['date'];
+            aaa += "</span></h6><div>";
+            aaa += "<p class='content text-overflow'>" + archieves[i]['desc'] + "</p><h5><span class='topicc'><a href='{{ post.url | prepend: site.baseurl }}'>阅读全文 »</a></span></h5><p></p></div></div>";
             k += aaa;
         }
         var div = document.getElementById("yy");
@@ -53,3 +53,23 @@ layout: default
     })();
 
 </script>
+
+<style>
+.tag {
+    background: url({{ "/static/jpg/tag.png" | prepend: site.baseurl }}) no-repeat left center;
+	padding-left: 20px;
+	margin: 0 10px 0 0;
+	}
+	
+.timet {
+    background: url({{ "/static/jpg/time.png" | prepend: site.baseurl }}) no-repeat left center;
+	padding-left: 20px;
+	margin: 0 10px 0 0;
+	}
+	
+.topicc {
+    background: url({{ "/static/jpg/wenzhang.gif" | prepend: site.baseurl }}) no-repeat left center;
+	padding-left: 20px;
+	margin: 0 10px 0 0;
+	}
+</style>
