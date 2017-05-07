@@ -1,0 +1,72 @@
+<div class="container mp30">
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12">
+						<ul class="demo1" style="list-style:none;">
+							{% for post in site.posts %}
+							
+							<li class="news-item">
+								<table cellpadding="4">
+									<tr>
+										<td><img src="" class="imgid" width="60" class="img-circle" /></td>
+										<td>
+										{% if post.desc %}
+										{{ post.desc }}
+										{% else %}
+										{{ post.excerpt | strip_html }}
+										{% endif %} 
+										<a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a>
+										</td>
+									</tr>
+								</table>
+							</li>
+							
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="panel-footer">
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="{{ "/static/js/jquery.min.js" | prepend: site.baseurl }}"></script>
+<script type="text/javascript" src="{{ "/static/js/jquery.bootstrap.newsbox.min.js" | prepend: site.baseurl }}"></script>
+
+<script type="text/javascript">
+$(function () {
+	$(".demo1").bootstrapNews({
+		newsPerPage: 4,
+		autoplay: true,
+		pauseOnHover:true,
+		direction: 'up',
+		newsTickerInterval: 4000,
+		onToDo: function () {
+			//console.log(this);
+		}
+	});
+
+});
+$(function () {
+	$(".imgid").attr("src", "{{ '/static/jpg/" + Math.ceil(Math.random()*6+1) + ".png'| prepend: site.baseurl }}");
+	});
+</script>
+
+<style>
+.panel ul
+{
+    padding:0px;
+    margin:0px;
+    list-style:none;
+}
+
+.news-item
+{
+    padding:4px 4px;
+    margin:0px;
+    border-bottom:1px dotted #555; 
+}
+</style>

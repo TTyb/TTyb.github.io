@@ -4,7 +4,7 @@
 	<h3 style="font-family: KaiTi;">博客公告</h3>
     <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
 	<div style="margin:20px">
-		<marquee class="notice" direction="left" style="font-family: KaiTi;">博客持续更新，欢迎关注www.tybai.com</marquee>
+		<span class="notice"><marquee direction="left" style="font-family: KaiTi;">博客持续更新，欢迎关注www.tybai.com</marquee></span>
 	</div>
 	<div style="border-radius:5em;width:51%;height:100%;overflow:hidden;margin:0 auto;">
 		<img src="{{ "/static/jpg/head.jpg" | prepend: site.baseurl }}" alt=""/>
@@ -49,6 +49,12 @@
 	<div style="margin-bottom: 10px;">
 		<img src="{{ "/static/jpg/wangdachui.gif" | prepend: site.baseurl }}" alt=""/>
 	</div>
+	
+	<div style="clear:both;">
+    <h3 style="font-family: KaiTi;">博客热点</h3>
+    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
+    </div>
+	{% include news.html %}
 
 </div>
 
@@ -58,6 +64,7 @@
 	background: url({{ "/static/jpg/notice.gif" | prepend: site.baseurl }}) no-repeat left center;
 	padding-left: 20px;
 	margin: 0 0 0 -10px;
+	padding-top: 8px;
 }
 
 #showimg {  
