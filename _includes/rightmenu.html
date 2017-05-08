@@ -30,7 +30,10 @@
 
 		<div>
 			{% for category in site.categories %}
-			<a class="tags" href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{post.title}}{{ category | first }}({{ category | last | size }})</a>
+			{% if category[0] == "crawler" %}
+			{% else %}
+			<a class="tags" href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ category | first }}({{ category | last | size }})</a>
+			{% endif %}
 			{% endfor %}
 		</div>
 	</div>

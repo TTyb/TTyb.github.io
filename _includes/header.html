@@ -21,15 +21,23 @@
 							<li><a href="http://www.cjhug.me/">搬砖的陈大师</a></li>
 							<li><a href="http://www.cnblogs.com/starwater/">星水博客园</a></li>
 						</ul>
-					</li> 
+					</li>
 				</ul>
 				<ul class="nav navbar-nav" style="margin: 0 0 0;">
 					<li><a class="navbar-brand" href="/">首页</a></li>
 					<li><a class="navbar-brand" href="/topic">文章</a></li>
 					<li><a class="navbar-brand" href="/category">分类</a></li>
-					<li><a class="navbar-brand" href="/log/log">日志</a></li>
+					<li><a class="navbar-brand" href="/logs/log">日志</a></li>
 					<li><a class="navbar-brand" href="/guestbook">留言</a></li>				
 					<li><a href="/contact" class="navbar-brand">联系</a></li>
+					{% for post in site.posts %}
+					{% if post.categories[0] == "crawler" %}
+					<li>
+						<a class="navbar-brand" style="background: url({{ "/static/jpg/newimg.png" | prepend: site.baseurl }}) no-repeat right top" href="{{ post.url | prepend: site.baseurl }}">爬虫教程</a>
+					</li>
+					{% endif %}
+					{% break %}
+					{% endfor %}
 				</ul>
 				
             </ul>

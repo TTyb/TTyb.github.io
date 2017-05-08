@@ -22,14 +22,18 @@ layout: default
 			</thead>
 			<tbody>
 			{% for post in site.posts %}
+			{% if post.categories[0] == "crawler" %}
+			{% else %}
 			{% for category in post.categories %}
 			<tr>
 				<th><span class="topicc"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></span></th>
 				<th>{{ post.date | date: " %Y-%m-%d" }}</th>
 				<th><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</a></th>
-				{% endfor %}
-				{% endfor %}
+				
 			</tr>
+			{% endfor %}
+			{% endif %}
+			{% endfor %}
 			</tbody>
 		</table>
 	</div>

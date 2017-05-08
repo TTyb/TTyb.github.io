@@ -1,0 +1,14 @@
+<div class="col-xs-3 col-sm-3 col-md-2" style="margin-top:30px;">
+	<div class="text-muted">
+	<h3 style="font-size: 1.2em;font-family: KaiTi;padding-left:10px">目录</h3>
+	</div>
+	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
+	<ul class="nav" style="font-family: serif;text-decoration: none;font-size: 16px;">
+		{% for post in site.posts %}
+			{% if post.categories[0] == "crawler" %}
+			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+			{% else %}
+			{% endif %}
+		{% endfor %}
+	</ul>
+</div>

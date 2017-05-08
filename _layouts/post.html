@@ -3,6 +3,24 @@ layout: default
 ---
 
 <div class="container">
+
+	{% if page.categories[0] == "crawler" %}
+	{% include leftmenu.html %}
+	<div class="col-xs-9 col-sm-9 col-md-10">
+		<div class="page-header">
+			<hr>
+			<h3>{{ page.title }}</a></h3>
+			<small>
+				分类：{{ page.categories[0] }}
+			</small>
+			<h6 class="text-muted"><span style="padding-right:5px">作者:{{ page.author }}</span>文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
+			<br/>
+			<p class="content text-overflow">
+				{{ content }}
+			</p>
+		</div>
+	</div>
+	{% else %}
 	<div class="col-xs-7 col-sm-7 col-md-9">
 		<div class="page-header">
 			<hr>
@@ -18,5 +36,7 @@ layout: default
 		</div>
 	</div>
     {% include rightmenu.html %}
+	{% endif %}
+	
     {% include comment.html %}
 </div>
