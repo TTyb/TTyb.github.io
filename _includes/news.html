@@ -35,6 +35,7 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript" src="{{ "/static/js/jquery.min.js" | prepend: site.baseurl }}"></script>
 <script type="text/javascript" src="{{ "/static/js/jquery.bootstrap.newsbox.min.js" | prepend: site.baseurl }}"></script>
 
@@ -50,12 +51,12 @@ $(function () {
 			//console.log(this);
 		}
 	});
+	$(".imgid").attr("src", "{{ '/static/jpg/" + Math.ceil(Math.random()*6+1) + ".png'| prepend: site.baseurl }}");
 
 });
-$(function () {
-	$(".imgid").attr("src", "{{ '/static/jpg/" + Math.ceil(Math.random()*6+1) + ".png'| prepend: site.baseurl }}");
-	});
 </script>
+
+
 
 <style>
 .panel ul

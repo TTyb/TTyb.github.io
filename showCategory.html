@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-<script type="text/javascript" src="{{ "/static/js/jquery.q.js" | prepend: site.baseurl }}"></script>
 
 <style>
     .text-overflow {
@@ -12,9 +11,24 @@ layout: default
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
+	.tag {
+		background: url({{ "/static/jpg/tag.png" | prepend: site.baseurl }}) no-repeat left center;
+		padding-left: 20px;
+		margin: 0 10px 0 0;
+		}
+		
+	.timet {
+		background: url({{ "/static/jpg/time.png" | prepend: site.baseurl }}) no-repeat left center;
+		padding-left: 20px;
+		margin: 0 10px 0 0;
+		}
+		
+	.topicc {
+		background: url({{ "/static/jpg/wenzhang.gif" | prepend: site.baseurl }}) no-repeat left center;
+		padding-left: 20px;
+		margin: 0 10px 0 0;
+		}
 </style>
-
 
 <div class="container">
 	<div class="col-xs-7 col-sm-7 col-md-9">
@@ -29,10 +43,14 @@ layout: default
     {% include rightmenu.html %}
 </div>
 
+
+<script type="text/javascript" src="{{ "/static/js/jquery.q.js" | prepend: site.baseurl }}"></script>
+
 <script>
     (function () {
         var dataStr = '{ {% for cat in site.categories %}{% if cat[0] != site.categories.first[0] %},{% endif %}"{{ cat[0] }}":[{% for post in cat[1] %}{% if post != cat[1].first %},{% endif %}{% for category in post.categories %}{"desc":"{{post.desc}}","category":"{{ category }}","author":"{{post.author}}","url":"{{post.url | prepend: site.baseurl}}", "title":"{{post.title}}", "date":"{{post.date | date:"%Y-%m-%d"}}"}{% endfor %}{% endfor %}]{% endfor %} }';
         data = JSON.parse(dataStr);
+		console.log(data)
         curTag = $.query.get("cat");
         archieves = data[curTag];
         var k = '';
@@ -54,22 +72,5 @@ layout: default
 
 </script>
 
-<style>
-.tag {
-    background: url({{ "/static/jpg/tag.png" | prepend: site.baseurl }}) no-repeat left center;
-	padding-left: 20px;
-	margin: 0 10px 0 0;
-	}
-	
-.timet {
-    background: url({{ "/static/jpg/time.png" | prepend: site.baseurl }}) no-repeat left center;
-	padding-left: 20px;
-	margin: 0 10px 0 0;
-	}
-	
-.topicc {
-    background: url({{ "/static/jpg/wenzhang.gif" | prepend: site.baseurl }}) no-repeat left center;
-	padding-left: 20px;
-	margin: 0 10px 0 0;
-	}
-</style>
+
+
