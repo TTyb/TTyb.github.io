@@ -12,12 +12,14 @@
 									<tr>
 										<td><img src="" class="imgid" width="60" class="img-circle" /></td>
 										<td>
+										<small>
 										{% if post.desc %}
 										{{ post.desc }}
 										{% else %}
 										{{ post.excerpt | strip_html }}
 										{% endif %} 
 										<a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a>
+										</small>
 										</td>
 									</tr>
 								</table>
@@ -39,7 +41,7 @@
 <script type="text/javascript">
 $(function () {
 	$(".demo1").bootstrapNews({
-		newsPerPage: 4,
+		newsPerPage: 3,
 		autoplay: true,
 		pauseOnHover:true,
 		direction: 'up',
