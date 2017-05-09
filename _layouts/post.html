@@ -19,6 +19,10 @@ layout: default
 				{{ content }}
 			</p>
 		</div>
+		<br/>
+		<h4 style="font-family: KaiTi">如果你觉得本站内容有帮助<i class="icon fa-hand-o-down" aria-hidden=true></i></h4>
+		<a onclick="dashangToggle()" class="contactme" title="鼓励" href="javascript:void(0)"><i class="icon fa-rmb"></i>我要鼓励作者写出更好的教程</a>
+		{% include dashang.html %}
 	</div>
 	{% else %}
 	<div class="col-xs-7 col-sm-7 col-md-9">
@@ -40,3 +44,19 @@ layout: default
 	
     {% include comment.html %}
 </div>
+
+<style>
+.contactme{
+    background-color: #00a8e6;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    font-family: "KaiTi";
+    line-height: 25px;
+    text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 26%;
+	text-decoration: none;
+    }
+</style>
