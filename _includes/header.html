@@ -31,12 +31,12 @@
 					<li><a class="navbar-brand" href="/guestbook">留言</a></li>				
 					<li><a href="/contact" class="navbar-brand">联系</a></li>
 					{% for post in site.posts %}
-					{% if post.categories[0] == "crawler" %}
+					{% if post.categories[0] == "crawlerfirst" %}
 					<li>
 						<a class="navbar-brand" style="background: url({{ "/static/jpg/newimg.png" | prepend: site.baseurl }}) no-repeat right top" href="{{ post.url | prepend: site.baseurl }}">爬虫教程</a>
 					</li>
+					{% else %}
 					{% endif %}
-					{% break %}
 					{% endfor %}
 				</ul>
 				

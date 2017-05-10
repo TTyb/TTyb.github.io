@@ -4,11 +4,13 @@
 	</div>
 	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
 	<ul class="nav" style="font-family: serif;text-decoration: none;font-size: 16px;">
-		{% for post in site.posts %}
-			{% if post.categories[0] == "crawler" %}
-			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+		{% assign sorted_posts = (site.posts | sort:0) %}
+		{% for post in sorted_posts %}
+			{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
+			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
 			{% else %}
 			{% endif %}
 		{% endfor %}
 	</ul>
+		
 </div>
