@@ -14,7 +14,10 @@ layout: default
 					<a data-toggle="dropdown" class="dropdown-toggle" href="#">分类<strong class="caret"></strong></a>
 					<ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
 						{% for category in site.categories %}
+						{% if category[0] == "crawler" or category[0] == "crawlerfirst" %}
+						{% else %}
 						<li><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ post.title }}{{ category | first }}({{ category | last | size }})</a></li>
+						{% endif %}
 						{% endfor %}
 					</ul>
 				</th>
@@ -22,7 +25,7 @@ layout: default
 			</thead>
 			<tbody>
 			{% for post in site.posts %}
-			{% if post.categories[0] == "crawler" %}
+			{% if post.categories[0] == "crawler" or category[0] == "crawlerfirst" %}
 			{% else %}
 			{% for category in post.categories %}
 			<tr>
