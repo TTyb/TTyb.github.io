@@ -4,7 +4,7 @@
 	<h3 style="font-family: KaiTi;">博客公告</h3>
     <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
 	<div style="margin:20px">
-		<span class="notice"><marquee direction="left" style="font-family: KaiTi;">博客持续更新，欢迎关注www.tybai.com</marquee></span>
+		<span class="notice"><marquee direction="left" style="font-family: KaiTi;">博客持续更新，欢迎关注TTyb</marquee></span>
 	</div>
 	<div style="border-radius:5em;width:51%;height:100%;overflow:hidden;margin:0 auto;">
 		<img src="{{ "/static/jpg/head.jpg" | prepend: site.baseurl }}" alt=""/>
@@ -13,14 +13,14 @@
     <div style="text-align: center;">
         <p style="align:center;font-family:KaiTi;">百哥么么哒</p>
 		<ul class="list-inline">
-			<li><a onclick="dashangToggle()" class="contactme" title="打赏" href="javascript:void(0)">打赏</a></li>
+			<li><a onclick="dashangToggle()" class="contactme" title="打赏作者" href="javascript:void(0)">打赏</a></li>
 			<li>
-				<a class="contactme" title="联系" href="/contact">联系</a>
+				<a class="contactme" title="关注公众号" href="/contact">关注</a>
 				<div id="showimg">
-					<img style="width: 100%;height: 100%;display: block;"alt="图片不存在"  src="{{ "/static/jpg/qq.jpg" | prepend: site.baseurl }}" />
+					<img style="width: 100%;height: 100%;display: block;"alt="图片不存在"  src="{{ "/static/jpg/follow.jpg" | prepend: site.baseurl }}" />
 				</div>
 			</li>
-			<li><a class="contactme" title="留言" href="/guestbook">留言</a></li>
+			<li><a class="contactme" title="给作者留言" href="/guestbook">留言</a></li>
 		</ul>
     </div>
 	
@@ -73,9 +73,10 @@
 #showimg {  
     display: none; /*初始不显示*/  
     position: absolute; /*使图片脱离流*/  
-	left:42%;
-	top:5%;
-	z-index:3
+	left: 20%;
+	right: 20%;
+	top: 7%;
+	z-index: 3
 }  
   
 #showimg img {  
