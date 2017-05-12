@@ -30,13 +30,10 @@
 					<li><a class="navbar-brand" href="/logs/log">日志</a></li>
 					<li><a class="navbar-brand" href="/guestbook">留言</a></li>				
 					<!-- <li><a class="navbar-brand" href="/contact">联系</a></li> -->
-					{% for post in site.posts %}
-					{% if post.categories[0] == "crawlerfirst" %}
+					{% for post in site.categories['crawlerfirst'] %}
 					<li>
 						<a class="navbar-brand" style="background: url({{ "/static/jpg/newimg.png" | prepend: site.baseurl }}) no-repeat right top" href="{{ post.url | prepend: site.baseurl }}">爬虫教程</a>
 					</li>
-					{% else %}
-					{% endif %}
 					{% endfor %}
 				</ul>
 				

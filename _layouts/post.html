@@ -19,6 +19,20 @@ layout: default
 				{{ content }}
 			</p>
 		</div>
+		
+		<ul class="list-inline" style="font-family: 微软雅黑;text-decoration: none;">
+			{% if page.categories[0] == "crawlerfirst" %}
+			<li class="pull-left"><span style="color:#CCCCCC">上一篇</span></li>
+			{% else %}
+			<li class="pull-left"><a href="{{ page.previous.url }}">上一篇：{{ page.previous.title }}</a></li>
+			{% endif %}
+			{% if page.next.categories[0] == "crawler" %}
+			<li class="pull-right"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }}</a></li>
+			{% else %}
+			<li class="pull-right"><span style="color:#CCCCCC">下一篇</span></li>
+			{% endif %}
+		</ul>
+		
 		<br/>
 		<h4 style="font-family: KaiTi">如果你觉得本站内容有帮助<i class="icon fa-hand-o-down" aria-hidden=true></i></h4>
 		<a onclick="dashangToggle()" class="contactme" title="鼓励" href="javascript:void(0)"><i class="icon fa-rmb"></i>我要鼓励作者写出更好的教程</a>

@@ -3,13 +3,14 @@
 	<h3 style="font-size: 1.2em;font-family: KaiTi;padding-left:10px">目录</h3>
 	</div>
 	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
-	<ul class="nav" style="font-family: serif;text-decoration: none;font-size: 16px;">
-		{% assign sorted_posts = (site.posts | sort:0) %}
-		{% for post in sorted_posts %}
-			{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
+	<ul class="nav" style="font-family: 微软雅黑;text-decoration: none;font-size: 15px;">
+		{% for post in site.categories['crawlerfirst'] %}
 			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
-			{% else %}
-			{% endif %}
+		{% endfor %}
+		
+		{% assign sorted_posts = (site.categories['crawler'] | sort:0) %}
+		{% for post in sorted_posts %}
+			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
 		{% endfor %}
 	</ul>
 		
