@@ -17,13 +17,13 @@ get
 ```
 urllib.request
 requests
-grequests
 ```
 
 ### 多线程
 
 ```
 threading
+grequests
 concurrent.futures
 ```
 
