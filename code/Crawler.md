@@ -24,7 +24,6 @@ requests
 ```
 threading
 grequests
-concurrent.futures
 ```
 
 ### 搜索是简单的登陆
