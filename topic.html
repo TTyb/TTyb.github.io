@@ -7,7 +7,7 @@ layout: default
         <h1>文章列表</h1>
         <div class="page-header">
             {% for post in site.posts %}
-			{% if post.categories[0] == "crawler" or category[0] == "crawlerfirst" %}
+			{% if post.categories[0] == "crawler" or categories[0] == "crawlerfirst" %}
 			{% else %}
             <hr>
             <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
