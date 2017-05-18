@@ -24,23 +24,13 @@ layout: default
 			{% if page.categories[0] == "crawlerfirst" %}
 			<li class="pull-left"><span style="color:#CCCCCC">上一篇</span></li>
 			{% else %}
+			<li class="pull-left"><a href="{{ page.previous.url }}">← 上一篇：{{ page.previous.title }}</a></li>
 			{% endif %}
-			
-			{% for post in site.categories['crawler'] %}
-			{% if page.title == post.title %}
-			<li class="pull-left"><a href="{{ post.previous.url }}">← 上一篇：{{ post.previous.title }}</a></li>
-			{% else %}
-			{% endif %}
-			{% endfor %}
-			
-			
-			{% for post in site.categories['crawler'] %}
-			{% if page.title == post.title %}
-			<li class="pull-right"><a href="{{ post.next.url }}">下一篇：{{ post.next.title }} →</a></li>
+			{% if page.next.categories[0] == "crawler" %}
+			<li class="pull-right"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }} →</a></li>
 			{% else %}
 			<li class="pull-right"><span style="color:#CCCCCC">下一篇</span></li>
 			{% endif %}
-			{% endfor %}
 		</ul>
 		
 		<br/>
