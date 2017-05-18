@@ -21,44 +21,18 @@ layout: default
 		</div>
 		
 		<ul class="list-inline" style="font-family: 微软雅黑;text-decoration: none;">
-			{% assign sort_posts = (site.categories['crawler'] | sort:0) %}
-		
-			<!--start-->
+		{% for post in sorted_posts %}
 			{% if page.categories[0] == "crawlerfirst" %}
 			<li class="pull-left"><span style="color:#CCCCCC">上一篇</span></li>
 			{% else %}
-			
-			{% for post in sort_posts %}
-			{% if page.title == post.title%}
-			<li class="pull-left"><a href="{{ post.previous.url }}">← 上一篇：{{ post.previous.title }}</a></li>
-			{% else %}
+			<li class="pull-left"><a href="{{ page.previous.url }}">← 上一篇：{{ page.previous.title }}</a></li>
 			{% endif %}
-			{% endfor %}
-			
-			{% endif %}
-			<!--end-->
-			
-			<!--start1-->
-			{% for post in sort_posts %}
-			{% if page.title == post.title %}
-			
-			{% if post.next.categories[0] == "crawler" %}
-			<li class="pull-right"><a href="{{ post.next.url }}">下一篇：{{ post.next.title }} →</a></li>
+			{% if page.next.categories[0] == "crawler" %}
+			<li class="pull-right"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }} →</a></li>
 			{% else %}
 			<li class="pull-right"><span style="color:#CCCCCC">下一篇</span></li>
 			{% endif %}
-			
-			{% else %}
-			{% endif %}
-			{% endfor %}
-			<!--end1-->
-			
-			<!--start2-->
-			{% if page.categories[0] == "crawlerfirst" %}
-			<li class="pull-right"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }} →</a></li>
-			{% else %}
-			{% endif %}
-			<!--end2-->
+		{% endfor %}
 		</ul>
 		
 		<br/>
