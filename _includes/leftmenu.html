@@ -13,12 +13,5 @@
 			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
 		{% endfor %}
 	</ul>
-	
-	<ul>
-	{% for post in site.categories['crawler'] %}
-	<li>{{ post.title }}</li>
-	<li>{{ post.next.title }}</li>
-	{% endfor %}
-	</ul>
 		
 </div>
