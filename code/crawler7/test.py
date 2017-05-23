@@ -6,6 +6,7 @@ import time
 import random
 import requests
 
+
 # get网页的函数，没有cookie
 def gethtml(url):
     header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0',
@@ -19,6 +20,7 @@ def gethtml(url):
     html_bytes = requests.get(url, headers=header)
     return html_bytes
 
+
 # 携带cookie的get网页的函数
 def gethtml_cookie(url, dict):
     header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0',
@@ -26,19 +28,38 @@ def gethtml_cookie(url, dict):
               'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
               'Accept-Encoding': 'gzip, deflate',
               'Accept-Language': 'zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3',
-              'Cookie': dict["HOSUPPORT"] + "; " + dict["ASP.BAIDUID"] + "; " + dict["FG"],
+              'Cookie': dict["HOSUPPORT"] + "; " + dict["BAIDUID"] + "; " + dict["FG"],
               'Connection': 'keep-alive'}
 
     # 解析网页
     html_bytes = requests.get(url, headers=header)
     return html_bytes
 
+
 # 获取返回头部的set-cookie
-def getset_cookie(html_bytes):
-    return html_bytes.headers['set-cookie']
+def getset_cookie(response):
+    return response.headers['set-cookie']
 
-if __name__=='__main__':
 
+# 解析set-cookie获得cookie的字典
+def get_cookie(setcookie):
+    dict = {}
+    temparr = setcookie.split(" ")
+    for item in temparr:
+        if "HOSUPPORT" in item:
+            dict["HOSUPPORT"] = item
+        elif "FG" in item:
+            for itm in item.split(":"):
+                if "FG" in itm:
+                    dict["FG"] = itm
+                if "BAIDUID" in itm:
+                    dict["BAIDUID"] = itm
+    return dict
+
+
+#
+
+if __name__ == '__main__':
     js = '''function callback(){
             return 'bd__cbs__'+Math.floor(2147483648 * Math.random()).toString(36)
         }
@@ -60,8 +81,10 @@ if __name__=='__main__':
 
     token_url = "https://passport.baidu.com/v2/api/?getapi&tpl=mn&apiver=v3&tt=" + str(tt) + "&class=login&gid=" + gid + "&logintype=dialogLogin&callback=" + callback
     print(token_url)
-    token = gethtml(token_url).content.decode("utf-8","ignore")
-    print(token)
+    token_htmlbytes = gethtml(token_url)
+    token_cookie = get_cookie(getset_cookie(token_htmlbytes))
+    token_response = gethtml_cookie(token_url, token_cookie).content.decode("utf-8","ignore")
+    print(token_response)
 
     postdata = {
         "apiver": "v3",
@@ -88,7 +111,7 @@ if __name__=='__main__':
         "splogin": "rate",
         "staticpage": "https://www.baidu.com/cache/user/html/v3Jump.html",
         "subpro": "",
-        "token": token,
+        "token": "",
         "tpl": "mn",
         "tt": tt,
         "u": "https://www.baidu.com/",
