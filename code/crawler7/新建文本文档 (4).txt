@@ -1,4 +1,6 @@
+http://www.jianshu.com/p/efcf030e68c5
 http://www.cnblogs.com/qiyeboy/p/5728293.html
+https://github.com/ResolveWang/smart_login/blob/master/baidu/login_direct.py
 
 µÃµ½gid
 gid = this.guideRandom = function () {
