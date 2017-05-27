@@ -10,7 +10,6 @@ import json
 import rsa
 import base64
 
-# headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0'}
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0',
            'Host': 'passport.baidu.com',
            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -109,11 +108,11 @@ def gethtml(url):
 
 def post_cookie(postdata):
     header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0',
-              'Host': 'www.baidu.com',
+              'Host': 'passport.baidu.com',
               'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
               'Accept-Encoding': 'gzip, deflate',
               'Accept-Language': 'zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3',
-              'Referer': 'https://www.baidu.com/',
+              'Referer': 'https://passport.baidu.com/v2/?login',
               'Connection': 'keep-alive'}
 
     resp = session.post('https://passport.baidu.com/v2/?login', headers=headers, data=postdata)
@@ -127,9 +126,8 @@ def post_cookie(postdata):
 
     cookie = requests.utils.dict_from_cookiejar(session.cookies)
 
-    url = "https://www.baidu.com/"
-    home_page = session.get(url, headers=header).content.decode("utf-8", "ignore")
-    print("home_page",home_page)
+    home_page = session.get("https://passport.baidu.com/center", headers=header).content.decode("utf-8", "ignore")
+    print(home_page)
     # print(html)
 
 
