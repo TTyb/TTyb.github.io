@@ -4,7 +4,6 @@
 from selenium import webdriver
 import time
 
-# https://passport.baidu.com/v2/?login
 url = "https://www.baidu.com/"
 
 browser = webdriver.Chrome()
