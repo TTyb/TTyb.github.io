@@ -1,0 +1,55 @@
+
+
+<div class="item" style="float:left;;margin-top:60px;background-color:#ffffff;border-bottom: 1px solid #f0f0f0;border-radius: 4px;">
+	<div class="pic">
+		<img src="/static/jpg/webspider.jpg" style="vertical-align:middle;"/>
+	</div>
+	<div class="contents" style="padding-left: 10px;" style="vertical-align:middle;">
+		{% for post in site.categories['crawlerfirst'] %}
+		<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+		<h6 class="text-muted"><span style="padding-right:5px">作者：{{ post.author }}</span>文章发表于：<span class="timet">{{ post.showdate }}</span>
+		</h6>
+		<p class="content">
+			在作者学习的众多编程技能中，爬虫技能无疑是最让作者着迷的。<br/>
+			与自己闭关造轮子不同，爬虫的感觉是与别人博弈，<br/>
+			一个在不停的构建 反爬虫 规则，一个在不停的破译规则。
+		</p>
+		<h5><span class="topicc"><a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></span></h5>
+		<p></p>
+		{% endfor %}
+	</div>
+</div>
+
+<style>
+    .text-overflow {
+        display: block;
+        width: 90%;
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+	
+	.tag {
+    background: url({{ "/static/jpg/tag.png" | prepend: site.baseurl }}) no-repeat left center;
+	padding-left: 20px;
+	margin: 0 10px 0 0;
+	}
+	
+	.timet {
+    background: url({{ "/static/jpg/time.png" | prepend: site.baseurl }}) no-repeat left center;
+	padding-left: 20px;
+	margin: 0 10px 0 0;
+	}
+	.topicc {
+    background: url({{ "/static/jpg/wenzhang.gif" | prepend: site.baseurl }}) no-repeat left center;
+	padding-left: 20px;
+	margin: 0 10px 0 0;
+	}
+
+</style>
+
+<style type="text/css">
+.item .pic { float:left;padding-right:10px;}  
+.item .contents {float:left;}
+</style>  
