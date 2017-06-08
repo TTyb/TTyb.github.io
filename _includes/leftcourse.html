@@ -11,7 +11,7 @@
 				{% for post in site.categories['crawlerfirst'] %}
 				<h4><a href="{{ post.url | prepend: site.baseurl }}" style="color:#333;font-weight:bold">{{ post.title }}</a></h4>
 				<h6 class="text-muted">
-				<span style="padding-right:5px">作者：{{ post.author }}</span><span class="topicc"></span>文章发表于：<span class="timet">{{ post.showdate }}</span>
+				<span style="padding-right:5px">作者：{{ post.author }}</span><span class="topicc"></span>文章发表于：<span class="timet">{{ post.showdate }}</span>分类：<span class="tag">crawler</span>
 				</h6>
 					<p style="word-wrap:break-word; word-break:normal;">在作者学习的众多编程技能中，爬虫技能无疑是最让作者着迷的。与自己闭关造轮子不同，爬虫的感觉是与别人博弈，一个在不停的构建 反爬虫 规则，一个在不停的破译规则。</p>
 					<h5 class="pull-right" style="width: 120px;"><a class="contactme" title="阅读全文" href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></h5>
@@ -47,6 +47,12 @@
 	}
 	.topicc {
     background: url({{ "/static/jpg/wenzhang.gif" | prepend: site.baseurl }}) no-repeat left center;
+	padding-left: 20px;
+	margin: 0 10px 0 0;
+	}
+	
+	.tag {
+    background: url({{ "/static/jpg/tag.png" | prepend: site.baseurl }}) no-repeat left center;
 	padding-left: 20px;
 	margin: 0 10px 0 0;
 	}
