@@ -13,7 +13,7 @@ session = requests.session()
 headers = {'User-Agent':
                'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0',
            'Referer':
-               'http://image.baidu.com',
+           'http://image.baidu.com',
            'Host': 'image.baidu.com',
            'Accept': 'text/plain, */*; q=0.01',
            'Accept-Encoding': 'gzip, deflate',
@@ -96,8 +96,17 @@ def geturl(nowtime, keyword, pn):
 
 
 def downloadimg(imgurl, imgname):
+
+    header = {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Encoding": "gzip, deflate",
+        "Accept-Language": "zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3",
+        "Connection": "keep-alive",
+        "Host": "ss2.bdstatic.com",
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0"
+    }
     saveimg = open("E:/" + str(imgname) + ".jpg", 'wb')
-    saveimg.write(session.get(url=imgurl, headers=headers).content)
+    saveimg.write(requests.get(url=imgurl, headers=header).content)
     saveimg.close()
 
 
@@ -110,8 +119,6 @@ def threadingrun(array):
         imgname += 1 + int(time.time())
         th = threading.Thread(target=downloadimg, args=(imgurl, imgname))
         threadpool.append(th)
-
-        print(imgname)
     # 开始线程
     for th in threadpool:
         th.start()
