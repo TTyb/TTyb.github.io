@@ -71,12 +71,6 @@ ocr
 redis
 ```
 
-### 定时器
-
-```
-time.sleep
-```
-
 ### API提取
 
 ```
