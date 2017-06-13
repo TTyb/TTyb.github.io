@@ -3,58 +3,60 @@ layout: default
 ---
 
 <div class="container">
-
-	{% if page.categories[0] == "crawler" or page.categories[0] == "crawlerfirst" %}
-	{% include leftmenu.html %}
-	<div class="col-xs-9 col-sm-9 col-md-10">
-		<div class="page-header">
-			<hr>
-			<h3>{{ page.title }}</a></h3>
-			<small>
-				分类：{{ page.categories[0] }}
-			</small>
-			<h6 class="text-muted"><span style="padding-right:5px">作者:{{ page.author }}</span>文章发表于 {{ page.showdate }}</h6>
+	<div>
+		{% if page.categories[0] == "crawler" or page.categories[0] == "crawlerfirst" %}
+		{% include leftmenu.html %}
+		<div class="col-xs-9 col-sm-9 col-md-10">
+			<div class="page-header">
+				<hr>
+				<h3>{{ page.title }}</a></h3>
+				<small>
+					分类：{{ page.categories[0] }}
+				</small>
+				<h6 class="text-muted"><span style="padding-right:5px">作者:{{ page.author }}</span>文章发表于 {{ page.showdate }}</h6>
+				<br/>
+				<p class="content text-overflow">
+					{{ content }}
+				</p>
+			</div>
+			
+			<ul class="list-inline" style="font-family: 微软雅黑;text-decoration: none;">
+				{% if page.categories[0] == "crawlerfirst" %}
+				<li class="pull-left"><span style="color:#CCCCCC">上一篇</span></li>
+				{% else %}
+				<li class="pull-left"><a href="{{ page.previous.url }}">← 上一篇：{{ page.previous.title }}</a></li>
+				{% endif %}
+				{% if page.next.categories[0] == "crawler" %}
+				<li class="pull-right"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }} →</a></li>
+				{% else %}
+				<li class="pull-right"><span style="color:#CCCCCC">下一篇</span></li>
+				{% endif %}
+			</ul>
+			
 			<br/>
-			<p class="content text-overflow">
-				{{ content }}
-			</p>
+			<h4 style="font-family: KaiTi">如果你觉得本站内容有帮助<i class="icon fa-hand-o-down" aria-hidden=true></i></h4>
+			<a onclick="dashangToggle()" class="zanzhume" title="鼓励" href="javascript:void(0)"><i class="icon fa-rmb"></i>我要鼓励作者写出更好的教程</a>
+			{% include dashang.html %}
+		</div>
+		{% else %}
+		<div class="col-xs-7 col-sm-7 col-md-9">
+			<div class="page-header">
+				<hr>
+				<h3>{{ page.title }}</a></h3>
+				<small>
+					分类：{{ page.categories[0] }}
+				</small>
+				<h6 class="text-muted"><span style="padding-right:5px">作者:{{ page.author }}</span>文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
+				<br/>
+				<p class="content text-overflow">
+					{{ content }}
+				</p>
+			</div>
 		</div>
 		
-		<ul class="list-inline" style="font-family: 微软雅黑;text-decoration: none;">
-			{% if page.categories[0] == "crawlerfirst" %}
-			<li class="pull-left"><span style="color:#CCCCCC">上一篇</span></li>
-			{% else %}
-			<li class="pull-left"><a href="{{ page.previous.url }}">← 上一篇：{{ page.previous.title }}</a></li>
-			{% endif %}
-			{% if page.next.categories[0] == "crawler" %}
-			<li class="pull-right"><a href="{{ page.next.url }}">下一篇：{{ page.next.title }} →</a></li>
-			{% else %}
-			<li class="pull-right"><span style="color:#CCCCCC">下一篇</span></li>
-			{% endif %}
-		</ul>
-		
-		<br/>
-		<h4 style="font-family: KaiTi">如果你觉得本站内容有帮助<i class="icon fa-hand-o-down" aria-hidden=true></i></h4>
-		<a onclick="dashangToggle()" class="zanzhume" title="鼓励" href="javascript:void(0)"><i class="icon fa-rmb"></i>我要鼓励作者写出更好的教程</a>
-		{% include dashang.html %}
+		{% include rightmenu.html %}
+		{% endif %}
 	</div>
-	{% else %}
-	<div class="col-xs-7 col-sm-7 col-md-9">
-		<div class="page-header">
-			<hr>
-			<h3>{{ page.title }}</a></h3>
-			<small>
-				分类：{{ page.categories[0] }}
-			</small>
-			<h6 class="text-muted"><span style="padding-right:5px">作者:{{ page.author }}</span>文章发表于{{ page.date | date: " %Y-%m-%d" }}</h6>
-			<br/>
-			<p class="content text-overflow">
-				{{ content }}
-			</p>
-		</div>
-	</div>
-    {% include rightmenu.html %}
-	{% endif %}
 	<hr>
     {% include comment.html %}
 </div>
