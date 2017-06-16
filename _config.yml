@@ -4,7 +4,3 @@ url: "https://ttyb.github.io" # the base hostname & protocol for your site
 markdown: kramdown
 encoding: utf-8
 permalink: /:categories/:title.html
-highlighter: rouge #  [rouge, pygments]
-kramdown:
-  input: GFM
-  enable_coderay: true
