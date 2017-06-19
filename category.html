@@ -3,24 +3,27 @@ layout: default
 ---
 
 <div class="container">
-	<div class="col-xs-7 col-sm-7 col-md-9">
-		<h1>分类列表</h1>
+	<h1>分类列表</h1>
+	<div class="col-xs-3 col-sm-3 col-md-2" style="margin-top:30px;border-right: 1px solid #ddd;border-radius: 4px;">
+		<ul class="list-group">
+			{% for category in site.categories %}
+			{% if category[0] == "crawler" or category[0] == "crawlerfirst" %}
+			{% else %}
+			<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}" class="list-group-item">
+				{{ post.title }}{{ category | first }}
+				<span class="badge">{{ category | last | size }}</span>
+			</a>
+			{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="col-xs-9 col-sm-9 col-md-10">
 		<table class="table table-striped">
 			<thead>
 			<tr>
-				<th>标题</th>
+				<th>文章标题</th>
 				<th>创建时间</th>
-				<th class="dropdown">
-					<a data-toggle="dropdown" class="dropdown-toggle" href="#">分类<strong class="caret"></strong></a>
-					<ul class="dropdown-menu container-fluid" style="border-radius: 6px 6px 6px 6px;">
-						{% for category in site.categories %}
-						{% if category[0] == "crawler" or category[0] == "crawlerfirst" %}
-						{% else %}
-						<li><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ post.title }}{{ category | first }}({{ category | last | size }})</a></li>
-						{% endif %}
-						{% endfor %}
-					</ul>
-				</th>
+				<th>文章标签</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -29,7 +32,7 @@ layout: default
 			{% else %}
 			{% for category in post.categories %}
 			<tr>
-				<th><span class="topicc"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></span></th>
+				<th><span class="topicc text-overflow"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></span></th>
 				<th><i class="icon fa-calendar"></i>{{ post.date | date: " %Y-%m-%d" }}</th>
 				<th><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</a></th>
 			</tr>
@@ -40,7 +43,6 @@ layout: default
 		</table>
 	</div>
 
-    {% include rightmenu.html %}
 </div>
 
 <style>
