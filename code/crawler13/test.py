@@ -6,7 +6,7 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.action_chains import ActionChains
 import io
-
+from PIL import ImageChops
 
 # 打开浏览器
 def openbrowser(url):
@@ -75,33 +75,38 @@ def screenShotImage():
     screenshot = Image.open(io.BytesIO(screenshot))
     png = screenshot.crop((left, top, right, bottom))
     png.save(str(int(time.time())) + ".png")
+    time.sleep(1)
     return png
 
+# 获取滑块的图片，是为了得到滑块的宽度gt_slice gt_show
 
 # 获取滑动偏移量
 def getOffset():
     img1 = screenShotImage()
     drag_and_drop(x_offset=5, y_offset=0)
     img2 = screenShotImage()
+    # 判断两张图片不同的地方
+    img3 = ImageChops.difference(img1, img2)
+    img3.save(str(int(time.time())) + ".png")
     w1, h1 = img1.size
     w2, h2 = img2.size
+    w3, h3 = img3.size
     print("wh")
     print(w1, h1, w2, h2)
 
     if w1 != w2 or h1 != h2:
         return False
 
-    aa = 60
-
-    print("开始循环", w1, h1)
-    for x in range(0, w1):
-        for y in range(0, h1):
-            pix1 = img1.getpixel((x, y))
-            pix2 = img2.getpixel((x, y))
+    aa = 52
+    print("开始循环", w3, h3)
+    for x in range(aa+1, w3):
+        print(x)
+        for y in range(0, h3):
+            pix3 = img3.getpixel((x, y))
+            print(pix3[0],pix3[1],pix3[2])
             # 如果相差超过50则就认为找到了缺口的位置
-            print("diff", abs(pix1[0] - pix2[0]), abs(pix1[1] - pix2[1]), abs(pix1[2] - pix2[2]))
-            if abs(pix1[0] - pix2[0]) >= aa and abs(pix1[1] - pix2[1]) >= aa and abs(pix1[2] - pix2[2]) >= aa:
-                return x
+            if pix3[0] > 50 and pix3[1] > 50 and pix3[2] > 50:
+                return x-2
     return 55
 
 
@@ -109,7 +114,6 @@ def getOffset():
 def readyMain(url, keyword):
     openbrowser(url)
     inputKeyword(keyword)
-    screenShotImage()
     offset = getOffset()
     print(offset)
     drag_and_drop(x_offset=offset, y_offset=0)
