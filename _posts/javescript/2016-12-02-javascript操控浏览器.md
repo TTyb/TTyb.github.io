@@ -11,7 +11,7 @@ desc: "javascript操控浏览器"
 
 ## 测试窗口为F12->Console
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161202144437974-1464200438.png)
+<p style="text-align:center"><img src="/static/postimage/javascrip/browser/996148-20161202144437974-1464200438.png"/></p>
 
 ### 跳转网页
 
@@ -102,4 +102,4 @@ document.onmousemove = function(event){
 }
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161202161520724-1585121090.png)
+<p style="text-align:center"><img src="/static/postimage/javascrip/browser/996148-20161202161520724-1585121090.png"/></p>

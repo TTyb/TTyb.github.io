@@ -29,7 +29,7 @@ browser.quit()
 
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161203114330787-1216998587.png)
+<p style="text-align:center"><img src="/static/postimage/selenium/browser/996148-20161203114330787-1216998587.png"/></p>
 
 ### 更改UA和语言
 
@@ -50,7 +50,7 @@ browser.get(url)
 browser.quit()
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161203115018521-1738483123.png)
+<p style="text-align:center"><img src="/static/postimage/selenium/browser/996148-20161203115018521-1738483123.png"/></p>
 
 ### 携带cookie
 
@@ -74,4 +74,4 @@ input("查看效果")
 browser.quit()
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161205140547554-2049984391.png)
+<p style="text-align:center"><img src="/static/postimage/selenium/browser/996148-20161205140547554-2049984391.png"/></p>

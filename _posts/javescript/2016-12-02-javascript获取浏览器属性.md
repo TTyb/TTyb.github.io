@@ -27,7 +27,7 @@ alert('appName = ' + navigator.appName + '\n' +
       'userAgent = ' + navigator.userAgent);
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161202110902693-762272230.png)
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202110902693-762272230.png"/></p>
 
 
 ```
@@ -42,7 +42,7 @@ screen.colorDepth：返回颜色位数，如8、16、24。
 alert('Screen size = ' + screen.width + ' x ' + screen.height);
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161202110927756-2075154505.png)
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202110927756-2075154505.png"/></p>
 
 >http://www.example.com:8080/path/index.html?a=1&b=2#TOP
 
@@ -67,7 +67,7 @@ if (confirm('重新加载当前页' + location.href + '?')) {
 ```
 
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161202111153037-22700067.png)
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202111100349-925986790.png"/></p>
 
 
 ```
@@ -79,7 +79,7 @@ document.title = '百哥么么哒';
 ```
 
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161202111100349-925986790.png)
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202111116865-458313086.png"/></p>
 
 
 ```
@@ -87,5 +87,5 @@ document.title = '百哥么么哒';
 alert(document.cookie)
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201612/996148-20161202111116865-458313086.png)
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202111153037-22700067.png"/></p>
 
