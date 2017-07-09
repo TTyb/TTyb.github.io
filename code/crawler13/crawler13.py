@@ -8,6 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import io
 from PIL import ImageChops
 
+
 # 打开浏览器
 def openbrowser(url):
     global browser
@@ -78,7 +79,15 @@ def screenShotImage():
     time.sleep(1)
     return png
 
-# 获取滑块的图片，是为了得到滑块的宽度gt_slice gt_show
+
+# 获取滑块的图片，是为了得到滑块的宽度
+def getWidth():
+    # 找到滑块并滑动
+    slider = browser.find_element_by_class_name("gt_slice")
+    sizes = slider.size
+    width = sizes["width"]
+    return width
+
 
 # 获取滑动偏移量
 def getOffset():
@@ -91,22 +100,23 @@ def getOffset():
     w1, h1 = img1.size
     w2, h2 = img2.size
     w3, h3 = img3.size
-    print("wh")
-    print(w1, h1, w2, h2)
 
     if w1 != w2 or h1 != h2:
         return False
 
-    aa = 52
+    slider = getWidth()
     print("开始循环", w3, h3)
-    for x in range(aa+1, w3):
-        print(x)
+    for x in range(slider, w3):
         for y in range(0, h3):
+            pix1 = img1.getpixel((x, y))
+            pix2 = img2.getpixel((x, y))
             pix3 = img3.getpixel((x, y))
-            print(pix3[0],pix3[1],pix3[2])
-            # 如果相差超过50则就认为找到了缺口的位置
-            if pix3[0] > 50 and pix3[1] > 50 and pix3[2] > 50:
-                return x-2
+            # 如果相差超过70则就认为找到了缺口的位置
+            if pix3[0] > 70 or pix3[1] > 70 or pix3[2] > 70 and abs(pix1[0] - pix2[0]) < 60 and abs(
+                            pix1[1] - pix2[1]) < 60 and abs(pix1[2] - pix2[2]) < 60:
+                # 滑块左边其实是有5个位移是空白的，所以要减掉
+                return x - 5
+    # 如果没有找到正确的偏移值，则返回一个假的偏移值，防止程序中断
     return 55
 
 
