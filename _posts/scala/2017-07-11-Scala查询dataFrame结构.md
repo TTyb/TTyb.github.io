@@ -1,10 +1,10 @@
 ---
 layout: post
 categories: [scala]
-title: Scala查询dataFrame结果
+title: Scala查询dataFrame结构
 date: 2017-07-11
 author: TTyb
-desc: "Scala查询dataFrame结果"
+desc: "Scala查询dataFrame结构"
 ---
 
 ```
