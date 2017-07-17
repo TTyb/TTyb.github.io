@@ -135,7 +135,7 @@ print(distance)
 
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201702/996148-20170226101819554-1837598147.png)
+<p style="text-align:center"><img src="/static/postimage/machinelearning/sklearnkmeans/996148-20170226101819554-1837598147.png"/></p>
 
 源文件可以在我的github下载：
 

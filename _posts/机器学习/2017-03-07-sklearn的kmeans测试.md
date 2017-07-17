@@ -65,4 +65,4 @@ plt.close()
 
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201703/996148-20170307144756406-976833755.png)
+<p style="text-align:center"><img src="/static/postimage/machinelearning/sklearnkmeans/996148-20170307144756406-976833755.png"/></p>

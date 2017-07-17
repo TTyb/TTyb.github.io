@@ -2,7 +2,7 @@
 layout: post
 categories: [python]
 title: python的StringIO
-date: 2017-03-22
+date: 2017-03-28
 author: TTyb
 desc: "python的StringIO"
 ---

@@ -46,7 +46,7 @@ python -m compileall 存放海量py的目录
 python test.pyc
 ```
 
-![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170421090418149-1426718335.png)
+<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090418149-1426718335.png"/></p>
 
 ### 反编译 `pyc`
 
@@ -54,11 +54,11 @@ python test.pyc
 
 `pip install uncompyle`
 
-![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170421090457681-111691906.png)
+<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090457681-111691906.png"/></p>
 
 查看 `uncompyle` 函数属性：
 
-![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170421090619806-263727698.png)
+<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090619806-263727698.png"/></p>
 
 命令行下：
 
@@ -68,4 +68,4 @@ uncompyle6 test.pyc > test1.py
 
 和源文件对比：
 
-![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170421091133056-1264995189.png)
+<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421091133056-1264995189.png"/></p>

@@ -39,7 +39,7 @@ object test {
 ```
 打印结果：
 
-![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170413142012126-563467794.png)
+<p style="text-align:center"><img src="/static/postimage/scala/breakcontinue/996148-20170413142012126-563467794.png"/></p>
 
 如果用 `for` 包裹 `breakable`，那么遇到 `break` 则是跳出本次循环：`for{breakable}` :
 
@@ -67,4 +67,4 @@ object test {
 
 打印结果：
 
-![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170413141946205-10920181.png)
+<p style="text-align:center"><img src="/static/postimage/scala/breakcontinue/996148-20170413141946205-10920181.png"/></p>

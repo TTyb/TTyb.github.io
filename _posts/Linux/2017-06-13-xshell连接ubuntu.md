@@ -80,20 +80,20 @@ ps -ef | grep ssh
 
 找到按钮：
 
-![](http://images2015.cnblogs.com/blog/996148/201706/996148-20170613091751900-2125513854.png)
+<p style="text-align:center"><img src="/static/postimage/linux/ubuntu/996148-20170613091751900-2125513854.png"/></p>
 
 点击第二个：
 
-![](http://images2015.cnblogs.com/blog/996148/201706/996148-20170613091909181-1334363079.png)
+<p style="text-align:center"><img src="/static/postimage/linux/ubuntu/996148-20170613091909181-1334363079.png"/></p>
 
 点击第二行：
 
-![](http://images2015.cnblogs.com/blog/996148/201706/996148-20170613091949618-1950325186.png)
+<p style="text-align:center"><img src="/static/postimage/linux/ubuntu/996148-20170613091949618-1950325186.png"/></p>
 
 找到控制台：
 
-![](http://images2015.cnblogs.com/blog/996148/201706/996148-20170613092024415-1043489570.png)
+<p style="text-align:center"><img src="/static/postimage/linux/ubuntu/996148-20170613092024415-1043489570.png"/></p>
 
 打开，在桌面右键 -> Lock to Launcher
 
-![](http://images2015.cnblogs.com/blog/996148/201706/996148-20170613092140728-675904521.png)
+<p style="text-align:center"><img src="/static/postimage/linux/ubuntu/996148-20170613092140728-675904521.png"/></p>

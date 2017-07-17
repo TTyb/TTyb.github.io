@@ -17,7 +17,7 @@ thunder://QUFodHRwczovL2Rvd25sb2FkMy52bXdhcmUuY29tL3NvZnR3YXJlL3drc3QvZmlsZS9WTX
 
 安装完成后点击 `许可证` :
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115136431-33090420.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113115136431-33090420.png"/></p>
 
 
 ```
@@ -40,42 +40,42 @@ http://www.centoscn.com/CentosSoft/iso/
 
 创建新的虚拟机，选择 `典型` 就好：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115605166-787245971.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113115605166-787245971.png"/></p>
 
 打开镜像：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115736041-2100624258.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113115736041-2100624258.png"/></p>
 
 默认建立一个子账户，切记子账户的密码和root的密码是一样的：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115832791-511901560.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113115832791-511901560.png"/></p>
 
 安装位置：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113115908119-682208506.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113115908119-682208506.png"/></p>
 
 安装大小默认就行：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113120012603-467813798.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113120012603-467813798.png"/></p>
 
 配件默认：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113120034697-1201498792.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113120034697-1201498792.png"/></p>
 
 点击开启虚拟机：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113120145369-1358725234.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113120145369-1358725234.png"/></p>
 
 等待安装完成：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113120220119-1367107254.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113120220119-1367107254.png"/></p>
 
 安装完成后进入更改系统语言：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113134152994-395627175.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113134152994-395627175.png"/></p>
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113134413088-1321814237.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113134413088-1321814237.png"/></p>
 
 重启后就可以了：
 
-![](http://images2015.cnblogs.com/blog/996148/201701/996148-20170113134439306-2069274517.png)
+<p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113134439306-2069274517.png"/></p>
