@@ -30,13 +30,13 @@
     </div>
     <div class="pay_explain"><span style="padding-left:20px">扫码打赏一下，你说多少就多少</span><br /></div>
     <div class="shang_payselect">
-        <div class="pay_item checked" data-id="alipay">
-            <span class="radiobox"></span>
-            <span class="pay_logo"><img src="{{ "/static/jpg/alipay.jpg" | prepend: site.baseurl }}" alt="支付宝"/></span>
-        </div>
         <div class="pay_item" data-id="weipay">
             <span class="radiobox"></span>
             <span class="pay_logo"><img src="{{ "/static/jpg/wechat.jpg" | prepend: site.baseurl }}" alt="微信"/></span>
+        </div>
+		<div class="pay_item checked" data-id="alipay">
+            <span class="radiobox"></span>
+            <span class="pay_logo"><img src="{{ "/static/jpg/alipay.jpg" | prepend: site.baseurl }}" alt="支付宝"/></span>
         </div>
     </div>
     <div class="shang_info">
@@ -51,7 +51,7 @@ $(function(){
 		$(this).addClass('checked').siblings('.pay_item').removeClass('checked');
 		var dataid=$(this).attr('data-id');
 		$(".shang_payimg img").attr("src","../static/jpg/"+dataid+"img.jpg");
-		$("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+		$("#shang_pay_txt").text(dataid=="weipay"?"微信":"支付宝");
 	});
 });
 
