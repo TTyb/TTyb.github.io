@@ -39,7 +39,7 @@ layout: default
 			{% else %}
 			<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}" class="list-group-item">
 				{{ post.title }}{{ category | first }}
-				<span class="badge" id="rand">{{ category | last | size }}</span>
+				<span class="badge"><div id="rand">{{ category | last | size }}</div></span>
 			</a>
 			{% endif %}
 			{% endfor %}
