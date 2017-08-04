@@ -87,7 +87,7 @@ layout: default
 
 <script>
 var n=document.getElementById('rand');
-n.style.background(rand(0,255),rand(0,255),rand(0,255));
+n.style.backgroundColor = '#' + (~~(Math.random() * (1 << 24))).toString(16);
 </script>
 
 
