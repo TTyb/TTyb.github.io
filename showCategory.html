@@ -39,7 +39,7 @@ layout: default
 			{% else %}
 			<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}" class="list-group-item">
 				{{ post.title }}{{ category | first }}
-				<span class="badge" style="background-color:#ffefd5">{{ category | last | size }}</span>
+				<span class="badge"><div id="rand">{{ category | last | size }}</div></span>
 			</a>
 			{% endif %}
 			{% endfor %}
@@ -83,6 +83,11 @@ layout: default
         //console.log(k)
     })();
 
+</script>
+
+<script>
+var n=document.getElementById('rand');
+n.style.backgroundColor = '#' + (~~(Math.random() * (1 << 24))).toString(16);
 </script>
 
 
