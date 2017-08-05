@@ -11,7 +11,7 @@ layout: default
 			{% else %}
 			<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}" class="list-group-item">
 				{{ post.title }}{{ category | first }}
-				<span class="badge" style="background-color: #ffefd5">{{ category | last | size }}</span>
+				<span class="badge" style="background-color: #FF8C00">{{ category | last | size }}</span>
 			</a>
 			{% endif %}
 			{% endfor %}
