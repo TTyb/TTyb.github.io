@@ -33,7 +33,7 @@ layout: default
 			{% for category in post.categories %}
 			<tr>
 				<th><span class="topicc text-overflow"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></span></th>
-				<th><i class="icon fa-calendar"></i>{{ post.date | date: " %Y-%m-%d" }}</th><!--icon fa-calendar-->
+				<th><i class="icon fa-calendar"></i>{{ post.date | date: " %Y-%m-%d" }}</th>
 				<th><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</a></th>
 			</tr>
 			{% endfor %}
