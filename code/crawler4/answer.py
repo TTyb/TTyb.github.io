@@ -20,5 +20,5 @@ img_src = page.xpath('//div[@id="blog_userface"]/a/img/@src')
 print(img_src)
 
 saveimg = open("E:/head.jpg", 'wb')
-saveimg.write(requests.get(url=img_src[0]).content)
+saveimg.write(requests.get(url=img_src[0],headers=header).content)
 saveimg.close()
