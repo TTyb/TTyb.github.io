@@ -32,10 +32,14 @@ print(chardet.detect(testdata))
 没见识到这个库之前所有编码纯属自己的记忆：
 
 ```
-# unicode_escape<br>\u4e2d\u56fd<br># gbk或者utf-8
+# unicode_escape
+\u4e2d\u56fd
+# gbk或者utf-8
 \xd6\xd0\xb9\xfa
-中国<br># urlencode
-%e4%b8%ad%e5%9b%bd<br># Gb2312
+中国
+# urlencode
+%e4%b8%ad%e5%9b%bd
+# Gb2312
 %d6%d0%b9%fa
 ```
 
