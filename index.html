@@ -1,12 +1,13 @@
 ---
 layout: default
 ---
+<script type="text/javascript" src="{{ "/static/js/posterTvGrid.js" | prepend: site.baseurl }}"></script>
 
-<link rel="stylesheet" href="static/css/main.css"/>
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/skel.min.js"></script>
-<script src="static/js/util.js"></script>
-<script src="static/js/main.js"></script>
+<link rel="stylesheet" href="{{ "/static/css/main.css" | prepend: site.baseurl }}"/>
+<script src="{{ "/static/js/jquery.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/static/js/skel.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/static/js/util.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/static/js/main.js" | prepend: site.baseurl }}"></script>
 
 <body>
 
@@ -15,22 +16,21 @@ layout: default
 			<div id="posterTvGrid" style="margin:40px auto 0 auto;"></div>
 		</div>
 	</div>
-	
-	<script>window.jQuery || document.write('<script src="static/js/jquery.min.js"><\/script>')</script>
-	<script type="text/javascript" src="static/js/posterTvGrid.js"></script>
+
+	<script type="text/javascript" src="{{ "/static/js/posterTvGrid.js" | prepend: site.baseurl }}"></script>
 	<script type="text/javascript">
 	var posterTvGrid = new posterTvGrid('posterTvGrid',{className: "posterTvGrid"},[
-			{"img":"static\/jpg\/1.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/2.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/3.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/4.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/5.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/6.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/7.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/8.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/9.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/10.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
-			{"img":"static\/jpg\/11.jpg","title":"百哥么么哒","url":"https:\/\/ttyb.github.io\/"},
+			{"img":"\/static\/jpg\/1.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/2.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/3.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/4.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/5.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/6.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/7.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/8.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/9.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/10.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
+			{"img":"\/static\/jpg\/11.jpg","title":"百哥么么哒","url":"javascript:void(0)"},
 		]
 	);
 	</script>
@@ -38,7 +38,7 @@ layout: default
 
 <div id="wrapper">
     <section id="intro" class="main">
-		<img src="static/jpg/head.jpg" alt=""/>
+		<img src="/static/jpg/head.jpg" alt=""/>
         <h2 style="font-family: KaiTi;">百哥么么哒</h2>
 		<p style="font-family: Times New Roman;">A data mining engineer who have to<br/>
             analyze data analyze, mining data mining,learn machine learning,<br/>

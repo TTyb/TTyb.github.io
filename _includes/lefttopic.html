@@ -1,0 +1,87 @@
+
+<div class="thumbnail" style="clear:both;margin-top:60px;font-family:Microsoft YaHei;">
+	{% if paginator.total_pages > 1 %}
+        <div class="page-header">
+            {% for post in paginator.posts %}
+			{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
+			{% else %}
+            <hr>
+            <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+            {% for category in post.categories %}
+            <small>
+                分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</span></a>
+            </small>
+            {% endfor %}
+            <h6 class="text-muted"><span style="padding-right:5px">作者：{{ post.author }}</span>文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span>
+            </h6>
+            <p class="content text-overflow">
+                {% if post.desc %}
+                {{ post.desc }}
+                {% else %}
+                {{ post.excerpt | strip_html }}
+                {% endif %}
+            </p>
+
+			{% endif %}
+            {% endfor %}
+        </div>
+		
+		<!--页码-->
+		<ul class="pagination pagination-sm">
+			{% if paginator.previous_page %}		
+			<li class="previous">
+				{% if paginator.page == 1 %}
+					{% if paginator.previous_page == 1 %}
+						<a href="/">Previous</a>
+					{% else %}
+						<a href="{{ paginator.previous_page_path }}">Previous</a>
+					{% endif %}
+				{% else %}
+					<a href="{{ paginator.previous_page_path }}">Previous</a>
+				{% endif %}
+			</li>
+			{% else %}
+			<li class="previous disabled">
+				<span>Previous</span>
+			</li>
+			{% endif %}
+
+			<li class="page">
+				{% if paginator.page == 1 %}
+					<span class="current-page">1</span>
+				{% else %}
+					<a href="/">1</a>
+				{% endif %}
+			</li>
+
+			{% for count in (2..paginator.total_pages) %}
+			<li class="page">
+				{% if count == paginator.page %}
+					<span class="current-page">{{ count }}</span>
+				{% else %}
+					<a href="/page{{ count }}">{{ count }}</a>
+				{% endif %}
+			</li>
+			{% endfor %}
+			
+			{% if paginator.next_page %}
+			<li class="next">
+				<a href="{{ paginator.next_page_path }}">Next</a>
+			</li>
+			{% else %}
+			<li class="next disabled">
+				<span>Next</span>
+			</li>
+			{% endif %}
+			
+			<li class="next">
+				<a href="/page{{paginator.total_pages}}">最后一页</a> 
+			</li>
+			<li class="next">
+				<span class="page_number">第{{paginator.page}}页/共{{paginator.total_pages}}页</span> 
+			</li>
+		</ul>
+
+	{% endif %}
+	
+</div>
