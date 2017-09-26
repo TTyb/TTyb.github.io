@@ -1,5 +1,5 @@
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://ttyb.github.io" # the base hostname & protocol for your site
+baseurl: ""
+url: "https://ttyb.github.io"
 # Build settings
 markdown: kramdown
 encoding: utf-8

@@ -21,7 +21,6 @@
                 {{ post.excerpt | strip_html }}
                 {% endif %}
             </p>
-
 			{% endif %}
             {% endfor %}
         </div>
@@ -79,6 +78,10 @@
 			</li>
 			<li class="next">
 				<span class="page_number">第{{paginator.page}}页/共{{paginator.total_pages}}页</span> 
+			</li>
+			<!--存储在分页中的文章-->
+			<li class="next">
+				<span class="page_number">{{paginator.posts}}</span>
 			</li>
 		</ul>
 
