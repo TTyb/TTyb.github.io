@@ -33,6 +33,12 @@ desc: "IntelliJ的Scala配置"
 
 <p style="text-align:center"><img src="/static/postimage/IDE/intellij/996148-20170401171657977-158744880.png"/></p>
 
+加载 `scala` ，如果 `scala` 还没安装的话请看 [scala安装教程](http://www.tybai.com/scala/Scala%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B.html) :
+
+<p style="text-align:center"><img src="/static/postimage/IDE/intellij/TIM20170927104721.jpg"/></p>
+
+<p style="text-align:center"><img src="/static/postimage/IDE/intellij/TIM20170927104730.jpg"/></p>
+
 加载新的库包：
 
 在网站 `http://mvnrepository.com/` 里面可以找到
