@@ -2,21 +2,26 @@
 layout: 404s
 ---
 
-<div class="pic">
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
-    <img src="{{ "/static/jpg/404.jpg" | prepend: site.baseurl }}"/>
+<div id="wrapper">
+	<section id="intro" class="main" style="text-align: center;">
+		<div style="text-align: left;font-family: Microsoft YaHei">
+			<h3>404 NOT FOUND!</h3>
+			<p>抱歉，沒有找到您需要的内容！！</P>
+			<p>404页面是网站必备的一个页面，它承载着用户体验与SEO优化的重任。404页面通常为用户访问了网站上不存在或已删除的页面，服务器返回的404错误。如果站长没有设置404页面，会出现死链接，蜘蛛爬行这类网址时，不利于搜索引擎收录。</p>
+			<h3>404 Not Found 由来</h3>
+			<p>据说在第三次科技革命之前，互联网的形态就是一个大型的中央数据库，这个数据库就设置在404房间里面。那时候所有的请求都是由人工手动完成的，如果在数据库中没有找到请求者所需要的文件，或者由于请求者写错了文件编号，用户就会得到一个返回信息：room 404 : file not found。后来互联网兴起后，人们也就习惯了用404作为服务器未找到文件的错误代码了。当然实际考证传说中的room 404是不存在的。</p>
+			<h3>设置404页面的两大好处</h3>
+			<ul>
+				<li>引导用户不要关闭网站，增强用户体验</li>
+				<li>防止网站出现死链接。</li>
+			</ul>
+		</div>
+		<img src="/static/jpg/404.jpg" style="margin:0 auto;">
+	</section>
 </div>
 
 
-<div style="position:absolute;bottom: 0;height: 30%;margin:0 auto;width: 100%">
+<div style="bottom: 0;height: 30%;margin:0 auto;width: 100%">
     <ul class="list-inline" style="font-size: 1.2em;font-family: KaiTi;text-align: center;">
         <li><a href="/" class="button" onclick="Torment()">仔细找找</a></li>
         <li><a href="/" class="button">返回首页</a></li>
@@ -29,70 +34,3 @@ layout: 404s
         window.alert("你在这儿不管怎么找 也没有你要的东西哟");
     }
 </script>
-
-<script type="text/javascript">
-    $(function () {
-
-        var imgL = $(".pic img").size();
-        var deg = 360 / imgL;
-        var roY = 0, roX = -10;
-        var xN = 0, yN = 0;
-        var play = null;
-
-        $(".pic img").each(function (i) {
-            $(this).css({
-                <!--translateZ 定义2d旋转沿着z轴-->
-                "transform": "rotateY(" + i * deg + "deg) translateZ(300px)"
-            });
-            <!--防止图片被拖拽-->
-            $(this).attr('ondragstart', 'return false');
-        });
-
-        $(document).mousedown(function (ev) {
-            var x_ = ev.clientX;
-            var y_ = ev.clientY;
-            clearInterval(play);
-            //console.log('我按下了');
-            $(this).bind('mousemove', function (ev) {
-                /*获取当前鼠标的坐标*/
-                var x = ev.clientX;
-                var y = ev.clientY;
-                /*两次坐标之间的距离*/
-                xN = x - x_;
-                yN = y - y_;
-
-                roY += xN * 0.2;
-                roX -= yN * 0.1;
-                //console.log('移动');
-                //$('body').append('<div style="width:5px;height:5px;position:absolute;top:'+y+'px;left:'+x+'px;background-color:red"></div>');
-
-                $('.pic').css({
-                    transform: 'perspective(800px) rotateX(' + roX + 'deg) rotateY(' + roY + 'deg)'
-                });
-                /*之前的鼠标坐标*/
-                x_ = ev.clientX;
-                y_ = ev.clientY;
-
-            });
-        }).mouseup(function () {
-            $(this).unbind('mousemove');
-            var play = setInterval(function () {
-
-                xN *= 0.95;
-                yN *= 0.95;
-                if (Math.abs(xN) < 1 && Math.abs(yN) < 1) {
-                    clearInterval(play);
-                }
-                roY += xN * 0.2;
-                roX -= yN * 0.1;
-                $('.pic').css({
-                    transform: 'perspective(800px) rotateX(' + roX + 'deg) rotateY(' + roY + 'deg)'
-                });
-
-            }, 30);
-
-        });
-
-    });
-</script>
-
