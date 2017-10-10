@@ -13,4 +13,4 @@
 > `首页轮播`
 > `广播条`
 
-![](http://images2015.cnblogs.com/blog/996148/201704/996148-20170405083404191-1726218128.jpg)
+<p style="text-align:center"><img src="/static/jpg/20171010162626.png"/></p>
