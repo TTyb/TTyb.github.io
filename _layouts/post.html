@@ -17,6 +17,7 @@ layout: default
 				<p class="content text-overflow">
 					{{ content }}
 				</p>
+				<span class="icons text-muted">本文地址：<a style="color: #999;" href="{{ page.url }}">http://www.tybai.com{{ page.url }}</a>，来源于<a style="color: #999;" href="/">[TTyb]</a>，欢迎转载，转载请注明出处。</span>
 			</div>
 			
 			<ul class="list-inline" style="font-family: 微软雅黑;text-decoration: none;">
@@ -50,13 +51,13 @@ layout: default
 				<p class="content text-overflow">
 					{{ content }}
 				</p>
+				<span class="icons text-muted">本文地址：<a style="color: #999;" href="{{ page.url }}">http://www.tybai.com{{ page.url }}</a>，来源于<a style="color: #999;" href="/">[TTyb]</a>，欢迎转载，转载请注明出处。</span>
 			</div>
 		</div>
 	
     {% include rightmenu.html %}
 	{% endif %}
 	
-	<span class="icons text-muted">本文地址：<a style="color: #999;" href="{{ page.url }}">http://www.tybai.com{{ page.url }}</a>，来源于<a style="color: #999;" href="/">[TTyb]</a>，欢迎转载，转载请注明出处。</span>
 	<hr>
 	{% include comment.html %}
 </div>
