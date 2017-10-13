@@ -97,8 +97,9 @@ def login(username, password):
     pubkey = dicts["pubkey"]
     newpassword = base64_password(password, pubkey)
 
-    dv = "MDEwAAoA3AAKAskAIAAAAF00AAcCAATLy8vLCQIAIt3edHXh4eHh4SNXVwNCDEsZWBVKFUUWRhkqdSpZLE4jSj4IAgAJy8mTk1tbW-WZCAIACcvJubutra0abg0CAB3Ly27s9KDhr-i6-7bptua15bqJ1on8j-qY1rfavwwCAB_Ttra2thQAVBVbHE4PQh1CEkERTn0ifQh7HmwiQy5LDAIAH9PDw8PDYz5qK2UicDF8I3wsfy9wQxxDNkUgUhx9EHUHAgAEy8vLywwCAB_TwsLCwluz56bor_288a7xofKi_c6RzrvIrd-R8J34DQIAHcvLWUpSBkcJThxdEE8QQBNDHC9wL1opTD5wEXwZBwIABMvLy8sJAgAk09AWFurq6urqe4uL357Ql8WEyZbJmcqaxfap9oPwleepyKXACAIAHd_ceHlRUVHBRxNSHFsJSAVaBVUGVgk6ZTpcM0EsBwIABMvLy8sGAgAoy8vLjIyMjIyMjIkGBgYFEBAQFbW1tbYyMjI3l5eXlMjIyM19fX1-EhMCACjL7-_vh_OH94S-kb7Or9yv37DCtpj6m_KW482uwayD9cfo17vUs9q0FwIADMvLsrK1krvmz7TRpwQCAAbIyMrL_8wVAgAIy8vKlqwQ8A8BAgAGy8nJxs8wBQIABMvLy8EWAgAj6Z32xujb7djv3era4tPk1-7a7dnu2ejc5dDm1eHR5tPr0uYQAgAByw0CAAXLy8x6eg0CAAXLy1lXVwcCAATLy8vLDAIAH9PDwsLCWHsvbiBnNXQ5ZjlpOmo1BlkGcwBlF1k4VTAMAgAf09PT09NIfiprJWIwcTxjPGw_bzADXAN2BWASXD1QNQcCAATLy8vLDQIAHcvLbvzksPG_-Krrpvmm9qX1qpnGmemI-4j_kOKGCAIACcvIPz6JiYk5pQgCAB_d3nh57e3tLI3ZmNaRw4LPkM-fzJzD8K_wg_aU-ZDk"
-
+    dv = "	MDExAAoAogALA44AJAAAAF00AAgCACOLiNbXsLCxIksfXhBXBUQJVglZCloFNmk2Wz5TMVQmdhdkFwwCAB-JmZmZmBNxJWQqbT9-M2wzYzBgPwxTDHkKbx1TMl86DAIAH4mJiYmIDhRAAU8IWhtWCVYGVQVaaTZpHG8KeDZXOl8IAgAJkZW2t97e31_ZCQIAJImKNjcyMjIyM1UbG08OQAdVFFkGWQlaClVmOWYTYAV3OVg1UAgCACGJilhZTU1NwvKm56nuvP2w77Dgs-O8j9CP-onsntCx3LkNAgAdkZGBnYXRkN6Zy4rHmMeXxJTL-Kf4jf6b6afGq84NAgAFkZGBj48NAgAFkZGaeHgMAgAfiZubm5uQ47f2uP-t7KH-ofGi8q2ewZ7rmP2PwaDNqBMCAFyRycnJodWh0aKYt5joifqJ-ZbkkL7cvdSwxeuI54ql0-HO8Z3ylfyStMH8lOCU5JeygLWGx-LQ5deRtIazgce31qXWpsm7z-GD4ovvmrTXuNXwwvfFg-CF65_6iAUCAASRkZGdAQIABpGTk4OO7hUCAAiRkZDP26GAkAQCAAaSkpCRopAWAgAisMSvn7GGsYG5jLWDsYS8iLCIvo6_jruLvISzhLSCu4u5gRcCABiQk7S0p_rS-8Cu9ZjotYnnvP2ew5j1mscQAgABkQYCACiRkZHW1tbW1tbW01xcXF2ampqfPz8_PLi4uL0dHR0eQkJCR_f39_SYBwIABJGRkZEJAgAkiYpkZWVlZWVlZc3NmdiW0YPCj9CP34zcg7DvsMW206HvjuOGBwIABJGRkZENAgAdkZGRU0sfXhBXBUQJVglZCloFNmk2QzBVJ2kIZQAHAgAEkZGRkQ0CAB2RkZpJUQVECk0fXhNME0MQQB8scyxZKk89cxJ_GgkCACSJilRVWVlZWVnXmJjMjcOE1pfahdqK2YnW5brlkOOG9LrbttMHAgAEkZGRkQkCAAyRkQgJGxsbGxp4rq4HAgAEkZGRkQgCAAmRkqSka2tqDsAJAgAkiYo-Pzk5OTk4usTEkNGf2IrLhtmG1oXVirnmucy_2qjmh-qPBwIABJGRkZEHAgAEkZGRkQwCAB-J7Ozs7WAnczJ8O2koZTplNWY2aVoFWi9cOUsFZAlsDAIAH4nr6-vqZGI2dzl-LG0gfyBwI3MsH0Afahl8DkAhTCkIAgAdhYHV1I-PjhUDVxZYH00MQR5BEUISTX4hfhh3BWg"
+    # fp_info = "	25dc4e90f115ed0abe95320051d9bf8c002~~~~zyH0Qgd5Sc_g~~JwyF5BYh5mLx5Zo_yyF5BYh5mL-2~o_Q~eLrX~eLrL~~rS~~CAy0UrYzbPAm0A8Exm8EbdDzglYMrtIvg~JMCPIQ-jINrx8ExsAEnwAMCgJsYdAvWH1bbQIQCBDvbKApUOAm0HABPdGb2RJMngBEew8EWg1zCHIaWC8zew6ExSAMnh7zxtpMAOAqgdGQ0K8axwIvtHEm0dBv0PpvWUAQgd7zxtum0dIv0P56-t1~od5yxwIvtHEm0dBv0P0M2gGgrH8E8PI~PdGmlH8M2gG~cd5a-K1~5dAvWH1bCgIz2gINCCpBPdGvb~8vgQAMLdAvWH1bCgIz2gINCBpheYIvbhAzeKIBPdGb2BBhb-YsCKIqAOGgrpBveNDE-dAvWH1bbCtx1Z457otxIaHH9gtF3ZlG9Vtx~aO57T7zxtpMPOIz028M2PJKxwIvtHp0bmJEUgpvWUAQgdpmnO7zxtGMbsAEnNJEUg1zCHIaWZBw4nYhb9Y0lYIm0NDE-jINr~JEPluaxwIvtHYhx16M2xGQgdAzeYIm0NDE-jINrSuM2PIzAO1zCHIaWCppUPIzgqBbrH8E8PI~PdGblvBEgdDpC5pvWUAQgd1zCHIaW2DE2KIs2OANCXAzAPJQpK5ZqS7wxYpUrMpwbY1wC5BaWdGbbCpvlO8veqGzbsCMLjINrCp0rRIsCOCmnl8h0-1zCHIaWCppUlDEWYIm0NDE-jINrCppUlDEWMAEn1DMYdAvWH1bCgIz2gINCv0qxtIm0N1Egd7zxt8mlz8vxMAEn1DMYdAvWH1qbwIQngYE2KIQnl8ZPdGmrwA~5K1zCHIaWrAveyApb~GzeyJMYjINrtAvJS5yxwIvtHYECOJz0rYpUqAMCgJsYjINrrAveyApbrBpCg8v0~8Z5K1zCHIo__xg~oCg~oWg~oGg~rMy0jIpMAOAqgdGQ0K8aWdGbe-8ExHAEg3GvWUAQgd1qC5BaWpEb2BBKWpDvgSGvWUAKUPIzgS8mnlIN2zAMnSIQACuzedApUUGQg~8QlgIzetAExPIz8CuzedAEgdJM8gJNrlAQ0sDMCRCzgKAEAOua-Hp0bMAEnmJEUgpvWUAQgdpmnO1vxtJQbfJMLHINrSuM2PIzAO1vxtEqAYIm0N1b2RJMngpvePINCYIm0N1EgdAzeKCzgKAEAOuaWCppUlDEWYIm0NDExzIsnsAEnFDMYHp0b2JEgHpvWUAQgdAzeK8Q0yDQgh1vxt8mlz8v-HYE2KIQnl8brOGNClJzWgCve~8EUgINCvIsn4JMYHYECOJz0YCqAPIgl2BqAOGzUl8aWrAveyA0rqCzgdEqU5CzeKIEbh1qb~GzeyJMCvIsn4GhCl8vbvIsn4JMYHEqU50z0KGQgOIzezYE2KIQnl8qAOGzUSCvbhJpAOGzUl8aWrJsnOJzbhEqU5CvbhJ0rlJQ4lAQpHYECOJz0vIsn4CzWO8SwxCvbhJpAPIvpHYE2KIQnl8brOGNClJzWgCve~8EUgINCvIsn4JMYHYECOJz0YCqAPIgl2BqAOGzUl8aWrAveyA0rqCzgdEqU5CzeKIEbh1qb~GzeyJMCvIsn4GhCl8vbvIsn4JMYHEqU50z0KGQgOIzezYE2KIQnl8qAOGzUSCvbhJpAOGzUl8aWrJsnOJzbhEqU5CvbhJ0rlJQ4lAQpHYECOJz0vIsn4CzWO8SwxCvbhJpAPIvpHYECOJz0rYpUqAMCgJsY_B-0R~atqGl4ZZo5woqyBk4FmoqjqNVEY4M-LcxoRrOYR69LqtL7vpDj2-eQYsV37hjVbrBvhATooo69mKn-JWLLnw3g5ohixrg~rOg~r-g~rFg~rN~~cIyHuzL4Yh-_Hys8ExSGv0~DEAPAEY_~g~re~tLAdmaZs~~oag~of~vVvA99Eg~oRg~obg~odg~ohyT1BYd7BLs5BLS7ZoS5SGW5ZcU"
+    # fp_uid = "25dc4e90f115ed0abe95320051d9bf8c"
     post_data = {
         "staticpage": "https://passport.baidu.com/static/passpc-account/html/v3Jump.html",
         "charset": "utf-8",
@@ -109,7 +110,7 @@ def login(username, password):
         "tt": tt,
         "codestring": "",
         "safeflg": 0,
-        "u": "http://passport.baidu.com/disk/home",
+        "u": "https://passport.baidu.com/center",
         "isPhone": "",
         "detect": 1,
         "gid": gid,
@@ -127,6 +128,9 @@ def login(username, password):
         "ppui_logintime": 33554,
         "countrycode": "",
         "dv": dv,
+        # "traceid":57308501,
+        # "fp_info":fp_info,
+        # "fp_uid":fp_uid,
         "callback": "parent." + callback
     }
     resp = session.post(url="https://passport.baidu.com/v2/api/?login", data=post_data, headers=headers)
@@ -143,22 +147,22 @@ def login(username, password):
     file.close()
 
 if __name__ == "__main__":
-    username = "username"
-    password = "password"
-    #login(username, password)
-    #home_page = session.get("https://passport.baidu.com/center", headers=headers).content.decode("utf-8", "ignore")
-    #print(home_page)
-
-    json_file = open("cookie.json")
-    cookies = json.load(json_file)
-    json_file.close()
-
-    header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0',
-              'Host': 'passport.baidu.com',
-              'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-              'Accept-Encoding': 'gzip, deflate',
-              'Accept-Language': 'zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3',
-              'Connection': 'keep-alive'}
-
-    home_page = requests.get("https://passport.baidu.com/center", headers=headers,cookies=cookies).content.decode("utf-8", "ignore")
+    username = "灰色52056"
+    password = "tyb52056"
+    login(username, password)
+    home_page = session.get("https://passport.baidu.com/center", headers=headers).content.decode("utf-8", "ignore")
     print(home_page)
+
+    # json_file = open("cookie.json")
+    # cookies = json.load(json_file)
+    # json_file.close()
+    #
+    # header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0',
+    #           'Host': 'passport.baidu.com',
+    #           'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    #           'Accept-Encoding': 'gzip, deflate',
+    #           'Accept-Language': 'zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3',
+    #           'Connection': 'keep-alive'}
+    #
+    # home_page = requests.get("https://passport.baidu.com/center", headers=headers,cookies=cookies).content.decode("utf-8", "ignore")
+    # print(home_page)
