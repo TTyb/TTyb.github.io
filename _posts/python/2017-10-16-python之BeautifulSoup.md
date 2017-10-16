@@ -70,7 +70,7 @@ if __name__ == '__main__':
         img_src = myimg.get('href')
         #print(img_src)
     # 找到<a>...</a>下类为class_='a'下面的<img>...</img>里面的src
-    for myimg in soup.find_all('a', class_='a'):
+    for myimg in soup.find_all('a', attrs={'class':'a'}):
         img_src = myimg.find('img').get('src')
     # 网页所有信息
     #print(html)
