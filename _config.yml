@@ -5,7 +5,3 @@ markdown: kramdown
 encoding: utf-8
 permalink: /:categories/:title.html
 gems: [jekyll-paginate]
-# highlighter: rouge
-kramdown:
-  input: GFM 
-  syntax_highlighter: rouge
