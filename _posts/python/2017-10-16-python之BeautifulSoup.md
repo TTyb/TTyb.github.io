@@ -25,7 +25,7 @@ desc: "python之BeautifulSoup使用"
 
 一句一句的打印出来看就会明白的
 
-```
+```python
 #!/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 import urllib.request
