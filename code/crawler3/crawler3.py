@@ -26,3 +26,22 @@ for imgurl in imgurls:
     saveimg.write(urllib.request.urlopen(newimgurl).read())
     imgname += 1
     saveimg.close()
+	
+# 使用urlretrieve下载图片
+def cbk(a, b, c):
+    '''回调函数
+    @a:已经下载的数据块
+    @b:数据块的大小
+    @c:远程文件的大小
+    '''
+    per = 100.0 * a * b / c
+    if per > 100:
+        per = 100
+    print('%.2f%%' % per)
+	
+for imgurl in imgurls:
+    work_path = "E:/" + str(imgname) + ".jpg"
+    saveimg = open("E:/" + str(imgname) + ".jpg", 'wb')
+    newimgurl = "http://www.tybai.com/" + imgurl[1].replace("\\", "")
+    urllib.request.urlretrieve(newimgurl, work_path, cbk)
+    imgname += 1
