@@ -50,6 +50,7 @@ def getJson(page, keyword):
 def bytesToDict(content):
     dictInfo = json.loads(content.decode("utf-8", "ignore"))
     infoList = dictInfo["listItem"]
+
     return infoList
 
 
@@ -73,7 +74,7 @@ def formatDict(page, infoList):
         Trys("图像URL","pic_path",formatInfo,listItem)
         # 修饰value
         formatInfo["详情页"] = "https:" + formatInfo["详情页"]
-        formatInfo["详情页"] = formatInfo["详情页"].replace('60x60', '720x720')
+        formatInfo["图像URL"] = formatInfo["图像URL"].replace('60x60', '720x720')
         dictList.append(formatInfo)
 
     return dictList
@@ -84,6 +85,7 @@ def Trys(key1,key2,dict1,dict2):
         dict1[key1] = dict2[key2]
     except:
         dict1[key1] = "None"
+
     return dict1
 
 def main():
