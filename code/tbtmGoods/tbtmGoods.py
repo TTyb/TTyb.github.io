@@ -4,6 +4,7 @@
 import requests
 import json
 import time
+import os
 
 headers = {
     "User-Agent": "Mozilla/5.0 (iPad; U; CPU OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5"
@@ -90,17 +91,30 @@ def Trys(key1, key2, dict1, dict2):
     return dict1
 
 
-def main():
-    page = 2
-    keyword = "iphone x".replace(" ", "+")
+# 创建递归文件夹
+def createfiles(filepathname):
+    try:
+        os.makedirs(filepathname)
+    except Exception as err:
+        print(str(filepathname) + "已经存在！")
 
+
+def getJsonData(page, keyword):
     for item in range(0, page):
         jsonInfo = getJson(page + 1, keyword)
-        infoList = bytesToDict(jsonInfo)
-        dictList = formatDict(page, infoList)
-        print(dictList)
+        # 保存json到本地
+        filePath = "json/" + time.strftime('%Y%m%d', time.localtime(time.time())) + "/"
+        createfiles(filePath)
+        jsonfile = open(filePath + str(int(time.time())) + ".json", "wb")
+        jsonfile.write(jsonInfo)
+        jsonfile.close()
         time.sleep(5)
+        # infoList = bytesToDict(jsonInfo)
+        # dictList = formatDict(page, infoList)
+        # print(dictList)
 
 
 if __name__ == "__main__":
-    main()
+    page = 2
+    keyword = "iphone x".replace(" ", "+")
+    getJsonData(page, keyword)
