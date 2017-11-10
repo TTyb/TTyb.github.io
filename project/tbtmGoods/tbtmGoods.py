@@ -4,6 +4,7 @@
 import requests
 import json
 import time
+import os
 
 headers = {
     "User-Agent": "Mozilla/5.0 (iPad; U; CPU OS 4_3_3 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5"
@@ -60,18 +61,18 @@ def formatDict(page, infoList):
     for listItem in infoList:
         formatInfo = {}
         formatInfo["页数"] = page
-        Trys("店名","nick",formatInfo,listItem)
-        Trys("商品标题","title",formatInfo,listItem)
-        Trys("商品打折价","price",formatInfo,listItem)
-        Trys("发货地址","location",formatInfo,listItem)
-        Trys("评论数","commentCount",formatInfo,listItem)
-        Trys("原价","originalPrice",formatInfo,listItem)
-        Trys("售出件数","act",formatInfo,listItem)
-        Trys("折扣政策","zkType",formatInfo,listItem)
-        Trys("付款人数","act",formatInfo,listItem)
-        Trys("金币折扣","coinLimit",formatInfo,listItem)
-        Trys("详情页","url",formatInfo,listItem)
-        Trys("图像URL","pic_path",formatInfo,listItem)
+        Trys("店名", "nick", formatInfo, listItem)
+        Trys("商品标题", "title", formatInfo, listItem)
+        Trys("商品打折价", "price", formatInfo, listItem)
+        Trys("发货地址", "location", formatInfo, listItem)
+        Trys("评论数", "commentCount", formatInfo, listItem)
+        Trys("原价", "originalPrice", formatInfo, listItem)
+        Trys("售出件数", "act", formatInfo, listItem)
+        Trys("折扣政策", "zkType", formatInfo, listItem)
+        Trys("付款人数", "act", formatInfo, listItem)
+        Trys("金币折扣", "coinLimit", formatInfo, listItem)
+        Trys("详情页", "url", formatInfo, listItem)
+        Trys("图像URL", "pic_path", formatInfo, listItem)
         # 修饰value
         formatInfo["详情页"] = "https:" + formatInfo["详情页"]
         formatInfo["图像URL"] = formatInfo["图像URL"].replace('60x60', '720x720')
@@ -79,8 +80,9 @@ def formatDict(page, infoList):
 
     return dictList
 
+
 # 一个try
-def Trys(key1,key2,dict1,dict2):
+def Trys(key1, key2, dict1, dict2):
     try:
         dict1[key1] = dict2[key2]
     except:
@@ -88,17 +90,31 @@ def Trys(key1,key2,dict1,dict2):
 
     return dict1
 
-def main():
-    page = 2
-    keyword = "iphone x".replace(" ", "+")
 
+# 创建递归文件夹
+def createfiles(filepathname):
+    try:
+        os.makedirs(filepathname)
+    except Exception as err:
+        print(str(filepathname) + "已经存在！")
+
+
+def getJsonData(page, keyword):
     for item in range(0, page):
         jsonInfo = getJson(page + 1, keyword)
-        infoList = bytesToDict(jsonInfo)
-        dictList = formatDict(page, infoList)
-        print(dictList)
+        # 保存json到本地
+        filePath = "json/" + str(time.strftime('%Y%m%d', time.localtime(time.time()))) + "/"
+        createfiles(filePath)
+        jsonfile = open(filePath + str(int(time.time())) + ".json", "wb")
+        jsonfile.write(jsonInfo)
+        jsonfile.close()
         time.sleep(5)
+        # infoList = bytesToDict(jsonInfo)
+        # dictList = formatDict(page, infoList)
+        # print(dictList)
 
 
 if __name__ == "__main__":
-    main()
+    page = 2
+    keyword = "iphone x".replace(" ", "+")
+    getJsonData(page, keyword)

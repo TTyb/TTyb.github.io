@@ -1,12 +1,15 @@
 <html>
 <head>
-	<title>Home</title>
-	<link rel="stylesheet" type="text/css"
-          href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+	<title>TTyb</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}" />
 </head>
 <body>
 <div class="container" style="width: 88%;">
 	<form action="/" method="post">
+		{%for day in days%}
+			<input type="hidden" name="selectday" value="{{day}}"><button type="submit">{{day}}</button>
+		{%endfor%}
+
 		<div class="input-group" style="width: 16.6667%;">
 		   <input type="text" class="form-control" name="search" placeholder="请输入字段名">
 		   <input type="text" class="form-control" name="page" placeholder="请输入查询页数">
