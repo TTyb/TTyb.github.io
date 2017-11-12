@@ -35,7 +35,7 @@ layout: default
 			
 			<br/>
 			<h4 style="font-family: KaiTi">如果你觉得本站内容有帮助<i class="icon fa-hand-o-down" aria-hidden=true></i></h4>
-			<a onclick="dashangToggle()" class="zanzhume" title="鼓励" href="javascript:void(0)"><i class="icon fa-rmb"></i>我要鼓励作者写出更好的教程</a>
+			<a onclick="dashangToggle()" class="zanzhume" title="鼓励" href="javascript:void(0)"><i class="icon fa-rmb"></i>我要请作者喝杯咖啡</a>
 			{% include dashang.html %}
 		</div>
 	{% else %}
@@ -51,6 +51,9 @@ layout: default
 				<p class="content text-overflow">
 					{{ content }}
 				</p>
+				<br/>
+				<h4 style="font-family: KaiTi">如果你觉得本站内容有帮助<i class="icon fa-hand-o-down" aria-hidden=true></i></h4>
+				<a onclick="dashangToggle()" class="zanzhume" title="鼓励" href="javascript:void(0)"><i class="icon fa-rmb"></i>我要请作者喝杯咖啡</a>
 				<span class="icons text-muted">本文地址：<a style="color: #999;" href="{{ page.url }}">http://www.tybai.com{{ page.url }}</a>，来源于<a style="color: #999;" href="/">[TTyb]</a>，欢迎转载，转载请注明出处。</span>
 			</div>
 		</div>
@@ -75,7 +78,7 @@ layout: default
     text-align: center;
 	padding-left: 5px;
 	padding-right: 5px;
-	width: 210px;
+	width: 150px;
 	text-decoration: none;
     }
 </style>
