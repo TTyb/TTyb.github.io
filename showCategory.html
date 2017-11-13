@@ -73,7 +73,7 @@ layout: default
             aaa += "<small>分类：<span class='tag'>" + archieves[i]['category'] + "</span></small>";
             aaa += "<h6 class='text-muted'>作者：" + archieves[i]['author'] + "&nbsp;&nbsp;文章发表于：<span class='timet'>" + archieves[i]['date'];
             aaa += "</span></h6><div>";
-            aaa += "<p class='content text-overflow'>" + archieves[i]['desc'] + "</p><h5><span class='topicc'><a href='{{ post.url | prepend: site.baseurl }}'>阅读全文 »</a></span></h5><p></p></div></div>";
+            aaa += "<p class='content text-overflow'>" + archieves[i]['desc'] + "</p><h5><span class='topicc'><a href='" + archieves[i]['url'] + "'>阅读全文 »</a></span></h5><p></p></div></div>";
             k += aaa;
         }
         var div = document.getElementById("yy");
