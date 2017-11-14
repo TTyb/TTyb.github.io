@@ -52,6 +52,7 @@ addColDataframe.show(10,false)
 这样可以用 `udf` 写自定义函数进行增加列：
 
 ```
+import org.apache.spark.sql.functions.udf
 // 新建一个dataFrame
 val sparkconf = new SparkConf()
   .setMaster("local")
