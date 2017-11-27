@@ -75,3 +75,15 @@ browser.quit()
 ```
 
 <p style="text-align:center"><img src="/static/postimage/selenium/browser/996148-20161205140547554-2049984391.png"/></p>
+
+### 设置分辨率
+
+```
+# !/usr/bin/python3.4
+# -*- coding: utf-8 -*-
+from selenium import webdriver
+browser = webdriver.Chrome()
+
+browser .set_window_size(1440,900)
+print (browser .get_window_size())  
+```
