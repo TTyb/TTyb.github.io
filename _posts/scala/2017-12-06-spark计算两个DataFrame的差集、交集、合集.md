@@ -41,11 +41,13 @@ val newDF = sentenceDataFrame1.select("sentence").except(sentenceDataFrame.selec
 newDF.show()
 ```
 
+```
 +--------+
 |sentence|
 +--------+
 |f8934y  |
 +--------+
+```
 
 ### 交集 intersect
 
@@ -54,12 +56,14 @@ val newDF = sentenceDataFrame1.select("sentence").intersect(sentenceDataFrame.se
 newDF.show()
 ```
 
+```
 +--------+
 |sentence|
 +--------+
 |     asf|
 |    2143|
 +--------+
+```
 
 
 ### 合集 union
@@ -69,6 +73,7 @@ val newDF = sentenceDataFrame1.select("sentence").union(sentenceDataFrame.select
 newDF.show()
 ```
 
+```
 +--------+
 |sentence|
 +--------+
@@ -79,6 +84,7 @@ newDF.show()
 |    2143|
 |    rfds|
 +--------+
+```
 
 合集最好去一下重 `distinct` ：
 
@@ -87,6 +93,7 @@ val newDF = sentenceDataFrame1.select("sentence").union(sentenceDataFrame.select
 newDF.show()
 ```
 
+```
 +--------+
 |sentence|
 +--------+
@@ -95,3 +102,4 @@ newDF.show()
 |    2143|
 |  f8934y|
 +--------+
+```
