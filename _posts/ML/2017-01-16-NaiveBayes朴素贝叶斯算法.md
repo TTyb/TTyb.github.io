@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [machinelearning]
+categories: [ML]
 title: NaiveBayes朴素贝叶斯算法
 date: 2017-01-16
 author: TTyb
