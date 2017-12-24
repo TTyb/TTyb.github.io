@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [机器学习]
+categories: [machinelearning]
 title: sklearn的kmeans测试
 date: 2017-03-07
 author: TTyb

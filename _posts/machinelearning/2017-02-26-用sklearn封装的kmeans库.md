@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [机器学习]
+categories: [machinelearning]
 title: 用sklearn封装的kmeans库
 date: 2017-02-26
 author: TTyb

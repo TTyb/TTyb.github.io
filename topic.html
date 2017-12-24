@@ -5,30 +5,39 @@ layout: default
 <div class="container">
     <div class="col-xs-7 col-sm-7 col-md-9">
         <h1>文章列表</h1>
-        <div class="page-header">
+        <div>
             {% for post in site.posts %}
-			{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
+				{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
 			{% else %}
-            <hr>
-            <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
-            {% for category in post.categories %}
-            <small>
-                分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</span></a>
-            </small>
-            {% endfor %}
-            <h6 class="text-muted"><span style="padding-right:5px">作者：{{ post.author }}</span>文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span>
-            </h6>
-            <p class="content text-overflow">
-                {% if post.desc %}
-                {{ post.desc }}
-                {% else %}
-                {{ post.excerpt | strip_html }}
-                {% endif %}
-            </p>
+				
+				<div class="col-xs-12 col-sm-12 col-md-12" class="media thumbnail mytrans" style="clear:both;">
+					<hr>
+					<div class="col-xs-4 col-sm-4 col-md-3" style="padding: 20px">
+						<a href="javascript:void(0)" class="media-left media-middle media-bottom" style="float:left;">
+							<img style="border-radius: 4px;" src="{{ "/static/jpg/" | prepend: site.baseurl }}{{ post.categories.first }}{{".jpg"}}" height="120" width="100%"/>
+						</a>
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-9" class="media-body" style="padding-bottom: 10px;">
 
-            <h5><span class="topicc"><a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></span></h5>
-            <p></p>
-			{% endif %}
+						<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+						{% for category in post.categories %}
+						<small>
+							分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</span></a>
+						</small>
+						{% endfor %}
+						<h6 class="text-muted"><span style="padding-right:5px">作者：{{ post.author }}</span>文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span>
+						</h6>
+						<p class="content text-overflow">
+							{% if post.desc %}
+							{{ post.desc }}
+							{% else %}
+							{{ post.excerpt | strip_html }}
+							{% endif %}
+						</p>
+						<h5><span class="topicc"><a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></span></h5>
+					</div>
+				</div>
+				{% endif %}
             {% endfor %}
         </div>
     </div>
