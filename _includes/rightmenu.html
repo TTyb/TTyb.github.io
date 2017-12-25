@@ -6,14 +6,10 @@
 	<div style="margin:20px">
 		<span class="notice"><marquee direction="left" style="font-family: KaiTi;">任何爬虫问题欢迎在留言中提问，博主会尽量帮忙解决。关注公众号后回复任意内容可以联系到作者！</marquee></span>
 	</div>
-	<div style="border-radius:5em;width:51%;height:100%;overflow:hidden;margin:0 auto;">
-		<div class="our-team">
-			<div class="pic">
-				<p class="description">记得点下方关注哦</p>
-				<img src="{{ "/static/jpg/head.jpg" | prepend: site.baseurl }}" alt=""/>
-			</div>
+	<div style="border-radius:5em;width:50%;height:100%;overflow:hidden;margin:0 auto;">
+		<div class="pic">
+			<img src="{{ "/static/jpg/head.jpg" | prepend: site.baseurl }}" alt=""/>
 		</div>
-		
 	</div>
 
     <div style="text-align: center;">
@@ -94,8 +90,9 @@ li:HOVER #showimg {
 }
 
 .contactme{
-    background-color: #00a8e6;
+	background-color: #3bb4e5;
     border-radius: 4px;
+	border: 1px solid #3bb4e5;
     color: #fff;
     display: block;
     font-family: "KaiTi";
@@ -103,8 +100,7 @@ li:HOVER #showimg {
     text-align: center;
 	padding-left: 20px;
 	padding-right: 20px;
-	
-    }
+}
 
 .tags {
 	float:left;
@@ -223,41 +219,6 @@ li:HOVER #showimg {
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#fee18d', EndColorStr='#fec86c');
 
 	border-color:#e1b160;
-}
-/* 头像动态效果 */
-.our-team{
-	padding-bottom: 20px;
-	text-align: center;
-	width: 130px;
-	margin:0 auto;
-}
-.our-team .pic{
-	display: inline-block;
-	width: 130px;
-	height: 129px;
-	border-radius: 50%;
-	position: relative;
-}
-.our-team .description{
-	padding: 70px 20px 30px;
-	font-family: Microsoft YaHei
-}
-.our-team .pic img{
-	border-radius: 50%;
-	position: absolute;
-	top: -1px;
-	left: -1px;
-	transition: all 0.6s ease 0s;
-}
-.our-team:hover .pic img{
-	transform: rotate(-120deg);
-	transform-origin: 95% 40% 0;
-}
-@media only screen and (max-width: 990px){
-	.our-team{ margin-bottom: 30px; }
-}
-@media only screen and (max-width: 767px){
-	.our-team{ overflow: hidden; }
 }
 
 </style>
