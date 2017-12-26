@@ -7,7 +7,7 @@ author: TTyb
 desc: "python连接Linux命令行"
 ---
 
-```
+~~~ruby
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
@@ -89,12 +89,12 @@ if __name__ == '__main__':
     cmd = "ls -l /etc/rsyslog.conf"
     result = getexec(cmd)
     print "result", result
-```
+~~~
 
 打印结果：
 
-```
+~~~ruby
 26 ['(?i)assword', '***'] ***
 5 ['(?i)Last login', True] True
 result -rw-r--r--. 1 root root 3167 Mar 13 11:24 /etc/rsyslog.conf
-```
+~~~

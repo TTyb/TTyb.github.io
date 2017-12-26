@@ -7,7 +7,7 @@ author: TTyb
 desc: "scala读取解析json文件"
 ---
 
-```
+~~~ruby
 import scala.util.parsing.json.JSON._
 import scala.io.Source
 
@@ -24,10 +24,10 @@ object ScalaJsonParse {
 
   }
 }
-```
+~~~
 
 得到的结果如下：
 
-```
+~~~ruby
 HashTrieMap
-```
+~~~

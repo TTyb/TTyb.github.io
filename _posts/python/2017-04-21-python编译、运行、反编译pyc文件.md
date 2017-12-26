@@ -15,36 +15,36 @@ desc: "为了加密 `.py` 文件，以前一般使用打包成exe ，但是最�
 
 代码：
 
-```
+~~~ruby
 import py_compile
 py_compile.compile("test.py")
-```
+~~~
 命令行下：
 
-```
+~~~ruby
 python -m py_compile test.py
-```
+~~~
 
 > 多个文件
 
-```
+~~~ruby
 import compileall
 compileall.compile_dir("存放海量py的目录")
-```
+~~~
 
 命令行下：
 
-```
+~~~ruby
 python -m compileall 存放海量py的目录
-```
+~~~
 
 ### 运行 `pyc` 文件
 
 命令行下：
 
-```
+~~~ruby
 python test.pyc
-```
+~~~
 
 <p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090418149-1426718335.png"/></p>
 
@@ -62,9 +62,9 @@ python test.pyc
 
 命令行下：
 
-```
+~~~ruby
 uncompyle6 test.pyc > test1.py
-```
+~~~
 
 和源文件对比：
 

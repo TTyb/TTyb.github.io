@@ -9,7 +9,7 @@ desc: "spark计算两个DataFrame的差集、交集、合集"
 
 `spark` 计算两个`dataframe` 的差集、交集、合集，只选择某一列来对比比较好。新建两个 `dataframe` ：
 
-```
+~~~ruby
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.SQLContext
 
@@ -32,48 +32,48 @@ def main(args: Array[String]): Unit = {
     )).toDF("label", "sentence")
     sentenceDataFrame1.show()
 }
-```
+~~~
 
 ### 差集 except
 
-```
+~~~ruby
 val newDF = sentenceDataFrame1.select("sentence").except(sentenceDataFrame.select("sentence"))
 newDF.show()
-```
+~~~
 
-```
+~~~ruby
 +--------+
 |sentence|
 +--------+
 |f8934y  |
 +--------+
-```
+~~~
 
 ### 交集 intersect
 
-```
+~~~ruby
 val newDF = sentenceDataFrame1.select("sentence").intersect(sentenceDataFrame.select("sentence"))
 newDF.show()
-```
+~~~
 
-```
+~~~ruby
 +--------+
 |sentence|
 +--------+
 |     asf|
 |    2143|
 +--------+
-```
+~~~
 
 
 ### 合集 union
 
-```
+~~~ruby
 val newDF = sentenceDataFrame1.select("sentence").union(sentenceDataFrame.select("sentence"))
 newDF.show()
-```
+~~~
 
-```
+~~~ruby
 +--------+
 |sentence|
 +--------+
@@ -84,16 +84,16 @@ newDF.show()
 |    2143|
 |    rfds|
 +--------+
-```
+~~~
 
 合集最好去一下重 `distinct` ：
 
-```
+~~~ruby
 val newDF = sentenceDataFrame1.select("sentence").union(sentenceDataFrame.select("sentence")).distinct()
 newDF.show()
-```
+~~~
 
-```
+~~~ruby
 +--------+
 |sentence|
 +--------+
@@ -102,4 +102,4 @@ newDF.show()
 |    2143|
 |  f8934y|
 +--------+
-```
+~~~

@@ -9,7 +9,7 @@ desc: "从数据库提取出来的时间为 `String` 格式，现在需要转换
 
 从数据库提取出来的时间为 `String` 格式，现在需要转换为 `date` 并提取出里面的 *小时* 时间段：
 
-```
+~~~ruby
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Calendar
@@ -35,4 +35,4 @@ object test {
   }
 }
 
-```
+~~~

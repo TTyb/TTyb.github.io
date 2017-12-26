@@ -9,7 +9,7 @@ desc: "在给代码带包成jar后，放到环境中运行出现No FileSystem fo
 
 在给代码带包成jar后，放到环境中运行出现如下错误：
 
-```
+~~~ruby
 Exception in thread "main" java.io.IOException: No FileSystem for scheme: file
 	at org.apache.hadoop.fs.FileSystem.getFileSystemClass(FileSystem.java:2644)
 	at org.apache.hadoop.fs.FileSystem.createFileSystem(FileSystem.java:2651)
@@ -37,7 +37,7 @@ Exception in thread "main" java.io.IOException: No FileSystem for scheme: file
 	at SQLAttack$.getDayDataByES(SQLAttack.scala:51)
 	at SQLAttack$.main(SQLAttack.scala:25)
 	at SQLAttack.main(SQLAttack.scala)
-```
+~~~
 
 这是因为 `HDFS` 的配置文件没写好，更改方式如下：
 
@@ -51,7 +51,7 @@ Exception in thread "main" java.io.IOException: No FileSystem for scheme: file
 
 用 `rar` 打开 `hadoop-common-2.7.2.jar` ，把里面的 `core-default.xml` 下载到本地，打开添加更改，在 `<!--- global properties -->` 添加如下字段：
 
-```
+~~~ruby
 <!--- global properties -->
 <property>
         <name>fs.hdfs.impl</name>
@@ -63,7 +63,7 @@ Exception in thread "main" java.io.IOException: No FileSystem for scheme: file
         <value>org.apache.hadoop.fs.LocalFileSystem</value>
         <description>The FileSystem for hdfs: uris.</description>
 </property>
-```
+~~~
 
 将更改后的 `core-default.xml` 重新放入 `hadoop-common-2.7.2.jar` 中，再次打包就可以运行了
 

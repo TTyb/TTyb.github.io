@@ -9,13 +9,13 @@ desc: "python数据库操作pymysql"
 
 安装数据库：
 
-```
+~~~ruby
 pip3 install pymysql
-```
+~~~
 
 进行数据库的更新、插入、查询等操作：
 
-```
+~~~ruby
 #!/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 
@@ -66,4 +66,4 @@ cur.close()
 
 # 关闭数据库
 mysql.close()
-```
+~~~

@@ -9,7 +9,7 @@ desc: "由于需要海量的进行聚类，所以将 `k-means` 算法自我封�
 
 由于需要海量的进行聚类，所以将 `k-means` 算法自我封装成一个方便利用的库，可以直接调用得到最优的 `k值` 和 `中心点`：
 
-```
+~~~ruby
 #!/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 
@@ -105,7 +105,7 @@ def calckmean(array, karr):
             # [1.75, 2.0]]
             return karr[i], point[i], coordinate, distance
 
-```
+~~~
 
 调用的时候直接可以：
 
@@ -113,7 +113,7 @@ def calckmean(array, karr):
 
 测试数据：
 
-```
+~~~ruby
 #!/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 
@@ -133,7 +133,7 @@ print("------------------------")
 print("k=" + str(K) + "时的中心点为" + "\n" + str(point) + "\n" + "各个簇点为" + "\n" + str(coordinate))
 print(distance)
 
-```
+~~~
 
 <p style="text-align:center"><img src="/static/postimage/machinelearning/sklearnkmeans/996148-20170226101819554-1837598147.png"/></p>
 

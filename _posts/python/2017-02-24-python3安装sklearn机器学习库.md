@@ -9,12 +9,12 @@ desc: "安装sklearn库需要很多前提条件，而且不能pip3 install sklea
 
 安装sklearn需要的库请全部在[万能仓库](http://www.lfd.uci.edu/~gohlke/pythonlibs/)下载：
 
-```
+~~~ruby
 http://www.lfd.uci.edu/~gohlke/pythonlibs/#scipy
 http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
 http://www.lfd.uci.edu/~gohlke/pythonlibs/#matplotlib
 http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikit-learn
-```
+~~~
 
 安装方法请看：
 
@@ -22,7 +22,7 @@ http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikit-learn
 
 安装成功后测试集代码：
 
-```
+~~~ruby
 #!/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 
@@ -78,13 +78,13 @@ plt.xlabel('k')
 plt.show()
 plt.close()
 
-```
+~~~
 效果如下：
 
 <p style="text-align:center"><img src="/static/postimage/python/sklearn/996148-20170224103607898-896192281.png"/></p>
 
 画图的库 `matplotlib` 使用方法请参考：
 
-```
+~~~ruby
 http://www.cnblogs.com/zhizhan/p/5615947.html
-```
+~~~

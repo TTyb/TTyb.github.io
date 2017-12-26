@@ -15,7 +15,7 @@ selenium是处理异步加载的一种方法
 
 缺点是加载的东西太多，导致爬取速度变慢
 
-```
+~~~ruby
 #!/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 
@@ -61,5 +61,5 @@ print(browser.find_element_by_xpath("//a"))
 html = browser.page_source
 time.sleep(5)
 browser.quit()
-```
+~~~
 

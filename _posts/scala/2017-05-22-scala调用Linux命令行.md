@@ -9,13 +9,13 @@ desc: "在scala里面存在 调用Linux命令行的函数，得到返回的结�
 
 在 `scala` 里面存在 调用 `Linux` 命令行的函数：
 
-```
+~~~ruby
 import scala.sys.process._
-```
+~~~
 
 执行的方法也不难：
 
-```
+~~~ruby
 import scala.sys.process._
 
 /**
@@ -30,6 +30,6 @@ object test1 {
   }
 
 }
-```
+~~~
 
 需要注意的是，这个库只能调用 `Linux` 的命令行，在 `Windows` 下不行

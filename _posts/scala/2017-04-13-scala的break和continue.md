@@ -11,13 +11,13 @@ desc: "scala的break和continue"
 
 这里用到了库：
 
-```
+~~~ruby
 import scala.util.control.Breaks.{break, breakable}
-```
+~~~
 
 如果用 `breakable` 包裹整个循环，那么遇到 `break` 则是跳出整个循环：`breakable{for}` :
 
-```
+~~~ruby
 import scala.util.control.Breaks.{break, breakable}
 
 object test {
@@ -36,14 +36,14 @@ object test {
     }
   }
 }
-```
+~~~
 打印结果：
 
 <p style="text-align:center"><img src="/static/postimage/scala/breakcontinue/996148-20170413142012126-563467794.png"/></p>
 
 如果用 `for` 包裹 `breakable`，那么遇到 `break` 则是跳出本次循环：`for{breakable}` :
 
-```
+~~~ruby
 import scala.util.control.Breaks.{break, breakable}
 
 object test {
@@ -63,7 +63,7 @@ object test {
   }
 }
 
-```
+~~~
 
 打印结果：
 

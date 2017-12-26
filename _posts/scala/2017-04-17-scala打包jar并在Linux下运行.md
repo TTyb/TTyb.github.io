@@ -55,15 +55,15 @@ desc: "scala打包jar并在Linux下运行"
 
 将其传输到 `Linux` 目录下，运行命令删除不必要的文件：
 
-```
+~~~ruby
 zip -d 你的jar名字.jar META-INF/*.RSA META-INF/*.DSA META-INF/*.SF
-```
+~~~
 
 然后输入命令运行：
 
-```
+~~~ruby
 bash spark-submit --class MF字段 你的jar名字.jar
-```
+~~~
 
 其中 `MF字段` 为你的 `MF` 文件中的 `Main-Class` :
 

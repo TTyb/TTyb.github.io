@@ -9,7 +9,7 @@ desc: "详解如何搞定瀑布流"
 
 制作解析网址的get;
 
-```
+~~~ruby
 def gethtml(url,postdata):
 
     header = {'User-Agent':
@@ -26,7 +26,7 @@ def gethtml(url,postdata):
     html_bytes = requests.get(url, headers=header,params = postdata)
 
     return html_bytes
-```
+~~~
 
 头部的构造请参考上一篇博文
 
@@ -40,17 +40,17 @@ def gethtml(url,postdata):
 
 lasturl为时间戳，精确到后三位小数的时间戳，构造这个时间戳，后三位小数我就随机生成一个三位数了：
 
-```
+~~~ruby
 import time
 import random
 timerandom = random.randint(100,999)
 nowtime = int(time.time())
 lasturl = str(nowtime) + str(timerandom) + '='
-```
+~~~
 
 最后制作postdata：
 
-```
+~~~ruby
 # 构造post
 postdata = {
     'tn':'resultjson_com',
@@ -82,11 +82,11 @@ postdata = {
     'rn': 30,
     'gsm': '1e'
 }
-```
+~~~
 
 其中页数pn和搜索关键字keywork为：
 
-```
+~~~ruby
 # 搜索的关键字
 # keywork = input('请输入你要查找的关键字')
 keyword = 'gif'
@@ -94,11 +94,11 @@ keyword = 'gif'
 # 页数
 # pn = int(input('你要抓取多少页：'))
 pn = 30
-```
+~~~
 
 将得到的信息保存在本地，当所有都保存下来了再去下载图片：
 
-```
+~~~ruby
 # 解析网址
 contents = gethtml(url,postdata)
 
@@ -106,11 +106,11 @@ contents = gethtml(url,postdata)
 file = open('../json/' + str(pn) + '.json', 'wb')
 file.write(contents.content)
 file.close()
-```
+~~~
 
 读取文件夹里面的所有文件：
 
-```
+~~~ruby
 # 找出文件夹下所有xml后缀的文件
 def listfiles(rootdir, prefix='.xml'):
     file = []
@@ -122,11 +122,11 @@ def listfiles(rootdir, prefix='.xml'):
             return file
         else:
             pass
-```
+~~~
 
 遍历json文件夹，读取里面的东西：
 
-```
+~~~ruby
 # 找到json文件夹下的所有文件名字
 files = listfiles('../json/', '.json')
 for filename in files:
@@ -137,14 +137,14 @@ for filename in files:
     doccontent = doc.read().decode('utf-8', 'ignore')
     product = doccontent.replace(' ', '').replace('\n', '')
     product = json.loads(product)
-```
+~~~
 
 查询字典data：
 
-```
+~~~ruby
 # 得到字典data
 onefile = product['data']
-```
+~~~
 
 将字典里面的图片网址和图片名称放到数组里面：
 
@@ -152,7 +152,7 @@ onefile = product['data']
 
 制作一个解析头来解析图片下载：
 
-```
+~~~ruby
 def getimg(url):
 
     # 制作一个专家
@@ -171,11 +171,11 @@ def getimg(url):
     html_img = urllib.request.urlopen(url)
 
     return html_img
-```
+~~~
 
 最后将图片下载到本地的gif文件夹：
 
-```
+~~~ruby
 for item in onefile:
     try:
         pic = getimg(item['thumbURL'])
@@ -197,7 +197,7 @@ for item in onefile:
         print('暂停' + loadimg + '秒')
         time.sleep(loadimg)
         pass
-```
+~~~
 
 得到效果如下：
 

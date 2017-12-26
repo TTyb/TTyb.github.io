@@ -9,7 +9,7 @@ desc: "selenium设置浏览器属性"
 
 ### 关闭图片
 
-```
+~~~ruby
 from selenium import webdriver
 
 options = webdriver.ChromeOptions()
@@ -27,13 +27,13 @@ browser.get(url)
 input("是否有图")
 browser.quit()
 
-```
+~~~
 
 <p style="text-align:center"><img src="/static/postimage/selenium/browser/996148-20161203114330787-1216998587.png"/></p>
 
 ### 更改UA和语言
 
-```
+~~~ruby
 # !/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 
@@ -48,13 +48,13 @@ browser = webdriver.Chrome(chrome_options=options)
 url = "http://image.baidu.com/"
 browser.get(url)
 browser.quit()
-```
+~~~
 
 <p style="text-align:center"><img src="/static/postimage/selenium/browser/996148-20161203115018521-1738483123.png"/></p>
 
 ### 携带cookie
 
-```
+~~~ruby
 # !/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 from selenium import webdriver
@@ -72,13 +72,13 @@ browser.add_cookie({'name':'ABC','value':'DEF'})
 browser.execute_script(newwindow)
 input("查看效果")
 browser.quit()
-```
+~~~
 
 <p style="text-align:center"><img src="/static/postimage/selenium/browser/996148-20161205140547554-2049984391.png"/></p>
 
 ### 设置分辨率
 
-```
+~~~ruby
 # !/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 from selenium import webdriver
@@ -86,4 +86,4 @@ browser = webdriver.Chrome()
 
 browser .set_window_size(1440,900)
 print (browser .get_window_size())  
-```
+~~~

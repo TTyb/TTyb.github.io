@@ -11,7 +11,7 @@ desc: "一种去除dataframe中null、NaN和空字符串的方法，基于scala�
 
 去除 `dataframe` 中的 `null` 、 `NaN` 有方法 `drop` ，用 `dataframe.na` 找出带有 `null`、 `NaN` 的行，用 `drop` 删除行：
 
-```
+~~~ruby
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.{DataFrame, SQLContext, SparkSession}
 /**
@@ -33,13 +33,13 @@ object test3 {
     sentenceDataFrame.na.drop().show()
   }
 }
-```
+~~~
 
 ### 去除空字符串
 
 去除空字符串用 `dataframe.where` ：
 
-```
+~~~ruby
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.{DataFrame, SQLContext, SparkSession}
 /**
@@ -62,4 +62,4 @@ object test3 {
     sentenceDataFrame.where("sentence <> ''").show()
   }
 }
-```
+~~~

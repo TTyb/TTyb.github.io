@@ -9,9 +9,9 @@ desc: "虚拟机VMwareWorkstation下安装Linux系统centOS"
 
 ### 下载VMware Workstation
 
-```
+~~~ruby
 thunder://QUFodHRwczovL2Rvd25sb2FkMy52bXdhcmUuY29tL3NvZnR3YXJlL3drc3QvZmlsZS9WTXdhcmUtd29ya3N0YXRpb24tZnVsbC0xMi41LjEtNDU0MjA2NS5leGVaWg==
-```
+~~~
 
 ### VMware Workstation的安装密匙
 
@@ -20,21 +20,21 @@ thunder://QUFodHRwczovL2Rvd25sb2FkMy52bXdhcmUuY29tL3NvZnR3YXJlL3drc3QvZmlsZS9WTX
 <p style="text-align:center"><img src="/static/postimage/linux/vmware/996148-20170113115136431-33090420.png"/></p>
 
 
-```
+~~~ruby
 5A02H-AU243-TZJ49-GTC7K-3C61N
 VF5XA-FNDDJ-085GZ-4NXZ9-N20E6
 UC5MR-8NE16-H81WY-R7QGV-QG2D8
 ZG1WH-ATY96-H80QP-X7PEX-Y30V4
 AA3E0-0VDE1-0893Z-KGZ59-QGAVF
-```
+~~~
 
 ### centOS7.2下载
 
 镜像下载地址为：
 
-```
+~~~ruby
 http://www.centoscn.com/CentosSoft/iso/
-```
+~~~
 
 ### 安装Linux
 

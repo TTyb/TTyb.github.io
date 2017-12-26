@@ -9,7 +9,7 @@ desc: "`spark` 中的 `reduce` 非常的好用，`reduce` 可以对 `dataframe` 
 
 `spark` 中的 `reduce` 非常的好用，`reduce` 可以对 `dataframe` 中的元素进行计算、拼接等等。例如生成了一个 `dataframe` :
 
-```
+~~~ruby
 //配置spark
   def getSparkSession(): SparkSession = {
 
@@ -36,19 +36,19 @@ def main(args: Array[String]): Unit = {
     )).toDF("label", "sentence")
     sentenceDataFrame.show()
   }
-```
+~~~
 假设要将 `sentence` 这一列拼接成一长串字符串，则：
 
-```
+~~~ruby
 sentenceDataFrame.createOrReplaceTempView("BIGDATA")
 val sqlresult: DataFrame = spark.sql(s"SELECT sentence FROM BIGDATA")
 val a: RDD[String] = sqlresult.rdd.map(_.getAs[String]("sentence"))
 val b = a.reduce((x, y) => x + "," + y)
-```
+~~~
 
 要是将 `sentence` 这一列拼接一个 `List`，则：
 
-```
+~~~ruby
 val c: RDD[List[String]] = sqlresult.rdd.map{ row=>List(row.getAs[String]("sentence"))}
 val d: List[String] = c.reduce((x, y)=>x++y)
-```
+~~~

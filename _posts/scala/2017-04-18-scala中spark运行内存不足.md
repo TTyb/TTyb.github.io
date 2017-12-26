@@ -9,22 +9,22 @@ desc: "scala中spark运行内存不足"
 
 用 `bash spark-submit` 在spark上跑代码的时候出现错误：
 
-```
+~~~ruby
 ERROR executor.Executor: Exception in task 9.0 in stage 416.0 (TID 18363)
 java.lang.OutOfMemoryError: Java heap space
-```
+~~~
 
 发现其原因竟然是运行的时候默认的内存不足以支撑海量数据，可以用 `bash spark-submit --help` 中查看到自己代码的运行内存，即：
 
-```
+~~~ruby
 --driver-memory MEM         Memory for driver (e.g. 1000M, 2G) (Default: 1024M)
-```
+~~~
 
 本机默认为1G的内存运行程序，所以我改成8G内存运行：
 
-```
+~~~ruby
 bash spark-submit --driver-memory 8G --class MF字段 你的jar名字.jar
-```
+~~~
 
 具体运行请看：
 

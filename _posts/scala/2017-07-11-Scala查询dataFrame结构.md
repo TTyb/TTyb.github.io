@@ -7,8 +7,8 @@ author: TTyb
 desc: "Scala查询dataFrame结构"
 ---
 
-```
+~~~ruby
 println(dataFrame.printSchema)
-```
+~~~
 
 <p style="text-align:center"><img src="/static/postimage/scala/dataframedesc/996148-20170711135355962-1459151524.png"/></p>

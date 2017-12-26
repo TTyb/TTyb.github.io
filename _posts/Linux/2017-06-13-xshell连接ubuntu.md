@@ -11,68 +11,68 @@ desc: "安装了 `ubuntu-14` ，为了连接 `xshell` ，做出的一些配置"
 
 ### 1.激活root用户
 
-```
+~~~ruby
 sudo passwd root
-```
+~~~
 
 设置新密码，设置成功后会有提示 `passwd：password updated sucessfully`
 
 ### 2.安装ssh服务
 
-```
+~~~ruby
 apt-get install ssh
-```
+~~~
 
 ### 3.设置root密码登陆
 
-```
+~~~ruby
 vi /etc/ssh/sshd_config
-```
+~~~
 
 将
 
-```
+~~~ruby
 # Authentication:
 LoginGraceTime 120
 PermitRootLogin prohibit-password
 StrictModes yes
-```
+~~~
 
 改成：
 
-```
+~~~ruby
 # Authentication:
 LoginGraceTime 120
 PermitRootLogin yes
 StrictModes yes
-```
+~~~
 
 ### 4.使配置生效
 
 
 安装完毕后重启 `ssh` 服务：
 
-```
+~~~ruby
 重启
-```
+~~~
 
 `or`
 
-```
+~~~ruby
 service sshd start
-```
+~~~
 
 `or`
 
-```
+~~~ruby
 /etc/init.d/sshd start
-```
+~~~
 
 ### 5.验证ssh是否开启
 
-```
+~~~ruby
 ps -ef | grep ssh
-```
+~~~
 
 最后就可以用 `xshell` 连接了
 

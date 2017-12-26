@@ -25,7 +25,7 @@ desc: "python之BeautifulSoup使用"
 
 一句一句的打印出来看就会明白的
 
-```
+~~~ruby
 #!/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 import urllib.request
@@ -74,4 +74,4 @@ if __name__ == '__main__':
         img_src = myimg.find('img').get('src')
     # 网页所有信息
     #print(html)
-```
+~~~

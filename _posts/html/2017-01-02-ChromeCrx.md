@@ -9,7 +9,7 @@ desc: "学习了一些chrome插件的基本用法"
 
 ### 文件夹目录为：
 
-```
+~~~ruby
 -- images
 
 ---- icon38.png
@@ -21,13 +21,13 @@ desc: "学习了一些chrome插件的基本用法"
 ---- test.js
 
 manifest.json
-```
+~~~
 
 `images` 是存放插件图标的
 
 `js` 是网页的javascript文件，其中test.js的代码为：
 
-```
+~~~ruby
 function httpRequest(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
@@ -70,7 +70,7 @@ $(InsertionPoint).append(InsertNode);
 //};
 //var obj = eval(json);
 //alert(obj.contry.area.women);
-```
+~~~
 
 `manifest.json` 为配置文件，配置文件请查考api文档 [Chrome开发文档](http://open.chrome.360.cn/extension_dev/overview.html)
 

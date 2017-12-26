@@ -13,7 +13,7 @@ syslog的官方说明在：
 
 该模块的主要方式为：
 
-```
+~~~ruby
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
@@ -22,7 +22,7 @@ import syslog
 syslog.openlog([ident[, logoption[, facility]]])
 syslog.syslog(priority, message)
 syslog.closelog()
-```
+~~~
 
 `ident` 的信息为 `/bluedon/test.py`
 
@@ -34,7 +34,7 @@ syslog.closelog()
 
 源码为：
 
-```
+~~~ruby
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import syslog
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     
     # vim var/log/message
     # tail -f /tmp/syslog.txt
-```
+~~~
 
 在不同机器上面查看结果：
 
@@ -86,7 +86,7 @@ if __name__ == '__main__':
 
 将其写成了类
 
-```
+~~~ruby
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import syslog
@@ -143,4 +143,4 @@ class mysyslog(object):
         newmessages = "[" + ip + "]" + " " + messages
         syslog.syslog(level, newmessages)
 
-```
+~~~

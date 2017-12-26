@@ -2,6 +2,8 @@ baseurl: ""
 url: "https://ttyb.github.io"
 # Build settings
 markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
 encoding: utf-8
 permalink: /:categories/:title.html
 gems: [jekyll-paginate]

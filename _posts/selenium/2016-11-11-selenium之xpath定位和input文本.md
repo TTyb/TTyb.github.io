@@ -19,6 +19,6 @@ xpath简单定位：
 
 selenium获取input下的文本：
 
-```
+~~~ruby
 driver.find_element_by_tag_name('input').get_attribute('value')
-```
+~~~

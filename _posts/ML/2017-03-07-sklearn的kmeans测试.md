@@ -7,7 +7,7 @@ author: TTyb
 desc: "sklearn的kmeans测试代码"
 ---
 
-```
+~~~ruby
 #!/usr/bin/python3.4
 # -*- coding: utf-8 -*-
 
@@ -63,6 +63,6 @@ for t in tests:
 plt.show()
 plt.close()
 
-```
+~~~
 
 <p style="text-align:center"><img src="/static/postimage/machinelearning/sklearnkmeans/996148-20170307144756406-976833755.png"/></p>
