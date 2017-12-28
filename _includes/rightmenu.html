@@ -1,99 +1,68 @@
 
-<div class="col-xs-5 col-sm-5 col-md-3" style="background:#f4f4f4;margin-top:30px;border: 1px solid #ddd;border-radius: 4px;">
-	
-	<h3 style="font-family: KaiTi;">博客公告</h3>
-    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
-	<div style="margin:20px">
-		<span class="notice"><marquee direction="left" style="font-family: KaiTi;">任何爬虫问题欢迎在留言中提问，博主会尽量帮忙解决。关注公众号后回复任意内容可以联系到作者！</marquee></span>
-	</div>
-	<div style="border-radius:5em;width:50%;height:100%;overflow:hidden;margin:0 auto;">
-		<div class="pic">
-			<img src="{{ "/static/jpg/head.jpg" | prepend: site.baseurl }}" alt=""/>
+<div class="col-xs-5 col-sm-5 col-md-3" style="background:#fff;margin-top:30px;border-radius: 4px;">
+	<h3 style="font-family: KaiTi;">博客作者</h3>
+	<div>
+		<div style="float:left; clear: both;" align="center">
+			<img src="{{ "/static/jpg/head.jpg" | prepend: site.baseurl }}" style="width: 80%;"/>
 		</div>
+		<p style="align:center;font-family:Microsoft YaHei;line-height: 25px;font-size: 15px">身为一名数据挖掘工程师，要会数据分析，要会数据挖掘，要会机器学习，要会编程打码，重点还要会修电脑。无聊就想打码 打码使我快乐，不用多久，我就会升职加薪，当上总经理，出任CEO，迎娶白富美，走上人生巅峰。</p>
 	</div>
 
     <div style="text-align: center;">
-        <p style="align:center;font-family:KaiTi;">百哥么么哒</p>
 		<ul class="list-inline">
-			<li><a onclick="dashangToggle()" class="contactme" title="打赏作者" href="javascript:void(0)">打赏</a></li>
+			<li><a onclick="dashangToggle()" class="contactme" title="打赏作者" style="text-decoration:none;" href="javascript:void(0)">打赏</a></li>
 			<li>
-				<a class="contactme" title="关注公众号" href="/contact">关注</a>
-				<div id="showimg">
-					<img style="width: 100%;height: 100%;display: block;"alt="图片不存在"  src="{{ "/static/jpg/follow.jpg" | prepend: site.baseurl }}" />
-				</div>
+				<a class="contactme" title="关注公众号" style="text-decoration:none;" href="/contact">关注</a>
 			</li>
-			<li><a class="contactme" title="给作者留言" href="/guestbook">留言</a></li>
+			<li><a class="contactme" title="给作者留言" style="text-decoration:none;" href="/guestbook">留言</a></li>
 		</ul>
     </div>
-	
+</div>
+
+<div class="col-xs-5 col-sm-5 col-md-3" style="background:#fff;margin-top:30px;border-radius: 4px;">
 	<div style="clear:both;">
 		<h3 style="font-family: KaiTi;">博客标签</h3>
-		<hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
-
 		<div>
 			{% for category in site.categories %}
 			{% if category[0] == "crawler" or category[0] == "crawlerfirst" %}
 			{% else %}
-			<a class="tags" href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ category | first }}({{ category | last | size }})</a>
+			<a class="tags" style="text-decoration:none;" href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ category | first }}({{ category | last | size }})</a>
 			{% endif %}
 			{% endfor %}
 		</div>
 	</div>
-	
+</div>
+
+<div class="col-xs-5 col-sm-5 col-md-3" style="background:#fff;margin-top:30px;border-radius: 4px;">
     <div style="clear:both;">
     <h3 style="font-family: KaiTi;">博客日历</h3>
-    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
     </div>
 	{% include date.html %}
-	
+</div>
+
+<div class="col-xs-5 col-sm-5 col-md-3" style="background:#fff;margin-top:30px;border-radius: 4px;">
 	<div style="clear:both;">
     <h3 style="font-family: KaiTi;">博主梦想</h3>
-    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
     </div>
 	
 	<div style="margin-bottom: 10px;">
 		<img src="{{ "/static/jpg/wangdachui.gif" | prepend: site.baseurl }}" alt=""/>
 	</div>
-	
+</div>
+
+<div class="col-xs-5 col-sm-5 col-md-3" style="background:#fff;margin-top:30px;border-radius: 4px;">
 	<div style="clear:both;">
     <h3 style="font-family: KaiTi;">博客热点</h3>
-    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
     </div>
 	{% include news.html %}
-
 </div>
 
 <style>
 
-.notice {
-	background: url({{ "/static/jpg/notice.gif" | prepend: site.baseurl }}) no-repeat left center;
-	padding-left: 20px;
-	margin: 0 0 0 -10px;
-	padding-top: 8px;
-}
-
-#showimg {  
-    display: none; /*初始不显示*/  
-    position: absolute; /*使图片脱离流*/  
-	left: 20%;
-	right: 20%;
-	top: 7%;
-	z-index: 3
-}  
-  
-#showimg img {  
-    display: block; /*一直显示*/  
-}  
-  
-li:HOVER #showimg {  
-    display: block; /*当鼠标悬停时，显示图片 */  
-}
-
 .contactme{
-	background-color: #3bb4e5;
     border-radius: 4px;
-	border: 1px solid #3bb4e5;
-    color: #fff;
+	border: 1px solid #1bb3e9;
+    color: #1bb3e9;
     display: block;
     font-family: "KaiTi";
     line-height: 25px;
@@ -103,123 +72,16 @@ li:HOVER #showimg {
 }
 
 .tags {
-	float:left;
-	margin:0 0 7px 20px;
-	position:relative;
-
-	font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size:0.75em;
-	font-weight:bold;
-	text-decoration:none;
-
-	color:#996633;
-	text-shadow:0px 1px 0px rgba(255,255,255,.4);
-
-	padding:0em 0.2em 0.3em 0.9em;
-
-	border-top:1px solid #d99d38;
-	border-right:1px solid #d99d38;
-	border-bottom:1px solid #d99d38;
-
-	-webkit-border-radius:0 0.25em 0.25em 0;
-	-moz-border-radius:0 0.25em 0.25em 0;
-	border-radius:0 0.25em 0.25em 0;
-
-	background-image: -webkit-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
-	background-image: -moz-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
-	background-image: -o-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
-	background-image: -ms-linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
-	background-image: linear-gradient(top, rgb(254, 218, 113), rgb(254, 186, 71));
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#feda71', EndColorStr='#feba47');
-
-	-webkit-box-shadow:
-		inset 0 1px 0 #faeaba,
-		0 1px 1px rgba(0,0,0,.1);
-	-moz-box-shadow:
-		inset 0 1px 0 #faeaba,
-		0 1px 1px rgba(0,0,0,.1);
-	box-shadow:
-		inset 0 1px 0 #faeaba,
-		0 1px 1px rgba(0,0,0,.1);
+	border: 1px solid #1bb3e9;
+    border-radius: 3px;
+    margin-bottom: 0.2rem;
+    padding: 5px;
+    text-transform: uppercase;
+	line-height: 35px;
+	font-size: 12px;
+    text-align: center;
 }
 
-.tags:before {
-	content:'';
-
-	width:1.30em;
-	height:1.358em;
-
-	background-image: -webkit-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
-	background-image: -moz-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
-	background-image: -o-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
-	background-image: -ms-linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
-	background-image: linear-gradient(left top, rgb(254, 218, 113), rgb(254, 186, 71));
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#feda71', EndColorStr='#feba47');
-	
-	position:absolute;
-	left:-0.6em;
-	top:.18em;
-
-	-webkit-transform:rotate(45deg);
-	-moz-transform:rotate(45deg);
-	-o-transform:rotate(45deg);
-	transform:rotate(45deg);
-
-	border-left:1px solid #d99d38;
-	border-bottom:1px solid #d99d38;
-
-	-webkit-border-radius:0 0 0 0.25em;
-	-moz-border-radius:0 0 0 0.25em;
-	border-radius:0 0 0 0.25em;
-
-	z-index:1;
-}
-
-.tags:after {
-	content:'';
-
-	width:0.5em;
-	height:0.5em;
-
-	background:#fff;
-
-	-webkit-border-radius:4.167em;
-	-moz-border-radius:4.167em;
-	border-radius:4.167em;
-
-	border:1px solid #d99d38;
-
-	-webkit-box-shadow:0 1px 0 #faeaba;
-	-moz-box-shadow:0 1px 0 #faeaba;
-	box-shadow:0 1px 0 #faeaba;
-
-	position:absolute;
-	top:0.667em;
-	left:-0.083em;
-	z-index:2;
-}
-
-.tags:hover {
-	background-image: -webkit-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
-	background-image: -moz-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
-	background-image: -o-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
-	background-image: -ms-linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
-	background-image: linear-gradient(top, rgb(254, 225, 141), rgb(254, 200, 108));
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#fee18d', EndColorStr='#fec86c');
-
-	border-color:#e1b160;
-}
-
-.tags:hover:before {
-	background-image: -webkit-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
-	background-image: -moz-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
-	background-image: -o-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
-	background-image: -ms-linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
-	background-image: linear-gradient(left top, rgb(254, 225, 141), rgb(254, 200, 108));
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#fee18d', EndColorStr='#fec86c');
-
-	border-color:#e1b160;
-}
 
 </style>
 

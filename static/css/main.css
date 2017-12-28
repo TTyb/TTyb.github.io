@@ -7,24 +7,6 @@
 		color: #666666;
 	}
 
-	a {
-		-moz-transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		-webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		-ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		text-decoration: none;
-		border-bottom: none;
-	}
-
-		a:hover {
-			border-bottom-color: transparent;
-			text-decoration: none;
-		}
-
-
-		a:hover {
-			color: #EF6480 !important;
-		}
 
 /* Button */
 
