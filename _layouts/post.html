@@ -12,7 +12,7 @@ layout: default
 				<small>
 					分类：{{ page.categories[0] }}
 				</small>
-				<h6 class="text-muted"><span style="padding-right:5px">作者:{{ page.author }}</span>文章发表于 {{ page.showdate }}&nbsp;<span id="busuanzi_container_page_pv">阅读:&nbsp;<span id="busuanzi_value_page_pv"></span></span></h6>
+				<h6 class="text-muted"><span style="padding-right:5px">作者:{{ page.author }}</span>文章发表于 {{ page.showdate }}&nbsp;<span id="busuanzi_container_page_pv"><i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span></h6>
 				<br/>
 				<p class="content text-overflow">
 					{{ content }}
@@ -46,7 +46,7 @@ layout: default
 				<small>
 					分类：{{ page.categories[0] }}
 				</small>
-				<h6 class="text-muted"><span style="padding-right:5px">作者:{{ page.author }}</span>文章发表于{{ page.date | date: " %Y-%m-%d" }}&nbsp;<span id="busuanzi_container_page_pv">阅读:&nbsp;<span id="busuanzi_value_page_pv"></span></span></h6>
+				<h6 class="text-muted"><span style="padding-right:5px">作者:{{ page.author }}</span>文章发表于{{ page.date | date: " %Y-%m-%d" }}&nbsp;<span id="busuanzi_container_page_pv"><i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span></h6>
 				<br/>
 				<p class="content text-overflow">
 					{{ content }}
