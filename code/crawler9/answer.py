@@ -38,12 +38,13 @@ while True:
                 break
         break
     else:
-        # 点击下一页
-        link_first = browser.find_elements_by_class_name("new-nextpage-only")
-        browser.get(link_first[0].get_attribute("href"))
-
-        link_after = browser.find_elements_by_class_name("new-nextpage")
-        browser.get(link_after[0].get_attribute("href"))
+        try:
+            # 点击下一页
+            link_first = browser.find_elements_by_class_name("new-nextpage-only")
+            browser.get(link_first[0].get_attribute("href"))
+        except:
+            link_after = browser.find_elements_by_class_name("new-nextpage")
+            browser.get(link_after[0].get_attribute("href"))
 
 
 # 捕获所有的句柄
