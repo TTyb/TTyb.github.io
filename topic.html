@@ -17,7 +17,7 @@ layout: default
 							<img style="border-radius: 4px;" src="{{ "/static/jpg/" | prepend: site.baseurl }}{{ post.categories.first }}{{".jpg"}}" height="120" width="100%"/>
 						</a>
 					</div>
-					<div class="col-xs-8 col-sm-8 col-md-9" class="media-body" style="padding-bottom: 10px;">
+					<div class="col-xs-8 col-sm-8 col-md-9 media-body" style="padding-bottom: 10px;">
 
 						<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
 						{% for category in post.categories %}
@@ -33,7 +33,7 @@ layout: default
 							{{ post.excerpt | strip_html }}
 							{% endif %}
 						</p>
-						<h5><span class="topicc"><a href="{{ post.url | prepend: site.baseurl }}">阅读全文 »</a></span></h5>
+						<h5><span class="topicc"><a href="{{ post.url | prepend: site.baseurl }}">阅读全文&raquo;</a></span></h5>
 					</div>
 				</div>
 				{% endif %}

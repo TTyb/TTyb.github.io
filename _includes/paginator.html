@@ -1,0 +1,86 @@
+<hr>
+<div class="container">
+	<!--文章列表-->
+	{% for post in paginator.posts %}
+		{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
+		{% else %}
+		<div class="col-xs-12 col-sm-12 col-md-12 media thumbnail" style="clear:both;margin-top:20px">
+			<div class="col-xs-4 col-sm-4 col-md-3" style="padding: 20px">
+				<a href="javascript:void(0)" class="media-left media-middle media-bottom" style="float:left;">
+					<img style="border-radius: 4px;" src="{{ "/static/jpg/" | prepend: site.baseurl }}{{ post.categories.first }}{{".jpg"}}" height="120" width="100%"/>
+				</a>
+			</div>
+			<div class="col-xs-8 col-sm-8 col-md-9 media-body">
+
+				<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+				<small>
+					分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ post.categories.first }}">{{ post.categories.first }}</span></a>
+				</small>
+				<h6 class="text-muted"><span style="padding-right:5px">作者：{{ post.author }}</span>文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span></h6>
+				<p class="content text-overflow">
+					{% if post.desc %}
+					{{ post.desc }}
+					{% else %}
+					{{ post.excerpt | strip_html }}
+					{% endif %}
+				</p>
+				<h5 class="pull-right" style="width: 120px;"><a class="contactme" title="阅读全文" href="{{ post.url | prepend: site.baseurl }}">阅读全文&raquo;</a></h5>
+			</div>
+		</div>
+		{% endif %}
+	{% endfor %}
+	
+	<!--页码-->
+	<div style="text-align:center">
+		<ul class="pagination">
+			<li>
+				<a href="{{ site.baseurl}}/">
+					<span>首页</span>
+				</a>
+			</li>
+			<li>
+			{% if paginator.page == 1 %}
+				<span>&laquo;</span>
+			{% else %}
+				{% if paginator.previous_page == 1 %}
+				<a href="{{ site.baseurl}}/">
+				{% else %}
+				<a href="{{ site.baseurl}}/page{{ paginator.previous_page }}">
+				{% endif %}
+					<span>&laquo;</span>
+				</a>
+			{% endif %}
+			</li>
+			{% for i in (1..paginator.total_pages) limit:9 offset:{{paginator.page-1}} %}
+				{% if paginator.page == i %}
+			<li class="active">
+				{% else %}
+			<li>
+				{% endif %}
+				{% if i == 1 %}
+				<a href="{{site.baseurl}}/">{{i}}</a>
+				{% else %}
+				<a href="{{site.baseurl}}/page{{i}}">{{i}}</a>
+				{% endif %}
+			</li>
+			{% endfor %}
+			<li>
+				{% if paginator.page == paginator.total_pages %}
+				<span>&raquo;</span>
+				{% else %}
+				<a href="{{ site.baseurl}}/page{{ paginator.next_page }}">
+					<span>&raquo;</span>
+				</a>
+				{% endif %}
+			</li>
+			<li>
+				<a href="{{ site.baseurl}}/page{{paginator.total_pages}}">
+					<span>末页</span>
+				</a>
+			</li>
+			<li class="disabled">
+				<span>第{{paginator.page}}页 / 共{{paginator.total_pages}}页</span>
+			</li>
+		</ul>
+	</div>
+</div>
