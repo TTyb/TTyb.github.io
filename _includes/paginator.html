@@ -2,8 +2,6 @@
 <div class="container">
 	<!--文章列表-->
 	{% for post in paginator.posts %}
-		{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
-		{% else %}
 		<div class="col-xs-12 col-sm-12 col-md-12 media thumbnail" style="clear:both;margin-top:20px">
 			<div class="col-xs-4 col-sm-4 col-md-3" style="padding: 20px">
 				<a href="javascript:void(0)" class="media-left media-middle media-bottom" style="float:left;">
@@ -27,7 +25,6 @@
 				<h5 class="pull-right" style="width: 120px;"><a class="contactme" title="阅读全文" href="{{ post.url | prepend: site.baseurl }}">阅读全文&raquo;</a></h5>
 			</div>
 		</div>
-		{% endif %}
 	{% endfor %}
 	
 	<!--页码-->
