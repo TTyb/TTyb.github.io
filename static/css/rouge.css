@@ -187,26 +187,26 @@
 }
 
 div[class="highlight"] > pre > code[class*="language-"] {
-  background:black;
+  background:#474949;
 }
 div[class="highlight"] > pre {
-  background:black;
+  background:#474949;
 }
 figure[class="highlight"] > pre > code[class*="language-"] {
   text-align:left;
-  background:black;
+  background:#474949;
 }
 figure[class="highlight"] > pre > code[class*="language-"] td > pre{
   text-align:left;
-  background:black;
+  background:#474949;
 }
 figure[class="highlight"] > pre {
   text-align:left;
-  background:black;
+  background:#474949;
 }
 div[class="highlighter-rouge"] > pre[class="highlight"] > code{
-  background:black;
+  background:#474949;
 }
 div[class="highlighter-rouge"] > pre[class="highlight"] {
-  background:black;
+  background:#474949;
 }
