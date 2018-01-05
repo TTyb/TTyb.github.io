@@ -11,7 +11,7 @@
 							<li class="news-item">
 								<table cellpadding="4">
 									<tr>
-										<td><img src="" class="imgid" width="60" class="img-circle" /></td>
+										<td><img src="{{ "/static/jpg/" | prepend: site.baseurl }}{{ post.categories.first }}{{".jpg"}}" width="60" class="img-circle" /></td>
 										<td>
 										<small>
 										{% if post.desc %}
@@ -52,7 +52,6 @@ $(function () {
 			//console.log(this);
 		}
 	});
-	$(".imgid").attr("src", "{{ '/static/jpg/" + Math.ceil(Math.random()*6+1) + ".png'| prepend: site.baseurl }}");
 
 });
 </script>
