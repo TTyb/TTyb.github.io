@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [scala]
-title: scala传入不定参数
+title: dataframe的select传入不定参数
 date: 2018-01-10
 author: TTyb
 desc: "在提取dataframe里面的列时，需要传入不定参数，即dataframe.select(args)"
