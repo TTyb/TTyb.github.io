@@ -42,6 +42,68 @@
 
 <div style="background:#fff;margin-top:30px;border-radius: 4px;border: 1px solid #ddd;padding-left: 15px;padding-right: 15px">
 	<div style="clear:both;">
+		<h3 style="font-family: KaiTi;">博客归档</h3>
+		<table class="table table-striped">
+		{% assign cYear = "" %}
+		{% assign cMonth = "" %}
+		{% assign posts = site.posts | sort: 'date' | reverse %}
+		{% assign cMonthName = "" %}
+		{% assign count = 0 %}
+
+		{% for post in posts %}
+			{% assign count = count | plus: 1 %}
+			{% capture year %}{{post.date | date:"%Y"}}{% endcapture %}
+			{% capture month %}{{post.date | date:"%m"}}{% endcapture %}
+			
+			{% if year != cYear %}
+				{% if cYear != "" %}
+					<tr>
+						<th>
+							<a href="{{ "/archive.html?date=" | prepend: site.baseurl }}{{ cMonthLink }}" style="text-decoration:none;">
+								<span class="badge" style="background-color: #1bb3e9;color: #fff;font-size: 12px;">{{count | minus: 1}}</span>
+								<span style="color: #1bb3e9;font-size: 12px;">{{cMonthName}}<span>
+							</a>
+						</th>
+					</tr>
+					{% assign count = 1 %}
+				{% endif %}
+				{% assign cMonth = "" %}
+				{% assign cYear = year %}
+			{% endif %}
+
+			{% if month != cMonth %}
+				{% if cMonth != "" %}
+					<tr>
+						<th>
+							<a href="{{ "/archive.html?date=" | prepend: site.baseurl }}{{ cMonthLink }}" style="text-decoration:none;">
+								<span class="badge" style="background-color: #1bb3e9;color: #fff;font-size: 12px;">{{count | minus: 1}}</span>
+								<span style="color: #1bb3e9;font-size: 12px;">{{cMonthName}}<span>
+							</a>
+						</th>
+					</tr>
+					{% assign count = 1 %}
+				{% endif %}
+			{% assign cMonth = month %}
+			{% endif %}
+			
+			{% assign cMonthName = post.date | date:'%B %Y' %}
+			{% assign cMonthLink = post.date | date: '%Y/%m' %}
+		{% endfor %}
+		<tr>
+			<th>
+				<a href="{{ "/archive.html?date=" | prepend: site.baseurl }}{{ cMonthLink }}" style="text-decoration:none;">
+					<span class="badge" style="background-color: #1bb3e9;color: #fff;font-size: 12px;">{{count}}</span>
+					<span style="color: #1bb3e9;font-size: 12px;">{{cMonthName}}<span>
+				</a>
+			</th>
+		</tr>
+		</table>
+
+	</div>
+</div>
+
+<div style="background:#fff;margin-top:30px;border-radius: 4px;border: 1px solid #ddd;padding-left: 15px;padding-right: 15px">
+	<div style="clear:both;">
     <h3 style="font-family: KaiTi;">博主梦想</h3>
     </div>
 	
