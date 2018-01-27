@@ -1,4 +1,25 @@
 <link href="{{ "/static/css/unical.css" | prepend: site.baseurl }}" rel="stylesheet"/>
+<p class="copyright text-muted" style="font-size: 10px;">网站已运行<span id="span_dt_dt"></span></p>
+<script language=javascript> 
+	 function show_date_time() { 
+		 window.setTimeout("show_date_time()", 1000); 
+		 BirthDay = new Date("12/20/2016"); 
+		 today = new Date(); 
+		 timeold = (today.getTime() - BirthDay.getTime()); 
+		 sectimeold = timeold / 1000 
+		 secondsold = Math.floor(sectimeold); 
+		 msPerDay = 24 * 60 * 60 * 1000 
+		 e_daysold = timeold / msPerDay 
+		 daysold = Math.floor(e_daysold); 
+		 e_hrsold = (daysold - e_daysold) * -24; 
+		 hrsold = Math.floor(e_hrsold); 
+		 e_minsold = (hrsold - e_hrsold) * -60; 
+		 minsold = Math.floor((hrsold - e_hrsold) * -60); 
+		 seconds = Math.floor((minsold - e_minsold) * -60); 
+		 span_dt_dt.innerHTML = daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒。"; 
+	 } 
+	 show_date_time();
+</script>
 <table cellpadding="0" cellspacing="0" id="CalendarTab">
 	<tr>
 		<td>
