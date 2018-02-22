@@ -70,9 +70,9 @@ layout: default
         for (i in archieves) {
             var aaa = "<div>";
             aaa += "<hr><h3><a href = '" + archieves[i]['url'] + "' > " + archieves[i]['title'] + "</a></h3>";
-            aaa += "<small>分类：<span class='tag'>" + archieves[i]['category'] + "</span></small>";
-            aaa += "<h6 class='text-muted'>作者：" + archieves[i]['author'] + "&nbsp;&nbsp;文章发表于：<span class='timet'>" + archieves[i]['date'];
-            aaa += "</span></h6><div>";
+            aaa += "<small class='text-muted'>分类：<i class='fa fa-tag'></i>&nbsp;" + archieves[i]['category'] + "</small>";
+            aaa += "<h6 class='text-muted'><i class='fa fa-user'></i>&nbsp;" + archieves[i]['author'] + "&nbsp;<i class='fa fa-calendar'></i>&nbsp;" + archieves[i]['date'];
+            aaa += "</h6><div>";
             aaa += "<p class='content text-overflow'>" + archieves[i]['desc'] + "</p><h5><span class='topicc'><a href='" + archieves[i]['url'] + "'>阅读全文 »</a></span></h5><p></p></div></div>";
             k += aaa;
         }

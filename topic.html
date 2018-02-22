@@ -21,11 +21,11 @@ layout: default
 
 						<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
 						{% for category in post.categories %}
-						<small>
-							分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</span></a>
+						<small class="text-muted">
+							分类：<i class="fa fa-tag"></i>&nbsp;<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category }}">{{ category }}</a>
 						</small>
 						{% endfor %}
-						<h6 class="text-muted"><span style="padding-right:5px">作者：{{ post.author }}</span>文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span></h6>
+						<h6 class="text-muted"><i class="fa fa-user"></i>&nbsp;{{ post.author }}&nbsp;<i class="fa fa-calendar"></i>&nbsp;{{ post.date | date: " %Y-%m-%d" }}&nbsp;<i class="fa fa-pencil-square"></i>&nbsp;{{post.content | number_of_words}}</h6>
 						<p class="content text-overflow">
 							{% if post.desc %}
 							{{ post.desc }}
@@ -54,18 +54,7 @@ layout: default
         overflow: hidden;
         text-overflow: ellipsis;
     }
-	
-	.tag {
-    background: url({{ "/static/jpg/tag.png" | prepend: site.baseurl }}) no-repeat left center;
-	padding-left: 20px;
-	margin: 0 10px 0 0;
-	}
-	
-	.timet {
-    background: url({{ "/static/jpg/time.png" | prepend: site.baseurl }}) no-repeat left center;
-	padding-left: 20px;
-	margin: 0 10px 0 0;
-	}
+
 	.topicc {
     background: url({{ "/static/jpg/wenzhang.gif" | prepend: site.baseurl }}) no-repeat left center;
 	padding-left: 20px;

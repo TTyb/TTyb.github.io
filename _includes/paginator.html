@@ -1,4 +1,4 @@
-<hr>
+<hr style="background-color:#ddd;background-image:repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);border:medium none;box-sizing:content-box;height:3px;">
 <div class="container">
 	<!--文章列表-->
 	{% for post in paginator.posts %}
@@ -11,10 +11,10 @@
 			<div class="col-xs-8 col-sm-8 col-md-9 media-body">
 
 				<h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
-				<small>
-					分类：<span class="tag"><a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ post.categories.first }}">{{ post.categories.first }}</span></a>
+				<small class="text-muted">
+					分类：<i class="fa fa-tag"></i>&nbsp;<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ post.categories.first }}">{{ post.categories.first }}</a>
 				</small>
-				<h6 class="text-muted"><span style="padding-right:5px">作者：{{ post.author }}</span>文章发表于：<span class="timet">{{ post.date | date: " %Y-%m-%d" }}</span></h6>
+				<h6 class="text-muted"><i class="fa fa-user"></i>&nbsp;{{ post.author }}&nbsp;<i class="fa fa-calendar"></i>&nbsp;{{ post.date | date: " %Y-%m-%d" }}&nbsp;<i class="fa fa-pencil-square"></i>&nbsp;{{post.content | number_of_words}}</h6>
 				<p class="content text-overflow">
 					{% if post.desc %}
 					{{ post.desc }}
