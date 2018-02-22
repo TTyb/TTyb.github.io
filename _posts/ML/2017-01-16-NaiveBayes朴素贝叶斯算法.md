@@ -123,6 +123,6 @@ def judgeresult(newcondition, newresult, weather):
 外出概率：0.005291005291005291，不外出概率：0.02057142857142857，不适合外出！
 ~~~
 
-python的完成代码在我的github上面：
+源码下载：
 
-[TTyb](https://github.com/TTyb/NaiveBayes)
+<a href="/static/postimage/machinelearning/bayes/NaiveBayes.py" target="_blank">NaiveBayes.py</a>

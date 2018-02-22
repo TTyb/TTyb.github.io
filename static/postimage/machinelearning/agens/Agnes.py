@@ -1,63 +1,9 @@
----
-layout: post
-categories: [ML]
-title: Agens层次聚类
-date: 2017-01-09
-author: TTyb
-desc: "层次聚类是另一种主要的聚类方法，它具有一些十分必要的特性使得它成为广泛应用的聚类方法"
----
+# !/usr/bin/python3.4
+# -*- coding: utf-8 -*-
 
-层次聚类是另一种主要的聚类方法，它具有一些十分必要的特性使得它成为广泛应用的聚类方法。它生成一系列嵌套的聚类树来完成聚类。单点聚类处在树的最底层，在树的顶层有一个根节点聚类。根节点聚类覆盖了全部的所有数据点。层次聚类分为两种：
+import random
 
-- 合并（自下而上）聚类(agglomerative)
-- 分裂（自上而下）聚类(divisive)
 
-目前 `使用较多的是合并聚类` ，本文着重讲解合并聚类的原理。
-
-### Agens层次聚类原理
-
-合并聚类主要是将N个元素当成N个簇，每个簇与其 `欧氏距离最短` 的另一个簇合并成一个新的簇，直到达到需要的分簇数目K为止，示意图如下：
-
-<p style="text-align:center"><img src="/static/postimage/machinelearning/agens/996148-20170109101552947-2081134001.jpg"/></p>
-
-举个例子，作者将26个字母随机分配了坐标(x,y)，如：
-
-~~~ruby
-# {'K': {'y': 34, 'x': 81}, 'V': {'y': 68, 'x': 50}, 'G': {'y': 1, 'x': 10}, 'C': {'y': 2, 'x': 9}, 'T': {'y': 78, 'x': 40}, 'A': {'y': 20, 'x': 12}, 'B': {'y': 21, 'x': 39}, 'N': {'y': 37, 'x': 67}, 'S': {'y': 92, 'x': 56}, 'Q': {'y': 7, 'x': 62}, 'D': {'y': 18, 'x': 4}, 'E': {'y': 0, 'x': 38}, 'Z': {'y': 92, 'x': 46}, 'H': {'y': 30, 'x': 32}, 'I': {'y': 21, 'x': 35}, 'U': {'y': 71, 'x': 51}, 'L': {'y': 1, 'x': 96}, 'W': {'y': 99, 'x': 59}, 'F': {'y': 10, 'x': 14}, 'O': {'y': 16, 'x': 97}, 'J': {'y': 37, 'x': 76}, 'X': {'y': 86, 'x': 49}, 'Y': {'y': 67, 'x': 50}, 'P': {'y': 17, 'x': 76}, 'M': {'y': 32, 'x': 88}, 'R': {'y': 6, 'x': 70}}
-~~~
-
-点的位置如下：
-
-<p style="text-align:center"><img src="/static/postimage/machinelearning/agens/996148-20170109102301556-676947723.jpg"/></p>
-
-- 假设要分成1个簇，即 `K=1` ，那么平面上的所有点都在一起，如下图红色点：
-
-<p style="text-align:center"><img src="/static/postimage/machinelearning/agens/996148-20170109102831556-670959765.jpg"/></p>
-
-- 假设要分成2个簇，即 `K=2` ，则根据 `欧式距离` 公式，首先将字母分成了红色的点和绿色的点，黑色的点为未分配：
-
-<p style="text-align:center"><img src="/static/postimage/machinelearning/agens/996148-20170109103019775-377947286.jpg"/></p>
-
-而黑色的点可能一部分与红色的点距离较近，所以一部分变成了红色，一部分变成了绿色：
-
-<p style="text-align:center"><img src="/static/postimage/machinelearning/agens/996148-20170109103525822-126967802.jpg"/></p>
-
-- 假设要分成3个簇，即 `K=3` ，如下图红色、绿色、紫色的点：
-
-<p style="text-align:center"><img src="/static/postimage/machinelearning/agens/996148-20170109103702869-1770336098.jpg"/></p>
-
-假设 `K=3` ，合并的步骤为：
-
->1. 26个字母首先被分配成 **26** 个簇
->2. 两两欧氏距离最近的两个簇合并，此时簇变成了 **13** 个
->3. 再次两两欧氏距离最近的两个簇合并，此时一共有 **12** 个簇合并成了6个簇，还余下一个簇，因此此时剩下 `6+1=7` 个簇
->4. 一直重复上一步的操作，直到簇的数量为 **3** 的时候，就算是分簇完成
-
-### Agens层次聚类实现：
-
-- 随机生成26个字母：
-
-~~~ruby
 # 生成坐标字典
 def buildclusters():
     clusters = {}
@@ -92,28 +38,16 @@ def buildclusters():
         temp["x"] = x
         temp["y"] = y
         clusters[keys[i]] = temp
-
+    # {'K': {'y': 34, 'x': 81}, 'V': {'y': 68, 'x': 50}, 'G': {'y': 1, 'x': 10}, 'C': {'y': 2, 'x': 9}, 'T': {'y': 78, 'x': 40}, 'A': {'y': 20, 'x': 12}, 'B': {'y': 21, 'x': 39}, 'N': {'y': 37, 'x': 67}, 'S': {'y': 92, 'x': 56}, 'Q': {'y': 7, 'x': 62}, 'D': {'y': 18, 'x': 4}, 'E': {'y': 0, 'x': 38}, 'Z': {'y': 92, 'x': 46}, 'H': {'y': 30, 'x': 32}, 'I': {'y': 21, 'x': 35}, 'U': {'y': 71, 'x': 51}, 'L': {'y': 1, 'x': 96}, 'W': {'y': 99, 'x': 59}, 'F': {'y': 10, 'x': 14}, 'O': {'y': 16, 'x': 97}, 'J': {'y': 37, 'x': 76}, 'X': {'y': 86, 'x': 49}, 'Y': {'y': 67, 'x': 50}, 'P': {'y': 17, 'x': 76}, 'M': {'y': 32, 'x': 88}, 'R': {'y': 6, 'x': 70}}
     return clusters
-~~~
 
-得到的结果为：
 
-~~~ruby
-{'K': {'y': 34, 'x': 81}, 'V': {'y': 68, 'x': 50}, 'G': {'y': 1, 'x': 10}, 'C': {'y': 2, 'x': 9}, 'T': {'y': 78, 'x': 40}, 'A': {'y': 20, 'x': 12}, 'B': {'y': 21, 'x': 39}, 'N': {'y': 37, 'x': 67}, 'S': {'y': 92, 'x': 56}, 'Q': {'y': 7, 'x': 62}, 'D': {'y': 18, 'x': 4}, 'E': {'y': 0, 'x': 38}, 'Z': {'y': 92, 'x': 46}, 'H': {'y': 30, 'x': 32}, 'I': {'y': 21, 'x': 35}, 'U': {'y': 71, 'x': 51}, 'L': {'y': 1, 'x': 96}, 'W': {'y': 99, 'x': 59}, 'F': {'y': 10, 'x': 14}, 'O': {'y': 16, 'x': 97}, 'J': {'y': 37, 'x': 76}, 'X': {'y': 86, 'x': 49}, 'Y': {'y': 67, 'x': 50}, 'P': {'y': 17, 'x': 76}, 'M': {'y': 32, 'x': 88}, 'R': {'y': 6, 'x': 70}}
-~~~
-
-- 欧氏距离公式：
-
-~~~ruby
 # 两点间的距离公式/欧式距离
 def distance(x1, x2, y1, y2):
     distan = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
     return distan
-~~~
 
-- 第一次分簇：
 
-~~~ruby
 # 计算各个分簇直到达到分簇的效果
 def splitcluster(clusters):
     dict = {}
@@ -145,18 +79,10 @@ def splitcluster(clusters):
 
         dict[name] = item[0]
 
+    # {'cluster13': 'B->T', 'cluster11': 'U->M', 'cluster10': 'Z->H', 'cluster5': 'L->D', 'cluster1': 'F->E', 'cluster4': 'G->A', 'cluster12': 'I->S', 'cluster3': 'W->V', 'cluster8': 'C->R', 'cluster9': 'P->X', 'cluster2': 'K->N', 'cluster7': 'O->Q', 'cluster6': 'Y->J'}
     return dict
-~~~
 
-成功的将其分成13个簇，得到的结果为：
 
-~~~ruby
-{'cluster13': 'B->T', 'cluster11': 'U->M', 'cluster10': 'Z->H', 'cluster5': 'L->D', 'cluster1': 'F->E', 'cluster4': 'G->A', 'cluster12': 'I->S', 'cluster3': 'W->V', 'cluster8': 'C->R', 'cluster9': 'P->X', 'cluster2': 'K->N', 'cluster7': 'O->Q', 'cluster6': 'Y->J'}
-~~~
-
-- 迭代分簇，直到满足K为止：
-
-~~~ruby
 # 判断分簇
 def judgecluster(clusters, firstcluster, K):
     dict = {}
@@ -233,16 +159,10 @@ def judgecluster(clusters, firstcluster, K):
         return dict
     else:
         judgecluster(clusters, dict, K)
-~~~
 
-本文选取的 `K=3` ,最后得到的结果为：
 
-~~~ruby
-{'cluster1': 'M->X->P->Y->J->U->T->R->L->O', 'cluster3': 'V->B->W->N->E->A->I->G', 'cluster2': 'C->H->Q->F->D->S->Z->K'}
-~~~
-
-由此可见，按照这个结果，作者手动画的图是错误的...
-
-源码下载：
-
-<a href="/static/postimage/machinelearning/agens/Agnes.py" target="_blank">Agnes.py</a>
+if __name__ == '__main__':
+    K = 3
+    clusters = buildclusters()
+    firstcluster = splitcluster(clusters)
+    judgecluster(clusters, firstcluster, K)

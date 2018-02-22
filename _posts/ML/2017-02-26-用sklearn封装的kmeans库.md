@@ -136,7 +136,3 @@ print(distance)
 ~~~
 
 <p style="text-align:center"><img src="/static/postimage/machinelearning/sklearnkmeans/996148-20170226101819554-1837598147.png"/></p>
-
-源文件可以在我的github下载：
-
-[TTyb](https://github.com/TTyb/kmeans)
