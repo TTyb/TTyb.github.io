@@ -13,7 +13,7 @@ layout: default
 				<small class="text-muted">
 					分类：<i class="fa fa-tag"></i>&nbsp;{{ page.categories[0] }}
 				</small>
-				<h6 class="text-muted"><span style="padding-right:5px"><i class="fa fa-user"></i>{{ page.author }}</span><i class="fa fa-calendar"></i>{{ page.showdate }}&nbsp;<i class="fa fa-pencil-square"></i>{{content | number_of_words}}&nbsp;<span id="busuanzi_container_page_pv"><i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span></h6>
+				<h6 class="text-muted"><i class="fa fa-user"></i>&nbsp;{{ page.author }}&nbsp;<i class="fa fa-calendar"></i>&nbsp;{{ page.showdate }}&nbsp;<i class="fa fa-pencil-square"></i>&nbsp;{{content | number_of_words}}&nbsp;<span id="busuanzi_container_page_pv"><i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span></h6>
 				<br/>
 				<p class="content text-overflow">
 					{{ content }}
