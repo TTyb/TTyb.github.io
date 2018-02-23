@@ -4,14 +4,15 @@ layout: default
 
 <div class="container">
     <div class="col-xs-7 col-sm-7 col-md-9">
-        <h1>文章列表</h1>
+        <h1 style="background-image:linear-gradient(90deg, #f79533 0px, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%);border-radius: 4px;color: #fff">
+			文章列表
+		</h1>
         <div>
             {% for post in site.posts %}
 				{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
 			{% else %}
 				
-				<div class="col-xs-12 col-sm-12 col-md-12" class="media thumbnail mytrans" style="clear:both;">
-					<hr>
+				<div class="col-xs-12 col-sm-12 col-md-12 media thumbnail" style="clear:both;">
 					<div class="col-xs-4 col-sm-4 col-md-3" style="padding: 20px">
 						<a href="javascript:void(0)" class="media-left media-middle media-bottom" style="float:left;">
 							<img style="border-radius: 4px;" src="{{ "/static/jpg/" | prepend: site.baseurl }}{{ post.categories.first }}{{".jpg"}}" height="120" width="100%"/>

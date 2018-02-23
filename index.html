@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 <script type="text/javascript" src="{{ "/static/js/posterTvGrid.js" | prepend: site.baseurl }}"></script>
 
 <link rel="stylesheet" href="{{ "/static/css/main.css" | prepend: site.baseurl }}"/>
@@ -9,7 +10,7 @@ layout: default
 <script src="{{ "/static/js/util.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/static/js/main.js" | prepend: site.baseurl }}"></script>
 
-<body>
+<div style="background-color:transparent;">
 	<div class="htmleaf-container">
 		<div class="htmleaf-content">
 			<div id="posterTvGrid" style="margin:40px auto 0 auto;"></div>
@@ -31,26 +32,25 @@ layout: default
 	</script>
 
 
-<div id="wrapper">
-    <section id="intro" class="main">
-		<img src="/static/jpg/head.jpg" alt=""/>
-        <h2 style="font-family: KaiTi;">百哥么么哒</h2>
-		<p style="font:30px 'Alex Brush',cursive;color: #9da4a6;">A data mining engineer who have to<br/>
-            analyze data analyze, mining data mining,learn machine learning,<br/>
-            programming and repair computers.</p>
+	<div id="wrapper">
+		<section id="intro" class="main">
+			<img src="/static/jpg/head.jpg" alt=""/>
+			<h2 style="font-family: KaiTi;">百哥么么哒</h2>
+			<p style="font:30px 'Alex Brush',cursive;color: #9da4a6;">A data mining engineer who have to<br/>
+				analyze data analyze, mining data mining,learn machine learning,<br/>
+				programming and repair computers.</p>
 
-    <div style="margin:20px">
-        <marquee direction="left" style="font-family: KaiTi;">不用多久，我就会升职加薪，当上总经理，出任CEO，迎娶白富美，走上人生巅峰|Pretty soon I'll General Manager,be promoted as CEO and marry Bai Fu Mei on the salary increase when pinnacle toward life </marquee>
-    </div>
-	
-    </section>
-</div>
-
-<div class="container">
-    <div class="col-xs-7 col-sm-7 col-md-9">
-		{% include indexleft.html %}
+		<div style="margin:20px">
+			<marquee direction="left" style="font-family: KaiTi;">不用多久，我就会升职加薪，当上总经理，出任CEO，迎娶白富美，走上人生巅峰|Pretty soon I'll General Manager,be promoted as CEO and marry Bai Fu Mei on the salary increase when pinnacle toward life </marquee>
+		</div>
+		
+		</section>
 	</div>
-	{% include rightmenu.html %}
-</div>
 
-</body>
+	<div class="container">
+		<div class="col-xs-7 col-sm-7 col-md-9">
+			{% include indexleft.html %}
+		</div>
+		{% include rightmenu.html %}
+	</div>
+</div>

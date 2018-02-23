@@ -31,8 +31,10 @@ layout: default
 </style>
 
 <div class="container">
-	<h1>分类列表</h1>
-	<div class="col-xs-3 col-sm-3 col-md-2" style="margin-top:30px;border-right: 1px solid #ddd;border-radius: 4px;">
+	<h1 style="background-image:linear-gradient(90deg, #f79533 0px, #f37055 15%, #ef4e7b 30%, #a166ab 44%, #5073b8 58%, #1098ad 72%, #07b39b 86%, #6dba82 100%);border-radius: 4px;color: #fff">
+		分类列表
+	</h1>
+	<div class="col-xs-3 col-sm-3 col-md-2" style="border-right: 1px solid #ddd;border-radius: 4px;">
 		<ul class="list-group">
 			{% for category in site.categories %}
 			{% if category[0] == "crawler" or category[0] == "crawlerfirst" %}
@@ -68,8 +70,8 @@ layout: default
         archieves = data[curTag];
         var k = '';
         for (i in archieves) {
-            var aaa = "<div>";
-            aaa += "<hr><h3><a href = '" + archieves[i]['url'] + "' > " + archieves[i]['title'] + "</a></h3>";
+            var aaa = "<div class='media thumbnail' style='padding: 15px'>";
+            aaa += "<h3><a href = '" + archieves[i]['url'] + "' > " + archieves[i]['title'] + "</a></h3>";
             aaa += "<small class='text-muted'>分类：<i class='fa fa-tag'></i>&nbsp;" + archieves[i]['category'] + "</small>";
             aaa += "<h6 class='text-muted'><i class='fa fa-user'></i>&nbsp;" + archieves[i]['author'] + "&nbsp;<i class='fa fa-calendar'></i>&nbsp;" + archieves[i]['date'];
             aaa += "</h6><div>";
