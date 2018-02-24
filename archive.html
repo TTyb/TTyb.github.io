@@ -14,7 +14,7 @@ layout: default
 			{% if year != y or month != m %}
 				{% assign year = y %}
 				{% assign month = m %}
-				<li class="list-group-item active">{{ y }}- {{ m }}</li>
+				<li class="list-group-item active" style="background-color:rgba(220, 220, 220, 0.5);">{{ y }}- {{ m }}</li>
 			{% endif %}
 			<li class="list-group-item">
 				<time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
