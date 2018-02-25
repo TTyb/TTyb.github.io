@@ -9,7 +9,7 @@ desc: "记录python读写2003和2007版本的excel的一些方式"
 
 在工作中往往需要读取 `excel` 文件，但是读取 `excel` 的方式很多，本文只列举集中比较好用的读写 `2003` 或者 `2007` 的方法：
 
-<p style="text-align:center"><img src="/static/postimage/python/excel/0b7b02087bf40ad14cc91cbd5f2c11dfa9eccebb.jpg" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/python/excel/0b7b02087bf40ad14cc91cbd5f2c11dfa9eccebb.jpg" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 ### 读取2007版本的excel
 

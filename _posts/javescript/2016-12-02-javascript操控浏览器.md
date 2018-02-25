@@ -11,7 +11,7 @@ desc: "javascript操控浏览器"
 
 ## 测试窗口为F12->Console
 
-<p style="text-align:center"><img src="/static/postimage/javascrip/browser/996148-20161202144437974-1464200438.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/javascrip/browser/996148-20161202144437974-1464200438.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 ### 跳转网页
 
@@ -102,4 +102,4 @@ document.onmousemove = function(event){
 }
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/javascrip/browser/996148-20161202161520724-1585121090.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/javascrip/browser/996148-20161202161520724-1585121090.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>

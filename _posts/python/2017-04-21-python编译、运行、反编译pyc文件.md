@@ -46,7 +46,7 @@ python -m compileall 存放海量py的目录
 python test.pyc
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090418149-1426718335.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090418149-1426718335.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 ### 反编译 `pyc`
 
@@ -54,11 +54,11 @@ python test.pyc
 
 `pip install uncompyle`
 
-<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090457681-111691906.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090457681-111691906.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 查看 `uncompyle` 函数属性：
 
-<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090619806-263727698.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421090619806-263727698.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 命令行下：
 
@@ -68,4 +68,4 @@ uncompyle6 test.pyc > test1.py
 
 和源文件对比：
 
-<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421091133056-1264995189.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/python/pyc/996148-20170421091133056-1264995189.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>

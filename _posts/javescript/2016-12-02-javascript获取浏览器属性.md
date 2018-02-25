@@ -27,7 +27,7 @@ alert('appName = ' + navigator.appName + '\n' +
       'userAgent = ' + navigator.userAgent);
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202110902693-762272230.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202110902693-762272230.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 
 ~~~ruby
@@ -42,7 +42,7 @@ screen.colorDepth：返回颜色位数，如8、16、24。
 alert('Screen size = ' + screen.width + ' x ' + screen.height);
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202110927756-2075154505.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202110927756-2075154505.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 >http://www.example.com:8080/path/index.html?a=1&b=2#TOP
 
@@ -67,7 +67,7 @@ if (confirm('重新加载当前页' + location.href + '?')) {
 ~~~
 
 
-<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202111100349-925986790.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202111100349-925986790.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 
 ~~~ruby
@@ -79,7 +79,7 @@ document.title = '百哥么么哒';
 ~~~
 
 
-<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202111116865-458313086.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202111116865-458313086.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 
 ~~~ruby
@@ -87,5 +87,5 @@ document.title = '百哥么么哒';
 alert(document.cookie)
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202111153037-22700067.png" class="img-responsive center-block"/></p>
+<p style="text-align:center"><img src="/static/postimage/javascrip/property/996148-20161202111153037-22700067.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
 
