@@ -13,7 +13,7 @@ desc: "System memory * must be at least *.Please increase heap size using the --
 System memory * must be at least *.Please increase heap size using the --driver--memory option or spark.driver.memory
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/scala/systemmemory/20171226094546.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/scala/systemmemory/20171226094546.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 在 `Intellij IDEA` 里面找到：
 
@@ -21,7 +21,7 @@ System memory * must be at least *.Please increase heap size using the --driver-
 Run -> Edit Configurations -> Application -> Configurations 
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/scala/systemmemory/20171226095003.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/scala/systemmemory/20171226095003.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 设置大小：
 
@@ -29,4 +29,4 @@ Run -> Edit Configurations -> Application -> Configurations
 -Xms256m -Xmx1024m
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/scala/systemmemory/20171226095209.jpg" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/scala/systemmemory/20171226095209.jpg" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>

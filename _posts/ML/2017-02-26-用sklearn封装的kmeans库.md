@@ -135,4 +135,4 @@ print(distance)
 
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/machinelearning/sklearnkmeans/996148-20170226101819554-1837598147.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/machinelearning/sklearnkmeans/996148-20170226101819554-1837598147.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>

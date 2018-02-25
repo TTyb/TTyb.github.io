@@ -76,6 +76,6 @@ $(InsertionPoint).append(InsertNode);
 
 最后的效果为：
 
-<p style="text-align:center"><img src="/static/postimage/html/crx/996148-20170102103715284-478700539.jpg" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/html/crx/996148-20170102103715284-478700539.jpg" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 本文相当于提供思路，写的代码也很不完整，相当于伪代码，源码请看我的 [github](https://github.com/TTyb/mycrx)

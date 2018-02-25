@@ -9,7 +9,7 @@ desc: "github pages一直想添加代码高亮highlighter，基于jekyll 3.0的r
 
 `github pages` 一直想添加代码高亮 `highlighter` ，基于 `jekyll 3.0` 的 `rouge` 终于搞定了：
 
-<p style="text-align:center"><img src="/static/postimage/git/highlighter/20171227091833.jpg" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/git/highlighter/20171227091833.jpg" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 ### 下载代码高亮库
 
@@ -35,7 +35,7 @@ kramdown:
 
 将博文 `md` 文件中的 ```` ``` ```` 替换为 `~~~ruby` ：
 
-<p style="text-align:center"><img src="/static/postimage/git/highlighter/20171227093944.jpg" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/git/highlighter/20171227093944.jpg" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 ### 调试代码高亮
 
@@ -59,7 +59,7 @@ var all=MathJax.Hub.getAllJax(),i;for(i=0;i<all.length;i+=1){all[i].SourceElemen
 
 在 `cmd` 中输入 `jekyll server`，本地打开 `127.0.0.1:4000` 查看代码是否高亮了：
 
-<p style="text-align:center"><img src="/static/postimage/git/highlighter/20171227094219.jpg" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/git/highlighter/20171227094219.jpg" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 背景色为白色，字段显示不出来，所以我把 `rouge.css` 的背景色改成了黑色，在 `rouge.css` 最后面添加如下代码：
 

@@ -52,19 +52,19 @@ evidence = ['晴朗', '寒冷', '高', '有风']
 
 将上述事件记为 `E` ， `E = [E1, E2, E3, E4]` , 当A、B相互独立时，由：
 
-<p style="text-align:center"><img src="/static/postimage/machinelearning/bayes/996148-20170116102921208-348877637.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/machinelearning/bayes/996148-20170116102921208-348877637.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 得贝叶斯定理：
 
-<p style="text-align:center"><img src="/static/postimage/machinelearning/bayes/996148-20170116102942692-1121172338.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/machinelearning/bayes/996148-20170116102942692-1121172338.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 得：
 
-<p style="text-align:center"><img src="/static/postimage/machinelearning/bayes/996148-20170116103248474-799840570.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/machinelearning/bayes/996148-20170116103248474-799840570.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 又因为4个指标是相互独立的，所以：
 
-<p style="text-align:center"><img src="/static/postimage/machinelearning/bayes/996148-20170116103307786-367494930.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/machinelearning/bayes/996148-20170116103307786-367494930.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 带入计算得到：
 

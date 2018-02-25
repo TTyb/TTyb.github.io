@@ -148,7 +148,7 @@ onefile = product['data']
 
 将字典里面的图片网址和图片名称放到数组里面：
 
-<p style="text-align:center"><img src="/static/postimage/python/bdfalls2/996148-20160828165924367-733078421.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/python/bdfalls2/996148-20160828165924367-733078421.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
 制作一个解析头来解析图片下载：
 
@@ -201,7 +201,7 @@ for item in onefile:
 
 得到效果如下：
 
-<p style="text-align:center"><img src="/static/postimage/python/bdfalls2/996148-20160828172535915-551271077.png" class="img-responsive"style="display: block; margin-right: auto; margin-left: auto;"></p>
+<p style="text-align:center"><img src="/static/postimage/python/bdfalls2/996148-20160828172535915-551271077.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
 
  本文只是编程，处理这种网址最重要的是思想，思想我写在上一篇博文
  
