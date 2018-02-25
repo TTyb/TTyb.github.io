@@ -30,7 +30,7 @@ syslog.closelog()
 
 `facility` 的信息为 `记录日志文件的位置` ，本文选取的 `facility = syslog.LOG_USER` ，即日志输出在 `/var/log/messages`
 
-<p style="text-align:center"><img src="/static/postimage/python/syslog/996148-20170322143426486-250871748.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/python/syslog/996148-20170322143426486-250871748.png" class="img-responsive"/></p>
 
 源码为：
 
@@ -80,9 +80,9 @@ if __name__ == '__main__':
 
 在不同机器上面查看结果：
 
-<p style="text-align:center"><img src="/static/postimage/python/syslog/996148-20170322143426486-250871748.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/python/syslog/996148-20170322143426486-250871748.png" class="img-responsive"/></p>
 
-<p style="text-align:center"><img src="/static/postimage/python/syslog/996148-20170322143915252-167308740.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/python/syslog/996148-20170322143915252-167308740.png" class="img-responsive"/></p>
 
 将其写成了类
 

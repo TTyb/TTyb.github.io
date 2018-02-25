@@ -11,41 +11,41 @@ desc: "scala打包jar并在Linux下运行"
 
 >File -> Project Structure
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417175414852-819020746.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417175414852-819020746.png" class="img-responsive"/></p>
 
 >Artifacts -> + -> jar -> From Modules with dependisies...
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417175522759-699187820.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417175522759-699187820.png" class="img-responsive"/></p>
 
 选择需要打包的文件的 `Main` 函数所在路径文件：
 
 >Main Class -> Ok
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417175927243-212182658.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417175927243-212182658.png" class="img-responsive"/></p>
 
 新建一个文件夹用于存放 `.MP` 文件，而且新建的文件夹一定要在 `src` 目录下！
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417180424696-878136188.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417180424696-878136188.png" class="img-responsive"/></p>
 
 然后 `yes`
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417184939196-1883591098.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417184939196-1883591098.png" class="img-responsive"/></p>
 
 更改 `jar` 包的名字，然后 `Apply`：
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170427143303006-312290811.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170427143303006-312290811.png" class="img-responsive"/></p>
 
 切记这里还有一个位置是存放打包完成后的 `jar` 存放位置 `Output Directory` ：
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417190747399-1810695351.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417190747399-1810695351.png" class="img-responsive"/></p>
 
 可以看到出现了新的文件夹和文件：
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417185213946-558849415.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417185213946-558849415.png" class="img-responsive"/></p>
 
 > build -> build artifacts
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417185344774-194276525.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417185344774-194276525.png" class="img-responsive"/></p>
 
 第一次建立选择 `build` ：
 
@@ -67,10 +67,10 @@ bash spark-submit --class MF字段 你的jar名字.jar
 
 其中 `MF字段` 为你的 `MF` 文件中的 `Main-Class` :
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417190458790-523139930.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170417190458790-523139930.png" class="img-responsive"/></p>
 
 如果出现错误：
 
-<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170418105700227-405385447.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/scala/jar/996148-20170418105700227-405385447.png" class="img-responsive"/></p>
 
 请自行添加 `bash` 的环境变量

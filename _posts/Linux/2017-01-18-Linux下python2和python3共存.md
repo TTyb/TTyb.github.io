@@ -12,7 +12,7 @@ python下载地址：
 `https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tar.xz`
 
 
-<p style="text-align:center"><img src="/static/postimage/linux/python23/996148-20170118111842734-1275144249.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/linux/python23/996148-20170118111842734-1275144249.png" class="img-responsive"/></p>
 
 下载命令：
 
@@ -78,7 +78,7 @@ pip3的执行文件：
 
 `/usr/local/bin/pip3.4 `
 
-<p style="text-align:center"><img src="/static/postimage/linux/python23/996148-20170118145915796-428983248.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/linux/python23/996148-20170118145915796-428983248.png" class="img-responsive"/></p>
 
 
 切记添加环境变量：
@@ -96,7 +96,7 @@ source /etc/profile
 
 结果：
 
-<p style="text-align:center"><img src="/static/postimage/linux/python23/996148-20170118150603750-802075189.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/linux/python23/996148-20170118150603750-802075189.png" class="img-responsive"/></p>
 
 `yum` 命令不兼容 `Python3` ，需要指定为原版本 `Python2.x` ， `x` 需要自己确定：
 

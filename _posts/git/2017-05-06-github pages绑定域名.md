@@ -22,7 +22,7 @@ desc: "网上很多人问绑定域名要不要备案，很多人的回答是..."
 
 国内域名我选择了 *万网* ，进入界面搜索域名：
 
-<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506193905773-492947689.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506193905773-492947689.png" class="img-responsive"/></p>
 
 **只需要域名即可** ，不需要买 **云解析**
 
@@ -30,27 +30,27 @@ desc: "网上很多人问绑定域名要不要备案，很多人的回答是..."
 
 购买域名后需要对域名进行实名认证，只是上传 `身份证` 的正反面图片而已，很简单，一般1-2天就可以解决了：
 
-<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194209961-1869107179.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194209961-1869107179.png" class="img-responsive"/></p>
 
 # 3.为github增加解析
 
 解析只需要增加如下格式就好：
 
-<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194411461-793018578.png"/></p>)
+<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194411461-793018578.png" class="img-responsive"/></p>)
 
 数字 `ip` 是 `ping` 自己 `github pages` 得到的：
 
-<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194630320-1062386731.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194630320-1062386731.png" class="img-responsive"/></p>
 
 # 4.为自己的github pages 绑定域名
 
 在自己的博客里面增加文件 `CNAME`:
 
-<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194801867-863319396.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194801867-863319396.png" class="img-responsive"/></p>
 
 里面的内容只是自己刚才购买的域名：
 
-<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194834976-1404139177.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506194834976-1404139177.png" class="img-responsive"/></p>
 
 最后更新代码：
 
@@ -64,7 +64,7 @@ git push
 
 进入自己的 `github pages` 设置，如果以下内容变化就代表成功了：
 
-<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506195706773-1119336750.png"/></p>
+<p style="text-align:center"><img src="/static/postimage/git/yuming/996148-20170506195706773-1119336750.png" class="img-responsive"/></p>
 
 祝各位好运！
 
