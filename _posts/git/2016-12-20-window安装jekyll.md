@@ -13,7 +13,7 @@ desc: "做github静态博客，学习安装jekyll"
 
 切记添加环境变量：
 
-<p style="text-align:center"><img src="/static/postimage/git/jekyll/20170708101048.jpg" class="img-responsive"/></p>
+<p style="text-align:center"><img src="/static/postimage/git/jekyll/20170708101048.jpg" class="img-responsive center-block"/></p>
 
 ### 安装 RubyGems
 

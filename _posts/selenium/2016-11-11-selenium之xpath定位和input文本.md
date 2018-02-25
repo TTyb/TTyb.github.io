@@ -15,7 +15,7 @@ xpath简单定位：
 
 > 3. 选择copy->xpath
 
-<p style="text-align:center"><img src="/static/postimage/selenium/xpath/996148-20161111111028030-1563605392.png" class="img-responsive"/></p>
+<p style="text-align:center"><img src="/static/postimage/selenium/xpath/996148-20161111111028030-1563605392.png" class="img-responsive center-block"/></p>
 
 selenium获取input下的文本：
 

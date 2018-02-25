@@ -81,7 +81,7 @@ plt.close()
 ~~~
 效果如下：
 
-<p style="text-align:center"><img src="/static/postimage/python/sklearn/996148-20170224103607898-896192281.png" class="img-responsive"/></p>
+<p style="text-align:center"><img src="/static/postimage/python/sklearn/996148-20170224103607898-896192281.png" class="img-responsive center-block"/></p>
 
 画图的库 `matplotlib` 使用方法请参考：
 

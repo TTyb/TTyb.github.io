@@ -65,4 +65,4 @@ plt.close()
 
 ~~~
 
-<p style="text-align:center"><img src="/static/postimage/machinelearning/sklearnkmeans/996148-20170307144756406-976833755.png" class="img-responsive"/></p>
+<p style="text-align:center"><img src="/static/postimage/machinelearning/sklearnkmeans/996148-20170307144756406-976833755.png" class="img-responsive center-block"/></p>
