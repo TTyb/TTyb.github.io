@@ -23,12 +23,10 @@
 					</li>
 				</ul>
 				<ul class="nav navbar-nav" style="margin: 0 0 0;">
-					<li><a class="navbar-brand" href="/">首页</a></li>
-					<li><a class="navbar-brand" href="/topic">文章</a></li>
-					<li><a class="navbar-brand" href="/category">分类</a></li>
-					<li><a class="navbar-brand" href="/logs/log">日志</a></li>
-					<li><a class="navbar-brand" href="/guestbook">留言</a></li>				
-					<!-- <li><a class="navbar-brand" href="/contact">联系</a></li> -->
+					<li><a class="navbar-brand" href="/topic">文章随笔</a></li>
+					<li><a class="navbar-brand" href="/category">分类标签</a></li>
+					<li><a class="navbar-brand" href="/logs/log">修订日志</a></li>
+					<li><a class="navbar-brand" href="/guestbook">游客留言</a></li>				
 					{% for post in site.categories['crawlerfirst'] %}
 					<li>
 						<a class="navbar-brand" style="background: url({{ "/static/jpg/newimg.png" | prepend: site.baseurl }}) no-repeat right top" href="{{ post.url | prepend: site.baseurl }}">爬虫教程</a>
