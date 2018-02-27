@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: [elasticsearch]
-title: 2018-02-27-spark对elasticsearch增删查改
+title: spark对elasticsearch增删查改
 date: 2018-02-27
 author: TTyb
 desc: "spark调用elsticsearch的API对elasticsearch进行增删查改"
