@@ -8,5 +8,5 @@ encoding: utf-8
 permalink: /:categories/:title.html
 gems: [jekyll-paginate]
 
-paginate: 5
+paginate: 8
 paginate_path: "page:num"

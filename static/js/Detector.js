@@ -1,6 +1,7 @@
 /**
  * @author alteredq / http://alteredqualia.com/
  * @author mr.doob / http://mrdoob.com/
+ * @author 天空云图
  */
 
 Detector = {
