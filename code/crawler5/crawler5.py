@@ -9,7 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 # 正则表达式
 def reg(html):
-    reg = r'({"img":")(.+?)(","title)'
+    reg = r'(<img src=")(.+?)(" alt="")'
     all = re.compile(reg)
     alllist = re.findall(all, html)
     return alllist
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # threadpool = []
     # # 将任务加入线程
     # for imgurl in imgurls:
-    #     newimgurl = "http://www.tybai.com/" + imgurl[1].replace("\\", "")
+    #     newimgurl = "http://www.tybai.com" + imgurl[1]
     #     th = threading.Thread(target=downloadimg, args=(newimgurl,imgname))
     #     threadpool.append(th)
     #     imgname += 1
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     pool = ThreadPoolExecutor(max_workers=11)
     # 将下载图片的任务加入线程
     for imgurl in imgurls:
-        newimgurl = "http://www.tybai.com/" + imgurl[1].replace("\\", "")
+        newimgurl = "http://www.tybai.com" + imgurl[1]
         pool.submit(downloadimg, newimgurl, imgname)
         imgname += 1
 
