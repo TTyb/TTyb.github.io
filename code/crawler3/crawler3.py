@@ -6,7 +6,7 @@ import re
 
 # 正则表达式
 def reg(html):
-    reg = r'({"img":")(.+?)(","title)'
+    reg = r'(<img src=")(.+?)(" alt="")'
     all = re.compile(reg)
     alllist = re.findall(all, html)
     return alllist
@@ -21,7 +21,7 @@ imgurls = reg(html)
 imgname = 1
 for imgurl in imgurls:
     saveimg = open("E:/" + str(imgname) + ".jpg", 'wb')
-    newimgurl = "http://www.tybai.com/" + imgurl[1].replace("\\", "")
+    newimgurl = "http://www.tybai.com" + imgurl[1]
     print(newimgurl)
     saveimg.write(urllib.request.urlopen(newimgurl).read())
     imgname += 1
@@ -42,6 +42,6 @@ def cbk(a, b, c):
 for imgurl in imgurls:
     work_path = "E:/" + str(imgname) + ".jpg"
     saveimg = open("E:/" + str(imgname) + ".jpg", 'wb')
-    newimgurl = "http://www.tybai.com/" + imgurl[1].replace("\\", "")
+    newimgurl = "http://www.tybai.com" + imgurl[1]
     urllib.request.urlretrieve(newimgurl, work_path, cbk)
     imgname += 1
