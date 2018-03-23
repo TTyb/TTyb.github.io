@@ -18,7 +18,6 @@
 							<li><a href="http://www.cnblogs.com/TTyb">博客园</a></li>
 							<li><a href="https://github.com/TTyb">Github</a></li>
 							<li><a href="https://www.lenggirl.com/">搬砖的陈大师</a></li>
-							<li><a href="http://www.cnblogs.com/starwater/">星水</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -29,10 +28,10 @@
 					<li><a class="navbar-brand" href="/guestbook">游客留言</a></li>				
 					{% for post in site.categories['crawlerfirst'] %}
 					<li>
-						<a class="navbar-brand" style="background: url({{ "/static/jpg/newimg.png" | prepend: site.baseurl }}) no-repeat right top" href="{{ post.url | prepend: site.baseurl }}">爬虫教程</a>
+						<a class="navbar-brand" href="{{ post.url | prepend: site.baseurl }}">爬虫教程</a>
 					</li>
 					{% endfor %}
-					<li><a class="navbar-brand" style="background: url({{ "/static/jpg/hotimg.gif" | prepend: site.baseurl }}) no-repeat right top"href="/openSourceProject">开源项目</a></li>
+					<li><a class="navbar-brand" href="/openSourceProject">开源项目</a></li>
 				</ul>
 				
             </ul>
