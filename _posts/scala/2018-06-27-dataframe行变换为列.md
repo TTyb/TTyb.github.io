@@ -46,7 +46,7 @@ val dataFrame = spark.createDataFrame(Seq(
 import org.apache.spark.sql.functions.{explode,split}
 import spark.implicits._
 dataFrame.withColumn("content", explode(split($"content", "[|]"))).show
-```
+~~~
 
 ### 方式二
 
@@ -56,5 +56,5 @@ dataFrame.withColumn("content", explode(split($"content", "[|]"))).show
 import org.apache.spark.sql.functions.explode
 val stringtoArray =org.apache.spark.sql.functions.udf((content : String) => {content.split('|')})
 dataFrame.withColumn("content", explode(stringtoArray(dataFrame("content")))).show
-```
+~~~
 
