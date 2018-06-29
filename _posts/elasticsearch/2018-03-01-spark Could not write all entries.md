@@ -4,7 +4,7 @@ categories: [elasticsearch]
 title: spark Could not write all entries
 date: 2018-03-01
 author: TTyb
-desc: "When I pushed dataframe to ES on Spark, I had the same error message:Caused by: org.elasticsearch.hadoop.EsHadoopException: Could not write all entries [1/1] (Maybe ES was overloaded?). Error sample (first [1] error messages):rejected execution of org.elasticsearch.transport.TransportService$4@7d5f91de on EsThreadPoolExecutor[bulk, queue capacity = 50, org.elasticsearch.common.util.concurrent.EsThreadPoolExecutor@3447703a[Running, pool size = 32, active threads = 32, queued tasks = 68, completed tasks = 9151096]]Bailing out..."
+desc: "Caused by: org.elasticsearch.hadoop.EsHadoopException: Could not write all entries [1/1] (Maybe ES was overloaded?). Error sample..."
 ---
 
 
