@@ -37,7 +37,7 @@ desc: "在Windows7下需要安装pyspark，写下教程步骤"
 
 # 安装JDK
 
-** 千万不要用默认路径Program Files，这个有空格后面会很坑！新建路径在C:\Java，Java安装在这里！**
+**千万不要用默认路径Program Files，这个有空格后面会很坑！新建路径在C:\Java，Java安装在这里！**
 
 >1. 新建环境变量名：JAVA_HOME，变量值：C:\Java\jdk1.8.0_11
 >2. 打开PATH，添加变量值：%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin
@@ -81,9 +81,9 @@ desc: "在Windows7下需要安装pyspark，写下教程步骤"
 
 在C盘或者代码盘新建\tmp\hive路径，输入命令
 
-```
+~~~ruby
 winutils.exe chmod -R 777 C:\tmp\hive
-```
+~~~
 
 # 验证pyspark
 
@@ -99,8 +99,8 @@ cmd输入pyspark得到如下画面
 >2. SPARK_HOME
 >3. HADOOP_HOME
 
-```
+~~~ruby
 Run->Edit Configurations->Environment variables
-```
+~~~
 
 <p style="text-align:center"><img src="/static/postimage/python/pyspark/996148-20180828094945469-1030294840.png" class="img-responsive" style="display: block; margin-right: auto; margin-left: auto;"></p>
