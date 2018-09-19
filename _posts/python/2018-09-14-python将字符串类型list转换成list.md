@@ -4,7 +4,7 @@ categories: [python]
 title: python将字符串类型list转换成list
 date: 2018-09-14
 author: TTyb
-desc: "python读取了一个list是字符串形式的'[11.23,23.34]'，想转换成list类型"
+desc: "python读取了一个list是字符串形式的[11.23,23.34]，想转换成list类型"
 ---
 
 python读取了一个list是字符串形式的'[11.23,23.34]'，想转换成list类型：
