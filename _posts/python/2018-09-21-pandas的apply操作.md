@@ -51,3 +51,10 @@ print(df)
 0       d  [0.722817, 0.650064]                  cat,dog   d1  [cat, dog]
 1       5  [0.119208, 0.215449]  other_label,other_label   d2          []
 ~~~
+
+PS：如果没有`df = data.copy()`将会出现错误：
+
+~~~ruby
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+~~~
