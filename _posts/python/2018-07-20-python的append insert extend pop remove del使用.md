@@ -17,12 +17,12 @@ desc: "对于python数组的操作有点混乱，所以特此记录下来"
 
 `append(i)` 是在数组的末尾插入一个元素 `i` ，如下代码为在数组 `array` 的末尾插入元素 `10`：
 
-```ruby
+~~~ruby
 array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 array.append(10)
 print array
 # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-```
+~~~
 
 ## insert
 
@@ -39,13 +39,13 @@ print array
 
 `extend(list)` 是在末尾插入一个数组 `list` 里面的所有元素，如下代码为在数组末尾插入数组 `list` 里面的所有元素 `10`、`11`：
 
-```ruby
+~~~ruby
 array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 list = [10, 11]
 array.extend(list)
 print array
 # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-```
+~~~
 
 # 删除
 
@@ -65,20 +65,20 @@ print array
 
 `del array[i]` 是删除数组中第 `i` 个位置的元素，如下代码为删除了数组第 `8` 个位置的元素 `9`，没有返回值 ：
 
-```ruby
+~~~ruby
 array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 del array[8]
 print array
 # [1, 2, 3, 4, 5, 6, 7, 8]
-```
+~~~
 
 ## remove
 
 `remove(item)` 是删除数组里面的元素 `item` ，如下代码为删除了数组里面的元素 `9`，没有返回值 ：
 
-```ruby
+~~~ruby
 array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 array.remove(9)
 print array
 # [1, 2, 3, 4, 5, 6, 7, 8]
-```
+~~~
