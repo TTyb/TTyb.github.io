@@ -24,12 +24,17 @@ nvidia-smi -l
 其他方式如下：
 
 ~~~ruby
+# 查看可用GPU
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+
+import tensorflow as tf
 import os
 
 # 使用GPU0 和 GPU1
 os.environ['CUDA_VISIBLE_DEVICES'] = '0, 1'  
 
-# # 通过 allow_soft_placement 参数自动将无法放在 GPU 上的操作放回 CPU
+# 通过 allow_soft_placement 参数自动将无法放在 GPU 上的操作放回 CPU
 gpuConfig = tf.ConfigProto(allow_soft_placement=True)
 
 # 限制一个进程使用 60% 的显存
