@@ -7,6 +7,8 @@ author: TTyb
 desc: "需要实现两台机器的信息交互，使用 `socket` 进行调度"
 ---
 
+入股需要设置两台机器的端口，请查看博文 [centos7开放端口和防火墙设置](http://www.tybai.com/linux/centos7%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3%E5%92%8C%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE.html)
+
 需要实现两台机器的信息交互，使用 `socket` 进行调度。其中服务端为：
 
 ~~~ruby
