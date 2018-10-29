@@ -2,7 +2,7 @@
 layout: post
 categories: [Linux]
 title: Python3+Flask+uwsgi部署
-date: 2018-04-20
+date: 2018-8-29
 author: TTyb
 desc: "Python3+Flask+uwsgi部署web服务，实现在新的IP下打开网址"
 ---
