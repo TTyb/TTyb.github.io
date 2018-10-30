@@ -14,8 +14,9 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/201
            }
 
 session = requests.session()
+url_ori = "https://m.lianjia.com/"
 print("第一次访问：获取set-cookie")
-session.get("https://m.lianjia.com/", headers=headers)
+session.get(url_ori, headers=headers)
 html_set_cookie = requests.utils.dict_from_cookiejar(session.cookies)
 
 
@@ -53,26 +54,58 @@ def getChannel(html):
         channelDict[channelName] = channelHref
     return channelDict
 
-if __name__ == "__main__":
-    url_ori = "https://m.lianjia.com/"
 
+# 获取真正房子的详细信息
+def getDetail(html):
+    detailArr = []
+
+    soup = BeautifulSoup(html, "html.parser")
+    details = soup.find_all("div", attrs={"class": "item_list"})
+    for info in details:
+        detailDict = {}
+        # 获取标题
+        title_tmp = info.find_all("div", attrs={"class": "item_main"})
+        detail_title = title_tmp[0].get_text()
+        # 获取房屋大小
+        size_tmp = info.find_all("div", attrs={"class": "item_other"})
+        detail_size = size_tmp[0].get_text()
+        # 获取价格单价
+        price_total_tmp = info.find_all("span", attrs={"class": "price_total"})
+        detail_price_total = price_total_tmp[0].get_text()
+        unit_price_tmp = info.find_all("span", attrs={"class": "unit_price"})
+        detail_unit_price = unit_price_tmp[0].get_text()
+        # 获取标签
+        tag_tmp = info.find_all("div", attrs={"class": "tag_box"})
+        detail_tag = tag_tmp[0].get_text()
+
+        detailDict["title"] = detail_title
+        detailDict["size"] = detail_size
+        detailDict["price_total"] = detail_price_total
+        detailDict["unit_price"] = detail_unit_price
+        detailDict["tag"] = detail_tag
+        detailArr.append(detailDict)
+        print(detailDict)
+    print(detailArr)
+    return detailArr
+
+
+def getHtmlMain(pages):
     city = "广州"
     url_get_city = url_ori + "/city/"
     print("第二次访问：获取城市编码")
     html_set_cookie, html_city = getHtml(url_get_city)
-    # print(html_city)
     cityDict = getCity(html_city)
-    # https://m.lianjia.com/gz/
     url_city = url_ori + cityDict[city]
-    print("第三次：访问获取导航")
+    print("第三次访问：访问获取导航")
     html_set_cookie, html_city_content = getHtml(url_city, _cookie=html_set_cookie)
     channelDict = getChannel(html_city_content)
     channel = "二手房"
     url_channel = url_ori + channelDict[channel]
-
     print("第四次访问：获取房子信息")
-    html_set_cookie,html_houses_content = getHtml(url_channel,_cookie=html_set_cookie)
-    print(html_houses_content)
-    print(html_set_cookie)
+    html_set_cookie, html_houses_content = getHtml(url_channel, _cookie=html_set_cookie)
+    getDetail(html_houses_content)
 
 
+if __name__ == "__main__":
+    pages = 1
+    getHtmlMain(pages)
