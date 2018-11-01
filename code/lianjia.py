@@ -3,6 +3,7 @@
 
 import requests
 from bs4 import BeautifulSoup
+import json
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0',
            'Referer': 'm.lianjia.com',
@@ -15,7 +16,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/201
 
 session = requests.session()
 url_ori = "https://m.lianjia.com/"
-print("第一次访问：获取set-cookie")
+print("第一次访问：获取set-cookie", "：", url_ori)
 session.get(url_ori, headers=headers)
 html_set_cookie = requests.utils.dict_from_cookiejar(session.cookies)
 
@@ -89,23 +90,45 @@ def getDetail(html):
     return detailArr
 
 
-def getHtmlMain(pages):
-    city = "广州"
+# 获取json
+def getDetailJson(html_set_cookie, pages):
+    for i in range(pages):
+        page = i + 1
+        headerJson = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0',
+                      'Referer': 'https://m.lianjia.com/gz/ershoufang/pg' + str(page) + '/',
+                      'Host': 'm.lianjia.com',
+                      'Accept': 'application/json',
+                      'Accept-Encoding': 'gzip, deflate',
+                      'Accept-Language': 'zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3',
+                      'X-Requested-With': 'XMLHttpRequest',
+                      'Connection': 'keep-alive'
+                      }
+        url_detail = "https://m.lianjia.com/gz/ershoufang/pg" + str(page) + "/?_t=1"
+        print("模拟请求：获取房子详情", "：", url_detail)
+        html_bytes = session.get(url_detail, headers=headerJson, cookies=html_set_cookie)
+        html_detail = html_bytes.content.decode("utf-8", "ignore")
+        detailJson = json.loads(html_detail)
+        print(detailJson)
+
+
+# main函数
+def getHtmlMain(city, channel, pages):
     url_get_city = url_ori + "/city/"
-    print("第二次访问：获取城市编码")
+    print("第二次访问：获取城市编码", "：", url_get_city)
     html_set_cookie, html_city = getHtml(url_get_city)
     cityDict = getCity(html_city)
     url_city = url_ori + cityDict[city]
-    print("第三次访问：访问获取导航")
+    print("第三次访问：访问获取导航", "：", url_city)
     html_set_cookie, html_city_content = getHtml(url_city, _cookie=html_set_cookie)
     channelDict = getChannel(html_city_content)
-    channel = "二手房"
     url_channel = url_ori + channelDict[channel]
-    print("第四次访问：获取房子信息")
+    print("第四次访问：获取房子信息", "：", url_channel)
     html_set_cookie, html_houses_content = getHtml(url_channel, _cookie=html_set_cookie)
-    getDetail(html_houses_content)
+    getDetailJson(html_set_cookie, pages)
 
 
 if __name__ == "__main__":
-    pages = 1
-    getHtmlMain(pages)
+    city = "广州"
+    channel = "二手房"
+    pages = 2
+    getHtmlMain(city, channel, pages)
