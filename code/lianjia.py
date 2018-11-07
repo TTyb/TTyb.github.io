@@ -79,8 +79,11 @@ def getDetail2(html):
         # 获取价格单价
         price_total_tmp = info.find_all("span", attrs={"class": "price_total"})
         detail_price_total = price_total_tmp[0].get_text()
-        unit_price_tmp = info.find_all("span", attrs={"class": "unit_price"})
-        detail_unit_price = unit_price_tmp[0].get_text()
+        try:
+            unit_price_tmp = info.find_all("span", attrs={"class": "unit_price"})
+            detail_unit_price = unit_price_tmp[0].get_text()
+        except:
+            detail_unit_price = "88888888元/平"
         # 获取标签
         tag_tmp = info.find_all("div", attrs={"class": "tag_box"})
         detail_tag = tag_tmp[0].get_text()
@@ -94,24 +97,23 @@ def getDetail2(html):
         detailDict["room_toward"] = detail_size.split("/")[2]
         detailDict["room_name"] = detail_size.split("/")[3]
         detailDict["price_total"] = detail_price_total
-        detailDict["price_t"] = int(float(detail_price_total.replace("万", "")))
-        detailDict["price_f"] = int(float(detail_price_total.replace("万", "")) * 0.3)
+        detailDict["price_t"] = int(float(detail_price_total.replace("万", "").replace("元/月", "")))
+        detailDict["price_f"] = int(float(detail_price_total.replace("万", "").replace("元/月", "")) * 0.3)
         detailDict["unit_price"] = detail_unit_price
         detailDict["u_price"] = int(float(detail_unit_price.replace("元/平", "")))
         detailDict["tag"] = detail_tag
         detailDict["url"] = url_ori + url_a.get("href")
         detailArr.append(detailDict)
-        print(detailDict)
     return detailArr
 
 
 # 获取json
-def getDetailJson(html_set_cookie, pages):
+def getDetailJson(html_set_cookie, pages,url_channel):
     allList = []
     for i in range(pages):
         page = i + 1
         headerJson = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0',
-                      'Referer': 'https://m.lianjia.com/gz/ershoufang/pg' + str(page) + '/',
+                      'Referer': url_channel + 'pg' + str(page) + '/',
                       'Host': 'm.lianjia.com',
                       'Accept': 'application/json',
                       'Accept-Encoding': 'gzip, deflate',
@@ -119,7 +121,7 @@ def getDetailJson(html_set_cookie, pages):
                       'X-Requested-With': 'XMLHttpRequest',
                       'Connection': 'keep-alive'
                       }
-        url_detail = "https://m.lianjia.com/gz/ershoufang/pg" + str(page) + "/?_t=1"
+        url_detail = url_channel + "pg" + str(page) + "/?_t=1"
         print("模拟请求：获取房子详情", "：", url_detail)
         html_bytes = session.get(url_detail, headers=headerJson, cookies=html_set_cookie)
         html_detail = html_bytes.content.decode("utf-8", "ignore")
@@ -192,19 +194,18 @@ def getDetail(html):
 
         detailDict["tag"] = detail_tag
         detailDict["url"] = url_ori + url_a.get("href")
-        print(detailDict)
         detailArr.append(detailDict)
     return detailArr
 
 
 # 获取房子详情
-def getDetailHtml(html_set_cookie, pages):
+def getDetailHtml(html_set_cookie, pages,url_channel):
     allList = []
     for i in range(pages):
         page = i + 1
         # https://m.lianjia.com/gz/loupan/pg1/?_t=1&source=index
         headerHtml = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0',
-                      'Referer': 'https://m.lianjia.com/gz/loupan/pg' + str(page) + '/',
+                      'Referer': url_channel + 'pg' + str(page) + '/',
                       'Host': 'm.lianjia.com',
                       'Accept': 'application/json',
                       'Accept-Encoding': 'gzip, deflate',
@@ -212,7 +213,7 @@ def getDetailHtml(html_set_cookie, pages):
                       'X-Requested-With': 'XMLHttpRequest',
                       'Connection': 'keep-alive'
                       }
-        url_detail = "https://m.lianjia.com/gz/loupan/pg" + str(page) + "/?_t=1&source=index"
+        url_detail = url_channel + "pg" + str(page) + "/?_t=1&source=index"
         print("模拟请求：获取房子详情", "：", url_detail)
         html_bytes = session.get(url_detail, headers=headerHtml, cookies=html_set_cookie)
         html_detail = html_bytes.content.decode("utf-8", "ignore")
@@ -237,10 +238,10 @@ def getHtmlMain(city, channel, pages):
     url_channel = url_ori + channelDict[channel]
     html_set_cookie, html_houses_content = getHtml(url_channel, _cookie=html_set_cookie)
     print("第四次访问：获取房子信息", "：", url_channel)
-    if channel == "二手房":
-        allList = getDetailJson(html_set_cookie, pages)
+    if channel == "二手房" or channel =="租房":
+        allList = getDetailJson(html_set_cookie, pages, url_channel)
     elif channel == "新房":
-        allList = getDetailHtml(html_set_cookie, pages)
+        allList = getDetailHtml(html_set_cookie, pages,url_channel)
     print("获取优质房子")
     resultHouse = getHotHouse(allList)
     pd.set_option('display.max_rows', 1000)
@@ -252,6 +253,6 @@ def getHtmlMain(city, channel, pages):
 
 if __name__ == "__main__":
     city = "广州"
-    channel = "新房"
-    pages = 1
+    channel = "租房"
+    pages = 5
     getHtmlMain(city, channel, pages)
