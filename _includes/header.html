@@ -29,7 +29,7 @@
 					<li><a class="navbar-brand" href="/guestbook">游客留言</a></li>				
 					{% for post in site.categories['crawlerfirst'] %}
 					<li>
-						<a style="background: url('/static/jpg/hotimg.png') no-repeat right top" class="navbar-brand" href="{{ post.url | prepend: site.baseurl }}">爬虫教程</a>
+						<a style="background: url('/static/jpg/hotimg.png') no-repeat right top" class="navbar-brand" href="{{ post.url | prepend: site.baseurl }}">爬虫教程</a> 
 					</li>
 					{% endfor %}
 					{% for post in site.categories['gitblogfirst'] %}
