@@ -32,6 +32,11 @@
 						<a style="background: url('/static/jpg/newimg.png') no-repeat right top" class="navbar-brand" href="{{ post.url | prepend: site.baseurl }}">爬虫教程</a>
 					</li>
 					{% endfor %}
+					{% for post in site.categories['gitblogfirst'] %}
+					<li>
+						<a style="background: url('/static/jpg/newimg.png') no-repeat right top" class="navbar-brand" href="{{ post.url | prepend: site.baseurl }}">建站教程</a>
+					</li>
+					{% endfor %}
 					<li><a class="navbar-brand" href="/openSourceProject">开源项目</a></li>
 				</ul>
 				
