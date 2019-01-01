@@ -3,7 +3,7 @@
 	{% if paginator.total_pages > 1 %}
         <div class="page-header">
             {% for post in paginator.posts %}
-			{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
+			{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" or post.categories[0] == "gitblog" or post.categories[0] == "gitblogfirst"%}
 			{% else %}
             <hr>
             <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>

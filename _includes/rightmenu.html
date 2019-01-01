@@ -24,7 +24,7 @@
 		<h3 style="font-family: KaiTi;">博客标签</h3>
 		<div>
 			{% for category in site.categories %}
-			{% if category[0] == "crawler" or category[0] == "crawlerfirst" %}
+			{% if category[0] == "crawler" or category[0] == "crawlerfirst" or category[0] == "gitblog" or category[0] == "gitblogfirst"%}
 			{% else %}
 			<a class="tags" style="text-decoration:none;" href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}">{{ category | first }}({{ category | last | size }})</a>
 			{% endif %}
