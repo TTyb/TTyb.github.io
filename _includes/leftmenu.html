@@ -16,6 +16,8 @@
 			{% endfor %}
 		</ul>
 		{% endif %}
+	{% endfor %}
+	{% for category in site.categories %}
 		{% if category[0] == "gitblog" or category[0] == "gitblogfirst" %}
 		<ul class="nav" style="font-family: 微软雅黑;text-decoration: none;font-size: 15px;">
 			{% for post in site.categories['gitblogfirst'] %}
