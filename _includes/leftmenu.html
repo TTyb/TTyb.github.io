@@ -3,27 +3,30 @@
 	<h3 style="font-size: 1.2em;font-family: KaiTi;padding-left:10px">目录</h3>
 	</div>
 	<hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin:5px 0 5px 0;"/>
-	{% if site.categories[0] == "crawler" or site.categories[0] == "crawlerfirst" %}
-	<ul class="nav" style="font-family: 微软雅黑;text-decoration: none;font-size: 15px;">
-		{% for post in site.categories['crawlerfirst'] %}
-			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
-		{% endfor %}
-		
-		{% assign sorted_posts = (site.categories['crawler'] | sort:0) %}
-		{% for post in sorted_posts %}
-			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
-		{% endfor %}
-	</ul>
-	{% else %}
-	<ul class="nav" style="font-family: 微软雅黑;text-decoration: none;font-size: 15px;">
-		{% for post in site.categories['gitblogfirst'] %}
-			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
-		{% endfor %}
-		
-		{% assign sorted_posts = (site.categories['gitblog'] | sort:0) %}
-		{% for post in sorted_posts %}
-			<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
-		{% endfor %}
-	</ul>
-	{% endif %}
+	{% for category in site.categories %}
+		{% if category[0] == "crawler" or category[0] == "crawlerfirst" %}
+		<ul class="nav" style="font-family: 微软雅黑;text-decoration: none;font-size: 15px;">
+			{% for post in site.categories['crawlerfirst'] %}
+				<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
+			{% endfor %}
+			
+			{% assign sorted_posts = (site.categories['crawler'] | sort:0) %}
+			{% for post in sorted_posts %}
+				<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+		{% if category[0] == "gitblog" or category[0] == "gitblogfirst" %}
+		<ul class="nav" style="font-family: 微软雅黑;text-decoration: none;font-size: 15px;">
+			{% for post in site.categories['gitblogfirst'] %}
+				<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
+			{% endfor %}
+			
+			{% assign sorted_posts = (site.categories['gitblog'] | sort:0) %}
+			{% for post in sorted_posts %}
+				<li><a style="padding: 3px 15px;" class="active" href="{{ post.url | prepend: site.baseurl }}">{{ post.desc }}</a></li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	{% endfor %}
 </div>

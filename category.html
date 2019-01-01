@@ -9,7 +9,7 @@ layout: default
 	<div class="col-xs-3 col-sm-3 col-md-2" style="border-right: 1px solid #ddd;border-radius: 4px;">
 		<ul class="list-group">
 			{% for category in site.categories %}
-			{% if category[0] == "crawler" or category[0] == "crawlerfirst" %}
+			{% if category[0] == "crawler" or category[0] == "crawlerfirst" or category[0] == "gitblog" or category[0] == "gitblogfirst"%}
 			{% else %}
 			<a href="{{ "/showCategory.html?cat=" | prepend: site.baseurl }}{{ category | first }}" class="list-group-item">
 				{{ post.title }}{{ category | first }}
@@ -30,7 +30,7 @@ layout: default
 			</thead>
 			<tbody>
 			{% for post in site.posts %}
-			{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" %}
+			{% if post.categories[0] == "crawler" or post.categories[0] == "crawlerfirst" or post.categories[0] == "gitblog" or post.categories[0] == "gitblogfirst"%}
 			{% else %}
 			{% for category in post.categories %}
 			<tr>
