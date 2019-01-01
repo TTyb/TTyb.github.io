@@ -64,6 +64,7 @@ layout: default
 			</div>
 			
 			<div style="background-color: #fff;padding: 20px;border-radius: 4px;margin-bottom: 20px">
+			{% if page.categories[0] == "crawlerfirst" or page.categories[0] == "crawlerfirst" %}
 				<ul class="list-inline" style="font-family: 微软雅黑;text-decoration: none;">
 					{% if page.categories[0] == "crawlerfirst"%}
 					<li class="pull-left"><span style="color:#CCCCCC">上一篇</span></li>
@@ -76,6 +77,8 @@ layout: default
 					<li class="pull-right"><span style="color:#CCCCCC">下一篇</span></li>
 					{% endif %}
 				</ul>
+			{% else %}
+				{% if page.categories[0] == "gitblog" or page.categories[0] == "gitblogfirst" %}
 				<ul class="list-inline" style="font-family: 微软雅黑;text-decoration: none;">
 					{% if page.categories[0] == "gitblogfirst" %}
 					<li class="pull-left"><span style="color:#CCCCCC">上一篇</span></li>
@@ -88,6 +91,8 @@ layout: default
 					<li class="pull-right"><span style="color:#CCCCCC">下一篇</span></li>
 					{% endif %}
 				</ul>
+				{% endif %}
+			{% endif %}
 				
 				<br/>
 				<h4 style="font-family: KaiTi">如果你觉得本站内容有帮助<i class="icon fa-hand-o-down" aria-hidden=true></i></h4>
