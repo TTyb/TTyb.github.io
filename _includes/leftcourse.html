@@ -25,7 +25,33 @@
 		</p>
 	</div>
 	
-	<!--这里是百度网盘-->
+	<!--这里是建站教程-->
+	<div class="media thumbnail mytrans" style="font-family:Microsoft YaHei;padding: 20px 0;">
+		<div class="col-xs-5 col-sm-5 col-md-4">
+			<a href="javascript:void(0)" class="media-left media-middle media-bottom" style="float:left;">
+				<img style="border-radius: 4px;" src="/static/jpg/gitblog.jpg" height="178" width="100%"/>
+			</a>
+		</div>
+		
+		<div class="col-xs-7 col-sm-7 col-md-8">
+			<div class="media-body" style="float:left;padding-right:10px">
+				{% for post in site.categories['gitblogfirst'] %}
+				<h4><a href="{{ post.url | prepend: site.baseurl }}" style="color:#333;font-weight:bold">{{ post.title }}</a></h4>
+				<h6 class="text-muted">
+					<i class="fa fa-user"></i>&nbsp;{{ post.author }}&nbsp;<i class="fa fa-calendar"></i>&nbsp;{{ post.showdate }}&nbsp;<i class="fa fa-tag"></i>&nbsp;gitblog
+				</h6>
+					<p style="word-wrap:break-word; word-break:normal;">无论是技术人员还是分析运营的人员，几乎都想拥有属于自己的博客。在以流量为主的21世纪，如何建立自己的品牌，获取更多流量，由此利用自己的技术获取更多的外快？本篇教程特地为技术小白实现网络大V的梦想，走上人生巅峰就差一份教程距离！</p>
+					<h5 class="pull-right" style="width: 120px;"><a class="contactme" title="阅读全文" href="{{ post.url | prepend: site.baseurl }}">阅读全文&raquo;</a></h5>
+				{% endfor %}
+			</div>
+		</div>
+		<p class="newtag">
+			新
+			<span class="triangle" style="border-right: 10px solid #0457fd !important;"></span>
+		</p>
+	</div>
+	
+	<!--这里是开源项目-->
 	<div class="media thumbnail" style="font-family:Microsoft YaHei;padding: 20px 0;">
 		<div class="col-xs-5 col-sm-5 col-md-4">
 			<a href="javascript:void(0)" class="media-left media-middle media-bottom" style="float:left;">
@@ -43,10 +69,6 @@
 					<h5 class="pull-right" style="width: 120px;"><a class="contactme" title="前往项目" href="/openSourceProject">前往项目&raquo;</a></h5>
 			</div>
 		</div>
-		<p class="newtag">
-			新
-			<span class="triangle" style="border-right: 10px solid #0457fd !important;"></span>
-		</p>
 	</div>
 	
 	<!--这里是github-->
