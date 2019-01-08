@@ -317,7 +317,8 @@ img {
 .img-responsive {
     display: block;
     height: auto;
-    max-width: 100%
+    max-width: 100%;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .img-rounded {
