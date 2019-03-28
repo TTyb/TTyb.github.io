@@ -18,6 +18,7 @@ htmlweb.py
 将 [bootstrap.min.css](https://www.tybai.com/static/css/bootstrap.min.css) 放到 `static` 文件夹下，在 `templates` 文件夹下新建 `index.html`，里面写入如下信息：
 
 ~~~ruby
+{% raw %}
 <html>
 <head>
     <title>APIParse</title>
@@ -27,6 +28,7 @@ htmlweb.py
 TTYB
 </body>
 </html>
+{% endraw %}
 ~~~
 
 在 `htmlweb.py` 中写入如下内容：
