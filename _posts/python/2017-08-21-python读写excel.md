@@ -56,14 +56,25 @@ with xlsxwriter.Workbook("F:/code/python/test1.xlsx") as workbook:
 worksheet = workbook.add_worksheet("haha")
 ~~~
 
-这个库读取行和列是从 `0` 开始的，而不是从 `1` 开始的。最后写入自己需要的值：
+设置列首、行宽、列高：
 
 ~~~ruby
-# 行、列的初始值
-rownum = 0
-columnnum = 0
-# 依次写入每个单元格
-worksheet.write(rownum, columnnum, "one")
+# 列首
+title = ["id", "img", "label"]
+worksheet.write_row('A1', title)
+
+# B列列宽
+worksheet.set_column("B:B", 32)
+# 第i行的行高
+worksheet.set_row(i, 150)
+~~~
+
+写入数据：
+
+~~~ruby
+# 数据
+row = ["123","456","789"]
+worksheet.write_row('A' + str(i + 1), row)
 ~~~
 
 切记要关闭 `excel` :
@@ -71,6 +82,19 @@ worksheet.write(rownum, columnnum, "one")
 ~~~ruby
 workbook.close()
 ~~~
+
+如果想插入图片:
+
+~~~ruby
+from io import BytesIO
+from urllib import request
+url="https://www.tybai.com/static/jpg/head.jpg"
+# 缓存图片
+image_data = BytesIO(request.urlopen(url).read())
+# 插入图片
+worksheet.insert_image('A1',url,{'image_data': image_data})
+~~~
+
 
 ### 读取2003版本的excel
 
