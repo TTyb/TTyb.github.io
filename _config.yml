@@ -4,7 +4,6 @@ url: "https://ttyb.github.io"
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge
-  input:GFM
 encoding: utf-8
 permalink: /:categories/:title.html
 gems: [jekyll-paginate]
