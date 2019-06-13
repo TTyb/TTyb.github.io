@@ -16,7 +16,9 @@ desc: "记录python读写2003和2007版本的excel的一些方式"
 读取`xlsx` 需要用库 `openpyxl` ， 安装方式： `pip3 install openpyxl` 。设置 `excel` 的路径：
 
 ~~~ruby
-excelPath = "F:/code/python/test.xlsx"
+import openpyxl
+openpyxl.excelPath = "F:/code/python/test.xlsx"
+workBook=load_workbook(excelPath)
 ~~~
 
 读取第一个 `Sheet` 表中的内容：
@@ -73,6 +75,7 @@ worksheet.set_row(i, 150)
 
 ~~~ruby
 # 数据
+i=0
 row = ["123","456","789"]
 worksheet.write_row('A' + str(i + 1), row)
 ~~~
