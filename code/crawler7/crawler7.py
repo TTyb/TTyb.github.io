@@ -16,6 +16,70 @@ js = """function callback(){
         n = "x" == e ? t : 3 & t | 8;
         return n.toString(16)
         }).toUpperCase()
+    }
+    function traceid(){
+    var e = {a: 1, b: 1, c: 1}
+    e.traceID = {
+            headID: e.traceID && e.traceID.headID || "",
+            flowID: e.traceID && e.traceID.flowID || "",
+            cases: e.traceID && e.traceID.cases || "",
+            initTraceID: function(e) {
+                var t = this;
+                e && e.length > 0 ? (t.headID = e.slice(0, 6),
+                t.flowID = e.slice(6, 8)) : t.destory()
+            },
+            createTraceID: function() {
+                var e = this;
+                return e.headID + e.flowID + e.cases
+            },
+            startFlow: function(e) {
+                var t = this
+                  , n = t.getFlowID(e);
+                0 === t.flowID.length || t.flowID === n ? (t.createHeadID(),
+                t.flowID = n) : t.finishFlow(n)
+            },
+            finishFlow: function() {
+                var e = this;
+                e.destory()
+            },
+            getRandom: function() {
+                return parseInt(90 * Math.random() + 10, 10)
+            },
+            createHeadID: function() {
+                var e = this
+                  , t = (new Date).getTime() + e.getRandom().toString()
+                  , n = Number(t).toString(16)
+                  , i = n.length
+                  , s = n.slice(i - 6, i).toUpperCase();
+                e.headID = s
+            },
+            getTraceID: function(e) {
+                var t = this
+                  , n = e && e.traceid || "";
+                t.initTraceID(n)
+            },
+            getFlowID: function(e) {
+                var t = {
+                    login: "01",
+                    reg: "02"
+                };
+                return t[e]
+            },
+            setData: function(e) {
+                var t = this;
+                return e.data ? e.data.traceid = t.createTraceID() : e.url = e.url + (e.url.indexOf("?") > -1 ? "&" : "?") + "traceid=" + t.createTraceID(),
+                e
+            },
+            destory: function() {
+                var e = this;
+                e.headID = "",
+                e.flowID = ""
+            }
+        };
+        e.traceID.initTraceID()
+        e.traceID.createHeadID()
+
+        return e.traceID.createTraceID()+"01"
     }"""
 ctx = execjs.compile(js)
 
@@ -23,6 +87,15 @@ headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:32.0) Gecko/201
 
 session = requests.session()
 session.get("https://passport.baidu.com/v2/?login", headers=headers)
+
+def get_tk_as_ds():
+    resp=session.get(url="https://passport.baidu.com/viewlog?ak=1e3f2dd1c81f2075171a547893391274&as=74a154e4&fs=MEBGsUNpNVBMjs8Tdudr8aAjW%2BFklVpfnDnMkmxZ3DMXZisUPveYoxrXH2HKd5pgidlfhvibzXjlMLk28ZUvrUpDazz2aivj1lT0DHKRrMLZBBvYrMBdY%2BenNlaoF8h%2F8s18t0DQtONJZoRMOt%2FDotooaXA1bPuODU3XkP5iOBv9GpK6mApUn2xQXIpSEFTInDKJEiFBfC04IfPyCVCe766QJT%2FS4CHeqIJsjVLa7aoNnh3%2BHSdvRx1Uay1Fy60q%2Fkz5TJ%2B8Ib25o8yDfFBcOdbIdhVwmDHp3R87v3%2BY0M9rl2MUlr4ZJO2vn98yspz9t60LrqhUsObz7FZIdG9sWRP6JNt00%2BeQIY6Z7liRZI75mSRTWGDHYMT8LU7KdOELrxdrM7OfHfoD%2BlJ8PpCPFPT8dOgJUKGwa0tkL6t5UKpOUUXoxbx3lkRUNSj5NxdNcRt3YZbDShJmXnRbfza7yDpgvzKBRULis%2BzxhbBijS5onMCPOB59OVGE6lges8nr9xhi0ZNM9f96V7S4elo4fsXUgQzmJJwsM69ah0RSVNFQbBNoGszbT47%2BHDORP%2Fd7OLGOeG8D9i5tMIf%2BYRgN6ing5B5lLpn5nn3KtshIWiAwrR5mijWZai7uheFiE2cHCovVBRAlfCp3yDtKRWN4cE55F9b0wvoDHSJmHqlVKp1%2BgbE9b1oUFmqOGWcWMakVQfrEFg6phufPuuaQLLdtX3%2Bir7yeC8rx8tHdcTz6CtJsWtVcavFV8Q8j8Ta90bSKp%2BjQlmOXmct7PeM3tRM8%2B946o67jwNX7CP1EjKw%2FYk5lP%2BmCqNjwK3eZf46pQGLmZYUOLuGBK73HeCPAlj4YlEfGrZYpCuLp1vthWK%2B5oZZR9c%2BLpu1aOGotEqebe2N6UaKbXhC2qn6h3glylAV%2B2HfY4wut%2Bj%2Frr3iJEhWLj7J7qD0fr5ojR993ru8qrZSxKYu1f5W6NhdGPz7ZpWRfBrIaxtMjliEgdrIZ82RSe930OeXJaXMzytvoxvsZaUYvODivXMsPXDlnEQ%2FiZPPAO1B3F06Y8so67piru9hrXdkBwGLP6G07wo2dCMPvSFHHuLSvFYWduRFscftm3qJ1XUSDHDYIe8t5y5ClLJJd%2FCAkdlhQc3iOQJUgOXp4tAjoSkkiLnramq%2BIa6ycbi%2BcfzE6recOWVsuTFC4rX0t4RLdY5yf%2BRkED6qYcR8LLorK0dVKTX34rRsvLFElzgbi%2FW1%2Fq8y8tU9X%2F3pQXzHEsw28si6pjHvbPd4rJoQTIoI5asbCbxKqjRCJCfJPXRbUxo%2BZeWwik4F5UiTzwpas3pQ%3D&callback=jsonpCallbackb5819&v=4646", headers=headers)
+    start = resp.text.find('(')
+    data = (json.loads(resp.text[start + 1:-1]))['data']
+    tk = data.get('tk')
+    _as = data.get('as')
+    ds = data.get('ds')
+    return tk,_as,ds
 
 
 def get_gid():
@@ -32,6 +105,9 @@ def get_gid():
 def get_callback():
     return ctx.call("callback")
 
+
+def get_traceid():
+    return ctx.call("traceid")
 
 def get_tt():
     timerandom = random.randint(100, 999)
@@ -88,8 +164,10 @@ def base64_password(password, pubkey):
 
 
 def login(username, password):
+    tk, _as, ds=get_tk_as_ds()
     gid = get_gid()
     callback = get_callback()
+    traceid=get_traceid()
     token = get_token(gid, callback)
     dicts = get_rsakey(token, gid, callback)
     tt = get_tt()
@@ -97,9 +175,8 @@ def login(username, password):
     pubkey = dicts["pubkey"]
     newpassword = base64_password(password, pubkey)
 
-    dv = "	MDExAAoAogALA44AJAAAAF00AAgCACOLiNbXsLCxIksfXhBXBUQJVglZCloFNmk2Wz5TMVQmdhdkFwwCAB-JmZmZmBNxJWQqbT9-M2wzYzBgPwxTDHkKbx1TMl86DAIAH4mJiYmIDhRAAU8IWhtWCVYGVQVaaTZpHG8KeDZXOl8IAgAJkZW2t97e31_ZCQIAJImKNjcyMjIyM1UbG08OQAdVFFkGWQlaClVmOWYTYAV3OVg1UAgCACGJilhZTU1NwvKm56nuvP2w77Dgs-O8j9CP-onsntCx3LkNAgAdkZGBnYXRkN6Zy4rHmMeXxJTL-Kf4jf6b6afGq84NAgAFkZGBj48NAgAFkZGaeHgMAgAfiZubm5uQ47f2uP-t7KH-ofGi8q2ewZ7rmP2PwaDNqBMCAFyRycnJodWh0aKYt5joifqJ-ZbkkL7cvdSwxeuI54ql0-HO8Z3ylfyStMH8lOCU5JeygLWGx-LQ5deRtIazgce31qXWpsm7z-GD4ovvmrTXuNXwwvfFg-CF65_6iAUCAASRkZGdAQIABpGTk4OO7hUCAAiRkZDP26GAkAQCAAaSkpCRopAWAgAisMSvn7GGsYG5jLWDsYS8iLCIvo6_jruLvISzhLSCu4u5gRcCABiQk7S0p_rS-8Cu9ZjotYnnvP2ew5j1mscQAgABkQYCACiRkZHW1tbW1tbW01xcXF2ampqfPz8_PLi4uL0dHR0eQkJCR_f39_SYBwIABJGRkZEJAgAkiYpkZWVlZWVlZc3NmdiW0YPCj9CP34zcg7DvsMW206HvjuOGBwIABJGRkZENAgAdkZGRU0sfXhBXBUQJVglZCloFNmk2QzBVJ2kIZQAHAgAEkZGRkQ0CAB2RkZpJUQVECk0fXhNME0MQQB8scyxZKk89cxJ_GgkCACSJilRVWVlZWVnXmJjMjcOE1pfahdqK2YnW5brlkOOG9LrbttMHAgAEkZGRkQkCAAyRkQgJGxsbGxp4rq4HAgAEkZGRkQgCAAmRkqSka2tqDsAJAgAkiYo-Pzk5OTk4usTEkNGf2IrLhtmG1oXVirnmucy_2qjmh-qPBwIABJGRkZEHAgAEkZGRkQwCAB-J7Ozs7WAnczJ8O2koZTplNWY2aVoFWi9cOUsFZAlsDAIAH4nr6-vqZGI2dzl-LG0gfyBwI3MsH0Afahl8DkAhTCkIAgAdhYHV1I-PjhUDVxZYH00MQR5BEUISTX4hfhh3BWg"
-    # fp_info = "	25dc4e90f115ed0abe95320051d9bf8c002~~~~zyH0Qgd5Sc_g~~JwyF5BYh5mLx5Zo_yyF5BYh5mL-2~o_Q~eLrX~eLrL~~rS~~CAy0UrYzbPAm0A8Exm8EbdDzglYMrtIvg~JMCPIQ-jINrx8ExsAEnwAMCgJsYdAvWH1bbQIQCBDvbKApUOAm0HABPdGb2RJMngBEew8EWg1zCHIaWC8zew6ExSAMnh7zxtpMAOAqgdGQ0K8axwIvtHEm0dBv0PpvWUAQgd7zxtum0dIv0P56-t1~od5yxwIvtHEm0dBv0P0M2gGgrH8E8PI~PdGmlH8M2gG~cd5a-K1~5dAvWH1bCgIz2gINCCpBPdGvb~8vgQAMLdAvWH1bCgIz2gINCBpheYIvbhAzeKIBPdGb2BBhb-YsCKIqAOGgrpBveNDE-dAvWH1bbCtx1Z457otxIaHH9gtF3ZlG9Vtx~aO57T7zxtpMPOIz028M2PJKxwIvtHp0bmJEUgpvWUAQgdpmnO7zxtGMbsAEnNJEUg1zCHIaWZBw4nYhb9Y0lYIm0NDE-jINr~JEPluaxwIvtHYhx16M2xGQgdAzeYIm0NDE-jINrSuM2PIzAO1zCHIaWCppUPIzgqBbrH8E8PI~PdGblvBEgdDpC5pvWUAQgd1zCHIaW2DE2KIs2OANCXAzAPJQpK5ZqS7wxYpUrMpwbY1wC5BaWdGbbCpvlO8veqGzbsCMLjINrCp0rRIsCOCmnl8h0-1zCHIaWCppUlDEWYIm0NDE-jINrCppUlDEWMAEn1DMYdAvWH1bCgIz2gINCv0qxtIm0N1Egd7zxt8mlz8vxMAEn1DMYdAvWH1qbwIQngYE2KIQnl8ZPdGmrwA~5K1zCHIaWrAveyApb~GzeyJMYjINrtAvJS5yxwIvtHYECOJz0rYpUqAMCgJsYjINrrAveyApbrBpCg8v0~8Z5K1zCHIo__xg~oCg~oWg~oGg~rMy0jIpMAOAqgdGQ0K8aWdGbe-8ExHAEg3GvWUAQgd1qC5BaWpEb2BBKWpDvgSGvWUAKUPIzgS8mnlIN2zAMnSIQACuzedApUUGQg~8QlgIzetAExPIz8CuzedAEgdJM8gJNrlAQ0sDMCRCzgKAEAOua-Hp0bMAEnmJEUgpvWUAQgdpmnO1vxtJQbfJMLHINrSuM2PIzAO1vxtEqAYIm0N1b2RJMngpvePINCYIm0N1EgdAzeKCzgKAEAOuaWCppUlDEWYIm0NDExzIsnsAEnFDMYHp0b2JEgHpvWUAQgdAzeK8Q0yDQgh1vxt8mlz8v-HYE2KIQnl8brOGNClJzWgCve~8EUgINCvIsn4JMYHYECOJz0YCqAPIgl2BqAOGzUl8aWrAveyA0rqCzgdEqU5CzeKIEbh1qb~GzeyJMCvIsn4GhCl8vbvIsn4JMYHEqU50z0KGQgOIzezYE2KIQnl8qAOGzUSCvbhJpAOGzUl8aWrJsnOJzbhEqU5CvbhJ0rlJQ4lAQpHYECOJz0vIsn4CzWO8SwxCvbhJpAPIvpHYE2KIQnl8brOGNClJzWgCve~8EUgINCvIsn4JMYHYECOJz0YCqAPIgl2BqAOGzUl8aWrAveyA0rqCzgdEqU5CzeKIEbh1qb~GzeyJMCvIsn4GhCl8vbvIsn4JMYHEqU50z0KGQgOIzezYE2KIQnl8qAOGzUSCvbhJpAOGzUl8aWrJsnOJzbhEqU5CvbhJ0rlJQ4lAQpHYECOJz0vIsn4CzWO8SwxCvbhJpAPIvpHYECOJz0rYpUqAMCgJsY_B-0R~atqGl4ZZo5woqyBk4FmoqjqNVEY4M-LcxoRrOYR69LqtL7vpDj2-eQYsV37hjVbrBvhATooo69mKn-JWLLnw3g5ohixrg~rOg~r-g~rFg~rN~~cIyHuzL4Yh-_Hys8ExSGv0~DEAPAEY_~g~re~tLAdmaZs~~oag~of~vVvA99Eg~oRg~obg~odg~ohyT1BYd7BLs5BLS7ZoS5SGW5ZcU"
-    # fp_uid = "25dc4e90f115ed0abe95320051d9bf8c"
+    dv = "tk0.084246779043189111563000601025@eer0rCvG6wAkqBQHKBQm~O4kFUTk2-AkqBK2u85UshGKyTJu4n9w4T9ZKwD9s8FrU3Ak6Ov17UTk2-AkqBK2u85UshGKyTJu4n9w4T9ZKwD9s8FrU3Ak6w8GVUTkJwAkqBK2u85UshGKyTJu4n9w4T9ZKwD9s8FrU3Ak6b8kVZTkJ~AkqBK2u85UshGKyTJu4n9w4T9ZKwD9s8FrU3Ak6b8GNZTq__vr0PevG2bvm~w41nB4kq-8CjxvG2~vE~UvkNB4kVw8Cjx4w7wAkFjvE~-4k6ZAo~jvGnXAk6U8C~fvGqbAu5hGVRCnJUT9UhGJuxw9UyUN-KOGauiD9~j4wV-Ak6O4O~jvk2w8mjxCttPwt-Dx9tRh-rivC~wAkvOyrqR0B~A1qf4k6b41NZ8Gqbvw2f8G2jvGJ-vwq~vkF~vGqO4n__ir0~tPo5bNovdAOy~F94wN0yORmXEFr3VRCX1Q-bcR16cp-jcD-3IAoKID0KaPrX3Dq__Irl4w2Bvm~j8GqwAkV-8C~j8G6~Ak2~8kqBvGVOvm~j8Gv-Ak2~4GF_"
+
     post_data = {
         "staticpage": "https://passport.baidu.com/static/passpc-account/html/v3Jump.html",
         "charset": "utf-8",
@@ -110,7 +187,7 @@ def login(username, password):
         "tt": tt,
         "codestring": "",
         "safeflg": 0,
-        "u": "https://passport.baidu.com/center",
+        "u": "https://passport.baidu.com/",
         "isPhone": "",
         "detect": 1,
         "gid": gid,
@@ -127,10 +204,13 @@ def login(username, password):
         "crypttype": 12,
         "ppui_logintime": 33554,
         "countrycode": "",
+        "fp_uid": "",
+        "fp_info": "",
+        "loginversion": "v4",
+        "ds": ds,
+        "tk": tk,
         "dv": dv,
-        # "traceid":57308501,
-        # "fp_info":fp_info,
-        # "fp_uid":fp_uid,
+        "traceid":traceid,
         "callback": "parent." + callback
     }
     resp = session.post(url="https://passport.baidu.com/v2/api/?login", data=post_data, headers=headers)
@@ -147,12 +227,11 @@ def login(username, password):
     file.close()
 
 if __name__ == "__main__":
-    username = "灰色52056"
-    password = "tyb52056"
+    username = "你的账号"
+    password = "你的密码"
     login(username, password)
     home_page = session.get("https://passport.baidu.com/center", headers=headers).content.decode("utf-8", "ignore")
-    print(home_page)
-
+    
     # json_file = open("cookie.json")
     # cookies = json.load(json_file)
     # json_file.close()
